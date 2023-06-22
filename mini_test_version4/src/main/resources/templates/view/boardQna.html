@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/default-layout}">
+  
+<head>
+<th:block layout:fragment="css">
+	<link rel="stylesheet" href="/css/boardQna.css">
+</th:block>
+
+<th:block layout:fragment="script">
+   <script type="text/javascript" th:inline="javascript">
+
+   </script>
+</th:block>
+    
+</head>
+
+<body> 
+<th:block layout:fragment="content">  
+
+<img src="./image/qna_main.png" alt="카테고리 이미지" style="display: block; margin: auto; margin-top: 70px; max-width: 50%; height: 50%;">
+
+<div class="board-qna-container">
+<hr class="horizontal-line">
+  <div class="board-container">
+    <div class="board-title">
+      <button>궁금해요</button>
+    </div>
+    <div class="board-actions">
+      <button style="left: 0;">글쓰기</button>
+    </div>
+  </div>
+  
+  <hr class="horizontal-line">
+  
+<!-- 드롭다운 -->
+<div class="options-container">
+    <select name="list-options" id="list-options">
+        <option value="">글 정렬</option>
+        <option value="recently">최신순</option>
+        <option value="older">등록순</option>
+        <option value="popular">인기순</option>
+    </select>
+</div>
+
+  <hr class="horizontal-line-underdropdown">
+
+  <div class="search-box-qna">
+    <i class="fas fa-search search-icon-qna"></i>
+    <input type="text" id="search-input-qna" placeholder="검색" />
+    <button id="search-button">검색</button>
+  </div>
+
+  <div class="pagination-top">
+    <span class="pagination-top-info">1 / 1 페이지</span>
+    <div class="pagination-top-buttons">
+      <button class="pagination-top-button" disabled>&larr;</button>
+      <button class="pagination-top-button">&rarr;</button>
+    </div>
+  </div> 
+  
+  <div class="board-write-container">
+    <li class="board-write">
+      <div class="answer-count">답변<br>1</div>
+      <div class="board-writer-title">
+        <div class="author">
+          <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
+          <div>닉네임</div>
+        </div>
+        <a href="#" class="title">게시물 1 제목</a>
+      </div>
+    </li>
+    <li class="board-write">
+      <div class="answer-count">답변<br>2</div>
+      <div class="board-writer-title">
+        <div class="author">
+          <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
+          <div>닉네임</div>
+        </div>
+        <a href="#" class="title">게시물 2 제목</a>
+      </div>
+    </li>
+    <li class="board-write">
+      <div class="answer-count">답변<br>3</div>
+      <div class="board-writer-title">
+        <div class="author">
+          <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
+          <div>닉네임</div>
+        </div>
+        <a href="#" class="title">게시물 3 제목</a>
+      </div>
+    </li>
+  </div>
+
+  <div class="pagination-bottom">
+    <button class="pagination-bottom-button pagination-button-previous" disabled>&larr; Previous</button>
+    <span class="pagination-bottom-pages">1</span>
+    <button class="pagination-bottom-button pagination-button-next">Next &rarr;</button>
+  </div>
+</div>
+</th:block>
+</body> 
+</html>
