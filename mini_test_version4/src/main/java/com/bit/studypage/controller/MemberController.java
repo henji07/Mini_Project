@@ -1,4 +1,4 @@
-package mini.test.member.web;
+package com.bit.studypage.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit.studypage.form.MemberForm;
+import com.bit.studypage.service.MemberService;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import mini.test.member.model.MemberForm;
-import mini.test.member.service.MemberService;
 
 @Slf4j
 @Controller

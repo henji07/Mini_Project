@@ -1,4 +1,4 @@
-package mini.test;
+package com.bit.studypage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

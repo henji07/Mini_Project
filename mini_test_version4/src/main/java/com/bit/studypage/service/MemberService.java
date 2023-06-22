@@ -1,4 +1,4 @@
-package mini.test.member.service;
+package com.bit.studypage.service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,11 +7,12 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bit.studypage.entity.Member;
+import com.bit.studypage.form.MemberForm;
+import com.bit.studypage.repository.MemberRepository;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import mini.test.common.jpa.entity.Member;
-import mini.test.common.jpa.repository.MemberRepository;
-import mini.test.member.model.MemberForm;
 
 @Slf4j
 @Service

@@ -1,4 +1,4 @@
-package mini.test.common.jpa.entity;
+package com.bit.studypage.entity;
 
 import java.util.Map;
 

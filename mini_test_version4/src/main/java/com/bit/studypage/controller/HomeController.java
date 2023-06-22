@@ -1,4 +1,4 @@
-package mini.test.common.web;
+package com.bit.studypage.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

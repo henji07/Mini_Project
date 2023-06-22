@@ -1,4 +1,4 @@
-package mini.test.member.model;
+package com.bit.studypage.form;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

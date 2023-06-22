@@ -1,10 +1,10 @@
-package mini.test.common.jpa.repository;
+package com.bit.studypage.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import mini.test.common.jpa.entity.Member;
+import com.bit.studypage.entity.Member;
 
 
 @Repository //스프링 빈으로 등록, 스프링이 해줌
