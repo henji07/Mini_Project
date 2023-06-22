@@ -1,0 +1,4 @@
+2023-06-19 14:03:52.654 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 21136 (C:\workspace\mini_test\bin\main started by 82103 in C:\workspace\mini_test)
+2023-06-19 14:03:52.657 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-19 14:03:52.657 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-19 14:03:54.867 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 2.497 seconds (process running for 2.969)

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ 	<title>test</title>
+ 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form role="form" action="test" th:object="${data}" method="get">
+		<p th:text="'구만아!. ' + ${data}" >순수 에치티엠엘</p>
+	</form>
+</body>
+</html>

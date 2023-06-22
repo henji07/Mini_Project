@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>옹기종기 ●̑ᴗ●̑</title>
+</head>
+
+<body>
+  <header class="header">
+  	<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+  	
+    <div class="nav_logo">
+      <a th:href="@{/main}">
+        <img src="./image/Pagelogo.png" alt="Logo" />
+      </a>
+    </div>
+
+    <ul class="nav_menu">
+      <li><a th:href="@{/main}">홈</a></li>
+      <li><a th:href="@{/freePage}">소통해요</a></li>
+      <li><a th:href="@{/studyPage}">함께해요</a></li>
+      <li><a th:href="@{/qnaPage}">궁금해요</a></li>
+      <li><a th:href="@{/certificatePage}">자격증</a></li>
+    </ul>
+    <div class="search_box">
+      <i class="fas fa-search search_icon"></i>
+      <input type="text" id="search_input" placeholder="검색" />
+      <button id="search_button">검색</button>
+    </div>
+    <div class="user_buttons">
+      <button id="login_button"><a th:href="@{/login}">로그인</a></button>
+      <button id="signup_button"><a th:href="@{/members/new}">회원가입</a></button>
+      <button id="profile_button" style="display: none;">프로필</button>
+    </div>
+
+
+  </header>
+
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slide">
+        <img src="./image/main1.png" alt="Slide 1" />
+      </div>
+      <div class="slide">
+        <img src="./image/main_2.png" alt="Slide 2" />
+      </div>
+      <div class="slide">
+        <img src="./image/main3.png" alt="Slide 3" />
+      </div>
+    </div>
+  </div>
+
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+
+  <section class="popular_menus">
+    <div class="menu">
+      <div class="menu_header">
+        <h2>소통해요</h2>
+      </div>
+      <ul class="popular_posts">
+        <li><a href="#">인기글 1</a></li>
+        <li><a href="#">인기글 2</a></li>
+        <li><a href="#">인기글 3</a></li>
+        <li><a href="#">인기글 4</a></li>
+        <li><a href="#">인기글 5</a></li>
+      </ul>
+    </div>
+    <div class="menu">
+      <div class="menu_header">
+        <h2>함께해요</h2>
+      </div>
+      <ul class="popular_posts">
+        <li><a href="#">인기글 1</a></li>
+        <li><a href="#">인기글 2</a></li>
+        <li><a href="#">인기글 3</a></li>
+        <li><a href="#">인기글 4</a></li>
+        <li><a href="#">인기글 5</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="popular_menus">
+    <div class="menu">
+      <div class="menu_header">
+        <h2>궁금해요</h2>
+      </div>
+      <ul class="popular_posts">
+        <li><a href="#">인기글 1</a></li>
+        <li><a href="#">인기글 2</a></li>
+        <li><a href="#">인기글 3</a></li>
+        <li><a href="#">인기글 4</a></li>
+        <li><a href="#">인기글 5</a></li>
+      </ul>
+    </div>
+    <div class="menu">
+      <div class="menu_header">
+        <h2>자격증</h2>
+      </div>
+      <ul class="popular_posts">
+        <li><a href="#">인기글 1</a></li>
+        <li><a href="#">인기글 2</a></li>
+        <li><a href="#">인기글 3</a></li>
+        <li><a href="#">인기글 4</a></li>
+        <li><a href="#">인기글 5</a></li>
+      </ul>
+    </div>
+  </section>
+
+
+  <script>
+    var slideIndex = 0;
+    var dots = document.querySelectorAll('.dot');
+    var slides = document.querySelectorAll('.slide');
+    var slider = document.querySelector('.slider');
+
+    showSlide(slideIndex);
+    setInterval(nextSlide, 3000);
+
+    function showSlide(n) {
+      slideIndex = n;
+      var translateXValue = (-slideIndex * (100 / slides.length)) + '%';
+      slider.style.transform = 'translateX(' + translateXValue + ')';
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+      }
+      dots[slideIndex].classList.add('active');
+    }
+
+    function nextSlide() {
+      slideIndex++;
+      if (slideIndex === slides.length) {
+        slideIndex = 0;
+      }
+      showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+      slideIndex--;
+      if (slideIndex < 0) {
+        slideIndex = slides.length - 1;
+      }
+      showSlide(slideIndex);
+    }
+
+    function setSlide(n) {
+      slideIndex = n;
+      showSlide(slideIndex);
+    }
+
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].addEventListener('click', function() {
+        var index = Array.prototype.indexOf.call(dots, this);
+        setSlide(index);
+      });
+    }
+  </script>
+
+</body>
+
+</html>
