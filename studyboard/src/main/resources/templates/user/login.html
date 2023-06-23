@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <script th:src="@{/js/jquery-3.7.0.min.js}"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Login</h1>
+    <form th:action="@{/login}" method="post">
+        <div class="input-area">
+            <input type="text" name="username" id="id" required autocomplete="off">
+            <label for="id">ID</label>
+        </div>
+        <div class="input-area">
+            <input type="password" name="password" id="pw" required autocomplete="off">
+            <label for="pw">PASSWORD</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" class="save" id="saveId" name="saveId">
+            <label for="saveId" class="checklabel">아이디 저장</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" class="save" id="savePw" name="savePw">
+            <label for="savePw" class="checklabel">비밀번호 저장</label>
+        </div>
+        <div class="btn-area">
+            <button type="submit" id="btn">로그인</button>
+        </div>
+    </form>
+    <ul class="find_wrap">
+        <li><a target="_blank" href="#" class="find_text">아이디 찾기</a></li>
+        <li><a target="_blank" href="#" class="find_text">비밀번호 찾기</a></li>
+        <li><a target="_blank" href="#" class="find_text">회원가입</a></li>
+    </ul>
+    <div class="social">
+        <a href="#" id="google"></a>
+        <a href="#" id="naver"></a>
+        <a href="#" id="kakao"></a>
+    </div>
+</div>
+<script th:inline="javascript">
+    /* <![CDATA[ */
+    $(function() {
+        $("#btn").on('click', function(event) {
+            event.preventDefault(); // 폼 전송 막기
+            if($("#id").val() === "") {
+                $("#id").next('label').addClass('warning');
+                setTimeout(function() {
+                    $("#id").next('label').removeClass('warning');
+                }, 1500);
+            }
+            else if($("#pw").val() === "") {
+                $("#pw").next('label').addClass('warning');
+                setTimeout(function() {
+                    $("#pw").next('label').removeClass('warning');
+                }, 1500);
+            }
+        });
+    });
+    /* ]]> */
+</script>
+</body>
+</html>
