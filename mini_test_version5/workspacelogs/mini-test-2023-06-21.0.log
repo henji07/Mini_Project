@@ -1,0 +1,771 @@
+2023-06-21 14:57:09.975 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 16664 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 14:57:09.977 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 14:57:09.979 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 14:57:12.206 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 2.505 seconds (process running for 2.966)
+2023-06-21 14:57:23.613 [http-nio-9993-exec-9] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 15:04:17.730 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 16664 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 15:04:17.730 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 15:04:17.731 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 15:04:18.062 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.351 seconds (process running for 428.821)
+2023-06-21 15:16:39.608 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 16664 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 15:16:39.609 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 15:16:39.609 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 15:16:40.052 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.477 seconds (process running for 1170.811)
+2023-06-21 15:40:19.162 [http-nio-9993-exec-5] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 15:40:35.772 [http-nio-9993-exec-5] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 15:47:00.628 [http-nio-9993-exec-2] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 18:05:19.224 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 16664 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 18:05:19.224 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 18:05:19.224 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 18:05:19.582 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.391 seconds (process running for 11290.316)
+2023-06-21 18:05:23.122 [http-nio-9993-exec-1] ERROR org.thymeleaf.TemplateEngine:1141 - [THYMELEAF][http-nio-9993-exec-1] Exception processing template "view/boardCommunication": Error resolving template [view/boardCommunication], template might not exist or might not be accessible by any of the configured Template Resolvers
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [view/boardCommunication], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1415)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1159)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1098)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-06-21 18:05:23.127 [http-nio-9993-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: Error resolving template [view/boardCommunication], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [view/boardCommunication], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1415)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1159)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1098)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-06-21 18:05:25.015 [http-nio-9993-exec-2] ERROR org.thymeleaf.TemplateEngine:1141 - [THYMELEAF][http-nio-9993-exec-2] Exception processing template "view/boardCommunication": Error resolving template [view/boardCommunication], template might not exist or might not be accessible by any of the configured Template Resolvers
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [view/boardCommunication], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1415)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1159)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1098)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-06-21 18:05:25.016 [http-nio-9993-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: Error resolving template [view/boardCommunication], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [view/boardCommunication], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1415)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1159)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1098)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-06-21 18:05:39.663 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 16664 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 18:05:39.663 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 18:05:39.663 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 18:05:39.928 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.282 seconds (process running for 11310.662)
+2023-06-21 18:48:39.694 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 33400 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 18:48:39.695 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 18:48:39.696 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 18:48:42.040 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 2.613 seconds (process running for 3.267)
+2023-06-21 18:59:39.624 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 26740 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 18:59:39.626 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 18:59:39.626 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 18:59:41.793 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 2.436 seconds (process running for 2.947)
+2023-06-21 19:20:10.574 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 16764 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 19:20:10.576 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 19:20:10.576 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 19:20:12.853 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 2.562 seconds (process running for 3.031)
+2023-06-21 19:20:16.707 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 19:57:30.969 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 16764 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 19:57:30.969 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 19:57:30.969 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 19:57:31.283 [restartedMain] ERROR o.s.boot.SpringApplication:822 - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test4()
+to {GET [/freePage]}: There is already 'testController' bean method
+mini.test.testController#test3() mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:941)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at mini.test.MiniTestApplication.main(MiniTestApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test4()
+to {GET [/freePage]}: There is already 'testController' bean method
+mini.test.testController#test3() mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:667)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:633)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:438)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:76)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:225)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	... 21 common frames omitted
+2023-06-21 20:01:38.507 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 16764 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:01:38.508 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:01:38.508 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:01:38.748 [restartedMain] ERROR o.s.boot.SpringApplication:822 - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test4()
+to {GET [/freePage]}: There is already 'testController' bean method
+mini.test.testController#test3() mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:941)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at mini.test.MiniTestApplication.main(MiniTestApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test4()
+to {GET [/freePage]}: There is already 'testController' bean method
+mini.test.testController#test3() mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:667)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:633)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:438)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:76)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:225)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	... 21 common frames omitted
+2023-06-21 20:02:39.078 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 16764 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:02:39.078 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:02:39.078 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:02:39.314 [restartedMain] ERROR o.s.boot.SpringApplication:822 - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test4()
+to {GET [/freePage]}: There is already 'testController' bean method
+mini.test.testController#test3() mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:941)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at mini.test.MiniTestApplication.main(MiniTestApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test4()
+to {GET [/freePage]}: There is already 'testController' bean method
+mini.test.testController#test3() mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:667)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:633)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:438)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:76)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:225)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	... 21 common frames omitted
+2023-06-21 20:02:51.516 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 16764 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:02:51.516 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:02:51.516 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:02:51.764 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.267 seconds (process running for 2561.94)
+2023-06-21 20:03:17.381 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:04:55.315 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:04:55.317 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:04:55.318 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:04:57.471 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 2.42 seconds (process running for 2.906)
+2023-06-21 20:05:01.263 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:11:05.232 [http-nio-9993-exec-2] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:11:10.334 [http-nio-9993-exec-4] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:11:56.273 [http-nio-9993-exec-8] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:15:55.972 [http-nio-9993-exec-4] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:15:57.064 [http-nio-9993-exec-5] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:17:15.133 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:17:16.062 [http-nio-9993-exec-3] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:17:16.345 [http-nio-9993-exec-10] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:17:16.545 [http-nio-9993-exec-9] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:20:45.276 [http-nio-9993-exec-3] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:21:32.628 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:21:33.332 [http-nio-9993-exec-10] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:21:47.253 [http-nio-9993-exec-8] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:21:47.826 [http-nio-9993-exec-3] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:25:09.484 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:25:09.486 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:25:09.486 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:25:10.042 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.597 seconds (process running for 1215.477)
+2023-06-21 20:25:33.456 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:25:33.456 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:25:33.456 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:25:33.886 [restartedMain] ERROR o.s.boot.SpringApplication:822 - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test4()
+to {GET [/freePage]}: There is already 'testController' bean method
+mini.test.testController#test3() mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:941)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at mini.test.MiniTestApplication.main(MiniTestApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test4()
+to {GET [/freePage]}: There is already 'testController' bean method
+mini.test.testController#test3() mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:667)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:633)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:438)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:76)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:225)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	... 21 common frames omitted
+2023-06-21 20:26:15.835 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:26:15.836 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:26:15.836 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:26:16.277 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.481 seconds (process running for 1281.712)
+2023-06-21 20:27:50.769 [http-nio-9993-exec-5] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:27:58.380 [http-nio-9993-exec-2] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:32:10.802 [http-nio-9993-exec-4] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:35:09.084 [http-nio-9993-exec-6] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:36:13.521 [http-nio-9993-exec-4] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:36:22.054 [http-nio-9993-exec-7] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:38:56.293 [http-nio-9993-exec-3] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:41:08.521 [http-nio-9993-exec-5] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:43:26.734 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:43:26.735 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:43:26.735 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:43:27.181 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.478 seconds (process running for 2312.615)
+2023-06-21 20:46:08.893 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:46:24.431 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:46:24.432 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:46:24.432 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:46:24.955 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.56 seconds (process running for 2490.39)
+2023-06-21 20:46:24.985 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:46:25.762 [http-nio-9993-exec-2] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:46:50.722 [http-nio-9993-exec-6] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:46:51.364 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:46:51.364 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:46:51.365 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:46:51.822 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.488 seconds (process running for 2517.257)
+2023-06-21 20:47:39.625 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:47:39.626 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:47:39.626 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:47:39.980 [restartedMain] ERROR o.s.boot.SpringApplication:822 - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test7()
+to {GET [/login]}: There is already 'testController' bean method
+mini.test.testController#test8() mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:941)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at mini.test.MiniTestApplication.main(MiniTestApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test7()
+to {GET [/login]}: There is already 'testController' bean method
+mini.test.testController#test8() mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:667)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:633)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:438)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:76)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:225)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	... 21 common frames omitted
+2023-06-21 20:47:50.835 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 20:47:50.835 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 20:47:50.836 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 20:47:51.264 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.468 seconds (process running for 2576.698)
+2023-06-21 20:53:41.197 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 20:56:37.439 [http-nio-9993-exec-5] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:00:30.058 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 21:00:30.058 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 21:00:30.058 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 21:00:30.616 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.583 seconds (process running for 3336.05)
+2023-06-21 21:14:37.123 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 21:14:37.123 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 21:14:37.124 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 21:14:37.644 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.551 seconds (process running for 4183.079)
+2023-06-21 21:24:19.297 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 21:24:19.297 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 21:24:19.298 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 21:24:19.832 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.57 seconds (process running for 4765.266)
+2023-06-21 21:25:41.110 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 21:25:41.111 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 21:25:41.111 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 21:25:41.553 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.467 seconds (process running for 4846.987)
+2023-06-21 21:25:48.394 [http-nio-9993-exec-7] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:27:51.714 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 21:27:51.714 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 21:27:51.714 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 21:27:52.109 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.414 seconds (process running for 4977.543)
+2023-06-21 21:28:11.349 [http-nio-9993-exec-10] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:28:27.721 [http-nio-9993-exec-6] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:31:56.827 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 21:31:56.830 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 21:31:56.831 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 21:31:57.257 [restartedMain] ERROR o.s.boot.SpringApplication:822 - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test6_5()
+to {GET [/members/new]}: There is already 'memberController' bean method
+mini.test.member.web.MemberController#createForm(Model) mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:941)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at mini.test.MiniTestApplication.main(MiniTestApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test6_5()
+to {GET [/members/new]}: There is already 'memberController' bean method
+mini.test.member.web.MemberController#createForm(Model) mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:667)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:633)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:438)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:76)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:225)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	... 21 common frames omitted
+2023-06-21 21:32:40.633 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 9816 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 21:32:40.634 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 21:32:40.634 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 21:32:41.085 [restartedMain] ERROR o.s.boot.SpringApplication:822 - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test6_5()
+to {GET [/members/new]}: There is already 'memberController' bean method
+mini.test.member.web.MemberController#createForm(Model) mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:941)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at mini.test.MiniTestApplication.main(MiniTestApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test6_5()
+to {GET [/members/new]}: There is already 'memberController' bean method
+mini.test.member.web.MemberController#createForm(Model) mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:667)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:633)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:438)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:76)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:225)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	... 21 common frames omitted
+2023-06-21 21:33:21.023 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 5432 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 21:33:21.025 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 21:33:21.027 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 21:33:24.160 [restartedMain] ERROR o.s.boot.SpringApplication:822 - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test6_5()
+to {GET [/members/new]}: There is already 'memberController' bean method
+mini.test.member.web.MemberController#createForm(Model) mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:941)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at mini.test.MiniTestApplication.main(MiniTestApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'testController' method 
+mini.test.testController#test6_5()
+to {GET [/members/new]}: There is already 'memberController' bean method
+mini.test.member.web.MemberController#createForm(Model) mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:667)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:633)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:438)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:76)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:225)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	... 21 common frames omitted
+2023-06-21 21:34:11.653 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 29720 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 21:34:11.656 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 21:34:11.657 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 21:34:15.209 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 3.999 seconds (process running for 4.741)
+2023-06-21 21:34:19.800 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:37:31.672 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 29720 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 21:37:31.673 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 21:37:31.673 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 21:37:32.161 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.522 seconds (process running for 201.694)
+2023-06-21 21:37:34.898 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:38:04.959 [http-nio-9993-exec-3] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:38:44.150 [http-nio-9993-exec-4] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:38:57.456 [http-nio-9993-exec-7] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:39:00.251 [http-nio-9993-exec-2] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:40:30.534 [http-nio-9993-exec-2] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:41:55.560 [http-nio-9993-exec-6] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:44:14.506 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 21:44:24.290 [http-nio-9993-exec-2] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:09:07.622 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:10:01.261 [http-nio-9993-exec-9] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:10:31.258 [http-nio-9993-exec-4] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:11:01.145 [http-nio-9993-exec-7] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:11:18.022 [http-nio-9993-exec-6] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:11:26.860 [http-nio-9993-exec-2] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:11:29.884 [http-nio-9993-exec-2] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:11:46.570 [http-nio-9993-exec-10] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:11:50.805 [http-nio-9993-exec-8] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:12:58.064 [http-nio-9993-exec-10] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:13:01.357 [http-nio-9993-exec-8] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:13:28.756 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:13:29.407 [http-nio-9993-exec-4] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:13:35.273 [http-nio-9993-exec-6] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:14:35.515 [http-nio-9993-exec-10] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:15:02.096 [http-nio-9993-exec-4] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:15:02.758 [http-nio-9993-exec-5] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:15:10.486 [http-nio-9993-exec-8] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:15:47.471 [http-nio-9993-exec-6] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:15:48.494 [http-nio-9993-exec-2] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:15:56.266 [http-nio-9993-exec-3] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:16:34.289 [http-nio-9993-exec-9] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:17:06.001 [http-nio-9993-exec-5] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:17:06.926 [http-nio-9993-exec-5] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:17:21.123 [http-nio-9993-exec-8] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:19:16.102 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:19:57.330 [http-nio-9993-exec-5] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:20:01.126 [http-nio-9993-exec-10] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:20:09.272 [http-nio-9993-exec-6] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:20:18.719 [http-nio-9993-exec-8] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:20:32.078 [http-nio-9993-exec-9] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:20:41.767 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:22:46.228 [http-nio-9993-exec-7] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:25:27.742 [http-nio-9993-exec-3] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:25:41.449 [http-nio-9993-exec-6] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-21 23:40:14.870 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 29720 (C:\workspace\mini_test_version4\bin\main started by 82103 in C:\workspace\mini_test_version4)
+2023-06-21 23:40:14.870 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-21 23:40:14.870 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-21 23:40:15.385 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.546 seconds (process running for 7564.909)
