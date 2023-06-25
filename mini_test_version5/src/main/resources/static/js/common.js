@@ -17,3 +17,16 @@ $.fn.serializeObject = function(){
     });
     return o;
 };
+
+/*이메일 형식 검증*/
+	function validateEmail(email) {
+	    var re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+	    return re.test(String(email).toLowerCase());
+	}
+	
+/*비밀번호 형식 검증*/
+	function patternCheckPassword(password) {
+		console.log(password);
+	    var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+	    return re.test(password);
+	}
