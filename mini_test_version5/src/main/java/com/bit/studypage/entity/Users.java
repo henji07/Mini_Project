@@ -17,18 +17,18 @@ import lombok.extern.slf4j.Slf4j;
 @Getter
 @ToString
 @Entity
-@Table(name="member")
-public class Member {
+@Table(name="users")
+public class Users {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="member_sno")
-	private int memberSno;
+	@Column(name="users_id")
+	private Long memberSno;
 	
 	@Column(name="user_id")
 	private String userId;
 	
-	@Column(name="name")
+	@Column(name="user_name")
 	private String name;
 	
 	@Column(name="password")
@@ -37,7 +37,7 @@ public class Member {
 	@Column(name="email")
 	private String email;
 	
-	@Column(name="phone")
+	@Column(name="phone_number")
 	private String phone;
 	
 	@Column(name="interest")
@@ -47,7 +47,7 @@ public class Member {
 	private String gender;
 	
 	//기본 생성자 
-	public Member() {
+	public Users() {
 		super();
 	}
 	
@@ -56,7 +56,7 @@ public class Member {
 	//엔티티 값을 레파지토리에 던져줘야 하니까 값을 설정해준다. 
 	//새로 만들 때만 쓰는 거 
 	@Builder
-	public Member(Map<String, Object> data) {
+	public Users(Map<String, Object> data) {
 		this.userId = (String)data.get("userId");
 		this.name = (String)data.get("name");
 		this.password = (String)data.get("password");

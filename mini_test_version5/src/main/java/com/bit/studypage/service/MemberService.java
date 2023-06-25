@@ -1,15 +1,9 @@
 package com.bit.studypage.service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.bit.studypage.entity.Member;
+import com.bit.studypage.entity.Users;
 import com.bit.studypage.form.MemberForm;
-import com.bit.studypage.repository.MemberRepository;
 
 @Mapper
 public interface MemberService {
@@ -20,6 +14,18 @@ public interface MemberService {
 	
 	//회원 가입
 	public String join(MemberForm form);
+	
+	//회원 정보 저장 
+	public Users save(Users users);
+	
+	//회원 정보 조회 
+    public Users findOne(Long id);
+
+    //이메일 중복체크
+	public boolean isEmailDuplicate(String email);
+
+	//전화번호 중복체크 
+	public boolean isPhoneDuplicate(String phone);
 	
 	
 }

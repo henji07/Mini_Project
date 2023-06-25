@@ -45,6 +45,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	//common jar 
 	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+	//jsonobject 
+	implementation 'org.json:json:20171018'
 }
 
 tasks.named('test') {
