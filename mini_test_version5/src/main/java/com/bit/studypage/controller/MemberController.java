@@ -83,4 +83,10 @@ public class MemberController {
 		
 		return data;
 	}
+	
+	//카카오로 가입 
+	/*
+	 * @GetMapping("/kakao-join") public String kakaoJoin(String code) {
+	 * memberService.kakaoJoin(code); return "redirect:/"; }
+	 */
 }

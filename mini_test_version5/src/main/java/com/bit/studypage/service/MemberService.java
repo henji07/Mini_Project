@@ -27,5 +27,6 @@ public interface MemberService {
 	//전화번호 중복체크 
 	public boolean isPhoneDuplicate(String phone);
 	
-	
+	//카카오
+	//void kakaoJoin(String code);
 }
