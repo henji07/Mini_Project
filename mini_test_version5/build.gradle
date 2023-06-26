@@ -33,8 +33,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.2.1'
-	//서버 재시작 없이 즉시 반영 html 파일 build -> Recompile
-	implementation 'org.springframework.boot:spring-boot-devtools'
+
 	// https://mvnrepository.com/artifact/org.mybatis/mybatis
 	implementation 'org.mybatis:mybatis:3.5.13'
 	// https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
@@ -47,6 +46,7 @@ dependencies {
 	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
 	//jsonobject 
 	implementation 'org.json:json:20171018'
+	
 }
 
 tasks.named('test') {

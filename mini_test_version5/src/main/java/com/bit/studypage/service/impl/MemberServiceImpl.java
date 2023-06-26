@@ -110,5 +110,7 @@ public class MemberServiceImpl implements MemberService {
 	        return memberRepository.existsByPhone(phone);
 	    }
 		
+		//카카오 
+		
 }
 

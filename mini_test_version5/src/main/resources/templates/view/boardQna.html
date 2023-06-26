@@ -11,7 +11,7 @@
 
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript">
-
+	
    </script>
 </th:block>
     
@@ -20,7 +20,7 @@
 <body> 
 <th:block layout:fragment="content">  
 <!-- 이미지 -->
-<img src="./image/qna_main.png" alt="카테고리 이미지" style="display: block; margin: auto; margin-top: 70px; max-width: 50%; height: 50%;">
+<img src="/image/qna_main.png" alt="카테고리 이미지" style="display: block; margin: auto; margin-top: 70px; max-width: 50%; height: 50%;">
 <!-- 카테고리 -->
 <div class="board-qna-container">
 <hr class="horizontal-line">
@@ -29,7 +29,7 @@
       <button>궁금해요</button>
     </div>
     <div class="board-actions">
-      <button style="left: 0;">글쓰기</button>
+      <button style="left: 0;" onclick="location.href='/board/insert-board-view'">글쓰기</button>
     </div>
   </div>
   
@@ -62,36 +62,21 @@
   </div> 
 <!-- 게시물 부분 -->
   <div class="board-write-container">
-    <li class="board-write">
+    <li class="board-write" th:each="board : ${boardList}">
+      <div class="post-number" th:text="${board.boardId}"></div>
       <div class="answer-count">답변<br>1</div>
       <div class="board-writer-title">
         <div class="author">
           <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
-          <div>닉네임</div>
+          <div th:text="${board.boardWriter}"></div>
         </div>
-        <a href="#" class="title">게시물 1 제목</a>
+        <a href="@{/board/board/{boardId} (boardNo=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
       </div>
-    </li>
-    <li class="board-write">
-      <div class="answer-count">답변<br>2</div>
-      <div class="board-writer-title">
-        <div class="author">
-          <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
-          <div>닉네임</div>
-        </div>
-        <a href="#" class="title">게시물 2 제목</a>
+      <div class="board-details">
+	      <div class="view-count" th:text="${board.boardCnt}"></div>
+	      <div class="reg-date" th:text="${#strings.substring(board.boardRegdate, 0, 10) }"></div>
       </div>
-    </li>
-    <li class="board-write">
-      <div class="answer-count">답변<br>3</div>
-      <div class="board-writer-title">
-        <div class="author">
-          <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
-          <div>닉네임</div>
-        </div>
-        <a href="#" class="title">게시물 3 제목</a>
-      </div>
-    </li>
+    </li>   
   </div>
 <!-- 하단 페이징 -->
   <div class="pagination-bottom">
