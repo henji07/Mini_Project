@@ -343,7 +343,7 @@ td{
 #profile-text-con{
   flex-grow: 1;
   width: 100%;
-  font-size: 0.profile-8rem;
+  font-size: 0.8rem;
 }
 #profile-email-btn > button{
   background-color: rgb(250, 181, 97);
