@@ -30,6 +30,7 @@
                         $("#pass-confirm").css("display", "none");
                     }
                 });
+
             });
         </script>
     </th:block>
@@ -58,11 +59,11 @@
                     <form class="profile-profile-details">
                         <div class="profile-info-field">
                             <div>이름</div>
-                            <input type="text" th:placeholder="${user.user_name}" th:value="${user.user_name}"/>
+<!--                            <input type="text" th:placeholder="${user.name}" th:value="${user.name}"/>-->
                         </div>
                         <div class="profile-info-field">
                             <div>닉네임</div>
-                            <input type="text" th:placeholder="${user.user_nickname}" th:value="${user.user_nickname}"/>
+<!--                            <input type="text" th:placeholder="${user.user_nickname}" th:value="${user.user_nickname}"/>-->
                         </div>
                         <div class="profile-info-field">
                             <div>관심사</div>
@@ -81,7 +82,7 @@
                         <div class="profile-profile-image">
                             <img
                                     id="profile-profilePic"
-                                    src="./image/춘식.jpg"
+                                    th:src="@{/uploads/${profileImg}}"
                                     alt="Profile Picture"
                             />
                         </div>
@@ -97,12 +98,12 @@
                         <div class="profile-profile-image">
                             <img
                                     id="profile-profilePic"
-                                    src="./image/춘식.jpg"
+                                    th:src="@{/uploads/${profileImg}}"
                                     alt="Profile Picture"
                             />
                         </div>
                         <div id="profile-info-field">
-                            <h2 id="profile-nickname" th:text="${user.user_nickname}"></h2>
+                            <h2 id="profile-nickname" th:text="${user.userNickname}"></h2>
                             <div id="profile-count">
                                 <div>작성글 : 12</div>
                                 <br/>
@@ -133,7 +134,7 @@
                         <table>
                             <tr>
                                 <td>아이디</td>
-                                <td><input type="text" name="id" th:value="${user.email}"
+                                <td><input type="text" name="email" th:value="${user.email}"
                                            th:placeholder="${user.email}"/></td>
                             </tr>
                             <tr>
@@ -154,7 +155,7 @@
                             </tr>
                             <tr>
                                 <td>이름</td>
-                                <td><input type="text" name="name"/></td>
+                                <td><input type="text" name="name" th:placeholder="${user.name}" th:value="${user.name}"/></td>
                             </tr>
                             <tr>
                                 <td>성별</td>
@@ -166,19 +167,19 @@
                             <tr>
                                 <td>휴대전화</td>
                                 <td>
-                                    <input type="text" name="phone"/>
-                                    <div class="profile-hidden">
-                                        올바른 휴대전화 번호를 입력해주세요. (예: 010-1234-5678)
-                                    </div>
+                                    <input type="text" name="phone" th:placeholder="${user.phone}" th:value="${user.phone}"/>
+<!--                                    <div class="profile-hidden">-->
+<!--                                        올바른 휴대전화 번호를 입력해주세요. (예: 010-1234-5678)-->
+<!--                                    </div>-->
                                 </td>
                             </tr>
                             <tr>
                                 <td>이메일</td>
-                                <td><input type="text" name="email"/></td>
+                                <td><input type="text" name="email" th:placeholder="${user.email}" th:value="${user.email}"/></td>
                             </tr>
                             <tr>
                                 <td>선택약관 동의</td>
-                                <td>선택약관<input type="checkbox" name="agree"/></td>
+                                <td>선택약관<input id="ch" type="checkbox" name="agree"  th:checked="${user.isTerms} != 0 ? 'true' : 'false'"></td>
                             </tr>
                         </table>
                         <button class="profile-btn" type="submit">수정</button>
@@ -198,30 +199,13 @@
                                     <th>작성일</th>
                                     <th>조회수</th>
                                 </tr>
-                                <tr>
+                                <tr th:each="board:${boardList}">
                                     <td><input type="checkbox" name="board-check"/></td>
-                                    <td>나는 개똥벌레</td>
-                                    <td>2023.07.14</td>
-                                    <td>1008</td>
+                                    <td th:text="${board.boardTitle}"></td>
+                                    <td th:text="${board.boardRegDate}"></td>
+                                    <td th:text="${board.boardViewCnt}"></td>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox" name="board-check"/></td>
-                                    <td>친구가 없네</td>
-                                    <td>2023.07.14</td>
-                                    <td>1008</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" name="board-check"/></td>
-                                    <td>저기 개똥무덤이</td>
-                                    <td>2023.07.14</td>
-                                    <td>1008</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" name="board-check"/></td>
-                                    <td>내 집인걸..</td>
-                                    <td>2023.07.14</td>
-                                    <td>1008</td>
-                                </tr>
+
                             </table>
                             <table id="profile-write-board2">
                                 <tr id="profile-th">

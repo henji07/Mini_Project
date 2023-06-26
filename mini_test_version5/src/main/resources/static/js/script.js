@@ -15,8 +15,8 @@ $(document).ready(function () {
     $("#profile-board-form").css("display", "none");
     $("#profile-user-info2").css("display", "none");
     $("#profile-user-info3").css("display", "none");
-    $("#profile-write-board2").css("display","none");
-    $("#profile-write-board3").css("display","none");
+    $("#profile-write-board2").css("display", "none");
+    $("#profile-write-board3").css("display", "none");
     $("#profile-con2-2").css("display", "none");
     $("#profile-con3-2").css("display", "none");
     var menuItems = $(".profile-menu1, .profile-menu2, .profile-menu3");
@@ -28,9 +28,6 @@ $(document).ready(function () {
     });
 
 
-
-
-
     $("#profile-changeProfilePicBtn").on("click", function () {
         $("#profile-imageUpload").trigger("click");
     });
@@ -40,11 +37,35 @@ $(document).ready(function () {
             const reader = new FileReader();
             reader.onload = function (event) {
                 $("#profile-profilePic").attr("src", event.target.result);
+                if (confirm("저장하시겠습니까?")) {
+                    // Create new FormData instance
+                    let formData = new FormData();
+
+                    // Add the file to the form data
+                    formData.append("image", file); // 'image'는 서버에서 요구하는 파라미터 이름입니다.
+
+                    // Send the file data to the server using AJAX
+                    $.ajax({
+                        type: "POST",
+                        url: "/changeImg", // 여기에 실제 서버의 엔드포인트를 넣어야 합니다.
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            console.log(response);
+                            // 추가적인 성공 처리 로직
+                        },
+                        error: function (jqXHR, textStatus, errorMessage) {
+                            console.log(errorMessage);
+                            // 추가적인 에러 처리 로직
+                        }
+                    });
+                }
             };
             reader.readAsDataURL(file);
+
         }
     });
-
 
 
     var menuItems2 = $("#profile-sel1, #profile-sel2, #profile-sel3");
@@ -54,8 +75,6 @@ $(document).ready(function () {
         menuItems2.removeClass("profile-active2"); // Remove underline from all menu items
         $(this).addClass("profile-active2"); // Add underline to the clicked item
     });
-
-
 
 
     $(".profile-menu1").on("click", () => {
@@ -86,26 +105,25 @@ $(document).ready(function () {
     });
 
 
-
-    $("#profile-sel1").on("click",()=>{
+    $("#profile-sel1").on("click", () => {
         checkBox();
-        $("#profile-write-board2").css("display","none");
-        $("#profile-write-board1").css("display","");
-        $("#profile-write-board3").css("display","none");
+        $("#profile-write-board2").css("display", "none");
+        $("#profile-write-board1").css("display", "");
+        $("#profile-write-board3").css("display", "none");
     })
-    $("#profile-sel2").on("click",()=>{
+    $("#profile-sel2").on("click", () => {
         checkBox();
-        $("#profile-write-board2").css("display","");
-        $("#profile-write-board1").css("display","none");
-        $("#profile-write-board3").css("display","none");
+        $("#profile-write-board2").css("display", "");
+        $("#profile-write-board1").css("display", "none");
+        $("#profile-write-board3").css("display", "none");
     })
-    $("#profile-sel3").on("click",()=>{
+    $("#profile-sel3").on("click", () => {
         checkBox();
-        $("#profile-write-board2").css("display","none");
-        $("#profile-write-board1").css("display","none");
-        $("#profile-write-board3").css("display","");
+        $("#profile-write-board2").css("display", "none");
+        $("#profile-write-board1").css("display", "none");
+        $("#profile-write-board3").css("display", "");
     })
-    const checkBox = ()=>{
+    const checkBox = () => {
         $("#profile-select-all-board").prop("checked", false);
         $('input[name="board-check"]').prop('checked', false);
     }
@@ -116,7 +134,7 @@ $(document).ready(function () {
 
     var phoneRegex = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 
-    $('input[name="phone"]').on("input", function () {
+    $('input[name="phone"]').on("blur", function () {
         var phone = $(this).val();
         if (!phoneRegex.test(phone)) {
             $(this).next(".profile-hidden").show();
@@ -140,49 +158,49 @@ $(document).ready(function () {
     });
 
     var slideIndex = 0;
-      var dots = document.querySelectorAll(".profile-dot");
-      var slides = document.querySelectorAll(".profile-slide");
-      var slider = document.querySelector(".profile-slider");
+    var dots = document.querySelectorAll(".profile-dot");
+    var slides = document.querySelectorAll(".profile-slide");
+    var slider = document.querySelector(".profile-slider");
 
-      showSlide(slideIndex);
-      setInterval(nextSlide, 3000);
+    showSlide(slideIndex);
+    setInterval(nextSlide, 3000);
 
-      function showSlide(n) {
+    function showSlide(n) {
         slideIndex = n;
         var translateXValue = -slideIndex * (100 / slides.length) + "%";
         slider.style.transform = "translateX(" + translateXValue + ")";
         for (var i = 0; i < dots.length; i++) {
-          dots[i].classList.remove("profile-active");
+            dots[i].classList.remove("profile-active");
         }
         dots[slideIndex].classList.add("profile-active");
-      }
+    }
 
-      function nextSlide() {
+    function nextSlide() {
         slideIndex++;
         if (slideIndex === slides.length) {
-          slideIndex = 0;
+            slideIndex = 0;
         }
         showSlide(slideIndex);
-      }
+    }
 
-      function prevSlide() {
+    function prevSlide() {
         slideIndex--;
         if (slideIndex < 0) {
-          slideIndex = slides.length - 1;
+            slideIndex = slides.length - 1;
         }
         showSlide(slideIndex);
-      }
+    }
 
-      function setSlide(n) {
+    function setSlide(n) {
         slideIndex = n;
         showSlide(slideIndex);
-      }
+    }
 
-      for (var i = 0; i < dots.length; i++) {
+    for (var i = 0; i < dots.length; i++) {
         dots[i].addEventListener("click", function () {
-          var index = Array.prototype.indexOf.call(dots, this);
-          setSlide(index);
+            var index = Array.prototype.indexOf.call(dots, this);
+            setSlide(index);
         });
-      }
+    }
 
 });

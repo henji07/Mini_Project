@@ -45,13 +45,18 @@ public class Users {
 	
 	@Column(name="gender")
 	private String gender;
-	
+
+	@Column(name="user_nickname")
+	private String userNickname;
+
+	@Column(name="is_terms")
+	private int isTerms;
+
 	//기본 생성자 
 	public Users() {
 		super();
 	}
-	
-	//빌더 
+	//빌더
 	//생성자 주입 - setter 만들면 안 되니까 data에 값을 넣는 것. 
 	//엔티티 값을 레파지토리에 던져줘야 하니까 값을 설정해준다. 
 	//새로 만들 때만 쓰는 거 
@@ -64,5 +69,6 @@ public class Users {
 		this.phone = (String)data.get("phone");
 		this.interest = (String)data.get("interest");
 		this.gender = (String)data.get("gender");
+		this.userNickname = (String)data.get("userNickname");
 	}
 }
