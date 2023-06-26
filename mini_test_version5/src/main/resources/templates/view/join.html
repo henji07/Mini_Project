@@ -3,115 +3,200 @@
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:decorate="~{layouts/default-layout}">
-  
 <head>
 <th:block layout:fragment="css">
 	<link rel="stylesheet" href="/css/join.css">
 </th:block>
 
 <th:block layout:fragment="script">
-	  <!-- 관심사 값이 없어도 무조건 array로 가게 -->
-      <script type="text/javascript" th:inline="javascript">
-      $(document).ready(function() {
-    	  
-    	  $("#btn-regist").click(function(){
-    		  
-    		  var length = $("input:checkbox[name='interest']:checked").length;
-    		  
-    		  if (length > 0) {
-    			   registMember();
-    		  } else {
-    			  alert("관심사는 한 개 이상 선택해주세요.");
-    		  }
-    	  });
-      });
-      
-      /* 아이디 중복 체크 */
-      function checkDuplicateId() {
-    	   var userId = $("#userId").val();
-    	   if (userId) {
-    	      $.ajax({
-    	         type: "GET",
-    	         url: "/members/checkDuplicateId/" + userId
-    	      })
-    	      .done(function(result) {
-    	         if (result === true) {
-    	            alert("중복된 아이디입니다. 다른 아이디를 입력해주세요.");
-    	         } else {
-    	            alert("사용 가능한 아이디입니다.");
-    	         }
-    	      })
-    	      .fail(function(data, textStatus, errorThrown) {
-    	         console.log(data);
-    	         alert("에러");
-    	      });
-    	   } else {
-    	      alert("아이디를 입력해주세요.");
-    	   }
-    	}
-      
+	<script type="text/javascript" th:inline="javascript">
+	<!-- 관심사 값이 없어도 무조건 array로 가게 -->
+	$(document).ready(function() {
+	    $("#btn-regist").click(function(){
+	        
+	        var length = $("input:checkbox[name='interest']:checked").length;
+	        
+	        if (length > 0) {
+	            if (passConfirm()) {  // 비밀번호 일치 여부 확인
+	                if (validateForm()) {  // 나머지 폼의 유효성 확인
+	                    registMember();
+	                }
+	            } else {
+	                alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+	            }
+	        } else {
+	            alert("관심사는 한 개 이상 선택해주세요.");
+	        }
+	    });
+	});
+	
+	/* 아이디 중복 체크 */
+	var isIdDuplicated = true; // 아이디 중복 여부 기본값 중복된 것으로 설정
+	
+	function checkDuplicateId() {
+	    var userId = $("#userId").val();
+		if (userId) {
+		   $.ajax({
+		      type: "GET",
+		      url: "/members/checkDuplicateId/" + userId
+		   })
+		   .done(function(result) {
+		      if (result === true) {
+		         alert("중복된 아이디입니다. 다른 아이디를 입력해주세요.");
+		         isIdDuplicated = true;
+		      } else {
+		         alert("사용 가능한 아이디입니다.");
+		         isIdDuplicated = false;
+		      }
+		   })
+		   .fail(function(data, textStatus, errorThrown) {
+		      console.log(data);
+		      alert("에러");
+		   });
+		} else {
+		   alert("아이디를 입력해주세요.");
+		}
+	}
+	
+	/* 비밀번호 재확인 */
+	function passConfirm() {
+	    var password = document.getElementById('password').value;
+	    var passwordConfirm = document.getElementById('passwordConfirm').value;
+	    var confirmMsg = document.getElementById('confirmMsg');
+	    var correctColor = "#1E90FF";
+	    var wrongColor = "#CD1039";
+	
+	    if (password === passwordConfirm) {
+	        confirmMsg.style.color = correctColor;
+	        confirmMsg.innerHTML = "비밀번호 일치";
+	        return true;
+	    } else {
+	        confirmMsg.style.color = wrongColor;
+	        confirmMsg.innerHTML = "비밀번호 불일치";
+	        return false;
+	    }
+	}
+	
+	
+	
+	function validateForm() {
+	    // 비밀번호 확인 외에도 모든 폼 필드가 적절하게 채워졌는지 확인.
+	    // 유효성 검사에 통과하지 못한 필드가 있으면 false를 반환하고, 모든 필드가 유효하면 true를 반환.
+		 var userId = document.getElementById('userId').value;
+		 var password = document.getElementById('password').value;
+		 var passwordConfirm = document.getElementById('passwordConfirm').value;
+		 var name = document.querySelector('input[name="name"]').value;
+		 var phone = document.querySelector('input[name="phone"]').value;
+		 var email = document.querySelector('input[name="email"]').value;
+		
+		  if (!userId) {
+		    alert("아이디를 입력해주세요.");
+		    return false;
+		  }
+		
+		  if (!password) {
+		    alert("비밀번호를 입력해주세요.");
+		    return false;
+		  }
+		
+		  if (password !== passwordConfirm) {
+		    alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+		    return false;
+		  }
+		
+		  if (!name) {
+		    alert("이름을 입력해주세요.");
+		    return false;
+		  }
+		
+		  if (!phone) {
+		    alert("전화번호를 입력해주세요.");
+		    return false;
+		  }
+		
+		  if (!email) {
+		    alert("이메일을 입력해주세요.");
+		    return false;
+		  }
+		
+		  return true;
+		}
+	
+	window.onload = function () {
+	    document.getElementById('passwordConfirm').oninput = passConfirm;
+	};
+	
+	/* 등록, 회원 가입을 ajax로 호출 */
+    /* 이동하지 않고 처리하기 위해. 성공했을 때만 메인으로 */
+    function registMember(){
+		//비밀번호 패턴 체크 
+		var password = $("#password").val();
+		
+		if (!patternCheckPassword(password)) {
+			alert("비밀번호는 8~16자리수. 영문 대소문자, 숫자, 특수문자를 1개 이상 포함해야 합니다.");
+			$("#password").focus();
+			console.log(password);
+			return;
+		}
+		
+		//이메일 형식 올바른지 확인
+		var email = $("#email").val();
 
-      <!-- 등록, 회원 가입을 ajax로 호출-->
-      /* 이동하지 않고 처리하기 위해. 성공했을 때만 메인으로 */
-      function registMember(){
-         
-    	 /*inputForm 자체를 Object로 만든 거*/
-         var params = $("#inputForm").serializeObject();
-         
-    	 /*체크된 게 있으면 input에 들어온 값이 들어오고 아니면 빈 배열이 리턴*/
-         var arr = new Array();
-         
-  
-         
-         $("input:checkbox[name='interest']:checked").each(function(){
+	    if (!validateEmail(email)) {
+	        alert("올바른 이메일 형식을 입력해주세요.");
+	        $("#email").focus();
+	        return;
+	    }
+		
+    	//아이디가 중복되었는지 확인
+        if (isIdDuplicated) {
+            alert("아이디 중복체크를 해주세요.");
+            return; // 회원가입 절차를 중단.
+        }
+       
+  	 	/*inputForm 자체를 Object로 만든 거*/
+       var params = $("#inputForm").serializeObject();
+       
+  	 	/*체크된 게 있으면 input에 들어온 값이 들어오고 아니면 빈 배열이 리턴*/
+       var arr = new Array();
+       
+
+       
+       $("input:checkbox[name='interest']:checked").each(function(){
 			arr.push($(this).val());
-        });
-         params.interest = arr;
-         console.log(params);
-         console.log(2);
-         
-         $.ajax({
-               type: "POST",
-               url: "/members/regist",
-               dataType:"json",
-               data: JSON.stringify(params),
-               contentType: 'application/json'
-           })
-           .done(function (jsonResult) {
-              console.log(jsonResult);
-              console.log(3);
-            if(jsonResult.result == "success"){
-            	alert("가입이 완료되었습니다.");
-            	location.href="/login";
-            }
-            else{
-            	if(jsonResult.errors.includes("아이디를 반드시 입력해야 합니다.")) {
-            		$("#idMessage").show();
-            	} else if(jsonResult.errors.includes("비밀번호를 입력해주세요.")) {
-            		$("#pwMessage").show();
-            	} else if(jsonResult.errors.includes("비밀번호는 8~16자리수여야 합니다. 영문 대소문자, 숫자, 특수문자를 1개 이상 포함해야 합니다.")) {
-            		$("#pwLengthMessage").show();
-            	} else if(jsonResult.errors.includes("비밀번호를 재입력해주세요.")) {
-            		$("#RePwMessage")
-            	} else if(jsonResult.errors.includes("이름을 입력해주세요.")) {
-            		$("#nameMessage").show();
-            	} else if(jsonResult.errors.includes("휴대폰 번호를 입력해주세요.")) {
-            		$("#phoneMessage").show();
-            	} else if(jsonResult.errors.includes("이메일 주소를 입력해주세요.")) {
-            		$("#emailMessage").show();
-            	} else if(jsonResult.errors.includes("올바른 이메일 주소를 입력해주세요.")){
-            		$("#emailFormMessage").show();
-            	}
-            }
-           })
-           .fail(function(data, textStatus, errorThrown){
-        	   console.log(data);
-              alert("에러");
-           });      
-      }   
-      
-      
-      </script>
+      });
+       params.interest = arr;
+       console.log(params);
+       /*모든 조건 다 만족하면 가입 완료되게 */
+       $.ajax({
+             type: "POST",
+             url: /*[[@{/members/regist}]]*/'',
+             dataType:"json",
+             data: JSON.stringify(params),
+             contentType: 'application/json'
+         })
+         .done(function (jsonResult) {
+            console.log(jsonResult);
+          if(jsonResult.result == "0000"){
+          	alert("가입이 완료되었습니다.");
+          	location.href="/";
+          }
+          else{
+        	  if(jsonResult.result == "9002"){
+             	alert("이미 가입된 이메일입니다.");
+        	  }else if(jsonResult.result == "9003"){
+        		  alert("이미 가입된 전화번호입니다.");
+        	  }
+          }
+         })
+         .fail(function(data, textStatus, errorThrown){
+      	   console.log(data);
+            alert("에러");
+         });    
+    }
+	
+	</script>
+	  
 </th:block>
     
 </head>
@@ -128,13 +213,13 @@
 	<span class="join-line-text"></span>
 	</div>
 	<div class="join-social-link">
-	   <a th:href="@{/oauth2/authorize/kakao}">
+	   <a th:href="@{/kakao-join}">
        	<img src="https://d1nuzc1w51n1es.cloudfront.net/7edcff9c01ccc20d1ef6.png" alt="카카오 아이콘">
        </a>
-       <a th:href="@{/oauth2/authorize/naver}">
+       <a th:href="@{/naver-join}">
        	<img src="https://image.rocketpunch.com/company/5466/naver_logo.png?s=400x400&t=inside" alt="네이버 아이콘">
        </a>
-       <a th:href="@{/oauth2/authorize/google}">
+       <a th:href="@{/google-join}">
        	<img src="https://d1nuzc1w51n1es.cloudfront.net/d99d8628713bb69bd142.png" alt="구글 아이콘">
        </a>
 	</div>
@@ -157,16 +242,17 @@
 	      <tr>
 	        <td><label for="password">비밀번호</label></td>
 	        <td colspan="2">
-	          <input type="text" name="password" class="form-control" placeholder="비밀번호를 입력하세요">
+	          <input type="password" name="password" id="password" class="form-control" placeholder="비밀번호를 입력하세요">
 	          <p id="pwDefaultMessage">8~16자리수. 영문 대소문자, 숫자, 특수문자를 1개 이상 포함.</p>
 	          <p id="pwMessage" style="display:none;">비밀번호를 입력해주세요.</p>
 	          <p id="pwLengthMessage" style="display:none;">비밀번호 형식을 확인해주세요.</p>
 	        </td>
 	      </tr>
 	      <tr>
-	        <td><label for="RePassword">비밀번호 재확인</label></td>
+	        <td><label for="passwordConfirm">비밀번호 재확인</label></td>
 	        <td colspan="2">
-	          <input type="text" name="RePassword" class="form-control" placeholder="비밀번호를 다시 입력하세요">
+	          <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control" placeholder="비밀번호를 다시 입력하세요">
+	          <span id="confirmMsg"></span>
 	        </td>
 	      </tr>
 	      <tr>
@@ -195,7 +281,7 @@
 	      <tr>
 	        <td><label for="mailid">이메일</label></td>
 	        <td colspan="2">
-	          <input type="text" name="email" class="form-control" placeholder="이메일을 입력하세요">
+	          <input type="text" name="email" id="email" class="form-control" placeholder="이메일을 입력하세요">
 	          <p id="emailMessage" style="display:none;">이메일을 입력해주세요.</p>
 	          <p id="emailFormMessage" style="display:none;">올바른 이메일을 입력해주세요.</p>
 	        </td>

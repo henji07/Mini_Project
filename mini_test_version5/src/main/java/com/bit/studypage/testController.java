@@ -67,4 +67,21 @@ public class testController {
 		return "view/write";
 	}
 	
+	@GetMapping("naver-join")
+	public String test11() {
+		
+		return "view/naverJoin";
+	}
+	
+	@GetMapping("kakao-join")
+	public String test12() {
+		
+		return "view/kakaoJoin";
+	}
+	
+	@GetMapping("google-join")
+	public String test13() {
+		
+		return "view/googleJoin";
+	}
 }
