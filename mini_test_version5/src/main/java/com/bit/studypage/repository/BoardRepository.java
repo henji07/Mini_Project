@@ -1,5 +1,7 @@
 package com.bit.studypage.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,5 +11,7 @@ import com.bit.studypage.entity.Board;
 //JpaRepository<대상으로 지정할 엔티티, 해당 엔티티의 PK의 타입>.
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Long> {
+	
+	Page<Board> findAllByOrderByBoardIdDesc(Pageable pageable);
 
 }

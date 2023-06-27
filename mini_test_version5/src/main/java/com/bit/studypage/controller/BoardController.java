@@ -1,25 +1,31 @@
 package com.bit.studypage.controller;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.BeanUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardDTO;
+import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.entity.Board;
 import com.bit.studypage.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
 
-@Controller
+@RestController
 @RequiredArgsConstructor //생성자 주입 
 @RequestMapping("/board")
 public class BoardController {
@@ -28,66 +34,132 @@ public class BoardController {
 	
 	//글 등록 화면으로 이동
 	@GetMapping("/insert-board-view")
-    public String insertBoardView() {
-        return "/view/insertBoard";
+    public ModelAndView insertBoardView() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("view/boardInsertQna.html");
+		return mv;
+    }
+	/*
+	//글 목록 화면으로 이동 
+	@GetMapping("/qnaPage")
+    public ModelAndView getBoardList() {
+
+        ModelAndView mv = new ModelAndView();
+
+        //게시글 목록을 가져옴
+        List<BoardDTO> boardList = boardService.getBoardList();
+        
+        mv.addObject("qnaList", boardList);
+        
+        mv.setViewName("view/boardQna.html");
+
+        return mv;
+
+    }*/
+	
+	//글 목록 화면으로 이동 
+	@GetMapping("/qnaPage")
+    public String getBoardList(Model model) {
+
+        //게시글 목록을 가져옴
+        List<BoardDTO> boardList = boardService.getBoardList();
+        
+        model.addAttribute("qnaList", boardList);
+        
+
+        return "view/boardQna.html";
+
     }
 	
    
-    //글 등록 
+    //글 등록 -> ajax
     @PostMapping("/board-insert")
-    @ResponseBody
-    public Map<String, Object> insertBoard(BoardDTO boardDTO, Model model) {
-    	Map<String, Object> result = new HashMap<>();
+    public ResponseEntity<?> insertBoard(BoardDTO boardDTO) {
+        
+    	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+
         try {
-            Board board = Board.builder()
-                    .boardTitle(boardDTO.getBoardTitle())
-                    .boardContent(boardDTO.getBoardContent())
-                    .boardWriter(boardDTO.getBoardWriter())
-                    .boardRegdate(LocalDateTime.now())
-                    .build();
-
-            boardService.insertBoard(board);
-
             
-            result.put("msg", "글이 등록되었습니다.");
-            
-            return result;
+            boardService.insertBoard(boardDTO);
+
+            Map<String, String> returnMap = new HashMap<String, String>();
+
+            returnMap.put("msg", "정상적으로 저장되었습니다.");
+
+            responseDTO.setItem(returnMap);
+
+            return ResponseEntity.ok().body(responseDTO);
 
         } catch (Exception e) {
-        	result.put("msg", e.getMessage());
-            result.put("status", "error"); //에러 상황을 나타내는 추가적인 필드
+            responseDTO.setStatusCode(HttpStatus.BAD_REQUEST.value());
+            responseDTO.setErrorMessage(e.getMessage());
+
+            return ResponseEntity.badRequest().body(responseDTO);
         }
+    }
         
-        return result;
+    //게시 글 상세 조회
+    @GetMapping("/board/{boardId}")
+    public ModelAndView getBoard(@PathVariable long boardId) {
+        ModelAndView mv = new ModelAndView();
+
+        BoardDTO dto = boardService.getBoardDetail(boardId);
+
+        mv.addObject("board", dto);
+        mv.setViewName("view/boardDetailQna.html");
+
+        return mv;
     }
     
-    //글 목록 조회
-    @GetMapping("/qnaPage")
-    public String boardView(Model model) {
-		
-		List<Board> boardList = boardService.getBoardList();
-		model.addAttribute("boardList", boardList);
-		
-		System.out.println("boardList size: " + boardList.size()); 
-		
-		return "/view/boardQna";
-	}	
-    
-    //게시 글 상세 조회
-    @GetMapping("/board-detail")
-	public String boardContentView(@RequestParam("boardNo") int boardNo, Model model) {
-		System.out.println(boardNo);
-		boardService.getBoard(boardNo);
-		
-       //키 - 밸류
-       //"boardContentView" 내가 이름 짓는 거 
-       //boardService.getBoard(boardNo) 
-       //               -> 뭐를 리턴해서 모델에 넣어줄 건지 
-		model.addAttribute("boardContentView", boardService.getBoard(boardNo));
-		
-		return "/view/";
-	}
+    //글 수정 
+    @PutMapping("/board")
+    public ResponseEntity<?> updateBoard(BoardDTO boardDTO) {
+        ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+        try {
+            //빌더로 엔티티 형태로 만들어주기
+          //  Board board = boardDTO.DTOToEntity();
+            boardService.updateBoard(boardDTO);
 
+            //리턴해줄 맵
+            Map<String, String> returnMap = new HashMap<String, String>();
+
+            returnMap.put("msg", "정상적으로 수정되었습니다.");
+
+            responseDTO.setItem(returnMap);
+
+            return ResponseEntity.ok().body(responseDTO);
+
+        } catch (Exception e) {
+            responseDTO.setStatusCode(HttpStatus.BAD_REQUEST.value());
+            responseDTO.setErrorMessage(e.getMessage());
+
+            return ResponseEntity.badRequest().body(responseDTO);
+        }
+    }
+    
+    //글 삭제 
+    @DeleteMapping ("/board")
+    public ResponseEntity<?> deleteBoard(BoardDTO boardDTO) {
+        ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+        try {
+            //Long으로 보내기 때문에 엔티티 안 만들어도 됨. 
+            boardService.deleteBoard(boardDTO.getBoardId());
+
+            Map<String, String> returnMap = new HashMap<String, String>();
+
+            returnMap.put("msg", "정상적으로 삭제되었습니다.");
+
+            responseDTO.setItem(returnMap);
+
+            return ResponseEntity.ok().body(responseDTO);
+        } catch (Exception e) {
+            responseDTO.setStatusCode(HttpStatus.BAD_REQUEST.value());
+            responseDTO.setErrorMessage(e.getMessage());
+
+            return ResponseEntity.badRequest().body(responseDTO);
+        }
+    }
+    
 
 
 }
