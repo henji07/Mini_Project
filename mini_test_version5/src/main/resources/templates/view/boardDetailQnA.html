@@ -46,7 +46,7 @@
                success: (obj) => {
                    console.log(obj);
                    alert(obj.item.msg);
-                   location.href = `/board/qnaPage/{pageNum}`;
+                   location.href = `/board/qnaPage/1`;
                },
                error: (error) => {
                    console.log(error);
@@ -85,7 +85,7 @@
           <div id="postActions">
             <a type="button" id="btnUpdate">글 수정</a>
             <a type="button" id="btnDelete">글 삭제</a>
-            <a href="/board/qnaPage" type="button" id="btnList">글 목록</a>
+            <a href="/board/qnaPage/1" type="button" id="btnList">글 목록</a>
           </div>
         </div>
       </section>
