@@ -20,5 +20,8 @@ public interface BoardService {
 	public BoardDTO getBoardDetail(long boardId);
 	
 	//글 목록 조회 
-	public List<BoardDTO> getBoardList();
+	public List<BoardDTO> getBoardList(int pageNum);
+
+	//전체 페이지 수 반환 
+	public Object getTotalPages();
 }

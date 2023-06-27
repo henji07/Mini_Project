@@ -52,14 +52,14 @@
     <input type="text" id="search-input-qna" placeholder="검색" />
     <button id="search-button">검색</button>
   </div>
-
-  <div class="pagination-top">
-    <span class="pagination-top-info">1 / 1 페이지</span>
+<!-- 상단 페이징 -->
+<div class="pagination-top">
+    <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
     <div class="pagination-top-buttons">
-      <button class="pagination-top-button" disabled>&larr;</button>
-      <button class="pagination-top-button">&rarr;</button>
+      <button class="pagination-top-button" th:disabled="${currentPage == 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr;</button>
+      <button class="pagination-top-button" th:disabled="${currentPage == totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">&rarr;</button>
     </div>
-  </div> 
+</div>
 <!-- 게시물 부분 -->
   <div class="board-write-container">
     <li class="board-write" th:each="board : ${qnaList}">
@@ -79,11 +79,15 @@
     </li>   
   </div>
 <!-- 하단 페이징 -->
-  <div class="pagination-bottom">
-    <button class="pagination-bottom-button pagination-button-previous" disabled>&larr; Previous</button>
-    <span class="pagination-bottom-pages">1</span>
-    <button class="pagination-bottom-button pagination-button-next">Next &rarr;</button>
-  </div>
+ <div class="pagination-bottom">
+    <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage == 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr; Previous</button>
+    
+    <div th:each="i : ${#numbers.sequence(1, totalPages)}">
+        <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/{pageNum}(pageNum=${i})}" th:text="${i}"></a>
+    </div>
+
+    <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage == totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">Next &rarr;</button>
+</div>
 </div>
 </th:block>
 </body> 

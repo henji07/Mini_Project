@@ -12,6 +12,7 @@ import com.bit.studypage.entity.Board;
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Long> {
 	
+	//페이징 
 	Page<Board> findAllByOrderByBoardIdDesc(Pageable pageable);
 
 }

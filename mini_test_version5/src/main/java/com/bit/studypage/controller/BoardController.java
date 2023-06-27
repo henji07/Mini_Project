@@ -39,35 +39,23 @@ public class BoardController {
 		mv.setViewName("view/boardInsertQna.html");
 		return mv;
     }
-	/*
+	
 	//글 목록 화면으로 이동 
-	@GetMapping("/qnaPage")
-    public ModelAndView getBoardList() {
+	@GetMapping("/qnaPage/{pageNum}")
+    public ModelAndView getBoardList(@PathVariable int pageNum) {
 
         ModelAndView mv = new ModelAndView();
 
         //게시글 목록을 가져옴
-        List<BoardDTO> boardList = boardService.getBoardList();
+        List<BoardDTO> boardList = boardService.getBoardList(pageNum);
         
         mv.addObject("qnaList", boardList);
+        mv.addObject("currentPage", pageNum);
+        mv.addObject("totalPages", boardService.getTotalPages());
         
         mv.setViewName("view/boardQna.html");
 
         return mv;
-
-    }*/
-	
-	//글 목록 화면으로 이동 
-	@GetMapping("/qnaPage")
-    public String getBoardList(Model model) {
-
-        //게시글 목록을 가져옴
-        List<BoardDTO> boardList = boardService.getBoardList();
-        
-        model.addAttribute("qnaList", boardList);
-        
-
-        return "view/boardQna.html";
 
     }
 	
@@ -106,7 +94,7 @@ public class BoardController {
         BoardDTO dto = boardService.getBoardDetail(boardId);
 
         mv.addObject("board", dto);
-        mv.setViewName("view/boardDetailQna.html");
+        mv.setViewName("/view/boardDetailQna");
 
         return mv;
     }
