@@ -1,30 +1,25 @@
 package com.bit.studypage.entity;
 
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
+import com.bit.studypage.dto.BoardDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="Board_qna")
-@Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Board {
 	
 	@Id
@@ -39,13 +34,31 @@ public class Board {
 	private String boardContent;
 	
 	@Column(name="board_view_cnt", nullable = false)
-    private int boardCnt = 0;
+    private int boardCnt;
 	
 	@Column(name="board_writer")
 	private String boardWriter;
 	
 	@Column(name="board_reg_date")
-	private LocalDateTime boardRegdate = LocalDateTime.now();
+	private LocalDateTime boardRegdate;
+	
+	@Builder
+	public Board(BoardDTO data) {
+		this.boardTitle = data.getBoardTitle();
+		this.boardContent = data.getBoardContent();
+		this.boardCnt = 0;
+		this.boardWriter = data.getBoardWriter();
+		this.boardRegdate = LocalDateTime.now();
+	}
 
+	public void updateContent(BoardDTO dto) {
+		this.boardTitle = dto.getBoardTitle();
+		this.boardContent = dto.getBoardContent();
+	}
+	
+	public void updateReadCount(int boardCnt) {
+		this.boardCnt = boardCnt;
+	}
+	
 
 }

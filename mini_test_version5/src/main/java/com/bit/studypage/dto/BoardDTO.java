@@ -1,21 +1,21 @@
 package com.bit.studypage.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@ToString
 public class BoardDTO {
 	
 	private Long boardId;
-	private String boardCate;
 	private String boardTitle;
 	private String boardContent;
 	private String boardWriter;
-	private String boardRegDate;
+	private LocalDateTime boardRegdate;
 	private int boardCnt;
+
 }

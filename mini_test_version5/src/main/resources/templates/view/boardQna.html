@@ -62,7 +62,7 @@
   </div> 
 <!-- 게시물 부분 -->
   <div class="board-write-container">
-    <li class="board-write" th:each="board : ${boardList}">
+    <li class="board-write" th:each="board : ${qnaList}">
       <div class="post-number" th:text="${board.boardId}"></div>
       <div class="answer-count">답변<br>1</div>
       <div class="board-writer-title">
@@ -70,10 +70,10 @@
           <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
           <div th:text="${board.boardWriter}"></div>
         </div>
-        <a href="@{/board/board/{boardId} (boardNo=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
+        <a th:href="@{/board/board/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
       </div>
       <div class="board-details">
-	      <div class="view-count" th:text="${board.boardCnt}"></div>
+	      <div class="view-count" th:text="'조회  ' + ${board.boardCnt}"></div>
 	      <div class="reg-date" th:text="${#strings.substring(board.boardRegdate, 0, 10) }"></div>
       </div>
     </li>   
