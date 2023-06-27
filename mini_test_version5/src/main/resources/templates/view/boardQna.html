@@ -79,15 +79,20 @@
     </li>   
   </div>
 <!-- 하단 페이징 -->
- <div class="pagination-bottom">
-    <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage == 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr; Previous</button>
+<!-- 상수로 페이지 그룹 사이즈를 설정해주세요. -->
+<th:block th:with="pageGroupSize=5">
+<div class="pagination-bottom">
+    <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage <= 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr; Previous</button>
     
-    <div th:each="i : ${#numbers.sequence(1, totalPages)}">
-        <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/{pageNum}(pageNum=${i})}" th:text="${i}"></a>
+    <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
+        <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/{pageNum}(pageNum=${i})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
     </div>
 
-    <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage == totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">Next &rarr;</button>
+    <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage >= totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">Next &rarr;</button>
 </div>
+</th:block>
+
+
 </div>
 </th:block>
 </body> 

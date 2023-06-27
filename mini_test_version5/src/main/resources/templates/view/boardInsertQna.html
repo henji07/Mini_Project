@@ -36,7 +36,7 @@
             success: (result) => {
               console.log(result);
               alert(result.item.msg);
-              window.location.href="/board/qnaPage";
+              window.location.href="/board/qnaPage/1";
             },
             error: (error) => {
               console.log(error);
@@ -70,18 +70,18 @@
       </tr>
       <tr>
         <td>
-          <div id="image_preview">
-            <input type="file" id="btnAtt" name="uploadFiles" multiple>
-            <div id="attZone" data-placeholder="파일을 첨부하려면 파일선택 버튼을 누르세요."></div>
-          </div>
-        </td>
+		  <div id="image_preview">
+		    <input type="file" id="btnAtt" name="uploadFiles" multiple>
+		  </div>
+		  <div id="attZone" style="font-size: 13px;">파일을 첨부하려면 파일선택 버튼을 누르세요.</div>
+		</td>
       </tr>
       <tr>
         <td colspan="2" align="center"><button type="button" id="btnInsert">새 글 등록</button></td>
       </tr>
     </table>
   </form>
-  <a id="postListLink" href="#">글 목록</a>
+  <a id="postListLink" href="/board/qnaPage/1">글 목록</a>
 </div>
 </section>
 </div>
