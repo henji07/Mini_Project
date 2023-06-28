@@ -15,6 +15,7 @@
    $(function() {
         $("#btnInsert").on("click", () => {
 
+
           //입력 유효성 검사
           if($("#boardTitle").val() === "") {
             alert("제목을 입력하세요.");
@@ -27,12 +28,21 @@
             $("#boardContent").focus();
             return;
           }
+          
+          //formData 객체 생성 
+          var formData = new FormData($('#insertForm')[0]);
+          
+          //파일 데이터 얻기, #btnAtt 눌렀을 때 
+          var file_data = $('#btnAtt').prop('files')[0];  
+          formData.append('uploadFiles', file_data);
 
           //ajax로 db조회
           $.ajax({
             url: "/board/board-insert",
             type: "POST",
-            data: $("#insertForm").serialize(),
+            data: formData, 
+            processData: false,  //jQuery가 데이터를 쿼리 문자열로 자동 변환하는 것을 방지
+            contentType: false, //브라우저가 multipart/form-data의 형태로 데이터를 인코딩하게 함
             success: (result) => {
               console.log(result);
               alert(result.item.msg);

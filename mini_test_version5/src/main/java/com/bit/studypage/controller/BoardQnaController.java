@@ -1,36 +1,42 @@
 package com.bit.studypage.controller;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.BeanUtils;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.ResponseDTO;
-import com.bit.studypage.entity.BoardQna;
 import com.bit.studypage.service.BoardQnaService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor //생성자 주입 
 @RequestMapping("/board")
 public class BoardQnaController {
 	
 	private final BoardQnaService boardService;
+	
 	
 	//글 등록 화면으로 이동
 	@GetMapping("/insert-board-view")
@@ -62,13 +68,13 @@ public class BoardQnaController {
    
     //글 등록 -> ajax
     @PostMapping("/board-insert")
-    public ResponseEntity<?> insertBoard(BoardQnaDTO boardDTO) {
+    public ResponseEntity<?> insertBoard(@RequestParam("uploadFiles") MultipartFile file, BoardQnaDTO boardDTO) {
         
     	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
 
         try {
-            
-            boardService.insertBoard(boardDTO);
+            //서비스 호출 
+            boardService.insertBoard(boardDTO, file);
 
             Map<String, String> returnMap = new HashMap<String, String>();
 
@@ -85,6 +91,7 @@ public class BoardQnaController {
             return ResponseEntity.badRequest().body(responseDTO);
         }
     }
+    
         
     //게시 글 상세 조회
     @GetMapping("/board/{boardId}")

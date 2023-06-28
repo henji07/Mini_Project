@@ -2,13 +2,15 @@ package com.bit.studypage.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.entity.BoardQna;
 
 public interface BoardQnaService {
 
 	//글 등록
-	public void insertBoard(BoardQnaDTO boardDTO);
+	public BoardQna insertBoard(BoardQnaDTO boardDTO, MultipartFile file);
 	
 	//글 수정
 	public BoardQnaDTO updateBoard(BoardQnaDTO boardDTO);
