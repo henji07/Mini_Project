@@ -10,4 +10,5 @@ import java.util.List;
 public interface BoardRepository extends JpaRepository<Board,Long> {
     List<Board> findByBoardWriter(String boardWriter);
     String countByBoardWriter(String boardWriter);
+    Board findByBoardId(Long userId);
 }

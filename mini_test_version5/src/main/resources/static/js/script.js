@@ -130,7 +130,7 @@ $(document).ready(function () {
     $("#profile-interests").select2({
         placeholder: "관심사를 선택하세요",
         allowClear: true,
-    });
+    }).trigger('change');
 
     var phoneRegex = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 
@@ -162,45 +162,6 @@ $(document).ready(function () {
     var slides = document.querySelectorAll(".profile-slide");
     var slider = document.querySelector(".profile-slider");
 
-    showSlide(slideIndex);
-    setInterval(nextSlide, 3000);
 
-    function showSlide(n) {
-        slideIndex = n;
-        var translateXValue = -slideIndex * (100 / slides.length) + "%";
-        slider.style.transform = "translateX(" + translateXValue + ")";
-        for (var i = 0; i < dots.length; i++) {
-            dots[i].classList.remove("profile-active");
-        }
-        dots[slideIndex].classList.add("profile-active");
-    }
-
-    function nextSlide() {
-        slideIndex++;
-        if (slideIndex === slides.length) {
-            slideIndex = 0;
-        }
-        showSlide(slideIndex);
-    }
-
-    function prevSlide() {
-        slideIndex--;
-        if (slideIndex < 0) {
-            slideIndex = slides.length - 1;
-        }
-        showSlide(slideIndex);
-    }
-
-    function setSlide(n) {
-        slideIndex = n;
-        showSlide(slideIndex);
-    }
-
-    for (var i = 0; i < dots.length; i++) {
-        dots[i].addEventListener("click", function () {
-            var index = Array.prototype.indexOf.call(dots, this);
-            setSlide(index);
-        });
-    }
 
 });

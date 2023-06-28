@@ -2,13 +2,11 @@ package com.bit.studypage.controller;
 
 import com.bit.studypage.DTO.CommDTO;
 import com.bit.studypage.DTO.ResponseDTO;
+import com.bit.studypage.entity.Board;
 import com.bit.studypage.entity.Comments;
 import com.bit.studypage.entity.ProfileImg;
 import com.bit.studypage.entity.Users;
-import com.bit.studypage.service.impl.BoardServiceImpl;
-import com.bit.studypage.service.impl.CommentsServiceImpl;
-import com.bit.studypage.service.impl.ProfileImgServiceImpl;
-import com.bit.studypage.service.impl.UsersServiceImpl;
+import com.bit.studypage.service.impl.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +34,18 @@ public class MyPageController {
     BoardServiceImpl boardServiceImpl;
     CommentsServiceImpl commentsServiceImpl;
     ProfileImgServiceImpl profileImgServiceImpl;
+    LikesServiceImpl likesServiceImpl;
 
 
     @Autowired
-    public MyPageController(UsersServiceImpl usersServiceImpl, BoardServiceImpl boardServiceImpl, CommentsServiceImpl commentsServiceImpl, ProfileImgServiceImpl profileImgServiceImpl) {
+    public MyPageController(UsersServiceImpl usersServiceImpl, BoardServiceImpl boardServiceImpl, CommentsServiceImpl commentsServiceImpl, ProfileImgServiceImpl profileImgServiceImpl, LikesServiceImpl likesServiceImpl) {
         this.usersServiceImpl = usersServiceImpl;
         this.boardServiceImpl = boardServiceImpl;
         this.commentsServiceImpl = commentsServiceImpl;
         this.profileImgServiceImpl = profileImgServiceImpl;
+        this.likesServiceImpl = likesServiceImpl;
     }
-
+//처음 page가 load됐을 때 view에 model을 담기
     @GetMapping("/myPageView")
     public ModelAndView viewMyPage(HttpSession session) {
         ModelAndView mv = new ModelAndView();
@@ -60,6 +60,11 @@ public class MyPageController {
             commList.add(cdto);
         }
 
+        List<Board> boardLike = boardServiceImpl.getBoardList(likesServiceImpl.getLike(users.getUsersId()));
+
+        String[] interest = usersServiceImpl.loginUser(1L).getInterest().split(",");
+        List<String> interestsList = Arrays.asList(interest);
+        mv.addObject("interests", interestsList);
         mv.addObject("boardList", boardServiceImpl.getBoardList(users.getUserNickname()));
         mv.addObject("commList", commentsServiceImpl.getCommentsList(users.getUserNickname()));
         mv.addObject("profileImg", profileImgServiceImpl.getProfileImg(1L));
@@ -67,7 +72,8 @@ public class MyPageController {
         mv.addObject("countBoard",boardServiceImpl.getCountBoard(users.getUserNickname()));
         mv.addObject("countComments",commentsServiceImpl.getCountComm(users.getUserNickname()));
         mv.addObject("commentsList",commList);
-        mv.addObject("likes",);
+        mv.addObject("likeBoard",boardLike);
+//        mv.addObject("likes",);
         log.info(boardServiceImpl.getCountBoard(users.getUserNickname()));
         return mv;
     }
@@ -79,7 +85,6 @@ public class MyPageController {
 //    }
     @PostMapping("/changeImg")
     public String changeImg(@RequestParam("image") MultipartFile image, Model model, HttpSession session) throws IOException {
-        System.out.println("용순이바부");
         if (!image.isEmpty()){
             ProfileImg profileImg = new ProfileImg();
             String origin = image.getOriginalFilename();
@@ -94,5 +99,12 @@ public class MyPageController {
             model.addAttribute("profileImg", origin);
         }
         return "redirect:/myPageView";
+    }
+
+
+    @PostMapping("/myPage/name-info")
+    public String updateName(@RequestParam String name, @RequestParam String nickname, @RequestParam List<String> interest){
+        System.out.println(interest.toString()+"김도헌111"); // string 잘 들어옴
+        return "";
     }
 }

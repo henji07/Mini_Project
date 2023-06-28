@@ -30,7 +30,17 @@
                         $("#pass-confirm").css("display", "none");
                     }
                 });
-
+                $("#name-info-btn").on("click", () => {
+                    $.ajax({
+                        type: "POST",
+                        url: "/myPage/name-info",
+                        data: $("#name-info").serialize(),
+                        success: function (response) {
+                            alert(response);
+                            // 서버에서 응답이 온 경우의 동작
+                        }
+                    });
+                });
             });
         </script>
     </th:block>
@@ -56,27 +66,28 @@
             </div>
             <div class="profile-container2" id="profile-con2">
                 <div class="profile-box profile-box2" id="profile-user-info1">
-                    <form class="profile-profile-details">
+                    <form class="profile-profile-details" id="name-info">
                         <div class="profile-info-field">
                             <div>이름</div>
-                            <!--                            <input type="text" th:placeholder="${user.name}" th:value="${user.name}"/>-->
+                            <input name="name" th:value="${session.user.name}" th:placeholder="${session.user.name}"/>
                         </div>
                         <div class="profile-info-field">
                             <div>닉네임</div>
-                            <!--                            <input type="text" th:placeholder="${user.user_nickname}" th:value="${user.user_nickname}"/>-->
+                            <input name="nickname" th:value="${session.user.userNickname}"
+                                   th:placeholder="${session.user.userNickname}"/>
                         </div>
                         <div class="profile-info-field">
                             <div>관심사</div>
-                            <select id="profile-interests" multiple>
-                                <option value="fullstack">풀스택</option>
-                                <option value="backend">백엔드</option>
-                                <option value="frontend">프론트엔드</option>
-                                <option value="mobile">모바일</option>
-                                <option value="android">안드로이드</option>
-                                <option value="ios">ios</option>
+                            <select id="profile-interests" multiple name="interest">
+                                <option value="fullstack" th:selected="${interests.contains('풀스택')}">풀스택</option>
+                                <option value="backend" th:selected="${interests.contains('백엔드')}">백엔드</option>
+                                <option value="frontend" th:selected="${interests.contains('프론트엔드')}">프론트엔드</option>
+                                <option value="mobile" th:selected="${interests.contains('모바일')}">모바일</option>
+                                <option value="android" th:selected="${interests.contains('안드로이드')}">안드로이드</option>
+                                <option value="ios" th:selected="${interests.contains('ios')}">ios</option>
                             </select>
                         </div>
-                        <button class="profile-btn" type="submit">수정</button>
+                        <button style="z-index: 4;" class="profile-btn" type="" id="name-info-btn">수정</button>
                     </form>
                     <!--                    <input type="hidden" name="usersId" th:value="${session.user.usersId}">-->
                     <div class="profile-profile-picture">
@@ -152,16 +163,18 @@
                                 </td>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>이름</td>
-                                <td><input type="text" name="name" th:placeholder="${session.user.name}"
-                                           th:value="${session.user.name}"/></td>
-                            </tr>
+                            <!--                            <tr>-->
+                            <!--                                <td>이름</td>-->
+                            <!--                                <td><input type="text" name="name" th:placeholder="${session.user.name}"-->
+                            <!--                                           th:value="${session.user.name}"/></td>-->
+                            <!--                            </tr>-->
                             <tr>
                                 <td>성별</td>
                                 <td>
-                                    <input id="check-gender-male" type="radio" name="gender" value="남자" th:checked="${session.user.gender == 'M'}"/> 남자
-                                    <input id="check-gender-female" type="radio" name="gender" value="여자" th:checked="${session.user.gender == 'W'}"/> 여자
+                                    <input id="check-gender-male" type="radio" name="gender" value="남자"
+                                           th:checked="${session.user.gender == 'M'}"/> 남자
+                                    <input id="check-gender-female" type="radio" name="gender" value="여자"
+                                           th:checked="${session.user.gender == 'W'}"/> 여자
                                 </td>
                             </tr>
                             <tr>
@@ -231,29 +244,11 @@
                                     <th>작성일</th>
                                     <th>조회수</th>
                                 </tr>
-                                <tr>
+                                <tr th:each="like:${likeBoard}">
                                     <td><input type="checkbox" name="board-check"/></td>
-                                    <td>나는 개똥벌레</td>
-                                    <td>2023.07.14</td>
-                                    <td>1008</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" name="board-check"/></td>
-                                    <td>친구가 없네</td>
-                                    <td>2023.07.14</td>
-                                    <td>1008</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" name="board-check"/></td>
-                                    <td>저기 개똥무덤이</td>
-                                    <td>2023.07.14</td>
-                                    <td>1008</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" name="board-check"/></td>
-                                    <td>내 집인걸..</td>
-                                    <td>2023.07.14</td>
-                                    <td>1008</td>
+                                    <td th:text="${like.boardTitle}"></td>
+                                    <td th:text="${like.boardRegDate}"></td>
+                                    <td th:text="${like.boardViewCnt}">1008</td>
                                 </tr>
                             </table>
                             <div class="profile-box" id="profile-ect-container">
