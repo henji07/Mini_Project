@@ -11,7 +11,11 @@
 
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript">
-   
+        $(() => {
+            $("#btnWrite").on("click", () => {
+                location.href="/write-view";
+            });
+        });
    </script>
 </th:block>
     
@@ -32,7 +36,7 @@
     </div>
     <!-- 글쓰기 버튼 -->
     <div class="board-communi-actions">
-      <button style="left: 0;">글쓰기</button>
+      <button type="button" id="btnWrite" style="left: 0;">글쓰기</button>
     </div>
   </div>
   
@@ -70,13 +74,10 @@
  	<div class="notice">
       <a href="#" class="notice-title">공지사항</a>
     </div>
-    <div class="post">
-      <a href="#" class="title">게시물 제목1</a>
-      <div class="meta">작성자: 현진이 | 작성일: 2023-06-21 | 조회수: 10</div>
-    </div>
-    <div class="post">
-      <a href="#" class="title">게시물 제목2</a>
-      <div class="meta">작성자: 유진이 | 작성일: 2023-06-20 | 조회수: 20</div>
+    <div class="post" th:each="board: ${boardList}">
+      <a href="#" class="title" th:text="${board.boardTitle}"></a>
+<!--      <div class="meta">작성자: 현진이 | 작성일: 2023-06-21 | 조회수: 10</div>-->
+        <a href="#" class="content" th:text="${board.content}"></a>
     </div>
     <!-- 추가적인 게시물들을 여기에 추가할 수 있습니다 -->
   </div>

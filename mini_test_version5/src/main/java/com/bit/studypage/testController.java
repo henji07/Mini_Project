@@ -1,12 +1,23 @@
 package com.bit.studypage;
 
+import com.bit.studypage.domain.entity.Board;
+import com.bit.studypage.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class testController {
+	BoardService boardService;
 
+	@Autowired
+	public testController(BoardService boardService) {
+		this.boardService = boardService;
+	}
 	@GetMapping("qnaPage")
 	public String test() {
 		
@@ -20,8 +31,18 @@ public class testController {
 	}
 	
 	@GetMapping("freePage")
-	public String test3() {
-		
+	public String test3(Model model) {
+		//게시글 목록 조회
+		List<Board> boardList = new ArrayList<>();
+
+		boardList = boardService.findBoardList();
+		System.out.println("1111111111111111111111111111111111111111");
+		for(Board board : boardList) {
+			System.out.println(board);
+		}
+
+		//model 에다가 목록 담기
+		model.addAttribute("boardList", boardList);
 		return "view/boardCommunicate";
 	}
 	
