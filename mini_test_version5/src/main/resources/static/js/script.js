@@ -32,12 +32,13 @@ $(document).ready(function () {
         $("#profile-imageUpload").trigger("click");
     });
     $("#profile-imageUpload").on("change", function () {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                $("#profile-profilePic").attr("src", event.target.result);
-                if (confirm("저장하시겠습니까?")) {
+        if (confirm("저장하시겠습니까?")) {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    $("#profile-profilePic").attr("src", event.target.result);
+
                     // Create new FormData instance
                     let formData = new FormData();
 
@@ -60,10 +61,9 @@ $(document).ready(function () {
                             // 추가적인 에러 처리 로직
                         }
                     });
-                }
-            };
-            reader.readAsDataURL(file);
-
+                };
+                reader.readAsDataURL(file);
+            } else return;
         }
     });
 

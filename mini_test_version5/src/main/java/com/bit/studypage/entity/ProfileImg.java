@@ -12,7 +12,7 @@ public class ProfileImg {
     @Column
     private String originName;
     @Column
-    private String imgName;
+    private Long userId;
     @Column
     private String path;
 }

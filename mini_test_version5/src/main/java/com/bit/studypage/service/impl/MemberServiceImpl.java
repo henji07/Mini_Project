@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberService{
 	
 	private final MemberRepository memberRepository;
 	
@@ -74,7 +74,7 @@ public class MemberServiceImpl implements MemberService {
 				
 				//값이 0보다 크면 success
 				if(ObjectUtils.isNotEmpty(memberResult)) {
-					Long memberSno = memberResult.getMemberSno();
+					Long memberSno = memberResult.getUsersId();
 					
 					if(memberSno > 0) {
 						// 등록 성공

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CommentsRepository extends JpaRepository<Comments,Long> {
     List<Comments> findByCommWriter(String userNickname);
+    String countByCommWriter(String commWriter);
 }
