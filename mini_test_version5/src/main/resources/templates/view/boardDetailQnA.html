@@ -79,7 +79,11 @@
           <div id="fileSection">
             <h4>첨부 파일</h4>
             <ul id="fileList">
-              <li>파일1.pdf <a href="#">다운로드</a></li>
+                <!-- 첨부파일이 있으면 이름을 표시하고 다운로드 링크를 제공 -->
+	            <li th:if="${board.file}">
+	                <span th:text="${board.file.fileName}"></span>
+	                <a th:href="@{/downloadFile/{fileName}(fileName=${board.file.fileName})}" >다운로드</a>
+	            </li>
             </ul>
           </div>
           <div id="postActions">
