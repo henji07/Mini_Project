@@ -18,19 +18,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bit.studypage.dto.BoardDTO;
+import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.ResponseDTO;
-import com.bit.studypage.entity.Board;
-import com.bit.studypage.service.BoardService;
+import com.bit.studypage.entity.BoardQna;
+import com.bit.studypage.service.BoardQnaService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor //생성자 주입 
 @RequestMapping("/board")
-public class BoardController {
+public class BoardQnaController {
 	
-	private final BoardService boardService;
+	private final BoardQnaService boardService;
 	
 	//글 등록 화면으로 이동
 	@GetMapping("/insert-board-view")
@@ -47,7 +47,7 @@ public class BoardController {
         ModelAndView mv = new ModelAndView();
 
         //게시글 목록을 가져옴
-        List<BoardDTO> boardList = boardService.getBoardList(pageNum);
+        List<BoardQnaDTO> boardList = boardService.getBoardList(pageNum);
         
         mv.addObject("qnaList", boardList);
         mv.addObject("currentPage", pageNum);
@@ -62,7 +62,7 @@ public class BoardController {
    
     //글 등록 -> ajax
     @PostMapping("/board-insert")
-    public ResponseEntity<?> insertBoard(BoardDTO boardDTO) {
+    public ResponseEntity<?> insertBoard(BoardQnaDTO boardDTO) {
         
     	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
 
@@ -91,7 +91,7 @@ public class BoardController {
     public ModelAndView getBoard(@PathVariable long boardId) {
         ModelAndView mv = new ModelAndView();
 
-        BoardDTO dto = boardService.getBoardDetail(boardId);
+        BoardQnaDTO dto = boardService.getBoardDetail(boardId);
 
         mv.addObject("board", dto);
         mv.setViewName("/view/boardDetailQna");
@@ -101,7 +101,7 @@ public class BoardController {
     
     //글 수정 
     @PutMapping("/board")
-    public ResponseEntity<?> updateBoard(BoardDTO boardDTO) {
+    public ResponseEntity<?> updateBoard(BoardQnaDTO boardDTO) {
         ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
         try {
             //빌더로 엔티티 형태로 만들어주기
@@ -127,7 +127,7 @@ public class BoardController {
     
     //글 삭제 
     @DeleteMapping ("/board")
-    public ResponseEntity<?> deleteBoard(BoardDTO boardDTO) {
+    public ResponseEntity<?> deleteBoard(BoardQnaDTO boardDTO) {
         ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
         try {
             //Long으로 보내기 때문에 엔티티 안 만들어도 됨. 

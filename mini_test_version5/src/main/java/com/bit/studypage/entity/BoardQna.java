@@ -2,7 +2,7 @@ package com.bit.studypage.entity;
 
 import java.time.LocalDateTime;
 
-import com.bit.studypage.dto.BoardDTO;
+import com.bit.studypage.dto.BoardQnaDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Board {
+public class BoardQna {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +43,7 @@ public class Board {
 	private LocalDateTime boardRegdate;
 	
 	@Builder
-	public Board(BoardDTO data) {
+	public BoardQna(BoardQnaDTO data) {
 		this.boardTitle = data.getBoardTitle();
 		this.boardContent = data.getBoardContent();
 		this.boardCnt = 0;
@@ -51,7 +51,7 @@ public class Board {
 		this.boardRegdate = LocalDateTime.now();
 	}
 
-	public void updateContent(BoardDTO dto) {
+	public void updateContent(BoardQnaDTO dto) {
 		this.boardTitle = dto.getBoardTitle();
 		this.boardContent = dto.getBoardContent();
 	}
