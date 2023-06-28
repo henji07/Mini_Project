@@ -1,5 +1,7 @@
 package com.bit.studypage.service.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -11,11 +13,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.entity.BoardQna;
+import com.bit.studypage.entity.FileEntity;
 import com.bit.studypage.repository.BoardQnaRepository;
+import com.bit.studypage.repository.FileRepository;
 import com.bit.studypage.service.BoardQnaService;
 
 import lombok.RequiredArgsConstructor;
@@ -27,20 +31,46 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardQnaServiceImpl implements BoardQnaService {
 	
 	private final BoardQnaRepository boardRepository;
+	private final FileRepository fileRepository;
 	
 	//글 등록
 	@Override
-	public void insertBoard(BoardQnaDTO boardDTO) {
+	public BoardQna insertBoard(BoardQnaDTO boardDTO, MultipartFile file) {
 		
+		// DTO를 엔티티로 변환
 		BoardQna board = BoardQna.builder().data(boardDTO).build();
 		
+		// 파일 처리
+		if (file != null && !file.isEmpty()) {
+            try {
+            	// 저장할 파일 디렉토리 설정. 실제 환경에 맞게 경로를 변경
+            	String baseDir = "C:/tmp/upload/";
+                String filePath = baseDir + "/" + file.getOriginalFilename();
+                
+                // 파일 시스템에 저장
+                file.transferTo(new File(filePath));
+                
+                // 파일의 정보를 저장하고 데이터베이스에 추가
+                String fileName = file.getOriginalFilename();
+                String fileType = file.getContentType();
+                
+                FileEntity fileEntity = new FileEntity(fileName, fileType, filePath);
+                fileRepository.save(fileEntity);
+                
+                // 파일 엔티티를 보드 엔티티에 설정
+                board.setFileEntity(fileEntity);
+            } catch (IOException ex) {
+                throw new RuntimeException("Could not store file " + file.getOriginalFilename(), ex);
+            }
+        }
+		// 보드 엔티티를 데이터베이스에 저장하고 결과를 반환
 		BoardQna entity = boardRepository.save(board);
 		
-		if(ObjectUtils.isNotEmpty(entity)) {
-			long boardId = entity.getBoardId();
-			
+		if(entity != null) {
+			long boardId = entity.getBoardId();		
 			log.debug("boardId = {}", boardId);
 		}
+		return entity;
 	}
 
 	//글 수정
