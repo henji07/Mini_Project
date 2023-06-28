@@ -1,6 +1,5 @@
 package com.bit.studypage.service.impl;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +7,7 @@ import java.util.Optional;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,11 +16,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.studypage.dto.BoardQnaDTO;
+import com.bit.studypage.dto.FileDTO;
 import com.bit.studypage.entity.BoardQna;
 import com.bit.studypage.entity.FileEntity;
 import com.bit.studypage.repository.BoardQnaRepository;
 import com.bit.studypage.repository.FileRepository;
 import com.bit.studypage.service.BoardQnaService;
+import com.bit.studypage.service.FileStorageService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +34,10 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	
 	private final BoardQnaRepository boardRepository;
 	private final FileRepository fileRepository;
+	private final FileStorageService fileStorageService;
+	
+	@Value("${app.file-upload-dir}")
+    private String fileUploadDir;
 	
 	//글 등록
 	@Override
@@ -43,12 +49,9 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		// 파일 처리
 		if (file != null && !file.isEmpty()) {
             try {
-            	// 저장할 파일 디렉토리 설정. 실제 환경에 맞게 경로를 변경
-            	String baseDir = "C:/tmp/upload/";
-                String filePath = baseDir + "/" + file.getOriginalFilename();
                 
                 // 파일 시스템에 저장
-                file.transferTo(new File(filePath));
+                String filePath = fileStorageService.storeFile(file, fileUploadDir);
                 
                 // 파일의 정보를 저장하고 데이터베이스에 추가
                 String fileName = file.getOriginalFilename();
@@ -119,6 +122,13 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 				boardRepository.save(board); // 변경된 조회수 저장
 				
 				BeanUtils.copyProperties(board, dto);
+				
+				// 파일 정보가 있을 경우, FileDTO를 생성하고 BoardQnaDTO에 설정
+	            if(board.getFileEntity() != null) {
+	                FileDTO fileDTO = new FileDTO();
+	                BeanUtils.copyProperties(board.getFileEntity(), fileDTO);
+	                dto.setFile(fileDTO);
+	            }
 			}
 	    }
 	    return dto;

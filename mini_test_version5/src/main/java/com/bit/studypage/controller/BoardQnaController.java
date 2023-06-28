@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.service.BoardQnaService;
+import com.bit.studypage.service.FileStorageService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardQnaController {
 	
 	private final BoardQnaService boardService;
+	private final FileStorageService fileStorageService;
 	
 	
 	//글 등록 화면으로 이동
@@ -91,6 +93,33 @@ public class BoardQnaController {
             return ResponseEntity.badRequest().body(responseDTO);
         }
     }
+    
+    //파일 다운로드
+    @GetMapping("/downloadFile/{fileName:.+}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
+        // 파일을 로드하고 리소스를 준비
+        Resource resource = fileStorageService.loadFileAsResource(fileName);
+
+        // 파일의 content type을 결정
+        String contentType = null;
+        try {
+            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+        } catch (IOException ex) {
+            log.info("Could not determine file type.");
+        }
+
+        // 기본 content type으로 fallback
+        if(contentType == null) {
+            contentType = "application/octet-stream";
+        }
+
+        // 파일 다운로드를 위한 Response Entity 리턴
+        return ResponseEntity.ok()
+            .contentType(MediaType.parseMediaType(contentType))
+            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+            .body(resource);
+    }
+
     
         
     //게시 글 상세 조회

@@ -17,5 +17,7 @@ public class BoardQnaDTO {
 	private String boardWriter;
 	private LocalDateTime boardRegdate;
 	private int boardCnt;
+	
+	private FileDTO file;
 
 }
