@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.entity.BoardQna;
+import com.bit.studypage.entity.FileEntity;
 
 public interface BoardQnaService {
 
@@ -26,4 +27,6 @@ public interface BoardQnaService {
 
 	//전체 페이지 수 반환 
 	public Object getTotalPages();
+
+	public List<FileEntity> getBoardFileList(long boardId);
 }

@@ -53,6 +53,29 @@
                }
            });
        });
+	   
+       // 댓글 등록
+       $("#btnComment").on("click", () => {
+           const commentContent = $("#commentContent").val();
+
+           $.ajax({
+               url: '/board/comment',
+               type: 'post',
+               data: {
+                   boardId: $("#boardId").val(),
+                   commentContent: commentContent
+               },
+               success: (obj) => {
+                   console.log(obj);
+                   alert(obj.item.msg);
+                   location.reload(); // 페이지 새로고침으로 댓글이 바로 보이게 설정
+               },
+               error: (error) => {
+                   console.log(error);
+               }
+           });
+       });
+
    });
    
    </script>
@@ -81,11 +104,18 @@
             <ul id="fileList">
                 <!-- 첨부파일이 있으면 이름을 표시하고 다운로드 링크를 제공 -->
 	            <li th:if="${board.file}">
+	            	<img th:src="@{'/upload/' + ${board.file.fileName}}" width="500">
 	                <span th:text="${board.file.fileName}"></span>
-	                <a th:href="@{/downloadFile/{fileName}(fileName=${board.file.fileName})}" >다운로드</a>
+	                
 	            </li>
             </ul>
           </div>
+          <!-- 댓글 입력 부분 -->
+		  <div id="commentSection">
+		   <h4>댓글 작성</h4>
+		     <textarea id="commentContent" name="commentContent"></textarea>
+		     <a type="button" id="btnComment">댓글 등록</a>
+		  </div>
           <div id="postActions">
             <a type="button" id="btnUpdate">글 수정</a>
             <a type="button" id="btnDelete">글 삭제</a>

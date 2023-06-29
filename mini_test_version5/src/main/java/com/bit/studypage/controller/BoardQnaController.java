@@ -1,6 +1,7 @@
 package com.bit.studypage.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
+import com.bit.studypage.dto.FileDTO;
 import com.bit.studypage.dto.ResponseDTO;
+import com.bit.studypage.entity.FileEntity;
 import com.bit.studypage.service.BoardQnaService;
 import com.bit.studypage.service.FileStorageService;
 
@@ -130,6 +133,7 @@ public class BoardQnaController {
         BoardQnaDTO dto = boardService.getBoardDetail(boardId);
 
         mv.addObject("board", dto);
+        //mv.addObject("fileList", fileDTOList);
         mv.setViewName("/view/boardDetailQna");
 
         return mv;
