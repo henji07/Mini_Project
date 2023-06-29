@@ -160,4 +160,31 @@
   background-color: #f97800;
 }
 
+#comments {
+  margin-top: 1em;
+}
 
+#comments h4 {
+  color: #f97800;
+  margin-bottom: 1em;
+}
+
+.comment-item {
+  background-color: #f2f2f2;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+.comment-item .content {
+  color: #333;
+}
+
+.comment-item .author {
+  color: #828282;
+  font-size: 12px;
+}
+
+.content {
+  color: #333;
+}
