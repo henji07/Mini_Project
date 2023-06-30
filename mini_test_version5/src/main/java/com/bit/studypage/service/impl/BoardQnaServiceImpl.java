@@ -164,12 +164,19 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		return dataList;
 	}
 
-	//전체 페이시 수 반환 
+	//전체 페이지 수 반환 
 	@Override
 	public Object getTotalPages() {
 		int pageSize = 5;
 	    long totalBoards = boardRepository.count();
 	    return (int) Math.ceil((double) totalBoards / pageSize);
+	}
+
+	@Override
+	public List<FileEntity> getBoardFileList(long boardId) {
+		
+		// TODO Auto-generated method stub
+		return fileRepository.findByBoardQnaBoardId(boardId);
 	}
 
 

@@ -22,8 +22,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
+import com.bit.studypage.dto.CommentDTO;
 import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.service.BoardQnaService;
+import com.bit.studypage.service.CommentService;
 import com.bit.studypage.service.FileStorageService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -38,6 +40,7 @@ public class BoardQnaController {
 	
 	private final BoardQnaService boardService;
 	private final FileStorageService fileStorageService;
+	private final CommentService commentService;
 	
 	
 	//글 등록 화면으로 이동
@@ -122,14 +125,19 @@ public class BoardQnaController {
 
     
         
-    //게시 글 상세 조회
+    //게시 글 및 댓글 상세 조회
     @GetMapping("/board/{boardId}")
     public ModelAndView getBoard(@PathVariable long boardId) {
         ModelAndView mv = new ModelAndView();
 
+        //게시물 조회 
         BoardQnaDTO dto = boardService.getBoardDetail(boardId);
+        
+        // 댓글 리스트를 가져오기.
+        List<CommentDTO> comments = dto.getComments();
 
         mv.addObject("board", dto);
+        mv.addObject("comments", dto.getComments());
         mv.setViewName("/view/boardDetailQna");
 
         return mv;
