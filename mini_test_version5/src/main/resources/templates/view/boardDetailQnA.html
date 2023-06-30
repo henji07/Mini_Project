@@ -60,6 +60,12 @@
 
     	    var commentContent = $('#commentContent').val();
     	    var boardId = $("#boardId").val();
+    	    
+    	 	// 댓글 내용이 비어있는지 확인
+    	    if (!commentContent.trim()) {
+    	        alert('댓글 내용을 입력해주세요.');
+    	        return;
+    	    }
 
     	    $.ajax({
     	        type: 'POST',
@@ -69,11 +75,13 @@
     	        success: function(response) {
     	            if(response.success === "성공") {
     	            	// 댓글 작성에 성공하면 화면에 새로운 댓글을 추가.
-    	                // 이를 위해 댓글을 담을 컨테이너를 준비하고, 
-    	                // 해당 컨테이너에 새로 작성한 댓글의 내용을 추가.
-    	                // 여기서는 #comments 라는 id를 가진 요소가 댓글 컨테이너라고 가정.
-
-    	                var newComment = $("<div>").addClass("comment-item").append($("<div>").addClass("content").text(response.data.content));
+    	                // 이를 위해 댓글을 담을 컨테이너를 준비하고, 해당 컨테이너에 새로 작성한 댓글의 내용을 추가.
+    	                var newComment = $("<div>").addClass("comment-item");
+    	                var commentAuthor = $("<div>").addClass("writer").text(response.data.writer); // 작성자 정보 추가
+        				var commentContent = $("<div>").addClass("content").text(response.data.content);
+    	                	                
+    	                newComment.append(commentAuthor, commentContent);
+    	                
     	                $("#comments").append(newComment);  // 댓글 컨테이너에 새 댓글 요소 추가
     	                $("#commentContent").val('');  // 댓글 입력란 초기화
     	                console.log(newComment);
@@ -106,7 +114,11 @@
 	                           console.log("Undefined comment content:", comment);
 	                       }
 	                	   
-	                       var newComment = $("<div>").addClass("comment-item").append($("<div>").addClass("content").text(comment.content));
+	                       var newComment = $("<div>").addClass("comment-item");
+	                       var commentAuthor = $("<div>").addClass("writer").text(comment.writer); // 작성자 정보를 화면에 표시
+	                       var commentContent = $("<div>").addClass("content").text(comment.content);       
+	                       newComment.append(commentAuthor, commentContent);
+	                	   
 	                       $("#comments").append(newComment);
 	                       
 	                       console.log("New comment:", newComment);
@@ -164,7 +176,11 @@
 		      <h4>댓글 목록</h4>
 		      <!-- 기존 댓글들은 여기에 표시 -->
 		      <div class="comment-item" th:each="comment : ${comments}">
-		          <div class="content" th:text="${comment.content}"></div>
+		      	  <div class="writer">
+			         <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
+			         <span th:text="${comment.writer}"></span>
+			      </div>
+		          <div class="content" th:text="${comment.content}"></div>     
 		      </div>
 		  </div>
           

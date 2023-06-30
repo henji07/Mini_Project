@@ -21,6 +21,8 @@ public class BoardQnaDTO {
 	
 	private FileDTO file;
 	
+	private int commentCount; // 댓글 수
+	
 	// CommentDTO 리스트 추가
     private List<CommentDTO> comments;
 	

@@ -12,6 +12,7 @@
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript">
 	
+
    </script>
 </th:block>
     
@@ -64,7 +65,10 @@
   <div class="board-write-container">
     <li class="board-write" th:each="board : ${qnaList}">
       <div class="post-number" th:text="${board.boardId}"></div>
-      <div class="answer-count">답변<br>1</div>
+      <div class="answer-count">
+      	<p id="anwer-count-title">답변</p>
+      	<div class="answer-count-count" th:text="${board.commentCount}"></div>
+      </div>
       <div class="board-writer-title">
         <div class="author">
           <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">

@@ -39,6 +39,7 @@ public class CommentController {
         
         System.out.println("댓글 작성 요청 - boardId: " + boardId);
         System.out.println("댓글 내용: " + commentDto.getContent());
+        System.out.println("댓글 작성자: " + commentDto.getWriter());
         System.out.println("================================================"); 
         
         return new ResponseCommentDTO<>("성공", "댓글 작성을 완료했습니다.", commentService.writeComment(boardId, commentDto, user), null);
