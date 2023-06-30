@@ -20,6 +20,7 @@ import com.bit.studypage.dto.FileDTO;
 import com.bit.studypage.entity.BoardQna;
 import com.bit.studypage.entity.FileEntity;
 import com.bit.studypage.repository.BoardQnaRepository;
+import com.bit.studypage.repository.CommentRepository;
 import com.bit.studypage.repository.FileRepository;
 import com.bit.studypage.service.BoardQnaService;
 import com.bit.studypage.service.FileStorageService;
@@ -35,6 +36,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	private final BoardQnaRepository boardRepository;
 	private final FileRepository fileRepository;
 	private final FileStorageService fileStorageService;
+	private final CommentRepository commentRepository;
 	
 	@Value("${app.file-upload-dir}")
     private String fileUploadDir;
@@ -157,6 +159,11 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 				
 				BoardQnaDTO dto = new BoardQnaDTO();
 				BeanUtils.copyProperties(b, dto);
+				
+				// 댓글 수 조회
+	            int commentCount = getCommentCount(b.getBoardId());
+	            dto.setCommentCount(commentCount);
+				
 				dataList.add(dto);
 			}
 		}
@@ -172,11 +179,16 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	    return (int) Math.ceil((double) totalBoards / pageSize);
 	}
 
+	//파일 목록
 	@Override
 	public List<FileEntity> getBoardFileList(long boardId) {
 		
-		// TODO Auto-generated method stub
 		return fileRepository.findByBoardQnaBoardId(boardId);
+	}
+	
+	//댓글 수 
+	public int getCommentCount(long boardId) {
+	    return commentRepository.countByBoard_BoardId(boardId);
 	}
 
 

@@ -188,3 +188,12 @@
 .content {
   color: #333;
 }
+
+.writer {
+  font-weight: bold;
+}
+
+.profile-img {
+    width: 30px;
+    height: 30px;
+}

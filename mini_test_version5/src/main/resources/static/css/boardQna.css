@@ -122,12 +122,17 @@
   color: #f97800;
   border: 2px solid #f97800;
   border-radius: 5px;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   margin-right: 10px;
   margin-left: 10px;
   text-align: center;
+  display: block !important;
+}
+
+.answer-count-count {
+	display: block;
 }
 
 /*드롭다운*/
