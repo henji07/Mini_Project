@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Table(name="FileTest")
 @Getter
 @NoArgsConstructor
-public class FileEntity {
+public class FileQnaEntity {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class FileEntity {
         this.boardQna = boardQna;
     }
 
-    public FileEntity(String fileName, String fileType, String filePath) {
+    public FileQnaEntity(String fileName, String fileType, String filePath) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.filePath = filePath;

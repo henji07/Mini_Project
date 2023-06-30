@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
-public interface FileStorageService {
+public interface FileQnaStorageService {
 	//파일 저장 디렉토리 초기화
     public void init();
     //MultipartFile 받아서 해당 파일을 저장

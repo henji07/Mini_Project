@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bit.studypage.entity.FileEntity;
+import com.bit.studypage.entity.FileQnaEntity;
 
 @Repository
-public interface FileRepository extends JpaRepository<FileEntity, Long> {
+public interface FileQnaRepository extends JpaRepository<FileQnaEntity, Long> {
 
-	List<FileEntity> findByBoardQnaBoardId(long boardId);
+	List<FileQnaEntity> findByBoardQnaBoardId(long boardId);
 
 }
