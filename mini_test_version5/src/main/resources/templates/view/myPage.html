@@ -20,7 +20,8 @@
         <script type="text/javascript" th:inline="javascript"
                 th:src="@{https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js}"></script>
         <script type="text/javascript" th:inline="javascript" th:src="@{./js/script.js}"></script>
-        <script>
+
+        <script th:inline="javascript">
             $(document).ready(() => {
                 $("#pass-confirm").css("display", "none");
                 $("#pass-confirm1, #pass-confirm2").on("blur", () => {
@@ -35,13 +36,189 @@
                         type: "POST",
                         url: "/myPage/name-info",
                         data: $("#name-info").serialize(),
-                        success: function (response) {
+                        success: (response) => {
                             alert(response);
+                            location.href = `/myPageView`;
                             // 서버에서 응답이 온 경우의 동작
                         }
                     });
                 });
+                $("#profile-info-btn").on("click", () => {
+                    $.ajax({
+                        type: "POST",
+                        url: "/myPage/user-info",
+                        data: $("#profile-member-form").serialize(),
+                        success: (obj) => {
+                            console.log(obj);
+                            location.href = `/myPageView`;
+                        }
+                    })
+                })
+                $("#del-user").on("click", () => {
+                    $("#modal").show();
+                    $("body").css("overflow", "hidden");
+                })
+                $("#close-modal").on("click", (event) => {
+                    event.preventDefault();
+                    $("#modal").hide();
+                    $("body").css("overflow", "auto");
+                })
+                $("#del-modal").on("click", (event) => {
+                    event.preventDefault();
+                    $.ajax({
+                        url: "/myPage/check-pass",
+                        type: "POST",
+                        data: $("#del-user-pass-confirm").serialize(),
+                        success: (obj) => {
+                            if (obj == "ok") {
+                                if (confirm("정말 삭제하시겠습니까?")) {
+                                    $.ajax({
+                                        url: "/myPage/del-user",
+                                        type: "DELETE",
+                                        success: () => {
+                                            alert("삭제되었습니다.");
+                                            location.href = `/`;
+                                        }, error: () => {
+                                            alert("Sdasds")
+                                        }
+                                    })
+                                } else return;
+                            } else {
+                                alert("비밀번호가 틀렸습니다.");
+                                return;
+                            }
+                        }
+                    })
+                })
+                $(".page-link1").on("click", function (e) {
+                    e.preventDefault();
+                    checkBox();
+
+                    var pageNum = $(this).data("page");
+                    console.log(pageNum);
+
+                    $.ajax({
+                        url: "/boards",
+                        data: {
+                            pageNum: pageNum
+                        },
+                        success: function (data) {
+                            // Clear the existing table
+                            $("#profile-write-board1 tr:not(:first)").remove();
+                            console.log(data);
+                            console.log(data.content);
+                            // Update the table with the new page data
+                            $.each(data.content, function (i, board) {
+                                var row = $("<tr>").append(
+                                    // $("<input>").val(board.boardId).attr({type : 'hidden', name : 'del-check'}),
+                                    $('<td>').append($('<input>', {
+                                        value: board.boardId,
+                                        type: 'checkbox',
+                                        name: 'board-check'
+                                    })),
+                                    // $("<td>").text(board.boardId),
+                                    $("<td>").text(board.boardTitle),
+                                    $("<td>").text(board.boardRegDate),
+                                    $("<td>").text(board.boardViewCnt)
+                                );
+                                $("#profile-write-board1").append(row);
+                            });
+                        }
+                    });
+                });
+                $(".page-link2").on("click", function (e) {
+                    e.preventDefault();
+                    checkBox();
+
+                    var pageNum = $(this).data("page");
+                    console.log(pageNum);
+
+                    $.ajax({
+                        url: "/comm",
+                        data: {
+                            pageNum: pageNum
+                        },
+                        success: function (data) {
+                            // Clear the existing table
+                            $("#profile-write-board1 tr:not(:first)").remove();
+                            console.log(data);
+                            console.log(data.content);
+                            // Update the table with the new page data
+                            $.each(data.content, function (i, comm) {
+                                var row = $("<tr>").append(
+                                    $('<td>').append($('<input>', {type: 'checkbox', name: 'board-check'})),
+                                    // $("<td>").text(board.boardId),
+                                    $("<td>").text(comm.commentContent),
+                                    $("<td>").text(comm.boardTitle),
+                                    $("<td>").text(comm.createdAt)
+                                );
+                                $("#profile-write-board1").append(row);
+                            });
+                        }
+                    });
+                });
+
+                $(".page-link3").on("click", function (e) {
+                    e.preventDefault();
+                    checkBox();
+
+                    var pageNum = $(this).data("page");
+                    console.log(pageNum);
+
+                    $.ajax({
+                        url: "/like",
+                        data: {
+                            pageNum: pageNum
+                        },
+                        success: function (data) {
+                            // Clear the existing table
+                            $("#profile-write-board1 tr:not(:first)").remove();
+                            console.log(data);
+                            console.log(data.content);
+                            // Update the table with the new page data
+                            $.each(data.content, function (i, like) {
+                                var row = $("<tr>").append(
+                                    $('<td>').append($('<input>', {type: 'checkbox', name: 'board-check'})),
+                                    // $("<td>").text(board.boardId),
+                                    $("<td>").text(like.boardTitle),
+                                    $("<td>").text(like.boardRegDate),
+                                    $("<td>").text(like.boardViewCnt)
+                                );
+                                $("#profile-write-board1").append(row);
+                            });
+                        }
+                    });
+                });
+                const checkBox = () => {
+                    $("#profile-select-all-board").prop("checked", false);
+                    // $('input[name="board-check"]').prop('checked', false);
+                };
+
+                $("#btn-del-history").on("click", () => {
+                    var cateUrl = "";
+                    if ($("#history-cate").val() == "board") {
+                        cateUrl = "/del-board";
+                        console.log(cateUrl);
+                    } else if ($("#history-cate").val() == "comm") {
+                        cateUrl = "/del-comm";
+                        console.log(cateUrl);
+                    } else if ($("#history-cate").val() == "like") {
+                        cateUrl = "/del-like";
+                        console.log(cateUrl);
+                    } else console.log(cateUrl);
+                    console.log($("#del-history"));
+                    $.ajax({
+                        url: cateUrl,
+                        type: "DELETE",
+                        data: $("#del-history").serialize(),
+                        success: () => {
+                            alert("삭제되었습니다.");
+                            location.href = `/myPageView`;
+                        }
+                    })
+                })
             });
+
         </script>
     </th:block>
 
@@ -59,7 +236,7 @@
                 <div class="profile-box profile-left2">
                     <div class="profile-menu">
                         <div class="profile-menu1 profile-btn-css">회원정보</div>
-                        <div class="profile-menu2 profile-btn-css">글 관리</div>
+                        <div class="profile-menu2 profile-btn-css" id="user-history">글 관리</div>
                         <div class="profile-menu3 profile-btn-css">계정</div>
                     </div>
                 </div>
@@ -73,17 +250,17 @@
                         </div>
                         <div class="profile-info-field">
                             <div>닉네임</div>
-                            <input name="nickname" th:value="${session.user.userNickname}"
+                            <input name="userNickname" th:value="${session.user.userNickname}"
                                    th:placeholder="${session.user.userNickname}"/>
                         </div>
                         <div class="profile-info-field">
                             <div>관심사</div>
                             <select id="profile-interests" multiple name="interest">
-                                <option value="fullstack" th:selected="${interests.contains('풀스택')}">풀스택</option>
-                                <option value="backend" th:selected="${interests.contains('백엔드')}">백엔드</option>
-                                <option value="frontend" th:selected="${interests.contains('프론트엔드')}">프론트엔드</option>
-                                <option value="mobile" th:selected="${interests.contains('모바일')}">모바일</option>
-                                <option value="android" th:selected="${interests.contains('안드로이드')}">안드로이드</option>
+                                <option value="풀스택" th:selected="${interests.contains('풀스택')}">풀스택</option>
+                                <option value="백엔드" th:selected="${interests.contains('백엔드')}">백엔드</option>
+                                <option value="프론트엔드" th:selected="${interests.contains('프론트엔드')}">프론트엔드</option>
+                                <option value="모바일" th:selected="${interests.contains('모바일')}">모바일</option>
+                                <option value="안드로이드" th:selected="${interests.contains('안드로이드')}">안드로이드</option>
                                 <option value="ios" th:selected="${interests.contains('ios')}">ios</option>
                             </select>
                         </div>
@@ -93,7 +270,7 @@
                     <div class="profile-profile-picture">
                         <div class="profile-profile-image">
                             <img
-                                    id="profile-profilePic"
+                                    id="profile-profilePic" class="profile-img"
                                     th:src="@{'/uploads/' + ${profileImg.originName}}"
                             >
                         </div>
@@ -107,7 +284,7 @@
                     <div class="profile-profile-picture2">
                         <div class="profile-profile-image">
                             <img
-                                    id="profile-profilePic"
+                                    id="profile-profilePic" class="profile-img"
                                     th:src="@{'/uploads/'+${profileImg.originName}}"
                                     alt="Profile Picture"
                             />
@@ -144,12 +321,12 @@
                         <table>
                             <tr>
                                 <td>아이디</td>
-                                <td><input type="text" name="email" th:value="${session.user.email}"
-                                           th:placeholder="${session.user.email}"/></td>
+                                <td><input type="text" name="userId" th:value="${session.user.userId}"
+                                           th:placeholder="${session.user.userId}"/></td>
                             </tr>
                             <tr>
                                 <td>현재 비밀번호</td>
-                                <td><input type="password" name="currentPassword" th:value="${session.user.password}"
+                                <td><input type="password" name="password" th:value="${session.user.password}"
                                            th:placeholder="${session.user.password}"/></td>
                             </tr>
                             <tr>
@@ -161,19 +338,13 @@
                                 <td><input type="password" name="confirmPassword" id="pass-confirm2"/>
                                     <div id="pass-confirm">비밀번호가 일치하지 않습니다.</div>
                                 </td>
-                                </td>
                             </tr>
-                            <!--                            <tr>-->
-                            <!--                                <td>이름</td>-->
-                            <!--                                <td><input type="text" name="name" th:placeholder="${session.user.name}"-->
-                            <!--                                           th:value="${session.user.name}"/></td>-->
-                            <!--                            </tr>-->
                             <tr>
                                 <td>성별</td>
                                 <td>
-                                    <input id="check-gender-male" type="radio" name="gender" value="남자"
+                                    <input id="check-gender-male" type="radio" name="gender" value="M"
                                            th:checked="${session.user.gender == 'M'}"/> 남자
-                                    <input id="check-gender-female" type="radio" name="gender" value="여자"
+                                    <input id="check-gender-female" type="radio" name="gender" value="W"
                                            th:checked="${session.user.gender == 'W'}"/> 여자
                                 </td>
                             </tr>
@@ -182,9 +353,6 @@
                                 <td>
                                     <input type="text" name="phone" th:placeholder="${session.user.phone}"
                                            th:value="${session.user.phone}"/>
-                                    <!--                                    <div class="profile-hidden">-->
-                                    <!--                                        올바른 휴대전화 번호를 입력해주세요. (예: 010-1234-5678)-->
-                                    <!--                                    </div>-->
                                 </td>
                             </tr>
                             <tr>
@@ -194,11 +362,11 @@
                             </tr>
                             <tr>
                                 <td>선택약관 동의</td>
-                                <td>선택약관<input id="ch" type="checkbox" name="agree"
+                                <td>선택약관<input id="ch" type="checkbox" name="isTerms" value=1
                                                th:checked="${session.user.isTerms} != 0 ? 'true' : 'false'"></td>
                             </tr>
                         </table>
-                        <button class="profile-btn" type="submit">수정</button>
+                        <button id="profile-info-btn" class="profile-btn" type="submit">수정</button>
                     </form>
                     <div id="profile-con2-2">
                         <div class="profile-box" id="profile-select-container">
@@ -207,7 +375,7 @@
                             <div class="profile-select" id="profile-sel3">쥬아요</div>
                         </div>
 
-                        <div class="profile-box" id="profile-history-container">
+                        <div class="profile-box" id="profile-historycontainer">
                             <table id="profile-write-board1">
                                 <tr id="profile-th">
                                     <th>선택</th>
@@ -215,12 +383,16 @@
                                     <th>작성일</th>
                                     <th>조회수</th>
                                 </tr>
-                                <tr th:each="board:${boardList}">
-                                    <td><input type="checkbox" name="board-check"/></td>
-                                    <td th:text="${board.boardTitle}"></td>
-                                    <td th:text="${board.boardRegDate}"></td>
-                                    <td th:text="${board.boardViewCnt}"></td>
-                                </tr>
+                                <form action="" id="del-history">
+                                    <tr th:each="board : ${boards.content}">
+                                        <td><input type="checkbox" name="board-check" th:value="${board.boardId}"/></td>
+                                        <!--                                        <input th:value="${board.boardId}" type="hidden" name="del-check"/>-->
+                                        <!--                                    <td th:text="${board.boardId}"></td>-->
+                                        <td th:text="${board.boardTitle}"></td>
+                                        <td th:text="${board.boardRegDate}"></td>
+                                        <td th:text="${board.boardViewCnt}"></td>
+                                    </tr>
+
 
                             </table>
                             <table id="profile-write-board2">
@@ -230,10 +402,10 @@
                                     <th>게시글</th>
                                     <th>날짜</th>
                                 </tr>
-                                <tr th:each="comm:${commentsList}">
+                                <tr th:each="comm:${comments.content}">
                                     <td><input type="checkbox" name="board-check"/></td>
                                     <td th:text="${comm.commentContent}"></td>
-                                    <td th:text="${comm.postTitle}"></td>
+                                    <td th:text="${comm.boardTitle}"></td>
                                     <td th:text="${comm.createdAt}"></td>
                                 </tr>
                             </table>
@@ -248,9 +420,10 @@
                                     <td><input type="checkbox" name="board-check"/></td>
                                     <td th:text="${like.boardTitle}"></td>
                                     <td th:text="${like.boardRegDate}"></td>
-                                    <td th:text="${like.boardViewCnt}">1008</td>
+                                    <td th:text="${like.boardViewCnt}"></td>
                                 </tr>
                             </table>
+                            </form>
                             <div class="profile-box" id="profile-ect-container">
                                 <div>
                                     전체선택<input
@@ -258,8 +431,58 @@
                                         id="profile-select-all-board"
                                 />
                                 </div>
-                                <div>paging예정</div>
-                                <input type="submit" value="삭제/취소"/>
+                                <span class="pagination-bottom-pages1">
+                                    <ul style="list-style:none;">
+                                        <li th:if="${boards.hasPrevious()}" style="float: left;">
+                                            <a href="#" class="page-link1"
+                                               th:data-page="${boards.number - 1}">Previous</a>
+                                        </li>
+                                        <li th:each="pageNumber : ${#numbers.sequence(0, boards.totalPages - 1)}"
+                                            style="float: left;">
+                                            <a href="#" class="page-link1" th:data-page="${pageNumber}"
+                                               th:text="${pageNumber + 1}"></a>
+                                        </li>
+                                        <li th:if="${boards.hasNext()}" style="float: left;">
+                                            <a href="#" class="page-link1" th:data-page="${boards.number + 1}">Next</a>
+                                        </li>
+                                    </ul>
+                                </span>
+                                <span class="pagination-bottom-pages2">
+                                    <ul style="list-style:none;">
+                                        <li th:if="${comments.hasPrevious()}" style="float: left;">
+                                            <a href="#" class="page-link1"
+                                               th:data-page="${comments.number - 1}">Previous</a>
+                                        </li>
+                                        <li th:each="pageNumber : ${#numbers.sequence(0, comments.totalPages - 1)}"
+                                            style="float: left;">
+                                            <a href="#" class="page-link1" th:data-page="${pageNumber}"
+                                               th:text="${pageNumber + 1}"></a>
+                                        </li>
+                                        <li th:if="${comments.hasNext()}" style="float: left;">
+                                            <a href="#" class="page-link1"
+                                               th:data-page="${comments.number + 1}">Next</a>
+                                        </li>
+                                    </ul>
+                                </span>
+                                <span class="pagination-bottom-pages3">
+                                    <ul style="list-style:none;">
+                                        <li th:if="${comments.hasPrevious()}" style="float: left;">
+                                            <a href="#" class="page-link1"
+                                               th:data-page="${comments.number - 1}">Previous</a>
+                                        </li>
+                                        <li th:each="pageNumber : ${#numbers.sequence(0, comments.totalPages - 1)}"
+                                            style="float: left;">
+                                            <a href="#" class="page-link1" th:data-page="${pageNumber}"
+                                               th:text="${pageNumber + 1}"></a>
+                                        </li>
+                                        <li th:if="${comments.hasNext()}" style="float: left;">
+                                            <a href="#" class="page-link1"
+                                               th:data-page="${comments.number + 1}">Next</a>
+                                        </li>
+                                    </ul>
+                                </span>
+                                <input type="hidden" value="board" id="history-cate">
+                                <button id="btn-del-history" type="button" value="삭제/취소">삭제/취소</button>
                             </div>
                         </div>
                     </div>
@@ -277,7 +500,7 @@
                         </div>
                         <div class="profile-이름다떨어짐 profile-box">
                             <div class="profile-del-btn-con profile-box">
-                                <button class="profile-del-btn profile-box">계정 삭제</button>
+                                <button class="profile-del-btn profile-box" id="del-user">계정 삭제</button>
                             </div>
                             <div class="profile-social-btn profile-box">
                                 <div
@@ -308,6 +531,17 @@
             </div>
         </div>
     </section>
+    <div id="modal">
+        <div class="modal-content">
+            <h2>계정 삭제</h2>
+            <p>계정 삭제 후 60일간 보관되며 게시글 어쩌구 저쩌구는 60일간 보관 어쩌구 삭제하고 싶으면 비밀번호 치세용</p>
+            <form id="del-user-pass-confirm">
+                <input name="pass" id="del-user-pass">
+                <button id="close-modal" type="">닫기</button>
+                <button id="del-modal">삭제</button>
+            </form>
+        </div>
+    </div>
 </th:block>
 
 </body>

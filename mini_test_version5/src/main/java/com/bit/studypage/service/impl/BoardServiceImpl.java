@@ -6,6 +6,8 @@ import com.bit.studypage.repository.BoardRepository;
 import com.bit.studypage.repository.LikesRepository;
 import com.bit.studypage.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,6 +36,16 @@ public class BoardServiceImpl implements BoardService {
         }
         return boardList;
 
+    }
+
+    @Override
+    public Page<Board> pageList(String writer,Pageable pageable) {
+        return boardRepository.findByBoardWriterOrderByBoardIdDesc(writer,pageable);
+    }
+
+    @Override
+    public void delBoard(Long boardId) {
+        boardRepository.deleteById(boardId);
     }
 
     @Override

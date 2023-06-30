@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.sql.Timestamp;
+
 @Entity
 @Data
 @Table(name = "Likes")
@@ -17,4 +19,9 @@ public class Likes {
 
     @NotNull
     private Long postId;
+    private String boardTitle;
+    private Timestamp boardRegDate;
+    private int boardViewCnt = 0;
+
+
 }

@@ -19,6 +19,8 @@ $(document).ready(function () {
     $("#profile-write-board3").css("display", "none");
     $("#profile-con2-2").css("display", "none");
     $("#profile-con3-2").css("display", "none");
+    $(".pagination-bottom-pages2").css("display", "none");
+    $(".pagination-bottom-pages3").css("display", "none");
     var menuItems = $(".profile-menu1, .profile-menu2, .profile-menu3");
     menuItems.eq(0).addClass("profile-active"); // Set the default underline on menu1
 
@@ -37,7 +39,7 @@ $(document).ready(function () {
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function (event) {
-                    $("#profile-profilePic").attr("src", event.target.result);
+                    $(".profile-img").attr("src", event.target.result);
 
                     // Create new FormData instance
                     let formData = new FormData();
@@ -110,18 +112,30 @@ $(document).ready(function () {
         $("#profile-write-board2").css("display", "none");
         $("#profile-write-board1").css("display", "");
         $("#profile-write-board3").css("display", "none");
+        $(".pagination-bottom-pages1").css("display", "");
+        $(".pagination-bottom-pages2").css("display", "none");
+        $(".pagination-bottom-pages3").css("display", "none");
+        $("#history-cate").val("board");
     })
     $("#profile-sel2").on("click", () => {
         checkBox();
         $("#profile-write-board2").css("display", "");
         $("#profile-write-board1").css("display", "none");
         $("#profile-write-board3").css("display", "none");
+        $(".pagination-bottom-pages1").css("display", "none");
+        $(".pagination-bottom-pages2").css("display", "");
+        $(".pagination-bottom-pages3").css("display", "none");
+        $("#history-cate").val("comm");
     })
     $("#profile-sel3").on("click", () => {
         checkBox();
         $("#profile-write-board2").css("display", "none");
         $("#profile-write-board1").css("display", "none");
         $("#profile-write-board3").css("display", "");
+        $(".pagination-bottom-pages1").css("display", "none");
+        $(".pagination-bottom-pages2").css("display", "none");
+        $(".pagination-bottom-pages3").css("display", "");
+        $("#history-cate").val("like");
     })
     const checkBox = () => {
         $("#profile-select-all-board").prop("checked", false);

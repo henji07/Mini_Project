@@ -1,164 +1,19 @@
-2023-06-28 15:21:01.006 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@1bf47904]
-2023-06-28 15:21:01.010 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
-2023-06-28 15:21:01.012 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
-    select
-        u1_0.users_id,
-        u1_0.email,
-        u1_0.gender,
-        u1_0.interest,
-        u1_0.is_terms,
-        u1_0.user_name,
-        u1_0.password,
-        u1_0.phone_number,
-        u1_0.user_id,
-        u1_0.user_nickname 
-    from
-        users u1_0 
-    where
-        u1_0.users_id=?
-2023-06-28 15:21:01.038 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@4f45b5e5
-2023-06-28 15:21:01.039 [http-nio-9993-exec-6] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
-2023-06-28 15:21:01.064 [http-nio-9993-exec-6] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@996414305 wrapping com.mysql.cj.jdbc.ConnectionImpl@291a83bc]
-2023-06-28 15:21:01.070 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
-2023-06-28 15:21:01.072 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Comments(349901951060300))] with identifierForTableGroup [com.bit.studypage.entity.Comments] for NavigablePath [com.bit.studypage.entity.Comments] 
-2023-06-28 15:21:01.073 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@5cf77cc4
-2023-06-28 15:21:01.075 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Comments(349901951060300).commWriter) 
-2023-06-28 15:21:01.076 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 15:21:01.077 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
-    select
-        c1_0.comment_id,
-        c1_0.child_key,
-        c1_0.comm_writer,
-        c1_0.comment_content,
-        c1_0.created_at,
-        c1_0.post_id 
-    from
-        comments c1_0 
-    where
-        c1_0.comm_writer=?
-2023-06-28 15:21:01.095 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@a0059bb
-2023-06-28 15:21:01.096 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@a0059bb
-2023-06-28 15:21:01.097 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@a0059bb
-2023-06-28 15:21:01.098 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:374 - Found thread-bound EntityManager [SessionImpl(337351882<open>)] for JPA transaction
-2023-06-28 15:21:01.099 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:370 - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
-2023-06-28 15:21:01.099 [http-nio-9993-exec-6] DEBUG o.s.jdbc.datasource.DataSourceUtils:187 - Setting JDBC Connection [HikariProxyConnection@996414305 wrapping com.mysql.cj.jdbc.ConnectionImpl@291a83bc] read-only
-2023-06-28 15:21:01.108 [http-nio-9993-exec-6] DEBUG o.h.e.t.internal.TransactionImpl:81 - begin
-2023-06-28 15:21:01.134 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@7129308]
-2023-06-28 15:21:01.135 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
-2023-06-28 15:21:01.136 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
-    select
-        b1_0.board_id,
-        b1_0.board_cate,
-        b1_0.board_content,
-        b1_0.board_reg_date,
-        b1_0.board_title,
-        b1_0.board_view_cnt,
-        b1_0.board_writer 
-    from
-        board b1_0 
-    where
-        b1_0.board_id=?
-2023-06-28 15:21:01.143 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@4252ee47
-2023-06-28 15:21:01.144 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:740 - Initiating transaction commit
-2023-06-28 15:21:01.144 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:556 - Committing JPA transaction on EntityManager [SessionImpl(337351882<open>)]
-2023-06-28 15:21:01.145 [http-nio-9993-exec-6] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
-2023-06-28 15:21:01.155 [http-nio-9993-exec-6] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@996414305 wrapping com.mysql.cj.jdbc.ConnectionImpl@291a83bc]
-2023-06-28 15:21:01.163 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
-2023-06-28 15:21:01.163 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:374 - Found thread-bound EntityManager [SessionImpl(337351882<open>)] for JPA transaction
-2023-06-28 15:21:01.163 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:370 - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
-2023-06-28 15:21:01.164 [http-nio-9993-exec-6] DEBUG o.s.jdbc.datasource.DataSourceUtils:187 - Setting JDBC Connection [HikariProxyConnection@996414305 wrapping com.mysql.cj.jdbc.ConnectionImpl@291a83bc] read-only
-2023-06-28 15:21:01.169 [http-nio-9993-exec-6] DEBUG o.h.e.t.internal.TransactionImpl:81 - begin
-2023-06-28 15:21:01.178 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@db08653]
-2023-06-28 15:21:01.179 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:740 - Initiating transaction commit
-2023-06-28 15:21:01.180 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:556 - Committing JPA transaction on EntityManager [SessionImpl(337351882<open>)]
-2023-06-28 15:21:01.180 [http-nio-9993-exec-6] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
-2023-06-28 15:21:01.195 [http-nio-9993-exec-6] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@996414305 wrapping com.mysql.cj.jdbc.ConnectionImpl@291a83bc]
-2023-06-28 15:21:01.200 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
-2023-06-28 15:21:01.200 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:374 - Found thread-bound EntityManager [SessionImpl(337351882<open>)] for JPA transaction
-2023-06-28 15:21:01.200 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:370 - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
-2023-06-28 15:21:01.200 [http-nio-9993-exec-6] DEBUG o.s.jdbc.datasource.DataSourceUtils:187 - Setting JDBC Connection [HikariProxyConnection@996414305 wrapping com.mysql.cj.jdbc.ConnectionImpl@291a83bc] read-only
-2023-06-28 15:21:01.212 [http-nio-9993-exec-6] DEBUG o.h.e.t.internal.TransactionImpl:81 - begin
-2023-06-28 15:21:01.224 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@7825b3ff]
-2023-06-28 15:21:01.225 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:740 - Initiating transaction commit
-2023-06-28 15:21:01.225 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:556 - Committing JPA transaction on EntityManager [SessionImpl(337351882<open>)]
-2023-06-28 15:21:01.225 [http-nio-9993-exec-6] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
-2023-06-28 15:21:01.243 [http-nio-9993-exec-6] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@996414305 wrapping com.mysql.cj.jdbc.ConnectionImpl@291a83bc]
-2023-06-28 15:21:01.270 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
-2023-06-28 15:21:01.271 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Likes(349901924291500))] with identifierForTableGroup [com.bit.studypage.entity.Likes] for NavigablePath [com.bit.studypage.entity.Likes] 
-2023-06-28 15:21:01.272 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@712e30b6
-2023-06-28 15:21:01.272 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Likes(349901924291500).usersId) 
-2023-06-28 15:21:01.272 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 15:21:01.273 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
-    select
-        l1_0.like_id,
-        l1_0.post_id,
-        l1_0.users_id 
-    from
-        likes l1_0 
-    where
-        l1_0.users_id=?
-2023-06-28 15:21:01.290 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@128c9395
-2023-06-28 15:21:01.290 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@128c9395
-2023-06-28 15:21:01.291 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@128c9395
-2023-06-28 15:21:01.292 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(349901899686900))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
-2023-06-28 15:21:01.292 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@2816818f
-2023-06-28 15:21:01.292 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(349901899686900).boardId) 
-2023-06-28 15:21:01.293 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 15:21:01.293 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
-    select
-        b1_0.board_id,
-        b1_0.board_cate,
-        b1_0.board_content,
-        b1_0.board_reg_date,
-        b1_0.board_title,
-        b1_0.board_view_cnt,
-        b1_0.board_writer 
-    from
-        board b1_0 
-    where
-        b1_0.board_id=?
-2023-06-28 15:21:01.301 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@7848de11
-2023-06-28 15:21:01.302 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(349901899686900))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
-2023-06-28 15:21:01.302 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@628f746
-2023-06-28 15:21:01.303 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(349901899686900).boardId) 
-2023-06-28 15:21:01.303 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 15:21:01.303 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
-    select
-        b1_0.board_id,
-        b1_0.board_cate,
-        b1_0.board_content,
-        b1_0.board_reg_date,
-        b1_0.board_title,
-        b1_0.board_view_cnt,
-        b1_0.board_writer 
-    from
-        board b1_0 
-    where
-        b1_0.board_id=?
-2023-06-28 15:21:01.308 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@7933e1fe
-2023-06-28 15:21:01.309 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(349901899686900))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
-2023-06-28 15:21:01.310 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@32fdb31d
-2023-06-28 15:21:01.310 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(349901899686900).boardId) 
-2023-06-28 15:21:01.310 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 15:21:01.311 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
-    select
-        b1_0.board_id,
-        b1_0.board_cate,
-        b1_0.board_content,
-        b1_0.board_reg_date,
-        b1_0.board_title,
-        b1_0.board_view_cnt,
-        b1_0.board_writer 
-    from
-        board b1_0 
-    where
-        b1_0.board_id=?
-2023-06-28 15:21:01.558 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@421aef0e
-2023-06-28 15:21:01.560 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(349901898854200))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
-2023-06-28 15:21:01.561 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@4c9b8fd0
-2023-06-28 15:21:01.561 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(349901898854200).boardWriter) 
-2023-06-28 15:21:01.562 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 15:21:01.563 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
+2023-06-30 00:58:44.489 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@63cd3494
+2023-06-30 00:58:44.496 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:374 - Found thread-bound EntityManager [SessionImpl(530969767<open>)] for JPA transaction
+2023-06-30 00:58:44.497 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:370 - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2023-06-30 00:58:44.501 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:187 - Setting JDBC Connection [HikariProxyConnection@1291271208 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a1f28fb] read-only
+2023-06-30 00:58:44.513 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:81 - begin
+2023-06-30 00:58:44.524 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@1c645662]
+2023-06-30 00:58:44.525 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:740 - Initiating transaction commit
+2023-06-30 00:58:44.526 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:556 - Committing JPA transaction on EntityManager [SessionImpl(530969767<open>)]
+2023-06-30 00:58:44.526 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
+2023-06-30 00:58:44.548 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@1291271208 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a1f28fb]
+2023-06-30 00:58:44.560 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
+2023-06-30 00:58:44.563 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(470482692312300))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
+2023-06-30 00:58:44.564 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@153de862
+2023-06-30 00:58:44.565 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(470482692312300).boardWriter) 
+2023-06-30 00:58:44.567 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 00:58:44.568 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
     select
         b1_0.board_id,
         b1_0.board_cate,
@@ -171,14 +26,30 @@
         board b1_0 
     where
         b1_0.board_writer=?
-2023-06-28 15:21:01.580 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@d77d844
-2023-06-28 15:21:01.580 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@d77d844
-2023-06-28 15:21:01.581 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@d77d844
-2023-06-28 15:21:01.582 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Comments(349901951060300))] with identifierForTableGroup [com.bit.studypage.entity.Comments] for NavigablePath [com.bit.studypage.entity.Comments] 
-2023-06-28 15:21:01.583 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@4190ae39
-2023-06-28 15:21:01.584 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Comments(349901951060300).commWriter) 
-2023-06-28 15:21:01.584 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 15:21:01.584 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
+2023-06-30 00:58:44.579 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.580 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.581 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.581 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.582 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.584 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.584 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.585 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.586 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.586 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.587 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.588 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.588 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.589 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.589 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.590 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.591 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.591 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.591 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@261ce969
+2023-06-30 00:58:44.593 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Comments(470482738139400))] with identifierForTableGroup [com.bit.studypage.entity.Comments] for NavigablePath [com.bit.studypage.entity.Comments] 
+2023-06-30 00:58:44.594 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@6cc73f89
+2023-06-30 00:58:44.594 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Comments(470482738139400).commWriter) 
+2023-06-30 00:58:44.595 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 00:58:44.596 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
     select
         c1_0.comment_id,
         c1_0.child_key,
@@ -190,14 +61,14 @@
         comments c1_0 
     where
         c1_0.comm_writer=?
-2023-06-28 15:21:01.594 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@201b9130
-2023-06-28 15:21:01.595 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@201b9130
-2023-06-28 15:21:01.596 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@201b9130
-2023-06-28 15:21:01.597 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.ProfileImg(349901979123100))] with identifierForTableGroup [com.bit.studypage.entity.ProfileImg] for NavigablePath [com.bit.studypage.entity.ProfileImg] 
-2023-06-28 15:21:01.598 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@67a303e
-2023-06-28 15:21:01.598 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.ProfileImg(349901979123100).userId) 
-2023-06-28 15:21:01.599 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 15:21:01.599 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
+2023-06-30 00:58:44.607 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@8aaa278
+2023-06-30 00:58:44.608 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@8aaa278
+2023-06-30 00:58:44.609 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@8aaa278
+2023-06-30 00:58:44.612 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.ProfileImg(470482758180500))] with identifierForTableGroup [com.bit.studypage.entity.ProfileImg] for NavigablePath [com.bit.studypage.entity.ProfileImg] 
+2023-06-30 00:58:44.614 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@24070d9e
+2023-06-30 00:58:44.614 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.ProfileImg(470482758180500).userId) 
+2023-06-30 00:58:44.615 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 00:58:44.616 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
     select
         p1_0.img_id,
         p1_0.origin_name,
@@ -209,290 +80,58 @@
         p1_0.user_id=? 
     order by
         p1_0.img_id desc limit ?
-2023-06-28 15:21:01.609 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@dbd3c3f
-2023-06-28 15:21:01.609 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:374 - Found thread-bound EntityManager [SessionImpl(337351882<open>)] for JPA transaction
-2023-06-28 15:21:01.610 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:370 - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
-2023-06-28 15:21:01.610 [http-nio-9993-exec-6] DEBUG o.s.jdbc.datasource.DataSourceUtils:187 - Setting JDBC Connection [HikariProxyConnection@996414305 wrapping com.mysql.cj.jdbc.ConnectionImpl@291a83bc] read-only
-2023-06-28 15:21:01.620 [http-nio-9993-exec-6] DEBUG o.h.e.t.internal.TransactionImpl:81 - begin
-2023-06-28 15:21:01.625 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@17c2c04d]
-2023-06-28 15:21:01.625 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:740 - Initiating transaction commit
-2023-06-28 15:21:01.626 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:556 - Committing JPA transaction on EntityManager [SessionImpl(337351882<open>)]
-2023-06-28 15:21:01.626 [http-nio-9993-exec-6] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
-2023-06-28 15:21:01.659 [http-nio-9993-exec-6] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@996414305 wrapping com.mysql.cj.jdbc.ConnectionImpl@291a83bc]
-2023-06-28 15:21:01.676 [http-nio-9993-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
-2023-06-28 15:21:01.677 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(349901896995000))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
-2023-06-28 15:21:01.678 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@4a99d490
-2023-06-28 15:21:01.678 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(349901896995000).boardWriter) 
-2023-06-28 15:21:01.679 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 15:21:01.680 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
+2023-06-30 00:58:44.629 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@62b5f8c9
+2023-06-30 00:58:44.630 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:374 - Found thread-bound EntityManager [SessionImpl(530969767<open>)] for JPA transaction
+2023-06-30 00:58:44.631 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:370 - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2023-06-30 00:58:44.631 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:187 - Setting JDBC Connection [HikariProxyConnection@1291271208 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a1f28fb] read-only
+2023-06-30 00:58:44.643 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:81 - begin
+2023-06-30 00:58:44.654 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@483cbacf]
+2023-06-30 00:58:44.655 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:740 - Initiating transaction commit
+2023-06-30 00:58:44.655 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:556 - Committing JPA transaction on EntityManager [SessionImpl(530969767<open>)]
+2023-06-30 00:58:44.655 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
+2023-06-30 00:58:44.676 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@1291271208 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a1f28fb]
+2023-06-30 00:58:44.688 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
+2023-06-30 00:58:44.689 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(470482692948900))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
+2023-06-30 00:58:44.690 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@3bde093c
+2023-06-30 00:58:44.690 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(470482692948900).boardWriter) 
+2023-06-30 00:58:44.691 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 00:58:44.692 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
     select
         count(b1_0.board_id) 
     from
         board b1_0 
     where
         b1_0.board_writer=?
-2023-06-28 15:21:01.695 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@451420d7
-2023-06-28 15:21:01.696 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Comments(349901949753100))] with identifierForTableGroup [com.bit.studypage.entity.Comments] for NavigablePath [com.bit.studypage.entity.Comments] 
-2023-06-28 15:21:01.697 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@abd2a13
-2023-06-28 15:21:01.697 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Comments(349901949753100).commWriter) 
-2023-06-28 15:21:01.698 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 15:21:01.698 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
+2023-06-30 00:58:44.707 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@7da30ba2
+2023-06-30 00:58:44.710 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Comments(470482736940500))] with identifierForTableGroup [com.bit.studypage.entity.Comments] for NavigablePath [com.bit.studypage.entity.Comments] 
+2023-06-30 00:58:44.712 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@278b9b12
+2023-06-30 00:58:44.712 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Comments(470482736940500).commWriter) 
+2023-06-30 00:58:44.713 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 00:58:44.714 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
     select
         count(c1_0.comment_id) 
     from
         comments c1_0 
     where
         c1_0.comm_writer=?
-2023-06-28 15:21:01.699 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:211 - Restarting due to 53 class path changes (0 additions, 0 deletions, 53 modifications)
-2023-06-28 15:21:01.700 [File Watcher] DEBUG o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:212 - Change set: [C:\Mini_Project\mini_test_version5\build\resources\main [C:\Mini_Project\mini_test_version5\build\resources\main\application.properties (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\logback-spring.xml (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\mybatis-config.out.xml (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\mybatis-config.xml (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardCertificate.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardCommunicate.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardQna.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardTogether.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\footer.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\fullSearch.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\home.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\join.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\login.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\myPage.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\write.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\arrow2.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\certificate_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\footerLogo.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\free_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\main1.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\main3.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\main_2.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\Pagelogo.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\qna_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\search.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\together_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\구글.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\네이버.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\로고.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\춘식.jpg (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\카카오.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\js\common.js (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\js\jquery-3.7.0.min.js (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\js\script.js (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\fragments\config.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\fragments\footer.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\fragments\header.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\layouts\default-layout.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardCertificate.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardCommunicate.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardQna.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardTogether.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\findId.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\findPw.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\fullSearch.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\googleJoin.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\home.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\join.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\kakaoJoin.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\login.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\myPage.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\naverJoin.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\write.html (MODIFY)]]
-2023-06-28 15:21:01.701 [File Watcher] DEBUG o.s.boot.devtools.restart.Restarter:248 - Restarting application
-2023-06-28 15:21:01.702 [Thread-5] DEBUG o.s.boot.devtools.restart.Restarter:304 - Stopping application
-2023-06-28 15:21:01.703 [Thread-5] DEBUG o.s.b.a.ApplicationAvailabilityBean:77 - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
-2023-06-28 15:21:01.703 [Thread-5] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext:1055 - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@45aa005f, started on Wed Jun 28 15:20:01 KST 2023
-2023-06-28 15:21:01.705 [Thread-5] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase 2147482623
-2023-06-28 15:21:01.707 [Thread-5] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'webServerGracefulShutdown' completed its stop procedure
-2023-06-28 15:21:01.708 [Thread-5] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase 2147481599
-2023-06-28 15:21:01.716 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@362f7fda
-2023-06-28 15:21:01.717 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(349901896995000))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
-2023-06-28 15:21:01.718 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@27c8fc33
-2023-06-28 15:21:01.718 [http-nio-9993-exec-6] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(349901896995000).boardWriter) 
-2023-06-28 15:21:01.719 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 15:21:01.719 [http-nio-9993-exec-6] DEBUG org.hibernate.SQL:133 - 
+2023-06-30 00:58:44.728 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@2a763a9c
+2023-06-30 00:58:44.730 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(470482692948900))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
+2023-06-30 00:58:44.730 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@13eb6dfa
+2023-06-30 00:58:44.731 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(470482692948900).boardWriter) 
+2023-06-30 00:58:44.731 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 00:58:44.732 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
     select
         count(b1_0.board_id) 
     from
         board b1_0 
     where
         b1_0.board_writer=?
-2023-06-28 15:21:01.727 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Pausing ProtocolHandler ["http-nio-9993"]
-2023-06-28 15:21:01.727 [Thread-5] INFO  o.a.catalina.core.StandardService:173 - Stopping service [Tomcat]
-2023-06-28 15:21:01.729 [Thread-5] INFO  o.a.catalina.core.StandardWrapper:173 - Waiting for [1] instance(s) to be deallocated for Servlet [dispatcherServlet]
-2023-06-28 15:21:01.744 [http-nio-9993-exec-6] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@3d83b103
-2023-06-28 15:21:01.745 [http-nio-9993-exec-6] INFO  c.b.s.controller.MyPageController:73 - 3
-2023-06-28 15:21:01.746 [http-nio-9993-exec-6] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver:354 - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
-2023-06-28 15:21:01.780 [http-nio-9993-exec-6] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-6][layouts/default-layout] Deprecated unwrapped fragment expression "fragments/config :: config" found in template layouts/default-layout, line 8, col 7. Please use the complete syntax of fragment expressions instead ("~{fragments/config :: config}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
-2023-06-28 15:21:01.784 [http-nio-9993-exec-6] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-6][layouts/default-layout] Deprecated unwrapped fragment expression "/fragments/header :: header" found in template layouts/default-layout, line 12, col 13. Please use the complete syntax of fragment expressions instead ("~{/fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
-2023-06-28 15:21:01.795 [http-nio-9993-exec-6] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-6][layouts/default-layout] Deprecated unwrapped fragment expression "/fragments/footer :: footer" found in template layouts/default-layout, line 16, col 13. Please use the complete syntax of fragment expressions instead ("~{/fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
-2023-06-28 15:21:01.798 [http-nio-9993-exec-6] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
-2023-06-28 15:21:01.799 [http-nio-9993-exec-6] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
-2023-06-28 15:21:01.844 [Thread-5] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-06-28 15:21:01.852 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Stopping ProtocolHandler ["http-nio-9993"]
-2023-06-28 15:21:01.854 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Destroying ProtocolHandler ["http-nio-9993"]
-2023-06-28 15:21:01.855 [Thread-5] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'webServerStartStop' completed its stop procedure
-2023-06-28 15:21:01.855 [Thread-5] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase -2147483647
-2023-06-28 15:21:01.855 [Thread-5] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'springBootLoggingLifecycle' completed its stop procedure
-2023-06-28 15:21:01.856 [Thread-5] DEBUG o.s.j.e.a.AnnotationMBeanExporter:452 - Unregistering JMX-exposed beans on shutdown
-2023-06-28 15:21:01.857 [Thread-5] DEBUG o.s.j.e.a.AnnotationMBeanExporter:186 - Unregistering JMX-exposed beans
-2023-06-28 15:21:01.858 [Thread-5] DEBUG o.s.s.c.ThreadPoolTaskExecutor:218 - Shutting down ExecutorService 'applicationTaskExecutor'
-2023-06-28 15:21:01.859 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-28 15:21:01.859 [Thread-5] DEBUG o.h.internal.SessionFactoryImpl:856 - HHH000031: Closing
-2023-06-28 15:21:01.860 [Thread-5] DEBUG o.h.type.spi.TypeConfiguration$Scope:550 - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@26584c51] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@5ef2268f]
-2023-06-28 15:21:01.861 [Thread-5] DEBUG o.h.s.i.AbstractServiceRegistryImpl:413 - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
-2023-06-28 15:21:01.862 [Thread-5] DEBUG o.h.b.r.i.BootstrapServiceRegistryImpl:296 - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
-2023-06-28 15:21:01.863 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
-2023-06-28 15:21:01.864 [Thread-5] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-1 - Before shutdown stats (total=10, active=0, idle=10, waiting=0)
-2023-06-28 15:21:01.865 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@291a83bc: (connection evicted)
-2023-06-28 15:21:01.874 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@97213a0: (connection evicted)
-2023-06-28 15:21:01.874 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@274be4cd: (connection evicted)
-2023-06-28 15:21:01.875 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@5b197acc: (connection evicted)
-2023-06-28 15:21:01.875 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@1562c53c: (connection evicted)
-2023-06-28 15:21:01.876 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@c943b23: (connection evicted)
-2023-06-28 15:21:01.876 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@7481dbf0: (connection evicted)
-2023-06-28 15:21:01.876 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@64de00b6: (connection evicted)
-2023-06-28 15:21:01.877 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@67967234: (connection evicted)
-2023-06-28 15:21:01.877 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@4a7600c6: (connection evicted)
-2023-06-28 15:21:01.877 [Thread-5] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-1 - After shutdown stats (total=0, active=0, idle=0, waiting=0)
-2023-06-28 15:21:01.878 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
-2023-06-28 15:21:01.926 [Thread-5] DEBUG o.s.boot.devtools.restart.Restarter:280 - Starting application com.bit.studypage.MiniTestApplication with URLs [file:/C:/Mini_Project/mini_test_version5/build/classes/java/main/, file:/C:/Mini_Project/mini_test_version5/build/resources/main/]
-2023-06-28 16:59:45.564 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@2003019959 wrapping com.mysql.cj.jdbc.ConnectionImpl@1c65be25]
-2023-06-28 16:59:45.571 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
-2023-06-28 16:59:45.572 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:374 - Found thread-bound EntityManager [SessionImpl(593790662<open>)] for JPA transaction
-2023-06-28 16:59:45.572 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:370 - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
-2023-06-28 16:59:45.572 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:187 - Setting JDBC Connection [HikariProxyConnection@2003019959 wrapping com.mysql.cj.jdbc.ConnectionImpl@1c65be25] read-only
-2023-06-28 16:59:45.578 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:81 - begin
-2023-06-28 16:59:45.584 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@5113d5f1]
-2023-06-28 16:59:45.584 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:740 - Initiating transaction commit
-2023-06-28 16:59:45.584 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:556 - Committing JPA transaction on EntityManager [SessionImpl(593790662<open>)]
-2023-06-28 16:59:45.584 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
-2023-06-28 16:59:45.597 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@2003019959 wrapping com.mysql.cj.jdbc.ConnectionImpl@1c65be25]
-2023-06-28 16:59:45.601 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
-2023-06-28 16:59:45.601 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:374 - Found thread-bound EntityManager [SessionImpl(593790662<open>)] for JPA transaction
-2023-06-28 16:59:45.601 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:370 - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
-2023-06-28 16:59:45.601 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:187 - Setting JDBC Connection [HikariProxyConnection@2003019959 wrapping com.mysql.cj.jdbc.ConnectionImpl@1c65be25] read-only
-2023-06-28 16:59:45.605 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:81 - begin
-2023-06-28 16:59:45.617 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@7526da31]
-2023-06-28 16:59:45.617 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:740 - Initiating transaction commit
-2023-06-28 16:59:45.617 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:556 - Committing JPA transaction on EntityManager [SessionImpl(593790662<open>)]
-2023-06-28 16:59:45.617 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
-2023-06-28 16:59:45.628 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@2003019959 wrapping com.mysql.cj.jdbc.ConnectionImpl@1c65be25]
-2023-06-28 16:59:45.634 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
-2023-06-28 16:59:45.635 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Likes(355857837424400))] with identifierForTableGroup [com.bit.studypage.entity.Likes] for NavigablePath [com.bit.studypage.entity.Likes] 
-2023-06-28 16:59:45.635 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@179425da
-2023-06-28 16:59:45.636 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Likes(355857837424400).usersId) 
-2023-06-28 16:59:45.636 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 16:59:45.637 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
-    select
-        l1_0.like_id,
-        l1_0.post_id,
-        l1_0.users_id 
-    from
-        likes l1_0 
-    where
-        l1_0.users_id=?
-2023-06-28 16:59:45.644 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@46c22533
-2023-06-28 16:59:45.644 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@46c22533
-2023-06-28 16:59:45.645 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(355857817500000))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
-2023-06-28 16:59:45.645 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@16722fca
-2023-06-28 16:59:45.645 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(355857817500000).boardId) 
-2023-06-28 16:59:45.645 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 16:59:45.645 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
-    select
-        b1_0.board_id,
-        b1_0.board_cate,
-        b1_0.board_content,
-        b1_0.board_reg_date,
-        b1_0.board_title,
-        b1_0.board_view_cnt,
-        b1_0.board_writer 
-    from
-        board b1_0 
-    where
-        b1_0.board_id=?
-2023-06-28 16:59:45.655 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@5ab652a5
-2023-06-28 16:59:45.656 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(355857817500000))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
-2023-06-28 16:59:45.656 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@7b9a1df3
-2023-06-28 16:59:45.656 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(355857817500000).boardId) 
-2023-06-28 16:59:45.657 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 16:59:45.657 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
-    select
-        b1_0.board_id,
-        b1_0.board_cate,
-        b1_0.board_content,
-        b1_0.board_reg_date,
-        b1_0.board_title,
-        b1_0.board_view_cnt,
-        b1_0.board_writer 
-    from
-        board b1_0 
-    where
-        b1_0.board_id=?
-2023-06-28 16:59:45.664 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@6c83e159
-2023-06-28 16:59:45.665 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:374 - Found thread-bound EntityManager [SessionImpl(593790662<open>)] for JPA transaction
-2023-06-28 16:59:45.665 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:370 - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
-2023-06-28 16:59:45.665 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:187 - Setting JDBC Connection [HikariProxyConnection@2003019959 wrapping com.mysql.cj.jdbc.ConnectionImpl@1c65be25] read-only
-2023-06-28 16:59:45.673 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:81 - begin
-2023-06-28 16:59:45.679 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@30776ff2]
-2023-06-28 16:59:45.680 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:740 - Initiating transaction commit
-2023-06-28 16:59:45.680 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:556 - Committing JPA transaction on EntityManager [SessionImpl(593790662<open>)]
-2023-06-28 16:59:45.680 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
-2023-06-28 16:59:45.693 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@2003019959 wrapping com.mysql.cj.jdbc.ConnectionImpl@1c65be25]
-2023-06-28 16:59:45.697 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
-2023-06-28 16:59:45.698 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(355857815964700))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
-2023-06-28 16:59:45.699 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@667197c2
-2023-06-28 16:59:45.699 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(355857815964700).boardWriter) 
-2023-06-28 16:59:45.699 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 16:59:45.699 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
-    select
-        b1_0.board_id,
-        b1_0.board_cate,
-        b1_0.board_content,
-        b1_0.board_reg_date,
-        b1_0.board_title,
-        b1_0.board_view_cnt,
-        b1_0.board_writer 
-    from
-        board b1_0 
-    where
-        b1_0.board_writer=?
-2023-06-28 16:59:45.703 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@4369735d
-2023-06-28 16:59:45.703 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@4369735d
-2023-06-28 16:59:45.703 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@4369735d
-2023-06-28 16:59:45.704 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Comments(355857860686100))] with identifierForTableGroup [com.bit.studypage.entity.Comments] for NavigablePath [com.bit.studypage.entity.Comments] 
-2023-06-28 16:59:45.704 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@664abca8
-2023-06-28 16:59:45.704 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Comments(355857860686100).commWriter) 
-2023-06-28 16:59:45.704 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 16:59:45.704 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
-    select
-        c1_0.comment_id,
-        c1_0.child_key,
-        c1_0.comm_writer,
-        c1_0.comment_content,
-        c1_0.created_at,
-        c1_0.post_id 
-    from
-        comments c1_0 
-    where
-        c1_0.comm_writer=?
-2023-06-28 16:59:45.717 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@7e6e19c7
-2023-06-28 16:59:45.718 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@7e6e19c7
-2023-06-28 16:59:45.718 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@7e6e19c7
-2023-06-28 16:59:45.718 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.ProfileImg(355857883106100))] with identifierForTableGroup [com.bit.studypage.entity.ProfileImg] for NavigablePath [com.bit.studypage.entity.ProfileImg] 
-2023-06-28 16:59:45.719 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@719466ac
-2023-06-28 16:59:45.719 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.ProfileImg(355857883106100).userId) 
-2023-06-28 16:59:45.719 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 16:59:45.719 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
-    select
-        p1_0.img_id,
-        p1_0.origin_name,
-        p1_0.path,
-        p1_0.user_id 
-    from
-        profile_img p1_0 
-    where
-        p1_0.user_id=? 
-    order by
-        p1_0.img_id desc limit ?
-2023-06-28 16:59:45.728 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@6b3ad472
-2023-06-28 16:59:45.729 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:374 - Found thread-bound EntityManager [SessionImpl(593790662<open>)] for JPA transaction
-2023-06-28 16:59:45.729 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:370 - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
-2023-06-28 16:59:45.729 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:187 - Setting JDBC Connection [HikariProxyConnection@2003019959 wrapping com.mysql.cj.jdbc.ConnectionImpl@1c65be25] read-only
-2023-06-28 16:59:45.734 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:81 - begin
-2023-06-28 16:59:45.740 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@6c299255]
-2023-06-28 16:59:45.740 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:740 - Initiating transaction commit
-2023-06-28 16:59:45.740 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:556 - Committing JPA transaction on EntityManager [SessionImpl(593790662<open>)]
-2023-06-28 16:59:45.740 [http-nio-9993-exec-1] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
-2023-06-28 16:59:45.755 [http-nio-9993-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@2003019959 wrapping com.mysql.cj.jdbc.ConnectionImpl@1c65be25]
-2023-06-28 16:59:45.768 [http-nio-9993-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
-2023-06-28 16:59:45.769 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(355857816912300))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
-2023-06-28 16:59:45.769 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@4338e6ac
-2023-06-28 16:59:45.769 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(355857816912300).boardWriter) 
-2023-06-28 16:59:45.769 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 16:59:45.769 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
-    select
-        count(b1_0.board_id) 
-    from
-        board b1_0 
-    where
-        b1_0.board_writer=?
-2023-06-28 16:59:45.776 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@8ce3e75
-2023-06-28 16:59:45.777 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Comments(355857859903800))] with identifierForTableGroup [com.bit.studypage.entity.Comments] for NavigablePath [com.bit.studypage.entity.Comments] 
-2023-06-28 16:59:45.777 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@6149c0e
-2023-06-28 16:59:45.777 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Comments(355857859903800).commWriter) 
-2023-06-28 16:59:45.777 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 16:59:45.777 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
-    select
-        count(c1_0.comment_id) 
-    from
-        comments c1_0 
-    where
-        c1_0.comm_writer=?
-2023-06-28 16:59:45.789 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@38fd320b
-2023-06-28 16:59:45.790 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(355857816912300))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
-2023-06-28 16:59:45.790 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@2af82cd5
-2023-06-28 16:59:45.790 [http-nio-9993-exec-1] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(355857816912300).boardWriter) 
-2023-06-28 16:59:45.790 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
-2023-06-28 16:59:45.791 [http-nio-9993-exec-1] DEBUG org.hibernate.SQL:133 - 
-    select
-        count(b1_0.board_id) 
-    from
-        board b1_0 
-    where
-        b1_0.board_writer=?
-2023-06-28 16:59:45.795 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@ffb1de8
-2023-06-28 16:59:45.796 [http-nio-9993-exec-1] INFO  c.b.s.controller.MyPageController:77 - 3
-2023-06-28 16:59:45.798 [http-nio-9993-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver:354 - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
-2023-06-28 16:59:45.798 [http-nio-9993-exec-1] DEBUG org.thymeleaf.TemplateEngine:330 - [THYMELEAF] INITIALIZING TEMPLATE ENGINE
-2023-06-28 16:59:45.817 [http-nio-9993-exec-1] DEBUG org.thymeleaf.TemplateEngine.CONFIG:157 - Initializing Thymeleaf Template engine configuration...
+2023-06-30 00:58:44.744 [http-nio-9993-exec-1] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@5753828d
+2023-06-30 00:58:44.744 [http-nio-9993-exec-1] INFO  c.b.s.controller.MyPageController:83 - 19
+2023-06-30 00:58:44.745 [http-nio-9993-exec-1] INFO  c.b.s.controller.MyPageController:84 - 시이발!2
+2023-06-30 00:58:44.748 [http-nio-9993-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver:354 - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2023-06-30 00:58:44.748 [http-nio-9993-exec-1] DEBUG org.thymeleaf.TemplateEngine:330 - [THYMELEAF] INITIALIZING TEMPLATE ENGINE
+2023-06-30 00:58:44.837 [http-nio-9993-exec-1] DEBUG org.thymeleaf.TemplateEngine.CONFIG:157 - Initializing Thymeleaf Template engine configuration...
 [THYMELEAF] TEMPLATE ENGINE CONFIGURATION:
 [THYMELEAF] * Thymeleaf version: 3.1.1.RELEASE (built 2022-12-06T18:08:23+0000)
 [THYMELEAF] * Cache Manager implementation: org.thymeleaf.cache.StandardCacheManager
@@ -525,198 +164,198 @@
 [THYMELEAF]             * [* {th:action,data-th-action}] [1000]: org.thymeleaf.spring6.processor.SpringActionTagProcessor
 [THYMELEAF]             * [* {th:href,data-th-href}] [1000]: org.thymeleaf.spring6.processor.SpringHrefTagProcessor
 [THYMELEAF]             * [* {th:src,data-th-src}] [1000]: org.thymeleaf.spring6.processor.SpringSrcTagProcessor
-[THYMELEAF]             * [* {th:pubdate,data-th-pubdate}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:scoped,data-th-scoped}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:controls,data-th-controls}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:async,data-th-async}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
 [THYMELEAF]             * [* {th:hidden,data-th-hidden}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:reversed,data-th-reversed}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:novalidate,data-th-novalidate}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:open,data-th-open}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:autofocus,data-th-autofocus}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:readonly,data-th-readonly}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:loop,data-th-loop}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:required,data-th-required}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
 [THYMELEAF]             * [* {th:seamless,data-th-seamless}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:autoplay,data-th-autoplay}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:multiple,data-th-multiple}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:default,data-th-default}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:checked,data-th-checked}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:formnovalidate,data-th-formnovalidate}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
 [THYMELEAF]             * [* {th:nowrap,data-th-nowrap}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
 [THYMELEAF]             * [* {th:ismap,data-th-ismap}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:declare,data-th-declare}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:controls,data-th-controls}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:open,data-th-open}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:autoplay,data-th-autoplay}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:disabled,data-th-disabled}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
 [THYMELEAF]             * [* {th:selected,data-th-selected}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:async,data-th-async}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:autofocus,data-th-autofocus}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:formnovalidate,data-th-formnovalidate}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:reversed,data-th-reversed}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:checked,data-th-checked}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:default,data-th-default}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:multiple,data-th-multiple}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:required,data-th-required}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:readonly,data-th-readonly}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:novalidate,data-th-novalidate}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:pubdate,data-th-pubdate}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
+[THYMELEAF]             * [* {th:declare,data-th-declare}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
 [THYMELEAF]             * [* {th:defer,data-th-defer}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:scoped,data-th-scoped}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:loop,data-th-loop}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
-[THYMELEAF]             * [* {th:oninvalid,data-th-oninvalid}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onchange,data-th-onchange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onunload,data-th-onunload}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onerror,data-th-onerror}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:disabled,data-th-disabled}] [1000]: org.thymeleaf.standard.processor.StandardConditionalFixedValueTagProcessor
 [THYMELEAF]             * [* {th:onemptied,data-th-onemptied}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
 [THYMELEAF]             * [* {th:onkeydown,data-th-onkeydown}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:ondurationchange,data-th-ondurationchange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onmouseout,data-th-onmouseout}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onshow,data-th-onshow}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onratechange,data-th-onratechange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:ondragenter,data-th-ondragenter}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onundo,data-th-onundo}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onclick,data-th-onclick}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onformchange,data-th-onformchange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:ondragend,data-th-ondragend}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onsubmit,data-th-onsubmit}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:ondblclick,data-th-ondblclick}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onloadstart,data-th-onloadstart}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onplaying,data-th-onplaying}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onwaiting,data-th-onwaiting}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onredo,data-th-onredo}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onfocus,data-th-onfocus}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onreadystatechange,data-th-onreadystatechange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onload,data-th-onload}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onselect,data-th-onselect}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:ondragstart,data-th-ondragstart}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onended,data-th-onended}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onpause,data-th-onpause}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onmouseover,data-th-onmouseover}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onpopstate,data-th-onpopstate}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onresize,data-th-onresize}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onstorage,data-th-onstorage}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onmousedown,data-th-onmousedown}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onstalled,data-th-onstalled}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onbeforeprint,data-th-onbeforeprint}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onprogress,data-th-onprogress}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onkeypress,data-th-onkeypress}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onloadedmetadata,data-th-onloadedmetadata}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:ondrag,data-th-ondrag}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
 [THYMELEAF]             * [* {th:onseeked,data-th-onseeked}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:oncanplay,data-th-oncanplay}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:oninput,data-th-oninput}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onvolumechange,data-th-onvolumechange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onplay,data-th-onplay}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onabort,data-th-onabort}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:ondragover,data-th-ondragover}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onmouseover,data-th-onmouseover}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:ondblclick,data-th-ondblclick}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onreset,data-th-onreset}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onmouseout,data-th-onmouseout}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onpopstate,data-th-onpopstate}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onsubmit,data-th-onsubmit}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:ontimeupdate,data-th-ontimeupdate}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onundo,data-th-onundo}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onprogress,data-th-onprogress}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onshow,data-th-onshow}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onbeforeprint,data-th-onbeforeprint}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onloadedmetadata,data-th-onloadedmetadata}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onformchange,data-th-onformchange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onerror,data-th-onerror}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onclick,data-th-onclick}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onstorage,data-th-onstorage}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
 [THYMELEAF]             * [* {th:onhashchange,data-th-onhashchange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
 [THYMELEAF]             * [* {th:onkeyup,data-th-onkeyup}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onscroll,data-th-onscroll}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:ondragover,data-th-ondragover}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onmessage,data-th-onmessage}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:ondrop,data-th-ondrop}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onafterprint,data-th-onafterprint}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onoffline,data-th-onoffline}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onchange,data-th-onchange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
 [THYMELEAF]             * [* {th:onforminput,data-th-onforminput}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onblur,data-th-onblur}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onabort,data-th-onabort}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
 [THYMELEAF]             * [* {th:onbeforeunload,data-th-onbeforeunload}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
 [THYMELEAF]             * [* {th:onloadeddata,data-th-onloadeddata}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onsuspend,data-th-onsuspend}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onmousemove,data-th-onmousemove}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onselect,data-th-onselect}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:ondragenter,data-th-ondragenter}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:ondrop,data-th-ondrop}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onkeypress,data-th-onkeypress}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onwaiting,data-th-onwaiting}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
 [THYMELEAF]             * [* {th:onseeking,data-th-onseeking}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:ondragleave,data-th-ondragleave}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onblur,data-th-onblur}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onreset,data-th-onreset}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:ononline,data-th-ononline}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:ontimeupdate,data-th-ontimeupdate}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:onmousewheel,data-th-onmousewheel}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:oncanplaythrough,data-th-oncanplaythrough}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
-[THYMELEAF]             * [* {th:oncontextmenu,data-th-oncontextmenu}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onresize,data-th-onresize}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:oninput,data-th-oninput}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onreadystatechange,data-th-onreadystatechange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onunload,data-th-onunload}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onredo,data-th-onredo}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
 [THYMELEAF]             * [* {th:onmouseup,data-th-onmouseup}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:oncanplay,data-th-oncanplay}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onmousedown,data-th-onmousedown}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onvolumechange,data-th-onvolumechange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:ononline,data-th-ononline}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:ondragstart,data-th-ondragstart}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onscroll,data-th-onscroll}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onratechange,data-th-onratechange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onpause,data-th-onpause}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onfocus,data-th-onfocus}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:ondragend,data-th-ondragend}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onmessage,data-th-onmessage}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:ondurationchange,data-th-ondurationchange}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:oncanplaythrough,data-th-oncanplaythrough}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:oninvalid,data-th-oninvalid}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onplaying,data-th-onplaying}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:ondragleave,data-th-ondragleave}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:ondrag,data-th-ondrag}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onoffline,data-th-onoffline}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onload,data-th-onload}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onended,data-th-onended}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onplay,data-th-onplay}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onloadstart,data-th-onloadstart}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onafterprint,data-th-onafterprint}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onmousemove,data-th-onmousemove}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onmousewheel,data-th-onmousewheel}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:oncontextmenu,data-th-oncontextmenu}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onstalled,data-th-onstalled}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
+[THYMELEAF]             * [* {th:onsuspend,data-th-onsuspend}] [1000]: org.thymeleaf.standard.processor.StandardDOMEventAttributeTagProcessor
 [THYMELEAF]             * [* {th:inline,data-th-inline}] [1000]: org.thymeleaf.standard.processor.StandardInlineHTMLTagProcessor
 [THYMELEAF]             * [* {th:name,data-th-name}] [1000]: org.thymeleaf.standard.processor.StandardNonRemovableAttributeTagProcessor
 [THYMELEAF]             * [* {th:type,data-th-type}] [1000]: org.thymeleaf.standard.processor.StandardNonRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:vspace,data-th-vspace}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:max,data-th-max}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:accesskey,data-th-accesskey}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:draggable,data-th-draggable}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
 [THYMELEAF]             * [* {th:content,data-th-content}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:compact,data-th-compact}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:hreflang,data-th-hreflang}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:classid,data-th-classid}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:data,data-th-data}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:radiogroup,data-th-radiogroup}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:poster,data-th-poster}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:cite,data-th-cite}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:formtarget,data-th-formtarget}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:enctype,data-th-enctype}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:icon,data-th-icon}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:sizes,data-th-sizes}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:contenteditable,data-th-contenteditable}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:class,data-th-class}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:formaction,data-th-formaction}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:size,data-th-size}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:dir,data-th-dir}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:lang,data-th-lang}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:rowspan,data-th-rowspan}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:rows,data-th-rows}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:formmethod,data-th-formmethod}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:bgcolor,data-th-bgcolor}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:contextmenu,data-th-contextmenu}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:title,data-th-title}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:wrap,data-th-wrap}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:http-equiv,data-th-http-equiv}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:span,data-th-span}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:frame,data-th-frame}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:headers,data-th-headers}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:marginwidth,data-th-marginwidth}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:cols,data-th-cols}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:scope,data-th-scope}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:kind,data-th-kind}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:dropzone,data-th-dropzone}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
 [THYMELEAF]             * [* {th:codebase,data-th-codebase}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:compact,data-th-compact}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:hspace,data-th-hspace}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:marginwidth,data-th-marginwidth}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:scheme,data-th-scheme}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:frameborder,data-th-frameborder}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:kind,data-th-kind}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:maxlength,data-th-maxlength}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:dropzone,data-th-dropzone}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:placeholder,data-th-placeholder}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:vspace,data-th-vspace}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:data,data-th-data}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:media,data-th-media}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:title,data-th-title}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:frame,data-th-frame}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:manifest,data-th-manifest}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:summary,data-th-summary}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:sizes,data-th-sizes}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:min,data-th-min}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:audio,data-th-audio}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:style,data-th-style}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:span,data-th-span}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:icon,data-th-icon}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:cols,data-th-cols}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:alt,data-th-alt}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:wrap,data-th-wrap}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:rowspan,data-th-rowspan}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:border,data-th-border}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:formaction,data-th-formaction}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:formenctype,data-th-formenctype}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:size,data-th-size}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:colspan,data-th-colspan}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:max,data-th-max}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:poster,data-th-poster}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:datetime,data-th-datetime}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:spellcheck,data-th-spellcheck}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:formtarget,data-th-formtarget}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:high,data-th-high}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:classid,data-th-classid}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:rows,data-th-rows}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:http-equiv,data-th-http-equiv}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:radiogroup,data-th-radiogroup}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:class,data-th-class}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:bgcolor,data-th-bgcolor}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:sandbox,data-th-sandbox}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:cellspacing,data-th-cellspacing}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:standby,data-th-standby}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:optimum,data-th-optimum}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:cite,data-th-cite}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:rel,data-th-rel}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
 [THYMELEAF]             * [* {th:id,data-th-id}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
 [THYMELEAF]             * [* {th:list,data-th-list}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:placeholder,data-th-placeholder}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:preload,data-th-preload}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
 [THYMELEAF]             * [* {th:autocomplete,data-th-autocomplete}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:accept-charset,data-th-accept-charset}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:scheme,data-th-scheme}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:maxlength,data-th-maxlength}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:width,data-th-width}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:frameborder,data-th-frameborder}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:scrolling,data-th-scrolling}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:standby,data-th-standby}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:background,data-th-background}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:for,data-th-for}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:border,data-th-border}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:keytype,data-th-keytype}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:formenctype,data-th-formenctype}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:start,data-th-start}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:usemap,data-th-usemap}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:colspan,data-th-colspan}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:cellspacing,data-th-cellspacing}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:valuetype,data-th-valuetype}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:summary,data-th-summary}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:pattern,data-th-pattern}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:axis,data-th-axis}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:rev,data-th-rev}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:spellcheck,data-th-spellcheck}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:low,data-th-low}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:form,data-th-form}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:archive,data-th-archive}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:min,data-th-min}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:height,data-th-height}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:step,data-th-step}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:sandbox,data-th-sandbox}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:optimum,data-th-optimum}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:label,data-th-label}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:marginheight,data-th-marginheight}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:target,data-th-target}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:rules,data-th-rules}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:longdesc,data-th-longdesc}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:audio,data-th-audio}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:hspace,data-th-hspace}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:media,data-th-media}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:tabindex,data-th-tabindex}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:align,data-th-align}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:srclang,data-th-srclang}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:charset,data-th-charset}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:draggable,data-th-draggable}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
 [THYMELEAF]             * [* {th:abbr,data-th-abbr}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:style,data-th-style}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:cellpadding,data-th-cellpadding}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:high,data-th-high}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:datetime,data-th-datetime}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:accept,data-th-accept}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:rel,data-th-rel}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:alt,data-th-alt}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:step,data-th-step}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:width,data-th-width}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:headers,data-th-headers}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
 [THYMELEAF]             * [* {th:codetype,data-th-codetype}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:srclang,data-th-srclang}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:for,data-th-for}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:accept,data-th-accept}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:accept-charset,data-th-accept-charset}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:cellpadding,data-th-cellpadding}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:scope,data-th-scope}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:axis,data-th-axis}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:contextmenu,data-th-contextmenu}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:rev,data-th-rev}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:keytype,data-th-keytype}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:low,data-th-low}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:height,data-th-height}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:valuetype,data-th-valuetype}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:enctype,data-th-enctype}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:pattern,data-th-pattern}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:target,data-th-target}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:archive,data-th-archive}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:usemap,data-th-usemap}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:accesskey,data-th-accesskey}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:label,data-th-label}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:longdesc,data-th-longdesc}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:start,data-th-start}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:tabindex,data-th-tabindex}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:contenteditable,data-th-contenteditable}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:rules,data-th-rules}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:preload,data-th-preload}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:align,data-th-align}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:background,data-th-background}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:hreflang,data-th-hreflang}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:formmethod,data-th-formmethod}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:marginheight,data-th-marginheight}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:dir,data-th-dir}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
 [THYMELEAF]             * [* {th:challenge,data-th-challenge}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
-[THYMELEAF]             * [* {th:manifest,data-th-manifest}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:charset,data-th-charset}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:form,data-th-form}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:scrolling,data-th-scrolling}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
+[THYMELEAF]             * [* {th:lang,data-th-lang}] [1000]: org.thymeleaf.standard.processor.StandardRemovableAttributeTagProcessor
 [THYMELEAF]             * [* {th:xmlbase,data-th-xmlbase}] [1000]: org.thymeleaf.standard.processor.StandardXmlBaseTagProcessor
 [THYMELEAF]             * [* {th:xmllang,data-th-xmllang}] [1000]: org.thymeleaf.standard.processor.StandardXmlLangTagProcessor
 [THYMELEAF]             * [* {xmlns:th}] [1000]: org.thymeleaf.standard.processor.StandardXmlNsTagProcessor
@@ -820,8 +459,8 @@
 [THYMELEAF]             * [* {th:utext}] [1400]: org.thymeleaf.standard.processor.StandardUtextTagProcessor
 [THYMELEAF]             * [* {th:assert}] [1550]: org.thymeleaf.standard.processor.StandardAssertTagProcessor
 [THYMELEAF]             * [* {th:remove}] [1600]: org.thymeleaf.standard.processor.StandardRemoveTagProcessor
-[THYMELEAF]             * [{th:block} *] [100000]: org.thymeleaf.standard.processor.StandardBlockTagProcessor
 [THYMELEAF]             * [* 100000] [org.thymeleaf.standard.processor.StandardBlockTagProcessor]: {}
+[THYMELEAF]             * [{th:block} *] [100000]: org.thymeleaf.standard.processor.StandardBlockTagProcessor
 [THYMELEAF]         * Text Processors by [precedence]:
 [THYMELEAF]             * [1000]: org.thymeleaf.standard.processor.StandardInliningTextProcessor
 [THYMELEAF]     * Processors for Template Mode: CSS
@@ -840,8 +479,8 @@
 [THYMELEAF]             * [* {th:utext}] [1400]: org.thymeleaf.standard.processor.StandardUtextTagProcessor
 [THYMELEAF]             * [* {th:assert}] [1550]: org.thymeleaf.standard.processor.StandardAssertTagProcessor
 [THYMELEAF]             * [* {th:remove}] [1600]: org.thymeleaf.standard.processor.StandardRemoveTagProcessor
-[THYMELEAF]             * [* 100000] [org.thymeleaf.standard.processor.StandardBlockTagProcessor]: {}
 [THYMELEAF]             * [{th:block} *] [100000]: org.thymeleaf.standard.processor.StandardBlockTagProcessor
+[THYMELEAF]             * [* 100000] [org.thymeleaf.standard.processor.StandardBlockTagProcessor]: {}
 [THYMELEAF]         * Text Processors by [precedence]:
 [THYMELEAF]             * [1000]: org.thymeleaf.standard.processor.StandardInliningTextProcessor
 [THYMELEAF]     * Expression Objects:
@@ -877,11 +516,11 @@
 [THYMELEAF]         * #requestdatavalues
 [THYMELEAF]     * Execution Attributes:
 [THYMELEAF]         * "StandardExpressionParser": Standard Expression Parser
-[THYMELEAF]         * "StandardJavaScriptSerializer": org.thymeleaf.standard.serializer.StandardJavaScriptSerializer@690668c1
-[THYMELEAF]         * "StandardCSSSerializer": org.thymeleaf.standard.serializer.StandardCSSSerializer@3db78455
+[THYMELEAF]         * "StandardJavaScriptSerializer": org.thymeleaf.standard.serializer.StandardJavaScriptSerializer@10a6cc77
+[THYMELEAF]         * "StandardCSSSerializer": org.thymeleaf.standard.serializer.StandardCSSSerializer@4aee6a25
 [THYMELEAF]         * "EnableSpringELCompiler": false
 [THYMELEAF]         * "StandardVariableExpressionEvaluator": SpringEL
-[THYMELEAF]         * "StandardConversionService": org.thymeleaf.spring6.expression.SpringStandardConversionService@5f18fdbc
+[THYMELEAF]         * "StandardConversionService": org.thymeleaf.spring6.expression.SpringStandardConversionService@10a9e0fc
 [THYMELEAF] * Dialect [2 of 2]: Layout (nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect)
 [THYMELEAF]     * Prefix: "layout"
 [THYMELEAF]     * Processors for Template Mode: HTML
@@ -906,39 +545,295 @@
 [THYMELEAF]             * [* {layout:insert}] [0]: nz.net.ultraq.thymeleaf.layoutdialect.includes.InsertProcessor
 [THYMELEAF]             * [* {layout:replace}] [0]: nz.net.ultraq.thymeleaf.layoutdialect.includes.ReplaceProcessor
 [THYMELEAF] TEMPLATE ENGINE CONFIGURED OK
-2023-06-28 16:59:45.819 [http-nio-9993-exec-1] DEBUG org.thymeleaf.TemplateEngine:353 - [THYMELEAF] TEMPLATE ENGINE INITIALIZED
-2023-06-28 16:59:45.853 [http-nio-9993-exec-1] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-1][layouts/default-layout] Deprecated unwrapped fragment expression "fragments/config :: config" found in template layouts/default-layout, line 8, col 7. Please use the complete syntax of fragment expressions instead ("~{fragments/config :: config}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
-2023-06-28 16:59:45.855 [Thread-31] INFO  o.a.catalina.core.StandardWrapper:173 - Waiting for [1] instance(s) to be deallocated for Servlet [dispatcherServlet]
-2023-06-28 16:59:45.858 [http-nio-9993-exec-1] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-1][layouts/default-layout] Deprecated unwrapped fragment expression "/fragments/header :: header" found in template layouts/default-layout, line 12, col 13. Please use the complete syntax of fragment expressions instead ("~{/fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
-2023-06-28 16:59:45.876 [http-nio-9993-exec-1] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-1][layouts/default-layout] Deprecated unwrapped fragment expression "/fragments/footer :: footer" found in template layouts/default-layout, line 16, col 13. Please use the complete syntax of fragment expressions instead ("~{/fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
-2023-06-28 16:59:45.879 [http-nio-9993-exec-1] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
-2023-06-28 16:59:45.881 [http-nio-9993-exec-1] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
-2023-06-28 16:59:45.969 [Thread-31] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-06-28 16:59:45.972 [Thread-31] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Stopping ProtocolHandler ["http-nio-9993"]
-2023-06-28 16:59:45.975 [Thread-31] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Destroying ProtocolHandler ["http-nio-9993"]
-2023-06-28 16:59:45.975 [Thread-31] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'webServerStartStop' completed its stop procedure
-2023-06-28 16:59:45.976 [Thread-31] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase -2147483647
-2023-06-28 16:59:45.977 [Thread-31] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'springBootLoggingLifecycle' completed its stop procedure
-2023-06-28 16:59:45.977 [Thread-31] DEBUG o.s.j.e.a.AnnotationMBeanExporter:452 - Unregistering JMX-exposed beans on shutdown
-2023-06-28 16:59:45.977 [Thread-31] DEBUG o.s.j.e.a.AnnotationMBeanExporter:186 - Unregistering JMX-exposed beans
-2023-06-28 16:59:45.977 [Thread-31] DEBUG o.s.s.c.ThreadPoolTaskExecutor:218 - Shutting down ExecutorService 'applicationTaskExecutor'
-2023-06-28 16:59:45.977 [Thread-31] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-28 16:59:45.978 [Thread-31] DEBUG o.h.internal.SessionFactoryImpl:856 - HHH000031: Closing
-2023-06-28 16:59:45.978 [Thread-31] DEBUG o.h.type.spi.TypeConfiguration$Scope:550 - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@69e028a1] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@2bb6cc1]
-2023-06-28 16:59:45.978 [Thread-31] DEBUG o.h.s.i.AbstractServiceRegistryImpl:413 - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
-2023-06-28 16:59:45.978 [Thread-31] DEBUG o.h.b.r.i.BootstrapServiceRegistryImpl:296 - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
-2023-06-28 16:59:45.978 [Thread-31] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-8 - Shutdown initiated...
-2023-06-28 16:59:45.978 [Thread-31] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-8 - Before shutdown stats (total=10, active=0, idle=10, waiting=0)
-2023-06-28 16:59:45.979 [HikariPool-8 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-8 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@1c65be25: (connection evicted)
-2023-06-28 16:59:45.980 [HikariPool-8 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-8 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@34b503fa: (connection evicted)
-2023-06-28 16:59:45.980 [HikariPool-8 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-8 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@3a72fb1c: (connection evicted)
-2023-06-28 16:59:45.980 [HikariPool-8 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-8 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@3e4d688a: (connection evicted)
-2023-06-28 16:59:45.981 [HikariPool-8 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-8 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@7b4ff127: (connection evicted)
-2023-06-28 16:59:45.981 [HikariPool-8 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-8 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@67799767: (connection evicted)
-2023-06-28 16:59:45.981 [HikariPool-8 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-8 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@4afe2a8f: (connection evicted)
-2023-06-28 16:59:45.981 [HikariPool-8 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-8 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@1f221262: (connection evicted)
-2023-06-28 16:59:45.981 [HikariPool-8 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-8 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@1b600e68: (connection evicted)
-2023-06-28 16:59:45.982 [HikariPool-8 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-8 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@300960cc: (connection evicted)
-2023-06-28 16:59:45.982 [Thread-31] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-8 - After shutdown stats (total=0, active=0, idle=0, waiting=0)
-2023-06-28 16:59:45.982 [Thread-31] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-8 - Shutdown completed.
-2023-06-28 16:59:46.023 [Thread-31] DEBUG o.s.boot.devtools.restart.Restarter:280 - Starting application com.bit.studypage.MiniTestApplication with URLs [file:/C:/Mini_Project/mini_test_version5/build/classes/java/main/, file:/C:/Mini_Project/mini_test_version5/build/resources/main/]
+2023-06-30 00:58:44.839 [http-nio-9993-exec-1] DEBUG org.thymeleaf.TemplateEngine:353 - [THYMELEAF] TEMPLATE ENGINE INITIALIZED
+2023-06-30 00:58:45.064 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:211 - Restarting due to 53 class path changes (0 additions, 0 deletions, 53 modifications)
+2023-06-30 00:58:45.065 [File Watcher] DEBUG o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:212 - Change set: [C:\Mini_Project\mini_test_version5\build\resources\main [C:\Mini_Project\mini_test_version5\build\resources\main\application.properties (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\logback-spring.xml (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\mybatis-config.out.xml (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\mybatis-config.xml (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardCertificate.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardCommunicate.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardQna.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardTogether.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\footer.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\fullSearch.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\home.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\join.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\login.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\myPage.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\write.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\arrow2.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\certificate_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\footerLogo.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\free_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\main1.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\main3.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\main_2.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\Pagelogo.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\qna_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\search.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\together_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\구글.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\네이버.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\로고.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\춘식.jpg (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\카카오.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\js\common.js (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\js\jquery-3.7.0.min.js (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\js\script.js (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\fragments\config.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\fragments\footer.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\fragments\header.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\layouts\default-layout.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardCertificate.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardCommunicate.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardQna.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardTogether.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\findId.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\findPw.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\fullSearch.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\googleJoin.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\home.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\join.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\kakaoJoin.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\login.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\myPage.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\naverJoin.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\write.html (MODIFY)]]
+2023-06-30 00:58:45.067 [File Watcher] DEBUG o.s.boot.devtools.restart.Restarter:248 - Restarting application
+2023-06-30 00:58:45.068 [Thread-11] DEBUG o.s.boot.devtools.restart.Restarter:304 - Stopping application
+2023-06-30 00:58:45.069 [Thread-11] DEBUG o.s.b.a.ApplicationAvailabilityBean:77 - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2023-06-30 00:58:45.071 [Thread-11] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext:1055 - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@e1f670c, started on Fri Jun 30 00:49:44 KST 2023
+2023-06-30 00:58:45.072 [Thread-11] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase 2147482623
+2023-06-30 00:58:45.072 [Thread-11] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'webServerGracefulShutdown' completed its stop procedure
+2023-06-30 00:58:45.072 [Thread-11] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase 2147481599
+2023-06-30 00:58:45.093 [Thread-11] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Pausing ProtocolHandler ["http-nio-9993"]
+2023-06-30 00:58:45.093 [Thread-11] INFO  o.a.catalina.core.StandardService:173 - Stopping service [Tomcat]
+2023-06-30 00:58:45.093 [Thread-11] INFO  o.a.catalina.core.StandardWrapper:173 - Waiting for [1] instance(s) to be deallocated for Servlet [dispatcherServlet]
+2023-06-30 00:58:45.215 [http-nio-9993-exec-1] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-1][layouts/default-layout] Deprecated unwrapped fragment expression "fragments/config :: config" found in template layouts/default-layout, line 8, col 7. Please use the complete syntax of fragment expressions instead ("~{fragments/config :: config}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2023-06-30 00:58:45.257 [http-nio-9993-exec-1] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-1][layouts/default-layout] Deprecated unwrapped fragment expression "/fragments/header :: header" found in template layouts/default-layout, line 12, col 13. Please use the complete syntax of fragment expressions instead ("~{/fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2023-06-30 00:58:45.281 [HikariPool-3 housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-3 - Pool stats (total=10, active=1, idle=9, waiting=0)
+2023-06-30 00:58:45.282 [HikariPool-3 housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool:521 - HikariPool-3 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2023-06-30 00:58:45.290 [http-nio-9993-exec-1] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-1][layouts/default-layout] Deprecated unwrapped fragment expression "/fragments/footer :: footer" found in template layouts/default-layout, line 16, col 13. Please use the complete syntax of fragment expressions instead ("~{/fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2023-06-30 00:58:45.297 [http-nio-9993-exec-1] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 00:58:45.304 [http-nio-9993-exec-1] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 00:58:45.313 [Thread-11] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-06-30 00:58:45.328 [Thread-11] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Stopping ProtocolHandler ["http-nio-9993"]
+2023-06-30 00:58:45.331 [Thread-11] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Destroying ProtocolHandler ["http-nio-9993"]
+2023-06-30 00:58:45.333 [Thread-11] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'webServerStartStop' completed its stop procedure
+2023-06-30 00:58:45.333 [Thread-11] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase -2147483647
+2023-06-30 00:58:45.334 [Thread-11] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'springBootLoggingLifecycle' completed its stop procedure
+2023-06-30 00:58:45.335 [Thread-11] DEBUG o.s.j.e.a.AnnotationMBeanExporter:452 - Unregistering JMX-exposed beans on shutdown
+2023-06-30 00:58:45.335 [Thread-11] DEBUG o.s.j.e.a.AnnotationMBeanExporter:186 - Unregistering JMX-exposed beans
+2023-06-30 00:58:45.337 [Thread-11] DEBUG o.s.s.c.ThreadPoolTaskExecutor:218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2023-06-30 00:58:45.338 [Thread-11] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-30 00:58:45.339 [Thread-11] DEBUG o.h.internal.SessionFactoryImpl:856 - HHH000031: Closing
+2023-06-30 00:58:45.339 [Thread-11] DEBUG o.h.type.spi.TypeConfiguration$Scope:550 - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@fa58042] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@42c16c71]
+2023-06-30 00:58:45.340 [Thread-11] DEBUG o.h.s.i.AbstractServiceRegistryImpl:413 - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
+2023-06-30 00:58:45.340 [Thread-11] DEBUG o.h.b.r.i.BootstrapServiceRegistryImpl:296 - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
+2023-06-30 00:58:45.342 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-3 - Shutdown initiated...
+2023-06-30 00:58:45.342 [Thread-11] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-3 - Before shutdown stats (total=10, active=0, idle=10, waiting=0)
+2023-06-30 00:58:45.343 [HikariPool-3 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-3 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@2a1f28fb: (connection evicted)
+2023-06-30 00:58:45.344 [HikariPool-3 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-3 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@76ebdb2d: (connection evicted)
+2023-06-30 00:58:45.345 [HikariPool-3 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-3 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@782c3b80: (connection evicted)
+2023-06-30 00:58:45.346 [HikariPool-3 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-3 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@7c13b05d: (connection evicted)
+2023-06-30 00:58:45.346 [HikariPool-3 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-3 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@391131bb: (connection evicted)
+2023-06-30 00:58:45.346 [HikariPool-3 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-3 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@118bb707: (connection evicted)
+2023-06-30 00:58:45.347 [HikariPool-3 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-3 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@8626e8d: (connection evicted)
+2023-06-30 00:58:45.347 [HikariPool-3 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-3 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@6912b684: (connection evicted)
+2023-06-30 00:58:45.347 [HikariPool-3 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-3 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@593ecef4: (connection evicted)
+2023-06-30 00:58:45.348 [HikariPool-3 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-3 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@15c1695b: (connection evicted)
+2023-06-30 00:58:45.348 [Thread-11] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-3 - After shutdown stats (total=0, active=0, idle=0, waiting=0)
+2023-06-30 00:58:45.349 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-3 - Shutdown completed.
+2023-06-30 00:58:45.435 [Thread-11] DEBUG o.s.boot.devtools.restart.Restarter:280 - Starting application com.bit.studypage.MiniTestApplication with URLs [file:/C:/Mini_Project/mini_test_version5/build/classes/java/main/, file:/C:/Mini_Project/mini_test_version5/build/resources/main/]
+2023-06-30 14:52:57.040 [http-nio-9993-exec-2] DEBUG o.h.e.t.internal.TransactionImpl:81 - begin
+2023-06-30 14:52:57.045 [http-nio-9993-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager:439 - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@64a4b8b5]
+2023-06-30 14:52:57.045 [http-nio-9993-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager:740 - Initiating transaction commit
+2023-06-30 14:52:57.045 [http-nio-9993-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager:556 - Committing JPA transaction on EntityManager [SessionImpl(941429218<open>)]
+2023-06-30 14:52:57.045 [http-nio-9993-exec-2] DEBUG o.h.e.t.internal.TransactionImpl:98 - committing
+2023-06-30 14:52:57.054 [http-nio-9993-exec-2] DEBUG o.s.jdbc.datasource.DataSourceUtils:251 - Resetting read-only flag of JDBC Connection [HikariProxyConnection@580934675 wrapping com.mysql.cj.jdbc.ConnectionImpl@3fe2eadc]
+2023-06-30 14:52:57.059 [http-nio-9993-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager:652 - Not closing pre-bound JPA EntityManager after transaction
+2023-06-30 14:52:57.060 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(520986249501600))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
+2023-06-30 14:52:57.061 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@57b821d
+2023-06-30 14:52:57.062 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(520986249501600).boardWriter) 
+2023-06-30 14:52:57.063 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 14:52:57.064 [http-nio-9993-exec-2] DEBUG org.hibernate.SQL:133 - 
+    select
+        count(b1_0.board_id) 
+    from
+        board b1_0 
+    where
+        b1_0.board_writer=?
+2023-06-30 14:52:57.069 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@36c059a6
+2023-06-30 14:52:57.070 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Comments(520986305015600))] with identifierForTableGroup [com.bit.studypage.entity.Comments] for NavigablePath [com.bit.studypage.entity.Comments] 
+2023-06-30 14:52:57.070 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@10d72a5d
+2023-06-30 14:52:57.071 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Comments(520986305015600).commWriter) 
+2023-06-30 14:52:57.071 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 14:52:57.071 [http-nio-9993-exec-2] DEBUG org.hibernate.SQL:133 - 
+    select
+        count(c1_0.comment_id) 
+    from
+        comments c1_0 
+    where
+        c1_0.comm_writer=?
+2023-06-30 14:52:57.076 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@2b7d8a19
+2023-06-30 14:52:57.076 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Comments(520986306368000))] with identifierForTableGroup [com.bit.studypage.entity.Comments] for NavigablePath [com.bit.studypage.entity.Comments] 
+2023-06-30 14:52:57.077 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@605b985f
+2023-06-30 14:52:57.077 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Comments(520986306368000).commWriter) 
+2023-06-30 14:52:57.077 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 14:52:57.077 [http-nio-9993-exec-2] DEBUG org.hibernate.SQL:133 - 
+    select
+        c1_0.comment_id,
+        c1_0.board_title,
+        c1_0.child_key,
+        c1_0.comm_writer,
+        c1_0.comment_content,
+        c1_0.created_at,
+        c1_0.post_id 
+    from
+        comments c1_0 
+    where
+        c1_0.comm_writer=?
+2023-06-30 14:52:57.082 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@6f247fea
+2023-06-30 14:52:57.082 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@6f247fea
+2023-06-30 14:52:57.082 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@6f247fea
+2023-06-30 14:52:57.083 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(520986250167300))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
+2023-06-30 14:52:57.083 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@21ae128d
+2023-06-30 14:52:57.083 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(520986250167300).boardId) 
+2023-06-30 14:52:57.083 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 14:52:57.084 [http-nio-9993-exec-2] DEBUG org.hibernate.SQL:133 - 
+    select
+        b1_0.board_id,
+        b1_0.board_cate,
+        b1_0.board_content,
+        b1_0.board_reg_date,
+        b1_0.board_title,
+        b1_0.board_view_cnt,
+        b1_0.board_writer 
+    from
+        board b1_0 
+    where
+        b1_0.board_id=?
+2023-06-30 14:52:57.090 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@59778946
+2023-06-30 14:52:57.090 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(520986250167300))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
+2023-06-30 14:52:57.091 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@618e1817
+2023-06-30 14:52:57.091 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(520986250167300).boardId) 
+2023-06-30 14:52:57.091 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 14:52:57.091 [http-nio-9993-exec-2] DEBUG org.hibernate.SQL:133 - 
+    select
+        b1_0.board_id,
+        b1_0.board_cate,
+        b1_0.board_content,
+        b1_0.board_reg_date,
+        b1_0.board_title,
+        b1_0.board_view_cnt,
+        b1_0.board_writer 
+    from
+        board b1_0 
+    where
+        b1_0.board_id=?
+2023-06-30 14:52:57.100 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@3ea5651a
+2023-06-30 14:52:57.101 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(520986250167300))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
+2023-06-30 14:52:57.101 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@8da6350
+2023-06-30 14:52:57.102 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(520986250167300).boardId) 
+2023-06-30 14:52:57.102 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 14:52:57.102 [http-nio-9993-exec-2] DEBUG org.hibernate.SQL:133 - 
+    select
+        b1_0.board_id,
+        b1_0.board_cate,
+        b1_0.board_content,
+        b1_0.board_reg_date,
+        b1_0.board_title,
+        b1_0.board_view_cnt,
+        b1_0.board_writer 
+    from
+        board b1_0 
+    where
+        b1_0.board_id=?
+2023-06-30 14:52:57.108 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@b2d3504
+2023-06-30 14:52:57.109 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.ast.create:98 - Registration of TableGroup [StandardTableGroup(com.bit.studypage.entity.Board(520986249501600))] with identifierForTableGroup [com.bit.studypage.entity.Board] for NavigablePath [com.bit.studypage.entity.Board] 
+2023-06-30 14:52:57.109 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5324 - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@5a2f1b1e
+2023-06-30 14:52:57.109 [http-nio-9993-exec-2] DEBUG o.h.q.s.sql.BaseSqmToSqlAstConverter:5214 - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.bit.studypage.entity.Board(520986249501600).boardWriter) 
+2023-06-30 14:52:57.109 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.sql.exec:456 - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+2023-06-30 14:52:57.110 [http-nio-9993-exec-2] DEBUG org.hibernate.SQL:133 - 
+    select
+        count(b1_0.board_id) 
+    from
+        board b1_0 
+    where
+        b1_0.board_writer=?
+2023-06-30 14:52:57.114 [http-nio-9993-exec-2] DEBUG org.hibernate.orm.results.loading:93 - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@1dc65fee
+2023-06-30 14:52:57.115 [http-nio-9993-exec-2] INFO  c.b.s.controller.MyPageController:95 - 19
+2023-06-30 14:52:57.115 [http-nio-9993-exec-2] INFO  c.b.s.controller.MyPageController:96 - 시이발!2
+2023-06-30 14:52:57.116 [http-nio-9993-exec-2] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver:354 - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2023-06-30 14:52:57.141 [http-nio-9993-exec-2] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-2][layouts/default-layout] Deprecated unwrapped fragment expression "fragments/config :: config" found in template layouts/default-layout, line 8, col 7. Please use the complete syntax of fragment expressions instead ("~{fragments/config :: config}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2023-06-30 14:52:57.144 [http-nio-9993-exec-2] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-2][layouts/default-layout] Deprecated unwrapped fragment expression "/fragments/header :: header" found in template layouts/default-layout, line 12, col 13. Please use the complete syntax of fragment expressions instead ("~{/fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2023-06-30 14:52:57.153 [http-nio-9993-exec-2] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor:385 - [THYMELEAF][http-nio-9993-exec-2][layouts/default-layout] Deprecated unwrapped fragment expression "/fragments/footer :: footer" found in template layouts/default-layout, line 16, col 13. Please use the complete syntax of fragment expressions instead ("~{/fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2023-06-30 14:52:57.156 [http-nio-9993-exec-2] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.158 [http-nio-9993-exec-2] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.161 [http-nio-9993-exec-4] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/css/home.css", parameters={}
+2023-06-30 14:52:57.161 [http-nio-9993-exec-10] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/css/myPage.css", parameters={}
+2023-06-30 14:52:57.161 [http-nio-9993-exec-8] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/css/footer.css", parameters={}
+2023-06-30 14:52:57.162 [http-nio-9993-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.164 [http-nio-9993-exec-9] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/js/jquery-3.7.0.min.js", parameters={}
+2023-06-30 14:52:57.166 [http-nio-9993-exec-10] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.166 [http-nio-9993-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.167 [http-nio-9993-exec-8] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.162 [http-nio-9993-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.167 [http-nio-9993-exec-4] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.167 [http-nio-9993-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.167 [http-nio-9993-exec-9] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.167 [http-nio-9993-exec-7] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/js/script.js", parameters={}
+2023-06-30 14:52:57.168 [http-nio-9993-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.168 [http-nio-9993-exec-7] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.168 [http-nio-9993-exec-1] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/js/common.js", parameters={}
+2023-06-30 14:52:57.169 [http-nio-9993-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.170 [http-nio-9993-exec-10] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.170 [http-nio-9993-exec-8] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.170 [http-nio-9993-exec-4] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.171 [http-nio-9993-exec-10] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.171 [http-nio-9993-exec-8] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.171 [http-nio-9993-exec-4] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.171 [http-nio-9993-exec-7] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.172 [http-nio-9993-exec-7] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.173 [http-nio-9993-exec-1] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.176 [http-nio-9993-exec-9] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.177 [http-nio-9993-exec-9] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.177 [http-nio-9993-exec-1] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.177 [http-nio-9993-exec-1] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.197 [http-nio-9993-exec-5] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/image/Pagelogo.png", parameters={}
+2023-06-30 14:52:57.198 [http-nio-9993-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.198 [http-nio-9993-exec-5] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.201 [http-nio-9993-exec-5] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.201 [http-nio-9993-exec-5] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.205 [http-nio-9993-exec-3] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/img/%EB%A1%9C%EA%B3%A0.png", parameters={}
+2023-06-30 14:52:57.206 [http-nio-9993-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.206 [http-nio-9993-exec-3] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.208 [http-nio-9993-exec-3] DEBUG o.s.w.s.r.ResourceHttpRequestHandler:557 - Resource not found
+2023-06-30 14:52:57.208 [http-nio-9993-exec-3] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.209 [http-nio-9993-exec-3] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 404 NOT_FOUND
+2023-06-30 14:52:57.210 [http-nio-9993-exec-3] DEBUG o.s.web.servlet.DispatcherServlet:120 - "ERROR" dispatch for GET "/error", parameters={}
+2023-06-30 14:52:57.211 [http-nio-9993-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping:528 - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-06-30 14:52:57.212 [http-nio-9993-exec-3] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.215 [http-nio-9993-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor:275 - Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2023-06-30 14:52:57.216 [http-nio-9993-exec-3] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor:120 - Writing [{timestamp=Fri Jun 30 14:52:57 KST 2023, status=404, error=Not Found, message=No message available,  (truncated)...]
+2023-06-30 14:52:57.217 [http-nio-9993-exec-3] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.218 [http-nio-9993-exec-3] DEBUG o.s.web.servlet.DispatcherServlet:1132 - Exiting from "ERROR" dispatch, status 404
+2023-06-30 14:52:57.222 [http-nio-9993-exec-6] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/uploads/%EC%B6%98%EC%8B%9D.jpg", parameters={}
+2023-06-30 14:52:57.222 [http-nio-9993-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [URL [file:/C:/profile/]]
+2023-06-30 14:52:57.223 [http-nio-9993-exec-6] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.224 [http-nio-9993-exec-6] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.224 [http-nio-9993-exec-6] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.225 [http-nio-9993-exec-6] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/image/%EA%B5%AC%EA%B8%80.png", parameters={}
+2023-06-30 14:52:57.226 [http-nio-9993-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.226 [http-nio-9993-exec-6] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.229 [http-nio-9993-exec-6] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.230 [http-nio-9993-exec-6] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.237 [http-nio-9993-exec-4] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/image/%EC%B9%B4%EC%B9%B4%EC%98%A4.png", parameters={}
+2023-06-30 14:52:57.237 [http-nio-9993-exec-10] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/image/%EB%84%A4%EC%9D%B4%EB%B2%84.png", parameters={}
+2023-06-30 14:52:57.237 [http-nio-9993-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.238 [http-nio-9993-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.238 [http-nio-9993-exec-10] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.238 [http-nio-9993-exec-4] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.241 [http-nio-9993-exec-4] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.241 [http-nio-9993-exec-10] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.242 [http-nio-9993-exec-10] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.242 [http-nio-9993-exec-4] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.244 [http-nio-9993-exec-8] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/image/footerLogo.png", parameters={}
+2023-06-30 14:52:57.244 [http-nio-9993-exec-7] DEBUG o.s.web.servlet.DispatcherServlet:120 - GET "/image/arrow2.png", parameters={}
+2023-06-30 14:52:57.245 [http-nio-9993-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.245 [http-nio-9993-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping:528 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-06-30 14:52:57.245 [http-nio-9993-exec-8] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.247 [http-nio-9993-exec-7] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:86 - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.249 [http-nio-9993-exec-8] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.250 [http-nio-9993-exec-8] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.251 [http-nio-9993-exec-7] DEBUG o.s.o.j.s.OpenEntityManagerInViewInterceptor:111 - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2023-06-30 14:52:57.251 [http-nio-9993-exec-7] DEBUG o.s.web.servlet.DispatcherServlet:1135 - Completed 200 OK
+2023-06-30 14:52:57.504 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:211 - Restarting due to 53 class path changes (0 additions, 0 deletions, 53 modifications)
+2023-06-30 14:52:57.504 [File Watcher] DEBUG o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:212 - Change set: [C:\Mini_Project\mini_test_version5\build\resources\main [C:\Mini_Project\mini_test_version5\build\resources\main\application.properties (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\logback-spring.xml (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\mybatis-config.out.xml (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\mybatis-config.xml (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardCertificate.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardCommunicate.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardQna.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\boardTogether.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\footer.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\fullSearch.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\home.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\join.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\login.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\myPage.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\css\write.css (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\arrow2.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\certificate_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\footerLogo.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\free_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\main1.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\main3.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\main_2.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\Pagelogo.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\qna_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\search.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\together_main.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\구글.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\네이버.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\로고.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\춘식.jpg (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\image\카카오.png (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\js\common.js (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\js\jquery-3.7.0.min.js (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\static\js\script.js (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\fragments\config.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\fragments\footer.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\fragments\header.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\layouts\default-layout.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardCertificate.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardCommunicate.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardQna.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\boardTogether.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\findId.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\findPw.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\fullSearch.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\googleJoin.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\home.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\join.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\kakaoJoin.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\login.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\myPage.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\naverJoin.html (MODIFY), C:\Mini_Project\mini_test_version5\build\resources\main\templates\view\write.html (MODIFY)]]
+2023-06-30 14:52:57.504 [File Watcher] DEBUG o.s.boot.devtools.restart.Restarter:248 - Restarting application
+2023-06-30 14:52:57.505 [Thread-49] DEBUG o.s.boot.devtools.restart.Restarter:304 - Stopping application
+2023-06-30 14:52:57.505 [Thread-49] DEBUG o.s.b.a.ApplicationAvailabilityBean:77 - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2023-06-30 14:52:57.506 [Thread-49] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext:1055 - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@36de97e1, started on Fri Jun 30 14:51:27 KST 2023
+2023-06-30 14:52:57.507 [Thread-49] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase 2147482623
+2023-06-30 14:52:57.507 [Thread-49] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'webServerGracefulShutdown' completed its stop procedure
+2023-06-30 14:52:57.507 [Thread-49] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase 2147481599
+2023-06-30 14:52:57.518 [Thread-49] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Pausing ProtocolHandler ["http-nio-9993"]
+2023-06-30 14:52:57.518 [Thread-49] INFO  o.a.catalina.core.StandardService:173 - Stopping service [Tomcat]
+2023-06-30 14:52:57.518 [Thread-49] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-06-30 14:52:57.521 [Thread-49] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Stopping ProtocolHandler ["http-nio-9993"]
+2023-06-30 14:52:57.522 [Thread-49] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Destroying ProtocolHandler ["http-nio-9993"]
+2023-06-30 14:52:57.523 [Thread-49] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'webServerStartStop' completed its stop procedure
+2023-06-30 14:52:57.523 [Thread-49] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase -2147483647
+2023-06-30 14:52:57.523 [Thread-49] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'springBootLoggingLifecycle' completed its stop procedure
+2023-06-30 14:52:57.523 [Thread-49] DEBUG o.s.j.e.a.AnnotationMBeanExporter:452 - Unregistering JMX-exposed beans on shutdown
+2023-06-30 14:52:57.523 [Thread-49] DEBUG o.s.j.e.a.AnnotationMBeanExporter:186 - Unregistering JMX-exposed beans
+2023-06-30 14:52:57.524 [Thread-49] DEBUG o.s.s.c.ThreadPoolTaskExecutor:218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2023-06-30 14:52:57.524 [Thread-49] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-30 14:52:57.524 [Thread-49] DEBUG o.h.internal.SessionFactoryImpl:856 - HHH000031: Closing
+2023-06-30 14:52:57.524 [Thread-49] DEBUG o.h.type.spi.TypeConfiguration$Scope:550 - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@5707bed6] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@1b20628d]
+2023-06-30 14:52:57.525 [Thread-49] DEBUG o.h.s.i.AbstractServiceRegistryImpl:413 - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
+2023-06-30 14:52:57.525 [Thread-49] DEBUG o.h.b.r.i.BootstrapServiceRegistryImpl:296 - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
+2023-06-30 14:52:57.525 [Thread-49] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-13 - Shutdown initiated...
+2023-06-30 14:52:57.525 [Thread-49] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-13 - Before shutdown stats (total=10, active=0, idle=10, waiting=0)
+2023-06-30 14:52:57.526 [HikariPool-13 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-13 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@3fe2eadc: (connection evicted)
+2023-06-30 14:52:57.526 [HikariPool-13 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-13 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@1e985048: (connection evicted)
+2023-06-30 14:52:57.526 [HikariPool-13 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-13 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@105fadeb: (connection evicted)
+2023-06-30 14:52:57.527 [HikariPool-13 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-13 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@14603b38: (connection evicted)
+2023-06-30 14:52:57.527 [HikariPool-13 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-13 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@5162a7d0: (connection evicted)
+2023-06-30 14:52:57.527 [HikariPool-13 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-13 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@da4b7a4: (connection evicted)
+2023-06-30 14:52:57.527 [HikariPool-13 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-13 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@60f9730e: (connection evicted)
+2023-06-30 14:52:57.528 [HikariPool-13 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-13 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@75d53dd2: (connection evicted)
+2023-06-30 14:52:57.528 [HikariPool-13 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-13 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@314d589f: (connection evicted)
+2023-06-30 14:52:57.528 [HikariPool-13 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-13 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@197cd085: (connection evicted)
+2023-06-30 14:52:57.528 [Thread-49] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-13 - After shutdown stats (total=0, active=0, idle=0, waiting=0)
+2023-06-30 14:52:57.528 [Thread-49] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-13 - Shutdown completed.
+2023-06-30 14:52:57.575 [Thread-49] DEBUG o.s.boot.devtools.restart.Restarter:280 - Starting application com.bit.studypage.MiniTestApplication with URLs [file:/C:/Mini_Project/mini_test_version5/build/classes/java/main/, file:/C:/Mini_Project/mini_test_version5/build/resources/main/]
