@@ -19,15 +19,15 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.studypage.common.StorageException;
-import com.bit.studypage.service.FileStorageService;
+import com.bit.studypage.service.FileQnaStorageService;
 
 @Service
-public class FileStorageServiceImpl implements FileStorageService {
+public class FileQnaStorageServiceImpl implements FileQnaStorageService {
 
 	//properties에 있는 경로 가져오기 
 	private final Path root;
 
-    public FileStorageServiceImpl(@Value("${app.file-upload-dir}") String dir) {
+    public FileQnaStorageServiceImpl(@Value("${app.file-upload-dir}") String dir) {
         root = Paths.get(dir);
     }
 

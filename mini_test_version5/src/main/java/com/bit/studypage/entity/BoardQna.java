@@ -48,7 +48,7 @@ public class BoardQna {
 	private LocalDateTime boardRegdate;
 	
 	@OneToOne(mappedBy = "boardQna", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    private FileEntity fileEntity;
+    private FileQnaEntity fileEntity;
 	
 	@OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Comment> comments;
@@ -71,7 +71,7 @@ public class BoardQna {
 		this.boardCnt = boardCnt;
 	}
 	
-	public void setFileEntity(FileEntity fileEntity) {
+	public void setFileEntity(FileQnaEntity fileEntity) {
 		this.fileEntity = fileEntity;
 		fileEntity.setBoardQna(this);
 	}

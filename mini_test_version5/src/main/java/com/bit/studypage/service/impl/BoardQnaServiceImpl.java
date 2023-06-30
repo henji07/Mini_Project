@@ -16,14 +16,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.studypage.dto.BoardQnaDTO;
-import com.bit.studypage.dto.FileDTO;
+import com.bit.studypage.dto.FileQnaDTO;
 import com.bit.studypage.entity.BoardQna;
-import com.bit.studypage.entity.FileEntity;
+import com.bit.studypage.entity.FileQnaEntity;
 import com.bit.studypage.repository.BoardQnaRepository;
 import com.bit.studypage.repository.CommentRepository;
-import com.bit.studypage.repository.FileRepository;
+import com.bit.studypage.repository.FileQnaRepository;
 import com.bit.studypage.service.BoardQnaService;
-import com.bit.studypage.service.FileStorageService;
+import com.bit.studypage.service.FileQnaStorageService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +34,8 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardQnaServiceImpl implements BoardQnaService {
 	
 	private final BoardQnaRepository boardRepository;
-	private final FileRepository fileRepository;
-	private final FileStorageService fileStorageService;
+	private final FileQnaRepository fileRepository;
+	private final FileQnaStorageService fileStorageService;
 	private final CommentRepository commentRepository;
 	
 	@Value("${app.file-upload-dir}")
@@ -59,7 +59,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
                 String fileName = file.getOriginalFilename();
                 String fileType = file.getContentType();
                 
-                FileEntity fileEntity = new FileEntity(fileName, fileType, filePath);
+                FileQnaEntity fileEntity = new FileQnaEntity(fileName, fileType, filePath);
                 fileRepository.save(fileEntity);
                 
                 // 파일 엔티티를 보드 엔티티에 설정
@@ -127,7 +127,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 				
 				// 파일 정보가 있을 경우, FileDTO를 생성하고 BoardQnaDTO에 설정
 	            if(board.getFileEntity() != null) {
-	                FileDTO fileDTO = new FileDTO();
+	                FileQnaDTO fileDTO = new FileQnaDTO();
 	                BeanUtils.copyProperties(board.getFileEntity(), fileDTO);
 	                dto.setFile(fileDTO);
 	            }
@@ -181,7 +181,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 
 	//파일 목록
 	@Override
-	public List<FileEntity> getBoardFileList(long boardId) {
+	public List<FileQnaEntity> getBoardFileList(long boardId) {
 		
 		return fileRepository.findByBoardQnaBoardId(boardId);
 	}

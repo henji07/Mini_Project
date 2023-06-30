@@ -19,7 +19,7 @@ public class BoardQnaDTO {
 	private LocalDateTime boardRegdate;
 	private int boardCnt;
 	
-	private FileDTO file;
+	private FileQnaDTO file;
 	
 	private int commentCount; // 댓글 수
 	

@@ -26,7 +26,7 @@ import com.bit.studypage.dto.CommentDTO;
 import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.service.BoardQnaService;
 import com.bit.studypage.service.CommentService;
-import com.bit.studypage.service.FileStorageService;
+import com.bit.studypage.service.FileQnaStorageService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -39,7 +39,7 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardQnaController {
 	
 	private final BoardQnaService boardService;
-	private final FileStorageService fileStorageService;
+	private final FileQnaStorageService fileStorageService;
 	private final CommentService commentService;
 	
 	
