@@ -1,15 +1,12 @@
-package com.bit.studypage.form;
+package com.bit.studypage.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @ToString
 @Getter @Setter
-public class MemberForm {
+public class MemberDTO {
 	
 	private Long memberSno;
 	
@@ -18,7 +15,7 @@ public class MemberForm {
 	private String name;
 	
 	private String password;
-	
+
 	private String email;
 	
 	private String phone;

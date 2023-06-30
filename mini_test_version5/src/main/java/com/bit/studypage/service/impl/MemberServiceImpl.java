@@ -1,10 +1,6 @@
 package com.bit.studypage.service.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.bit.studypage.dto.MemberDTO;
 import com.bit.studypage.entity.Users;
 import com.bit.studypage.repository.UsersRepository;
 import org.apache.commons.lang3.ObjectUtils;
@@ -12,18 +8,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bit.studypage.entity.Users;
-import com.bit.studypage.form.MemberForm;
-import com.bit.studypage.repository.MemberRepository;
 import com.bit.studypage.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
+
 
     private final UsersRepository usersRepository;
     private final PasswordEncoder passwordEncoder;
@@ -36,7 +35,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     //회원 가입
-    public String join(MemberForm form) {
+    public String join(MemberDTO member) {
         //성공할 때만 success로 나머지는 fail
         String result = "fail";
 
@@ -46,7 +45,7 @@ public class MemberServiceImpl implements MemberService {
         //중간에 쉼표 넣어서 DB에 넣어주는 거
         StringBuffer sb = new StringBuffer();
 
-        String[] arr = form.getInterest();
+        String[] arr = member.getInterest();
         if (arr != null && arr.length > 0) {
             for (String str : arr) {
                 if (sb.length() > 0) sb.append(",");
@@ -56,13 +55,13 @@ public class MemberServiceImpl implements MemberService {
 
         //Map에 값을 설정해서 엔티티에 빌드로 넘기기 위해
         Map<String, Object> formData = new HashMap<>();
-        formData.put("userId", form.getUserId());
-        formData.put("name", form.getName());
-        formData.put("password", passwordEncoder.encode(form.getPassword()));
-        formData.put("email", form.getEmail());
-        formData.put("phone", form.getPhone());
+        formData.put("userId", member.getUserId());
+        formData.put("name", member.getName());
+        formData.put("password", passwordEncoder.encode(member.getPassword()));
+        formData.put("email", member.getEmail());
+        formData.put("phone", member.getPhone());
         formData.put("interest", sb.toString());
-        formData.put("gender", form.getGender());
+        formData.put("gender", member.getGender());
 
         // Users 객체를 생성하여 DB에 저장
         Users user = Users.builder()

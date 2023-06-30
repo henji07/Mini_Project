@@ -10641,7 +10641,7 @@ Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Exception evalu
 	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:725)
 	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301)
 	... 50 common frames omitted
-Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'commentTitle' cannot be found on object of type 'com.bit.studypage.DTO.CommDTO' - maybe not public or not valid?
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'commentTitle' cannot be found on object of type 'com.bit.studypage.dto.CommDTO' - maybe not public or not valid?
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:222)
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:105)
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:410)
@@ -10651,7 +10651,7 @@ Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1008E:
 	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265)
 	... 86 common frames omitted
 2023-06-27 21:33:35.889 [http-nio-9993-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/view/myPage.html]")] with root cause
-org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'commentTitle' cannot be found on object of type 'com.bit.studypage.DTO.CommDTO' - maybe not public or not valid?
+org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'commentTitle' cannot be found on object of type 'com.bit.studypage.dto.CommDTO' - maybe not public or not valid?
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:222)
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:105)
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:410)
@@ -10844,7 +10844,7 @@ Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Exception evalu
 	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:725)
 	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301)
 	... 50 common frames omitted
-Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'commentTitle' cannot be found on object of type 'com.bit.studypage.DTO.CommDTO' - maybe not public or not valid?
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'commentTitle' cannot be found on object of type 'com.bit.studypage.dto.CommDTO' - maybe not public or not valid?
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:222)
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:105)
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:410)
@@ -10854,7 +10854,7 @@ Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1008E:
 	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265)
 	... 86 common frames omitted
 2023-06-27 21:35:08.936 [http-nio-9993-exec-7] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/view/myPage.html]")] with root cause
-org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'commentTitle' cannot be found on object of type 'com.bit.studypage.DTO.CommDTO' - maybe not public or not valid?
+org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'commentTitle' cannot be found on object of type 'com.bit.studypage.dto.CommDTO' - maybe not public or not valid?
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:222)
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:105)
 	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:410)

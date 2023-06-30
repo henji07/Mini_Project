@@ -1,6 +1,6 @@
 package com.bit.studypage.service.impl;
 
-import com.bit.studypage.DTO.CommDTO;
+import com.bit.studypage.dto.CommDTO;
 import com.bit.studypage.entity.Comments;
 import com.bit.studypage.repository.BoardRepository;
 import com.bit.studypage.repository.CommentsRepository;

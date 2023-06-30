@@ -1,4 +1,4 @@
-package com.bit.studypage.DTO;
+package com.bit.studypage.dto;
 
 import com.bit.studypage.entity.Comments;
 import lombok.Data;
