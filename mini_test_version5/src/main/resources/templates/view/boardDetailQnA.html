@@ -67,7 +67,7 @@
     	        contentType: 'application/json',
     	        data: JSON.stringify({content: commentContent,}),
     	        success: function(response) {
-    	            if(response.status === "성공") {
+    	            if(response.success === "성공") {
     	            	// 댓글 작성에 성공하면 화면에 새로운 댓글을 추가.
     	                // 이를 위해 댓글을 담을 컨테이너를 준비하고, 
     	                // 해당 컨테이너에 새로 작성한 댓글의 내용을 추가.
@@ -83,7 +83,7 @@
     	            }
     	        },
     	        error: function(jqXHR, textStatus, errorThrown) {
-    	            alert("댓글 작성에 실패하였습니다. 다시 시도해주세요.");
+    	            alert("댓글 작성에 실패하였습니다." + textStatus);
     	        }
     	    });
     	});
@@ -97,14 +97,23 @@
 	           type: 'GET',
 	           url: '/comments/' + boardId,
 	           success: function(response){
-	               if (response.status === "성공") {
+	        	   console.log(response);
+	               if (response.success === "성공") {
 	                   var comments = response.data;
 	                   comments.forEach(function(comment) {
+	                	   // Check if comment content is undefined
+	                       if (comment.content === undefined) {
+	                           console.log("Undefined comment content:", comment);
+	                       }
+	                	   
 	                       var newComment = $("<div>").addClass("comment-item").append($("<div>").addClass("content").text(comment.content));
 	                       $("#comments").append(newComment);
+	                       
+	                       console.log("New comment:", newComment);
 	                   });
+	                   
+	                   
 	                   $("#commentContent").val('');
-	
 	                   // 댓글 등록 후 콘솔에 정보 출력
 	                   console.log("댓글 등록 성공");
 	                   console.log("댓글 내용:", comments);

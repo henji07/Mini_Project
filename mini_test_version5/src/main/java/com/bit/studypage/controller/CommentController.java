@@ -39,6 +39,7 @@ public class CommentController {
         
         System.out.println("댓글 작성 요청 - boardId: " + boardId);
         System.out.println("댓글 내용: " + commentDto.getContent());
+        System.out.println("================================================"); 
         
         return new ResponseCommentDTO<>("성공", "댓글 작성을 완료했습니다.", commentService.writeComment(boardId, commentDto, user), null);
     }
@@ -51,9 +52,15 @@ public class CommentController {
     	List<CommentDTO> comments = commentService.getComments(boardId);
     	
     	System.out.println("댓글 개수: " + comments.size()); // 댓글 개수 출력
+    	
+    	System.out.println("================================================"); 
 
-        return new ResponseCommentDTO<>("성공", "댓글을 불러왔습니다.",null, commentService.getComments(boardId));
+        return new ResponseCommentDTO<>("성공", "댓글을 불러왔습니다.",comments, null);
+        
+        
+        
     }
+    
     
     // 댓글 삭제
     @ApiOperation(value = "댓글 삭제", notes = "게시글에 달린 댓글을 삭제합니다.")

@@ -1,6 +1,7 @@
 package com.bit.studypage.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,5 +20,8 @@ public class BoardQnaDTO {
 	private int boardCnt;
 	
 	private FileDTO file;
-
+	
+	// CommentDTO 리스트 추가
+    private List<CommentDTO> comments;
+	
 }
