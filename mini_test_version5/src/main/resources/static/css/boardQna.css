@@ -128,11 +128,18 @@
   margin-right: 10px;
   margin-left: 10px;
   text-align: center;
-  display: block !important;
+  flex-direction: column;
+}
+
+#anwer-count-title {
+	display: block;
+	text-align: center;
+	margin: 0;
 }
 
 .answer-count-count {
 	display: block;
+	text-align: center;
 }
 
 /*드롭다운*/
