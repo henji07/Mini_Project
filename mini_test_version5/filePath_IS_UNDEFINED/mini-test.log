@@ -1,36 +1,138 @@
-2023-06-18 23:03:33.007 [HikariPool-4 housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-4 - Pool stats (total=10, active=0, idle=10, waiting=0)
-2023-06-18 23:03:33.008 [HikariPool-4 housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool:521 - HikariPool-4 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
-2023-06-18 23:03:34.234 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:211 - Restarting due to 10 class path changes (0 additions, 0 deletions, 10 modifications)
-2023-06-18 23:03:34.236 [File Watcher] DEBUG o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:212 - Change set: [C:\workspace\mini_test_version2\bin\main [C:\workspace\mini_test_version2\bin\main\mini\test\common\jpa\entity\Member$MemberBuilder.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\common\jpa\entity\Member.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\common\jpa\repository\MemberRepository.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\common\web\HomeController.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\member\model\MemberForm.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\member\service\MemberService.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\member\web\MemberController.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\MiniTestApplication.class (MODIFY), C:\workspace\mini_test_version2\bin\main\static\css\createMemberForm.css (MODIFY), C:\workspace\mini_test_version2\bin\main\templates\view\createMemberForm.html (MODIFY)]]
-2023-06-18 23:03:34.246 [File Watcher] DEBUG o.s.boot.devtools.restart.Restarter:248 - Restarting application
-2023-06-18 23:03:34.246 [Thread-15] DEBUG o.s.boot.devtools.restart.Restarter:304 - Stopping application
-2023-06-18 23:03:34.246 [Thread-15] DEBUG o.s.b.a.ApplicationAvailabilityBean:77 - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
-2023-06-18 23:03:34.247 [Thread-15] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext:1055 - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@a872c69, started on Sun Jun 18 22:52:32 KST 2023
-2023-06-18 23:03:34.248 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase 2147482623
-2023-06-18 23:03:34.249 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'webServerGracefulShutdown' completed its stop procedure
-2023-06-18 23:03:34.249 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase 2147481599
-2023-06-18 23:03:34.257 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'webServerStartStop' completed its stop procedure
-2023-06-18 23:03:34.257 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase -2147483647
-2023-06-18 23:03:34.258 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'springBootLoggingLifecycle' completed its stop procedure
-2023-06-18 23:03:34.258 [Thread-15] DEBUG o.s.j.e.a.AnnotationMBeanExporter:452 - Unregistering JMX-exposed beans on shutdown
-2023-06-18 23:03:34.259 [Thread-15] DEBUG o.s.s.c.ThreadPoolTaskExecutor:218 - Shutting down ExecutorService 'applicationTaskExecutor'
-2023-06-18 23:03:34.259 [Thread-15] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-18 23:03:34.259 [Thread-15] DEBUG o.h.internal.SessionFactoryImpl:770 - HHH000031: Closing
-2023-06-18 23:03:34.259 [Thread-15] DEBUG o.h.type.spi.TypeConfiguration$Scope:474 - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@1bb51c31] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@1ffcffb1]
-2023-06-18 23:03:34.259 [Thread-15] DEBUG o.h.s.i.AbstractServiceRegistryImpl:403 - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
-2023-06-18 23:03:34.259 [Thread-15] DEBUG o.h.b.r.i.BootstrapServiceRegistryImpl:296 - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
-2023-06-18 23:03:34.260 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-4 - Shutdown initiated...
-2023-06-18 23:03:34.260 [Thread-15] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-4 - Before shutdown stats (total=10, active=0, idle=10, waiting=0)
-2023-06-18 23:03:34.260 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@7b61572f: (connection evicted)
-2023-06-18 23:03:34.261 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@75a6a633: (connection evicted)
-2023-06-18 23:03:34.261 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@71993c5f: (connection evicted)
-2023-06-18 23:03:34.261 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@349bac08: (connection evicted)
-2023-06-18 23:03:34.261 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@45324d9b: (connection evicted)
-2023-06-18 23:03:34.261 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@565fc30: (connection evicted)
-2023-06-18 23:03:34.262 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@3d264307: (connection evicted)
-2023-06-18 23:03:34.262 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@54b45347: (connection evicted)
-2023-06-18 23:03:34.263 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@3bd92df: (connection evicted)
-2023-06-18 23:03:34.263 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@29136ae4: (connection evicted)
-2023-06-18 23:03:34.263 [Thread-15] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-4 - After shutdown stats (total=0, active=0, idle=0, waiting=0)
-2023-06-18 23:03:34.263 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-4 - Shutdown completed.
-2023-06-18 23:03:34.291 [Thread-15] DEBUG o.s.boot.devtools.restart.Restarter:280 - Starting application mini.test.MiniTestApplication with URLs [file:/C:/workspace/mini_test_version2/bin/main/]
+2023-06-30 02:24:09.474 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-30 02:24:09.543 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 4772 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-06-30 02:24:09.546 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-06-30 02:24:09.931 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-30 02:24:09.932 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-30 02:24:10.968 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-30 02:24:10.971 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-06-30 02:24:11.024 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.MemberRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-06-30 02:24:11.029 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-06-30 02:24:11.030 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 52 ms. Found 0 JDBC repository interfaces.
+2023-06-30 02:24:11.052 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-30 02:24:11.054 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-30 02:24:11.114 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 52 ms. Found 2 JPA repository interfaces.
+2023-06-30 02:24:11.257 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-06-30 02:24:11.911 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-06-30 02:24:11.936 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-06-30 02:24:11.938 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-30 02:24:11.938 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-30 02:24:12.056 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-30 02:24:12.057 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 2124 ms
+2023-06-30 02:24:12.183 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-06-30 02:24:12.457 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c39ab16
+2023-06-30 02:24:12.460 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-06-30 02:24:12.546 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-06-30 02:24:12.673 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-06-30 02:24:12.677 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-06-30 02:24:12.948 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-06-30 02:24:13.342 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-06-30 02:24:13.467 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-06-30 02:24:13.469 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-06-30 02:24:13.914 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-06-30 02:24:15.029 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-06-30 02:24:15.193 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-30 02:24:15.921 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-06-30 02:24:16.001 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-06-30 02:24:16.432 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6b79c7bf, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@76f3cc26, org.springframework.security.web.context.SecurityContextHolderFilter@7ebc64d0, org.springframework.security.web.header.HeaderWriterFilter@67085bf1, org.springframework.security.web.authentication.logout.LogoutFilter@211ceb8b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@22f13b64, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@433423b9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8fdce2a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@8be6543, org.springframework.security.web.access.ExceptionTranslationFilter@473a52a, org.springframework.security.web.access.intercept.AuthorizationFilter@2792d536]
+2023-06-30 02:24:16.976 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-06-30 02:24:16.995 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-06-30 02:24:17.019 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-06-30 02:24:17.051 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 8.286 seconds (process running for 9.881)
+2023-06-30 02:24:24.184 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-30 02:24:24.184 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-06-30 02:24:24.187 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 2 ms
+2023-06-30 02:24:24.228 [http-nio-9090-exec-1] INFO  c.b.s.controller.HomeController:19 - hello
+2023-06-30 02:24:48.862 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-30 02:24:48.867 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-06-30 02:24:48.876 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2023-06-30 15:49:22.729 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-30 15:49:22.817 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 17964 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-06-30 15:49:22.819 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-06-30 15:49:23.400 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-30 15:49:23.401 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-30 15:49:24.833 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-30 15:49:24.836 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-06-30 15:49:24.896 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.MemberRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-06-30 15:49:24.900 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-06-30 15:49:24.900 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 56 ms. Found 0 JDBC repository interfaces.
+2023-06-30 15:49:24.912 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-30 15:49:24.914 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-30 15:49:24.960 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 40 ms. Found 2 JPA repository interfaces.
+2023-06-30 15:49:25.116 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-06-30 15:49:25.668 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-06-30 15:49:25.680 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-06-30 15:49:25.681 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-30 15:49:25.682 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-30 15:49:25.759 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-30 15:49:25.759 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 2357 ms
+2023-06-30 15:49:25.861 [restartedMain] ERROR com.zaxxer.hikari.HikariConfig:1021 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2023-06-30 15:49:25.867 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext:616 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [com/bit/studypage/config/DataConfiguration.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'dataSource' threw exception with message: jdbcUrl is required with driverClassName.
+2023-06-30 15:49:25.870 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Stopping service [Tomcat]
+2023-06-30 15:49:25.890 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger:82 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-06-30 15:49:25.918 [restartedMain] ERROR o.s.boot.SpringApplication:823 - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [com/bit/studypage/config/DataConfiguration.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'dataSource' threw exception with message: jdbcUrl is required with driverClassName.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:550)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1156)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:931)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:733)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:435)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1305)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1294)
+	at com.bit.studypage.MiniTestApplication.main(MiniTestApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [com/bit/studypage/config/DataConfiguration.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'dataSource' threw exception with message: jdbcUrl is required with driverClassName.
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:659)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:493)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1417)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:888)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 26 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'dataSource' threw exception with message: jdbcUrl is required with driverClassName.
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655)
+	... 40 common frames omitted
+Caused by: java.lang.IllegalArgumentException: jdbcUrl is required with driverClassName.
+	at com.zaxxer.hikari.HikariConfig.validate(HikariConfig.java:1022)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:77)
+	at com.bit.studypage.config.DataConfiguration.dataSource(DataConfiguration.java:37)
+	at com.bit.studypage.config.DataConfiguration$$SpringCGLIB$$0.CGLIB$dataSource$2(<generated>)
+	at com.bit.studypage.config.DataConfiguration$$SpringCGLIB$$2.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+	at com.bit.studypage.config.DataConfiguration$$SpringCGLIB$$0.dataSource(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139)
+	... 41 common frames omitted

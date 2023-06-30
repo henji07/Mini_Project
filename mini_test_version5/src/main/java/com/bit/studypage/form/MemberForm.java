@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter @Setter
 public class MemberForm {
 	
-	private int memberSno;
+	private Long memberSno;
 	
 	@NotBlank(message = "아이디를 반드시 입력해야 합니다.")
 	private String userId;
