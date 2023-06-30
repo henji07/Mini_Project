@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.bit.studypage.dto.CommentDTO;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
-import com.bit.studypage.dto.CommentDTO;
+
 import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.service.BoardQnaService;
 import com.bit.studypage.service.CommentService;

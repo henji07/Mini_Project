@@ -19,11 +19,11 @@ public class BoardQnaDTO {
 	private LocalDateTime boardRegdate;
 	private int boardCnt;
 	
-	private FileQnaDTO file;
+	private com.bit.studypage.dto.FileQnaDTO file;
 	
 	private int commentCount; // 댓글 수
 	
 	// CommentDTO 리스트 추가
-    private List<CommentDTO> comments;
+    private List<com.bit.studypage.dto.CommentDTO> comments;
 	
 }

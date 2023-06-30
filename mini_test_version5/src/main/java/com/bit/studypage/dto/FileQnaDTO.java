@@ -19,5 +19,5 @@ public class FileQnaDTO {
     private String filePath;
 
     //게시글에 대한 참조가 필요하다면, BoardQnaDTO 이용
-    private BoardQnaDTO boardQna;
+    private com.bit.studypage.dto.BoardQnaDTO boardQna;
 }

@@ -31,13 +31,7 @@ public class testController {
 		
 		return "view/fullSearch";
 	}
-	
-	@GetMapping("login")
-	public String test6() {
-		
-		return "view/login";
-	}
-	
+
 	@GetMapping("login/findId")
 	public String test7() {
 		
@@ -52,7 +46,7 @@ public class testController {
 	
 	@GetMapping("myPage")
 	public String test9() {
-		
+
 		return "view/myPage";
 	}
 	

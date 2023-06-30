@@ -99,5 +99,16 @@
 
 </div>
 </th:block>
+<script>
+  const token = localStorage.getItem("token");
+  $.ajax({
+    url:,
+    type:,
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type","application/json");
+      xhr.setRequestHeader("Authorization","JWT " + token);
+    },
+  })
+</script>
 </body> 
 </html>
