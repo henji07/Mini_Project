@@ -1,6 +1,6 @@
 package com.bit.studypage.entity;
 
-import com.bit.studypage.DTO.CommDTO;
+import com.bit.studypage.dto.CommDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 

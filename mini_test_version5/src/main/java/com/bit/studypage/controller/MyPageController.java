@@ -1,7 +1,5 @@
 package com.bit.studypage.controller;
 
-import com.bit.studypage.DTO.CommDTO;
-import com.bit.studypage.DTO.ResponseDTO;
 import com.bit.studypage.entity.*;
 import com.bit.studypage.service.impl.*;
 import jakarta.servlet.http.HttpSession;
@@ -10,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.data.domain.Pageable;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

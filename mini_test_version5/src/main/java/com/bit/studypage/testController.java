@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class testController {
 
-	@GetMapping("qnaPage")
-	public String test() {
-		
-		return "view/boardQna";
-	}
 	
 	@GetMapping("studyPage")
 	public String test2() {

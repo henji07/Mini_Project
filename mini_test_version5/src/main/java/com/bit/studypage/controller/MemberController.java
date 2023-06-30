@@ -4,12 +4,13 @@ import java.util.*;
 
 
 import com.bit.studypage.repository.UsersRepository;
+import jakarta.validation.Valid;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import com.bit.studypage.form.MemberForm;
+import com.bit.studypage.dto.MemberDTO;
 import com.bit.studypage.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,7 @@ public class MemberController {
         return mv;
     }
 
+
     //로그인 페이지 이동
     @GetMapping("/login")
     public ModelAndView login() {
@@ -55,7 +57,8 @@ public class MemberController {
 
     //회원 정보 등록하기
     @PostMapping("/members/regist")
-    public Map<String, Object> create(MemberForm form, BindingResult bindingResult) {
+    @ResponseBody //json으로 바꿈
+    public Map<String, Object> create(@RequestBody @Valid MemberDTO form, BindingResult bindingResult) {
         //@RequestBody json을 객체로
         //@Valid 유효성 검사
         //BindingResult 오류가 담겨서 실행됨
@@ -74,9 +77,10 @@ public class MemberController {
             return data;
         }
 
-        try {
+        try{
             result = memberService.join(form);
-        } catch (Exception e) {
+        }
+        catch(Exception e) {
             log.error(e.getMessage(), e);
         }
 
@@ -87,5 +91,9 @@ public class MemberController {
         return data;
     }
 
-
 }
+
+
+
+
+
