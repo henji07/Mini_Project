@@ -1,77 +1,30 @@
-2023-06-30 02:24:09.474 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
-2023-06-30 02:24:09.543 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 4772 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
-2023-06-30 02:24:09.546 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
-2023-06-30 02:24:09.931 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-06-30 02:24:09.932 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-06-30 02:24:10.968 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
-2023-06-30 02:24:10.971 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2023-06-30 02:24:11.024 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.MemberRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2023-06-30 02:24:11.029 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2023-06-30 02:24:11.030 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 52 ms. Found 0 JDBC repository interfaces.
-2023-06-30 02:24:11.052 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
-2023-06-30 02:24:11.054 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-30 02:24:11.114 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 52 ms. Found 2 JPA repository interfaces.
-2023-06-30 02:24:11.257 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
-2023-06-30 02:24:11.911 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
-2023-06-30 02:24:11.936 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
-2023-06-30 02:24:11.938 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
-2023-06-30 02:24:11.938 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-06-30 02:24:12.056 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
-2023-06-30 02:24:12.057 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 2124 ms
-2023-06-30 02:24:12.183 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
-2023-06-30 02:24:12.457 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c39ab16
-2023-06-30 02:24:12.460 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
-2023-06-30 02:24:12.546 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-06-30 02:24:12.673 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
-2023-06-30 02:24:12.677 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
-2023-06-30 02:24:12.948 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
-2023-06-30 02:24:13.342 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-06-30 02:24:13.467 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
-2023-06-30 02:24:13.469 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2023-06-30 02:24:13.914 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
-2023-06-30 02:24:15.029 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-06-30 02:24:15.193 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-30 02:24:15.921 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
-2023-06-30 02:24:16.001 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-06-30 02:24:16.432 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6b79c7bf, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@76f3cc26, org.springframework.security.web.context.SecurityContextHolderFilter@7ebc64d0, org.springframework.security.web.header.HeaderWriterFilter@67085bf1, org.springframework.security.web.authentication.logout.LogoutFilter@211ceb8b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@22f13b64, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@433423b9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8fdce2a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@8be6543, org.springframework.security.web.access.ExceptionTranslationFilter@473a52a, org.springframework.security.web.access.intercept.AuthorizationFilter@2792d536]
-2023-06-30 02:24:16.976 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
-2023-06-30 02:24:16.995 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
-2023-06-30 02:24:17.019 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
-2023-06-30 02:24:17.051 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 8.286 seconds (process running for 9.881)
-2023-06-30 02:24:24.184 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-06-30 02:24:24.184 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
-2023-06-30 02:24:24.187 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 2 ms
-2023-06-30 02:24:24.228 [http-nio-9090-exec-1] INFO  c.b.s.controller.HomeController:19 - hello
-2023-06-30 02:24:48.862 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-30 02:24:48.867 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
-2023-06-30 02:24:48.876 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
-2023-06-30 15:49:22.729 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
-2023-06-30 15:49:22.817 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 17964 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
-2023-06-30 15:49:22.819 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
-2023-06-30 15:49:23.400 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-06-30 15:49:23.401 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-06-30 15:49:24.833 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
-2023-06-30 15:49:24.836 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2023-06-30 15:49:24.896 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.MemberRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2023-06-30 15:49:24.900 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2023-06-30 15:49:24.900 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 56 ms. Found 0 JDBC repository interfaces.
-2023-06-30 15:49:24.912 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
-2023-06-30 15:49:24.914 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-30 15:49:24.960 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 40 ms. Found 2 JPA repository interfaces.
-2023-06-30 15:49:25.116 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
-2023-06-30 15:49:25.668 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
-2023-06-30 15:49:25.680 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
-2023-06-30 15:49:25.681 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
-2023-06-30 15:49:25.682 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-06-30 15:49:25.759 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
-2023-06-30 15:49:25.759 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 2357 ms
-2023-06-30 15:49:25.861 [restartedMain] ERROR com.zaxxer.hikari.HikariConfig:1021 - HikariPool-1 - jdbcUrl is required with driverClassName.
-2023-06-30 15:49:25.867 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext:616 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [com/bit/studypage/config/DataConfiguration.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'dataSource' threw exception with message: jdbcUrl is required with driverClassName.
-2023-06-30 15:49:25.870 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Stopping service [Tomcat]
-2023-06-30 15:49:25.890 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger:82 - 
+2023-06-30 17:30:48.491 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-30 17:30:48.544 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 7876 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-06-30 17:30:48.545 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-06-30 17:30:48.863 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-30 17:30:48.867 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-30 17:30:49.670 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-30 17:30:49.671 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-06-30 17:30:49.709 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.MemberRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-06-30 17:30:49.711 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-06-30 17:30:49.712 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 34 ms. Found 0 JDBC repository interfaces.
+2023-06-30 17:30:49.722 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-30 17:30:49.723 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-30 17:30:49.756 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 30 ms. Found 2 JPA repository interfaces.
+2023-06-30 17:30:49.872 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-06-30 17:30:50.367 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-06-30 17:30:50.377 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-06-30 17:30:50.379 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-30 17:30:50.379 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-30 17:30:50.445 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-30 17:30:50.445 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1577 ms
+2023-06-30 17:30:50.510 [restartedMain] ERROR com.zaxxer.hikari.HikariConfig:1021 - HikariPool-1 - jdbcUrl is required with driverClassName.
+2023-06-30 17:30:50.510 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext:616 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [com/bit/studypage/config/DataConfiguration.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'dataSource' threw exception with message: jdbcUrl is required with driverClassName.
+2023-06-30 17:30:50.514 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Stopping service [Tomcat]
+2023-06-30 17:30:50.529 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger:82 - 
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2023-06-30 15:49:25.918 [restartedMain] ERROR o.s.boot.SpringApplication:823 - Application run failed
+2023-06-30 17:30:50.552 [restartedMain] ERROR o.s.boot.SpringApplication:823 - Application run failed
 org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [com/bit/studypage/config/DataConfiguration.class]: Failed to instantiate [javax.sql.DataSource]: Factory method 'dataSource' threw exception with message: jdbcUrl is required with driverClassName.
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:550)
@@ -136,3 +89,236 @@ Caused by: java.lang.IllegalArgumentException: jdbcUrl is required with driverCl
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139)
 	... 41 common frames omitted
+2023-06-30 17:33:12.688 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-30 17:33:12.739 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 17420 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-06-30 17:33:12.740 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-06-30 17:33:13.113 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-30 17:33:13.113 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-30 17:33:13.878 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-30 17:33:13.879 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-06-30 17:33:13.910 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.MemberRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-06-30 17:33:13.912 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-06-30 17:33:13.913 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 30 ms. Found 0 JDBC repository interfaces.
+2023-06-30 17:33:13.922 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-30 17:33:13.923 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-30 17:33:13.951 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 25 ms. Found 2 JPA repository interfaces.
+2023-06-30 17:33:14.058 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-06-30 17:33:14.574 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-06-30 17:33:14.581 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-06-30 17:33:14.582 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-30 17:33:14.582 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-30 17:33:14.650 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-30 17:33:14.650 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1535 ms
+2023-06-30 17:33:14.728 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-06-30 17:33:14.950 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3b305343
+2023-06-30 17:33:14.956 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-06-30 17:33:15.063 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-06-30 17:33:15.138 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-06-30 17:33:15.141 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-06-30 17:33:15.302 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-06-30 17:33:15.495 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-06-30 17:33:15.598 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-06-30 17:33:15.599 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-06-30 17:33:15.862 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-06-30 17:33:16.820 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-06-30 17:33:16.962 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-30 17:33:17.637 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-06-30 17:33:17.743 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext:616 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Unsatisfied dependency expressed through field 'httpSecurity': Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.HttpSecurityConfiguration': Unsatisfied dependency expressed through method 'setContentNegotiationStrategy' parameter 0: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.OAuth2ClientConfiguration$OAuth2ClientWebMvcSecurityConfiguration': Unsatisfied dependency expressed through method 'setClientRegistrationRepository' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+2023-06-30 17:33:17.744 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-30 17:33:17.748 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-06-30 17:33:17.757 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2023-06-30 17:33:17.760 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Stopping service [Tomcat]
+2023-06-30 17:33:17.775 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger:82 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-06-30 17:33:17.803 [restartedMain] ERROR o.s.boot.SpringApplication:823 - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Unsatisfied dependency expressed through field 'httpSecurity': Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.HttpSecurityConfiguration': Unsatisfied dependency expressed through method 'setContentNegotiationStrategy' parameter 0: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.OAuth2ClientConfiguration$OAuth2ClientWebMvcSecurityConfiguration': Unsatisfied dependency expressed through method 'setClientRegistrationRepository' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:713)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:693)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:133)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:482)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1416)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:597)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:941)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:733)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:435)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1305)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1294)
+	at com.bit.studypage.MiniTestApplication.main(MiniTestApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.HttpSecurityConfiguration': Unsatisfied dependency expressed through method 'setContentNegotiationStrategy' parameter 0: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.OAuth2ClientConfiguration$OAuth2ClientWebMvcSecurityConfiguration': Unsatisfied dependency expressed through method 'setClientRegistrationRepository' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:818)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:770)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:133)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:482)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1416)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:597)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:417)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:344)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1417)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:710)
+	... 25 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.OAuth2ClientConfiguration$OAuth2ClientWebMvcSecurityConfiguration': Unsatisfied dependency expressed through method 'setClientRegistrationRepository' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:818)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:770)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:133)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:482)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1416)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:597)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:417)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1417)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:810)
+	... 46 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.OAuth2ClientConfiguration$OAuth2ClientWebMvcSecurityConfiguration': Unsatisfied dependency expressed through method 'setClientRegistrationRepository' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:818)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:770)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:133)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:482)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1416)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:597)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1633)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1597)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1488)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:810)
+	... 69 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:550)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1633)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1597)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1488)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:810)
+	... 86 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1417)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:888)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 102 common frames omitted
+Caused by: java.lang.IllegalStateException: Client id must not be empty.
+	at org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties.validateRegistration(OAuth2ClientProperties.java:68)
+	at java.base/java.util.HashMap$Values.forEach(HashMap.java:1065)
+	at org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties.validate(OAuth2ClientProperties.java:63)
+	at org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties.afterPropertiesSet(OAuth2ClientProperties.java:59)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	... 113 common frames omitted
+2023-06-30 17:33:51.208 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-30 17:33:51.254 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 17804 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-06-30 17:33:51.255 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:633 - No active profile set, falling back to 1 default profile: "default"
+2023-06-30 17:33:51.647 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-30 17:33:51.647 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-30 17:33:52.455 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-30 17:33:52.456 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-06-30 17:33:52.494 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.MemberRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-06-30 17:33:52.498 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-06-30 17:33:52.499 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 37 ms. Found 0 JDBC repository interfaces.
+2023-06-30 17:33:52.510 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-30 17:33:52.511 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-30 17:33:52.550 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 34 ms. Found 2 JPA repository interfaces.
+2023-06-30 17:33:52.666 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-06-30 17:33:53.199 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-06-30 17:33:53.208 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-06-30 17:33:53.209 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-06-30 17:33:53.209 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-30 17:33:53.270 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-06-30 17:33:53.270 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1622 ms
+2023-06-30 17:33:53.339 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-06-30 17:33:53.560 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7dad191c
+2023-06-30 17:33:53.563 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-06-30 17:33:53.634 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-06-30 17:33:53.685 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-06-30 17:33:53.687 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-06-30 17:33:53.832 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-06-30 17:33:54.020 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-06-30 17:33:54.128 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-06-30 17:33:54.130 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-06-30 17:33:54.386 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-06-30 17:33:55.260 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-06-30 17:33:55.392 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-30 17:33:55.839 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-06-30 17:33:55.897 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-06-30 17:33:56.154 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6bdc9492, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@78f7c6dd, org.springframework.security.web.context.SecurityContextHolderFilter@47e7c0af, org.springframework.security.web.header.HeaderWriterFilter@7e828da2, org.springframework.security.web.authentication.logout.LogoutFilter@1cc31e4d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@9f93f9f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@71c510d2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@24101ad4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@30931fe9, org.springframework.security.web.access.ExceptionTranslationFilter@6a933b87, org.springframework.security.web.access.intercept.AuthorizationFilter@5574a99]
+2023-06-30 17:33:56.574 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-06-30 17:33:56.595 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-06-30 17:33:56.614 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-06-30 17:33:56.623 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 5.991 seconds (process running for 7.925)
+2023-06-30 17:33:56.887 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-30 17:33:56.887 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-06-30 17:33:56.890 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+2023-06-30 17:33:56.930 [http-nio-9090-exec-1] INFO  c.b.s.controller.HomeController:19 - hello
+2023-06-30 17:35:04.344 [http-nio-9090-exec-7] WARN  o.s.s.c.bcrypt.BCryptPasswordEncoder:130 - Encoded password does not look like BCrypt
+2023-06-30 17:37:19.447 [http-nio-9090-exec-4] INFO  c.b.s.controller.HomeController:19 - hello
+2023-06-30 18:10:58.589 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool:804 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=23m4s738ms384µs300ns).
+2023-06-30 18:14:56.501 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool:804 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m57s935ms333µs400ns).
+2023-06-30 18:49:03.731 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool:804 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12m37s136ms200µs600ns).
+2023-06-30 19:34:31.613 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-30 19:34:31.653 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-06-30 19:34:31.728 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
