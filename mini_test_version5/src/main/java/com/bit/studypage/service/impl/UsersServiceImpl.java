@@ -28,4 +28,9 @@ public class UsersServiceImpl implements UserService {
         userRepository.delete(users);
     }
 
+//    @Override
+//    public String getInterest(Long userId) {
+//
+//    }
+
 }

@@ -27,3 +27,4 @@ public class BoardQnaDTO {
 	public List<CommentDTO> comments;
 	
 }
+
