@@ -47,12 +47,6 @@ public class BoardQna {
 	@Column(name="board_reg_date")
 	private LocalDateTime boardRegdate;
 	
-	@OneToOne(mappedBy = "boardQna", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    private FileQnaEntity fileEntity;
-	
-	@OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Comment> comments;
-	
 	@Builder
 	public BoardQna(BoardQnaDTO data) {
 		this.boardTitle = data.getBoardTitle();
@@ -69,11 +63,6 @@ public class BoardQna {
 	
 	public void updateReadCount(int boardCnt) {
 		this.boardCnt = boardCnt;
-	}
-	
-	public void setFileEntity(FileQnaEntity fileEntity) {
-		this.fileEntity = fileEntity;
-		fileEntity.setBoardQna(this);
 	}
 	
 

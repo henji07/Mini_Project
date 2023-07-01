@@ -10,6 +10,7 @@ import com.bit.studypage.entity.FileQnaEntity;
 @Repository
 public interface FileQnaRepository extends JpaRepository<FileQnaEntity, Long> {
 
-	List<FileQnaEntity> findByBoardQnaBoardId(long boardId);
+	//boardId를 매개변수로 받아, 해당 boardId를 가진 FileQnaEntity 객체의 목록을 반환
+	List<FileQnaEntity> findAllByBoardId(long boardId);
 
 }

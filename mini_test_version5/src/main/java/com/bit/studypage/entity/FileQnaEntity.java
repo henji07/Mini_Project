@@ -1,43 +1,47 @@
 package com.bit.studypage.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name="FileTest")
 @Getter
+@ToString
 @NoArgsConstructor
 public class FileQnaEntity {
 
 	@Id
+	@Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private long id;
+	
+	@Column(name = "file_name")
     private String fileName;
-
+	
+    @Column(name = "file_type")
     private String fileType;
-
+    
+    @Column(name = "file_path")
     private String filePath;
     
-    @OneToOne
-    @JoinColumn(name = "board_id")
-    private BoardQna boardQna;
+    @Column(name = "board_id")
+    private long boardId;
     
-    public void setBoardQna(BoardQna boardQna) {
-        this.boardQna = boardQna;
-    }
-
-    public FileQnaEntity(String fileName, String fileType, String filePath) {
-        this.fileName = fileName;
+    @Builder
+    public FileQnaEntity(String originalFileName, String fileType, String storeFileName, long boardId) {
+        this.fileName = originalFileName;
         this.fileType = fileType;
-        this.filePath = filePath;
+        this.filePath = storeFileName;
+        this.boardId = boardId;
     }
+    
+    
 }

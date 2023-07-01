@@ -1,12 +1,19 @@
 package com.bit.studypage.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
+import com.bit.studypage.dto.CommentDTO;
+import com.bit.studypage.dto.FileQnaDTO;
+
+import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +29,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
-import com.bit.studypage.dto.CommentDTO;
+
 import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.service.BoardQnaService;
-import com.bit.studypage.service.CommentService;
-import com.bit.studypage.service.FileQnaStorageService;
 
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,10 +41,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor //생성자 주입 
 @RequestMapping("/board")
 public class BoardQnaController {
-	
+
 	private final BoardQnaService boardService;
-	private final FileQnaStorageService fileStorageService;
-	private final CommentService commentService;
 	
 	
 	//글 등록 화면으로 이동
@@ -73,13 +75,13 @@ public class BoardQnaController {
    
     //글 등록 -> ajax
     @PostMapping("/board-insert")
-    public ResponseEntity<?> insertBoard(@RequestParam("uploadFiles") MultipartFile file, BoardQnaDTO boardDTO) {
+    public ResponseEntity<?> insertBoard(@RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO) {
         
     	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
 
         try {
             //서비스 호출 
-            boardService.insertBoard(boardDTO, file);
+            boardService.insertBoard(boardDTO, files);
 
             Map<String, String> returnMap = new HashMap<String, String>();
 
@@ -97,31 +99,24 @@ public class BoardQnaController {
         }
     }
     
-    //파일 다운로드
-    @GetMapping("/downloadFile/{fileName:.+}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
-        // 파일을 로드하고 리소스를 준비
-        Resource resource = fileStorageService.loadFileAsResource(fileName);
+    //파일 로컬에 저장되어 있는 거 읽어오기 
+    @Value("${file.path}")
+    private String fileUploadDir;
+	
+	@GetMapping("/attach/{filename:.+}")
+    public ResponseEntity<InputStreamResource> getImage(@PathVariable String filename) throws IOException {
+     System.out.println("==========================="); 
+	 log.info("getImage");
+	 System.out.println("filename = " + filename);
+	 System.out.println("==========================="); 
+    	Path file = Paths.get(fileUploadDir, filename);
+    	
+        InputStreamResource resource = new InputStreamResource(Files.newInputStream(file));
 
-        // 파일의 content type을 결정
-        String contentType = null;
-        try {
-            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-        } catch (IOException ex) {
-            log.info("Could not determine file type.");
-        }
-
-        // 기본 content type으로 fallback
-        if(contentType == null) {
-            contentType = "application/octet-stream";
-        }
-
-        // 파일 다운로드를 위한 Response Entity 리턴
         return ResponseEntity.ok()
-            .contentType(MediaType.parseMediaType(contentType))
-            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-            .body(resource);
-    }
+                .contentType(MediaType.parseMediaType(Files.probeContentType(file)))
+                .body(resource);
+    } 
 
     
         
@@ -137,7 +132,7 @@ public class BoardQnaController {
         List<CommentDTO> comments = dto.getComments();
 
         mv.addObject("board", dto);
-        mv.addObject("comments", dto.getComments());
+        mv.addObject("comments", comments);
         mv.setViewName("/view/boardDetailQna");
 
         return mv;
@@ -192,6 +187,6 @@ public class BoardQnaController {
         }
     }
     
-
+   
 
 }

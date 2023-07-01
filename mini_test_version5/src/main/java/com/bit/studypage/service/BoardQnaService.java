@@ -1,17 +1,19 @@
 package com.bit.studypage.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.studypage.dto.BoardQnaDTO;
+import com.bit.studypage.dto.FileQnaDTO;
 import com.bit.studypage.entity.BoardQna;
 import com.bit.studypage.entity.FileQnaEntity;
 
 public interface BoardQnaService {
 
 	//글 등록
-	public BoardQna insertBoard(BoardQnaDTO boardDTO, MultipartFile file);
+	public Map<String, Object> insertBoard(BoardQnaDTO boardDTO, List<MultipartFile> files);
 	
 	//글 수정
 	public BoardQnaDTO updateBoard(BoardQnaDTO boardDTO);
@@ -27,6 +29,7 @@ public interface BoardQnaService {
 
 	//전체 페이지 수 반환 
 	public Object getTotalPages();
+	
+	public FileQnaDTO inqurityFileInfo(long id);
 
-	public List<FileQnaEntity> getBoardFileList(long boardId);
 }
