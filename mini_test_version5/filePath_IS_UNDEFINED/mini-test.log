@@ -54,3 +54,16 @@
 2023-07-02 01:25:09.003 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9993"]
 2023-07-02 01:25:09.059 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9993 (http) with context path ''
 2023-07-02 01:25:09.070 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 6.627 seconds (process running for 7.655)
+2023-07-02 01:25:20.512 [http-nio-9993-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-02 01:25:20.512 [http-nio-9993-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-07-02 01:25:20.514 [http-nio-9993-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 2 ms
+2023-07-02 01:25:20.568 [http-nio-9993-exec-1] WARN  o.s.c.LocalVariableTableParameterNameDiscoverer:123 - Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.bit.studypage.controller.BoardQnaController
+2023-07-02 01:31:54.014 [RMI TCP Connection(9)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin:159 - Application shutdown requested.
+2023-07-02 01:31:54.030 [RMI TCP Connection(9)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Pausing ProtocolHandler ["http-nio-9993"]
+2023-07-02 01:31:54.030 [RMI TCP Connection(9)-127.0.0.1] INFO  o.a.catalina.core.StandardService:173 - Stopping service [Tomcat]
+2023-07-02 01:31:54.033 [RMI TCP Connection(9)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-02 01:31:54.041 [RMI TCP Connection(9)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Stopping ProtocolHandler ["http-nio-9993"]
+2023-07-02 01:31:54.045 [RMI TCP Connection(9)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Destroying ProtocolHandler ["http-nio-9993"]
+2023-07-02 01:31:54.048 [RMI TCP Connection(9)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-02 01:31:54.051 [RMI TCP Connection(9)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-07-02 01:31:54.059 [RMI TCP Connection(9)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
