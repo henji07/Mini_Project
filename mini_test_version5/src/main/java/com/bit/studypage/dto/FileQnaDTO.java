@@ -7,8 +7,8 @@ import lombok.Setter;
 @Setter
 public class FileQnaDTO {
 	
-	public Long id;
-	public String fileName;
-	public String fileType;
-	public String filePath;
+	private Long id;
+	private String fileName;
+	private String fileType;
+	private String filePath;
 }

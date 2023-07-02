@@ -12,20 +12,20 @@ import lombok.ToString;
 @ToString
 public class BoardQnaDTO {
 	
-	public Long boardId;
-	public String boardTitle;
-	public String boardContent;
-	public String boardWriter;
-	public LocalDateTime boardRegdate;
-	public int boardCnt;
+	private Long boardId;
+	private String boardTitle;
+	private String boardContent;
+	private String boardWriter;
+	private LocalDateTime boardRegdate;
+	private int boardCnt;
 	
-	public List<FileQnaDTO> fileList;
-	public List<Long> toDeleteFileIds; // 삭제할 파일 ID 목록
+	private List<FileQnaDTO> fileList;
+	private List<Long> toDeleteFileIds; // 삭제할 파일 ID 목록
 	
-	public int commentCount; // 댓글 수
+	private int commentCount; // 댓글 수
 	
 	// CommentDTO 리스트 추가
-	public List<CommentDTO> comments;
+	private List<CommentDTO> comments;
 	
 }
 

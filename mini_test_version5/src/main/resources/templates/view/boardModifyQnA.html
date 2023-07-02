@@ -20,12 +20,11 @@
 	   
 	   //파일 삭제 -> 삭제 버튼만 누르면 목록에서만 사라지고 실제로 db에서 삭제되는 건 아님
 	   // "function" 키워드를 사용하여 "this"의 범위를 제한
- 		$("#btnDeleteFile").on("click", function(e) {
- 			const fileId = $(this).siblings(".fileId").val();
- 			
- 		    toDelete.push(fileId); // 삭제 배열에 파일 ID 추가
- 		    $(this).parent().hide(); // 파일 항목 감추기
- 		});
+ 		$(document).on("click", "#btnDeleteFile", function(e) {
+		    const fileId = $(this).siblings(".fileId").val();
+		    toDelete.push(fileId); // 삭제 배열에 파일 ID 추가
+		    $(this).parent().hide(); // 파일 항목 감추기
+		});
 	   
  		//파일 추가 버튼 클릭하면 파일 선택할 수 있는 것까지
  		$(".addFile").on("click", function(e) {
