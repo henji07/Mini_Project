@@ -203,32 +203,7 @@ public class BoardQnaController {
             return ResponseEntity.badRequest().body(responseDTO);
         }
     }
-    
-//    //파일 삭제 
-//    @DeleteMapping("/board-file/{id}")
-//    public ResponseEntity<?> boardFileDelete(@PathVariable("id") long id){
-//    	
-//    	System.out.println("fileId = " + id);
-//    	
-//    	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
-//        try {
-//            //Long으로 보내기 때문에 엔티티 안 만들어도 됨. 
-//            boardService.deleteFile(id);
-//
-//            Map<String, String> returnMap = new HashMap<String, String>();
-//
-//            returnMap.put("msg", "파일이 삭제되었습니다.");
-//
-//            responseDTO.setItem(returnMap);
-//
-//            return ResponseEntity.ok().body(responseDTO);
-//        } catch (Exception e) {
-//            responseDTO.setStatusCode(HttpStatus.BAD_REQUEST.value());
-//            responseDTO.setErrorMessage(e.getMessage());
-//
-//            return ResponseEntity.badRequest().body(responseDTO);
-//        }
-//    }
+
     
    
 

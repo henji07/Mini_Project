@@ -29,30 +29,37 @@
 	   
  		// 수정 완료 버튼 클릭 이벤트
  		$("#btnUpdate").click(function() {
- 			
- 			const boardId = $("#boardId").val();
- 			
- 		    $.ajax({
- 		        url: "/board/board",
- 		        type: 'put',
- 		        data: $("#updateForm").serialize() + "&toDeleteFileIds=" + toDelete.join(","),
- 		        success: (obj) => {
- 		            console.log(obj);
- 		            alert(obj.item.msg);
- 		            location.href = `/board/board/${boardId}`;
- 		        },
- 		        error: (error) => {
- 		            console.log(error);
- 		        }
- 		    });
+ 			if (window.confirm("변경사항을 저장하시겠습니까?")) {	
+	 		    $.ajax({
+	 		        url: "/board/board",
+	 		        type: 'put',
+	 		        data: $("#updateForm").serialize() + "&toDeleteFileIds=" + toDelete.join(","),
+	 		        success: (obj) => {
+	 		            console.log(obj);
+	 		            alert(obj.item.msg);
+	 		            location.href = `/board/board/${boardId}`;
+	 		        },
+	 		        error: (error) => {
+	 		            console.log(error);
+	 		        }
+	 		    });
+ 			}
  		});
 
  		// 수정 취소 버튼 클릭 이벤트
  		$("#btnList").click(function() {
- 		    toDelete = []; // 삭제 배열 초기화
- 		    $("#fileList li").show(); // 모든 파일 항목 다시 표시
- 		    location.href = `/board/board/${boardId}`;
+ 			if (window.confirm("변경사항을 취소하시겠습니까?")) {
+	 		    toDelete = []; // 삭제 배열 초기화
+	 		    $("#fileList li").show(); // 모든 파일 항목 다시 표시
+	 		    location.href = `/board/board/${boardId}`;
+ 			}
  		});
+ 		
+ 		//파일 추가 버튼 클릭하면 파일 선택할 수 있는 것까지
+ 		$(".addFile").on("click", function(e) {
+		    e.preventDefault();
+		    $("#fileInput").click();
+		});
 	   
 	   //글 삭제
        $("#btnDelete").on("click", (e) => {
@@ -100,6 +107,7 @@
           <div id="fileSection">
             <h4>첨부 파일</h4>
             <button class="addFile" style="float: right;">파일 추가</button>
+            <input type="file" id="fileInput" style="display: none">
             <ul id="fileList">
                 <!-- 첨부파일이 있으면 이름을 표시하고 다운로드 링크를 제공 -->
 	            <li th:each="fle : ${board.fileList}">
@@ -113,9 +121,9 @@
             </ul>
           </div>       
           <div id="postActions">           
-            <a type="button" id="btnDelete">글 삭제</a>
-            <a type="button" id="btnUpdate">수정 완료</a>
-            <a type="button" id="btnList">수정 취소</a>
+            <a type="button" id="btnDelete">삭제</a>
+            <a type="button" id="btnUpdate">수정</a>
+            <a type="button" id="btnList">취소</a>
           </div>
         </div>
       </section>
