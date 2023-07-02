@@ -16,22 +16,23 @@
        $("#btnDelete").on("click", (e) => {
     	   
            e.preventDefault();
-           
-           $.ajax({
-               url: '/board/board',
-               type: 'delete',
-               data: {
-                   boardId: $("#boardId").val()
-               },
-               success: (obj) => {
-                   console.log(obj);
-                   alert(obj.item.msg);
-                   location.href = `/board/qnaPage/1`;
-               },
-               error: (error) => {
-                   console.log(error);
-               }
-           });
+           if (window.confirm("정말 삭제하시겠습니까?")) {
+	           $.ajax({
+	               url: '/board/board',
+	               type: 'delete',
+	               data: {
+	                   boardId: $("#boardId").val()
+	               },
+	               success: (obj) => {
+	                   console.log(obj);
+	                   alert(obj.item.msg);
+	                   location.href = `/board/qnaPage/1`;
+	               },
+	               error: (error) => {
+	                   console.log(error);
+	               }
+	           });
+           }
        });
 	   
        // 댓글 등록

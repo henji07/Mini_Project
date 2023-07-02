@@ -27,6 +27,34 @@
  		    $(this).parent().hide(); // 파일 항목 감추기
  		});
 	   
+ 		//파일 추가 버튼 클릭하면 파일 선택할 수 있는 것까지
+ 		$(".addFile").on("click", function(e) {
+		    e.preventDefault();
+		    $("#fileInput").click();
+		});
+ 		
+ 		//삭제 버튼을 누르면 해당 파일 항목을 목록에서 제거
+ 		function deleteFile(e) {
+ 	        $(this).parent().remove();
+ 	    }
+ 		
+ 		// 선택한 파일을 fileList에 추가
+ 		$("#fileInput").on("change", function(e) {
+ 		    let file = e.target.files[0];
+ 		    let reader = new FileReader();
+
+ 		    reader.onload = function(e) {
+ 		        let img = $('<img>').attr('src', e.target.result).width(50);
+ 		        let span = $('<span>').text(file.name);
+ 		        let btn = $('<button>').text('삭제').addClass('btnDeleteFile').on('click', deleteFile);
+
+ 		        let li = $('<li>').append(img, span, btn);
+ 		        $("#fileList").append(li);
+ 		    }
+
+ 		    reader.readAsDataURL(file);
+ 		});
+	   
  		// 수정 완료 버튼 클릭 이벤트
  		$("#btnUpdate").click(function() {
  			if (window.confirm("변경사항을 저장하시겠습니까?")) {	
@@ -55,32 +83,28 @@
  			}
  		});
  		
- 		//파일 추가 버튼 클릭하면 파일 선택할 수 있는 것까지
- 		$(".addFile").on("click", function(e) {
-		    e.preventDefault();
-		    $("#fileInput").click();
-		});
 	   
 	   //글 삭제
        $("#btnDelete").on("click", (e) => {
     	   
            e.preventDefault();
-           
-           $.ajax({
-               url: '/board/board',
-               type: 'delete',
-               data: {
-                   boardId: $("#boardId").val()
-               },
-               success: (obj) => {
-                   console.log(obj);
-                   alert(obj.item.msg);
-                   location.href = `/board/qnaPage/1`;
-               },
-               error: (error) => {
-                   console.log(error);
-               }
-           });
+           if (window.confirm("정말 삭제하시겠습니까?")) {
+	           $.ajax({
+	               url: '/board/board',
+	               type: 'delete',
+	               data: {
+	                   boardId: $("#boardId").val()
+	               },
+	               success: (obj) => {
+	                   console.log(obj);
+	                   alert(obj.item.msg);
+	                   location.href = `/board/qnaPage/1`;
+	               },
+	               error: (error) => {
+	                   console.log(error);
+	               }
+	           });
+           }
        });
    }); 
    </script>
