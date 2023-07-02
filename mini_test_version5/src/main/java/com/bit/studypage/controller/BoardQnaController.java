@@ -26,8 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.CommentDTO;
+import com.bit.studypage.dto.FileQnaDTO;
 import com.bit.studypage.dto.ResponseDTO;
-import com.bit.studypage.entity.BoardQna;
 import com.bit.studypage.service.BoardQnaService;
 
 import lombok.RequiredArgsConstructor;
@@ -156,8 +156,6 @@ public class BoardQnaController {
     public ResponseEntity<?> updateBoard(BoardQnaDTO boardDTO) {
         ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
         try {
-            //빌더로 엔티티 형태로 만들어주기
-          //  Board board = boardDTO.DTOToEntity();
             boardService.updateBoard(boardDTO);
 
             //리턴해줄 맵
@@ -188,6 +186,32 @@ public class BoardQnaController {
             Map<String, String> returnMap = new HashMap<String, String>();
 
             returnMap.put("msg", "정상적으로 삭제되었습니다.");
+
+            responseDTO.setItem(returnMap);
+
+            return ResponseEntity.ok().body(responseDTO);
+        } catch (Exception e) {
+            responseDTO.setStatusCode(HttpStatus.BAD_REQUEST.value());
+            responseDTO.setErrorMessage(e.getMessage());
+
+            return ResponseEntity.badRequest().body(responseDTO);
+        }
+    }
+    
+    //파일 삭제 
+    @DeleteMapping("/board-file/{id}")
+    public ResponseEntity<?> boardFileDelete(@PathVariable("id") long id){
+    	
+    	System.out.println("fileId = " + id);
+    	
+    	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+        try {
+            //Long으로 보내기 때문에 엔티티 안 만들어도 됨. 
+            boardService.deleteFile(id);
+
+            Map<String, String> returnMap = new HashMap<String, String>();
+
+            returnMap.put("msg", "파일이 삭제되었습니다.");
 
             responseDTO.setItem(returnMap);
 

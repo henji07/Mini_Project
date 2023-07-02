@@ -234,7 +234,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	    return (int) Math.ceil((double) totalBoards / pageSize);
 	}
 	
-	
+	//파일 정보 가져오기 
 	public FileQnaDTO inqurityFileInfo(long id) {
 		
 		FileQnaDTO dto = null;
@@ -250,6 +250,14 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		
 		return dto;
 	}
+	
+	//파일 삭제 
+	@Override
+	public void deleteFile(long id) {
+		fileRepository.deleteById(id);
+		
+	}
 
+	
 	
 }

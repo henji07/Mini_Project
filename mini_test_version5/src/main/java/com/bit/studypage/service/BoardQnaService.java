@@ -33,5 +33,8 @@ public interface BoardQnaService {
 	//파일 정보 가져오기
 	public FileQnaDTO inqurityFileInfo(long id);
 
+	//파일 삭제 
+	public void deleteFile(long id);
+
 
 }
