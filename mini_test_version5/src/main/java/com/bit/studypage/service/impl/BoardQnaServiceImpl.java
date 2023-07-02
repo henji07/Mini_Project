@@ -147,6 +147,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		return dto;
 	}
 	
+	
 	//글 삭제
 	public void deleteBoard(long boardId) {
 		boardRepository.deleteById(boardId);
@@ -249,4 +250,6 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		
 		return dto;
 	}
+
+	
 }

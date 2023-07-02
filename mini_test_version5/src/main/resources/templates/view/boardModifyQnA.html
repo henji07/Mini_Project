@@ -124,15 +124,15 @@
             <ul id="fileList">
                 <!-- 첨부파일이 있으면 이름을 표시하고 다운로드 링크를 제공 -->
 	            <li th:each="fle : ${board.fileList}">
-	            	<img th:src="@{'/upload/' + ${fle.filePath}}" width="50">
+	            	<img th:src="@{/board/attach/{filename}(filename=${fle.filePath})}" width="50" />
 	                <span th:text="${fle.fileName}"></span>              
 	            </li>
             </ul>
           </div>
           
-          <div id="postActions">
-            <a type="button" id="btnUpdate">글 수정</a>
+          <div id="postActions">           
             <a type="button" id="btnDelete">글 삭제</a>
+            <a type="button" id="btnUpdate">수정 완료</a>
             <a href="/board/qnaPage/1" type="button" id="btnList">글 목록</a>
           </div>
         </div>

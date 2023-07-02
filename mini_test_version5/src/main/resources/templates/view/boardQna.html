@@ -95,20 +95,5 @@
     <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage >= totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">Next &rarr;</button>
 </div>
 </th:block>
-
-
-</div>
-</th:block>
-<script>
-  const token = localStorage.getItem("token");
-  $.ajax({
-    url:,
-    type:,
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Content-type","application/json");
-      xhr.setRequestHeader("Authorization","JWT " + token);
-    },
-  })
-</script>
 </body> 
 </html>

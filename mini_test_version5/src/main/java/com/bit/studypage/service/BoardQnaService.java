@@ -30,6 +30,8 @@ public interface BoardQnaService {
 	//전체 페이지 수 반환 
 	public Object getTotalPages();
 	
+	//파일 정보 가져오기
 	public FileQnaDTO inqurityFileInfo(long id);
+
 
 }

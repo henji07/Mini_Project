@@ -11,27 +11,7 @@
 
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript"> 
-   $(function() {
-	   //글 수정 
-	   $("#btnUpdate").on("click", () => {
-		   
-		   const boardId = $("#boardId").val();
-
-          $.ajax({
-              url: "/board/board",
-              type: 'put',
-              data: $("#updateForm").serialize(),
-              success: (obj) => {
-                  console.log(obj);
-                  alert(obj.item.msg);
-                  location.href = `/board/board/${boardId}`;
-              },
-              error: (error) => {
-                  console.log(error);
-              }
-          });
-       });
-	   
+   $(function() {	   
 	   //글 삭제
        $("#btnDelete").on("click", (e) => {
     	   
@@ -154,13 +134,13 @@
 	 <input type="hidden" id="boardId" name="boardId" th:value="${board.boardId}">
       <section id="postSection">
         <div id="postContainer">
-          <input id="boardTitle" name="boardTitle" th:value="${board.boardTitle}">
+          <div id="boardTitle" name="boardTitle" th:text="${board.boardTitle}"></div>
           <div id="postInfo">
-            <span id="postWriter" th:text="'작성자: ' + ${board.boardWriter}"></span>
+            <span id="postWriter" th:text="'작성자: ' + ${board.boardWriter}" ></span>
             <span id="postDate" th:text="'작성일: ' + ${#strings.substring(board.boardRegdate, 0, 10) }"></span>
             <span id="postViews" th:text="'조회수: ' + ${board.boardCnt}"></span>
           </div>
-          <input id="boardContent" name="boardContent" th:value="${board.boardContent}">
+          <div id="boardContent" name="boardContent" th:text="${board.boardContent}"></div>
           <div id="fileSection">
             <h4>첨부 파일</h4>
             <ul id="fileList">
@@ -191,7 +171,7 @@
 		     <a type="button" id="btnComment">댓글 등록</a>
 		  </div>
           <div id="postActions">
-            <a type="button" id="btnUpdate">글 수정</a>
+            <a th:href="@{/board/modify-board-view/{boardId}(boardId=${board.boardId})}" type="submit" id="btnUpdate">글 수정</a>
             <a type="button" id="btnDelete">글 삭제</a>
             <a href="/board/qnaPage/1" type="button" id="btnList">글 목록</a>
           </div>

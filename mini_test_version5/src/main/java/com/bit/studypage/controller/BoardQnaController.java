@@ -8,10 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.bit.studypage.dto.CommentDTO;
-import com.bit.studypage.dto.FileQnaDTO;
-
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
@@ -29,8 +25,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
-
+import com.bit.studypage.dto.CommentDTO;
 import com.bit.studypage.dto.ResponseDTO;
+import com.bit.studypage.entity.BoardQna;
 import com.bit.studypage.service.BoardQnaService;
 
 import lombok.RequiredArgsConstructor;
@@ -137,6 +134,22 @@ public class BoardQnaController {
 
         return mv;
     }
+    
+    //글 수정 화면으로 이동
+  	@GetMapping("/modify-board-view/{boardId}")
+      public ModelAndView modifyBoardView(@PathVariable("boardId") long boardId) {
+  		
+  		System.out.println("boardId = " + boardId);
+  		
+  		ModelAndView mv = new ModelAndView();
+  		
+  		//게시물 조회 
+        BoardQnaDTO dto = boardService.getBoardDetail(boardId);
+  		
+  		mv.addObject("board", dto);
+  		mv.setViewName("view/boardModifyQnA.html");
+  		return mv;
+      }
     
     //글 수정 
     @PutMapping("/board")
