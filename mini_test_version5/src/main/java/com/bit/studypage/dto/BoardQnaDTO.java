@@ -20,6 +20,7 @@ public class BoardQnaDTO {
 	public int boardCnt;
 	
 	public List<FileQnaDTO> fileList;
+	public List<Long> toDeleteFileIds; // 삭제할 파일 ID 목록
 	
 	public int commentCount; // 댓글 수
 	
