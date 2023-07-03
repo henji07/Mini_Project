@@ -11,7 +11,7 @@
 
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript">
-
+	
    </script>
 </th:block>
     
@@ -20,7 +20,7 @@
 <body> 
 <th:block layout:fragment="content">  
 <!-- 이미지 -->
-<img src="./image/qna_main.png" alt="카테고리 이미지" style="display: block; margin: auto; margin-top: 70px; max-width: 50%; height: 50%;">
+<img src="/image/qna_main.png" alt="카테고리 이미지" style="display: block; margin: auto; margin-top: 70px; max-width: 50%; height: 50%;">
 <!-- 카테고리 -->
 <div class="board-qna-container">
 <hr class="horizontal-line">
@@ -29,7 +29,7 @@
       <button>궁금해요</button>
     </div>
     <div class="board-actions">
-      <button style="left: 0;">글쓰기</button>
+      <button style="left: 0;" onclick="location.href='/board/insert-board-view'">글쓰기</button>
     </div>
   </div>
   
@@ -52,53 +52,47 @@
     <input type="text" id="search-input-qna" placeholder="검색" />
     <button id="search-button">검색</button>
   </div>
-
-  <div class="pagination-top">
-    <span class="pagination-top-info">1 / 1 페이지</span>
+<!-- 상단 페이징 -->
+<div class="pagination-top">
+    <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
     <div class="pagination-top-buttons">
-      <button class="pagination-top-button" disabled>&larr;</button>
-      <button class="pagination-top-button">&rarr;</button>
+      <button class="pagination-top-button" th:disabled="${currentPage == 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr;</button>
+      <button class="pagination-top-button" th:disabled="${currentPage == totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">&rarr;</button>
     </div>
-  </div> 
+</div>
 <!-- 게시물 부분 -->
   <div class="board-write-container">
-    <li class="board-write">
+    <li class="board-write" th:each="board : ${qnaList}">
+      <div class="post-number" th:text="${board.boardId}"></div>
       <div class="answer-count">답변<br>1</div>
       <div class="board-writer-title">
         <div class="author">
           <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
-          <div>닉네임</div>
+          <div th:text="${board.boardWriter}"></div>
         </div>
-        <a href="#" class="title">게시물 1 제목</a>
+        <a th:href="@{/board/board/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
       </div>
-    </li>
-    <li class="board-write">
-      <div class="answer-count">답변<br>2</div>
-      <div class="board-writer-title">
-        <div class="author">
-          <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
-          <div>닉네임</div>
-        </div>
-        <a href="#" class="title">게시물 2 제목</a>
+      <div class="board-details">
+	      <div class="view-count" th:text="'조회  ' + ${board.boardCnt}"></div>
+	      <div class="reg-date" th:text="${#strings.substring(board.boardRegdate, 0, 10) }"></div>
       </div>
-    </li>
-    <li class="board-write">
-      <div class="answer-count">답변<br>3</div>
-      <div class="board-writer-title">
-        <div class="author">
-          <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
-          <div>닉네임</div>
-        </div>
-        <a href="#" class="title">게시물 3 제목</a>
-      </div>
-    </li>
+    </li>   
   </div>
 <!-- 하단 페이징 -->
-  <div class="pagination-bottom">
-    <button class="pagination-bottom-button pagination-button-previous" disabled>&larr; Previous</button>
-    <span class="pagination-bottom-pages">1</span>
-    <button class="pagination-bottom-button pagination-button-next">Next &rarr;</button>
-  </div>
+<!-- 상수로 페이지 그룹 사이즈를 설정해주세요. -->
+<th:block th:with="pageGroupSize=5">
+<div class="pagination-bottom">
+    <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage <= 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr; Previous</button>
+    
+    <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
+        <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/{pageNum}(pageNum=${i})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
+    </div>
+
+    <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage >= totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">Next &rarr;</button>
+</div>
+</th:block>
+
+
 </div>
 </th:block>
 </body> 

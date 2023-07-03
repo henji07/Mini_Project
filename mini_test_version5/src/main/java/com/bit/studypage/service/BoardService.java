@@ -1,47 +1,27 @@
 package com.bit.studypage.service;
 
-import com.bit.studypage.domain.entity.Board;
-import com.bit.studypage.domain.repository.BoardRepository;
-import com.bit.studypage.dto.BoardDto;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
 import java.util.List;
 
+import com.bit.studypage.dto.BoardDTO;
+import com.bit.studypage.entity.Board;
 
-@Service
-public class BoardService {
-    private BoardRepository boardRepository;
+public interface BoardService {
 
-    public BoardService(BoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
-    }
+	//글 등록
+	public void insertBoard(BoardDTO boardDTO);
+	
+	//글 수정
+	public BoardDTO updateBoard(BoardDTO boardDTO);
+	
+	//글 삭제
+	public void deleteBoard(long boardId);
+	
+	//글 상세 조회
+	public BoardDTO getBoardDetail(long boardId);
+	
+	//글 목록 조회 
+	public List<BoardDTO> getBoardList(int pageNum);
 
-    @Transactional
-    public Long savePost(BoardDto boardDto) {
-        return boardRepository.save(boardDto.toEntity()).getId();
-    }
-
-    @Transactional
-    public List<BoardDto> getBoardList() {
-        List<Board> boardList = boardRepository.findAll();
-        List<BoardDto> boardDtoList = new ArrayList<>();
-
-        for(Board board : boardList) {
-            BoardDto boardDto = BoardDto.builder()
-                    .id(board.getId())
-                    .author(board.getAuthor())
-                    .boardTitle(board.getBoardTitle())
-                    .content(board.getContent())
-                    .createdDate(board.getCreatedDate())
-                    .build();
-            boardDtoList.add(boardDto);
-        }
-        return boardDtoList;
-    }
-
-    public List<Board> findBoardList() {
-        return boardRepository.findAll();
-    }
+	//전체 페이지 수 반환 
+	public Object getTotalPages();
 }

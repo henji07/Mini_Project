@@ -14,6 +14,7 @@ import java.util.List;
 public class testController {
 	BoardService boardService;
 
+<<<<<<< HEAD
 	@Autowired
 	public testController(BoardService boardService) {
 		this.boardService = boardService;
@@ -23,6 +24,8 @@ public class testController {
 		
 		return "view/boardQna";
 	}
+=======
+>>>>>>> 0066a277d01a6f5ab3807de17468cffb87ad526d
 	
 	@GetMapping("studyPage")
 	public String test2() {

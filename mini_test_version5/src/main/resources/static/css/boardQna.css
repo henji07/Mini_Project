@@ -126,6 +126,7 @@
   align-items: center;
   justify-content: center;
   margin-right: 10px;
+  margin-left: 10px;
   text-align: center;
 }
 
@@ -239,10 +240,6 @@
     cursor: not-allowed;
 }
 
-.pagination-bottom-pages {
-    font-size: 16px;
-    margin: 0 auto;
-}
 
 .pagination-bottom-button.pagination-button-previous {
     margin-right: auto;
@@ -250,4 +247,9 @@
 
 .pagination-bottom-button.pagination-button-next {
     margin-left: auto;
+}
+
+.active {
+  font-weight: bold;
+  color: #f97800 !important;
 }
