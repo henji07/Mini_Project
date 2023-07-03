@@ -16,7 +16,7 @@ public interface BoardQnaService {
 	public Map<String, Object> insertBoard(BoardQnaDTO boardDTO, List<MultipartFile> files);
 	
 	//글 수정
-	public BoardQnaDTO updateBoard(BoardQnaDTO boardDTO);
+	public Map<String, Object> updateBoard(BoardQnaDTO boardDTO);
 	
 	//글 삭제
 	public void deleteBoard(long boardId);
@@ -32,9 +32,6 @@ public interface BoardQnaService {
 	
 	//파일 정보 가져오기
 	public FileQnaDTO inqurityFileInfo(long id);
-
-	//파일 삭제 
-	public void deleteFile(long id);
 
 
 }
