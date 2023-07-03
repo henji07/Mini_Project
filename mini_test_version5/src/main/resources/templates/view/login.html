@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/default-layout}">
+  
+<head>
+<th:block layout:fragment="css">
+	<link rel="stylesheet" href="/css/login.css">
+</th:block>
+
+<th:block layout:fragment="script">
+   <script type="text/javascript" th:inline="javascript">
+   /* <![CDATA[ */
+   //$(document).ready(function(){}) == $(function() {})
+   $(function() {
+       $("#btn").on('click', function() {
+
+           if($("#id").val() === "") {
+               $("#id").next('label').addClass('warning');
+               setTimeout(function() {
+                   $("#id").next('label').removeClass('warning');
+               }, 1500);
+               return;
+           }
+           else if($("#pw").val() === "") {
+               $("#pw").next('label').addClass('warning');
+               setTimeout(function() {
+                   $("#pw").next('label').removeClass('warning');
+               }, 1500);
+               return;
+           }
+       });
+
+       //현재 url 가져오기
+       const url = new URL(window.location.href);
+
+       //url에서 쿼리스트링 분리해서 가져오기
+       const urlParams = url.searchParams;
+
+       if(urlParams.get("error")) {
+           alert(urlParams.get("errorMsg"));
+       }
+   });
+   /* ]]> */
+   </script>
+</th:block>
+</head>
+<body> 
+<th:block layout:fragment="content">  
+<section class="login-wrap">
+    <div class="login-container">
+        <h1 class="login-title">Login</h1>
+        <form th:action="@{/loginProcess}" method="post">
+            <div class="input-wrap">
+                <input type="text" name="username" id="id" required autocomplete="off">
+                <label for="id">ID</label>
+            </div>
+            <div class="input-wrap">
+                <input type="password" name="password" id="pw" required autocomplete="off">
+                <label for="pw">PASSWORD</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" class="save" id="saveId" name="saveId">
+                <label for="saveId" class="checklabel">아이디 저장</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" class="save" id="savePw" name="savePw">
+                <label for="savePw" class="checklabel">비밀번호 저장</label>
+            </div>
+            <div class="login-submit">
+                <button type="submit" id="btn">로그인</button>
+            </div>
+        </form>
+        <ul class="find_wrap">
+            <li><a target="_blank" th:href="@{/login/findId}" class="find_text">아이디 찾기</a></li>
+            <li><a target="_blank" th:href="@{/login/findPw}" class="find_text">비밀번호 찾기</a></li>
+            <li><a target="_blank" th:href="@{/members/new}" class="find_text">회원가입</a></li>
+        </ul>
+        <div class="social">
+            <a th:href="@{/oauth2/authorization/google}" id="google"></a>
+            <a th:href="@{/oauth2/authorization/naver}" id="naver"></a>
+            <a th:href="@{/oauth2/authorization/kakao}" id="kakao"></a>
+        </div>
+    </div>
+</section>
+</th:block>
+</body> 
+</html>
