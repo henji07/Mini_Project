@@ -122,12 +122,24 @@
   color: #f97800;
   border: 2px solid #f97800;
   border-radius: 5px;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   margin-right: 10px;
   margin-left: 10px;
   text-align: center;
+  flex-direction: column;
+}
+
+#anwer-count-title {
+	display: block;
+	text-align: center;
+	margin: 0;
+}
+
+.answer-count-count {
+	display: block;
+	text-align: center;
 }
 
 /*드롭다운*/

@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   width: 100%;
   margin: 0;
 }
@@ -16,6 +15,7 @@
   width: 70%;
   box-sizing: border-box;
   border-radius: 10px;
+  margin: 40px;
 }
 
 #postInfo {
@@ -54,8 +54,9 @@
 }
 
 #fileSection h4 {
-  color: #f97800;
   margin-bottom: 1em;
+  text-align: left;
+  color: #828282;
 }
 
 #fileList {
@@ -120,4 +121,79 @@
   text-decoration: none;
   cursor: pointer; 
   border-radius: 10px;
+}
+
+#commentSection {
+  margin-top: 2em;
+  text-align: right;
+}
+
+#commentSection h4 {
+  color: #f97800;
+  margin-bottom: 1em;
+  text-align: left;
+  color: #828282;
+}
+
+#commentContent {
+  width: 100%;
+  height: 100px;
+  padding: 1em;
+  border: 1px solid #f97800;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: .5em;
+  font-size: 14px;
+}
+
+#btnComment {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #FFCA9B;
+  color: white;
+  text-decoration: none;
+  cursor: pointer; 
+  border-radius: 10px;
+}
+
+#btnComment:hover {
+  background-color: #f97800;
+}
+
+#comments {
+  margin-top: 1em;
+}
+
+#comments h4 {
+  color: #f97800;
+  margin-bottom: 1em;
+}
+
+.comment-item {
+  background-color: #f2f2f2;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+.comment-item .content {
+  color: #333;
+}
+
+.comment-item .author {
+  color: #828282;
+  font-size: 12px;
+}
+
+.content {
+  color: #333;
+}
+
+.writer {
+  font-weight: bold;
+}
+
+.profile-img {
+    width: 30px;
+    height: 30px;
 }

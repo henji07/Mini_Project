@@ -3,6 +3,7 @@
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:decorate="~{layouts/default-layout}">
+
 <head>
 <th:block layout:fragment="css">
 	<link rel="stylesheet" href="/css/join.css">
@@ -196,37 +197,36 @@
     }
 	
 	</script>
-	  
 </th:block>
-    
+
 </head>
 
-<body> 
- <th:block layout:fragment="content">  
+<body>
+ <th:block layout:fragment="content">
 	<div class="join-container">
-	
+
 	<h2 id="join-join">회원가입</h2>
-	
+
 	<div class="join-line">
 	<span class="join-line-text"></span>
-	<h4 id="join-type">소셜 회원가입</h4>
+	<h4 class="join-type">소셜 회원가입</h4>
 	<span class="join-line-text"></span>
 	</div>
 	<div class="join-social-link">
-	   <a th:href="@{/kakao-join}">
+	   <a th:href="@{/oauth2/authorization/kakao}">
        	<img src="https://d1nuzc1w51n1es.cloudfront.net/7edcff9c01ccc20d1ef6.png" alt="카카오 아이콘">
        </a>
-       <a th:href="@{/naver-join}">
+       <a th:href="@{/oauth2/authorization/naver}">
        	<img src="https://image.rocketpunch.com/company/5466/naver_logo.png?s=400x400&t=inside" alt="네이버 아이콘">
        </a>
-       <a th:href="@{/google-join}">
+       <a th:href="@{/oauth2/authorization/google}">
        	<img src="https://d1nuzc1w51n1es.cloudfront.net/d99d8628713bb69bd142.png" alt="구글 아이콘">
        </a>
 	</div>
-	
+
 	<div class="join-line">
 	<span class="join-line-text"></span>
-	<h4 id="join-type">일반 회원가입</h4>
+	<h4 class="join-type">일반 회원가입</h4>
 	<span class="join-line-text"></span>
 	</div>
 	<form id="inputForm">
@@ -258,28 +258,28 @@
 	      <tr>
 	        <td><label for="name">이름</label></td>
 	        <td colspan="2">
-	          <input type="text" name="name" class="form-control" placeholder="이름을 입력하세요">
+	          <input type="text" name="name" id="name" class="form-control" placeholder="이름을 입력하세요">
 	          <p id="nameMessage" style="display:none;">이름을 입력해주세요.</p>
 	        </td>
 	      </tr>
 	      <tr>
-	        <td><label for="gender">성별</label></td>
+	        <td><label>성별</label></td>
 	        <td colspan="2">
-	          <input type="radio" name="gender" value="W" checked="checked">
+	          <input type="radio" name="gender" id="female" value="W" checked="checked">
 	          <label class="form-control-select" for="female">여자</label>
-	          <input type="radio" name="gender" value="M">
+	          <input type="radio" name="gender" id="male" value="M">
 	          <label class="form-control-select" for="male">남자</label>
 	        </td>
 	      </tr>
 	      <tr>
 	        <td><label for="phone">휴대전화</label></td>
 	        <td colspan="2">
-	          <input type="text" name="phone" class="form-control" placeholder="전화번호를 입력하세요">
+	          <input type="text" name="phone" id="phone" class="form-control" placeholder="전화번호를 입력하세요">
 	          <p id="phoneMessage" style="display:none;">전화번호를 입력해주세요.</p>
 	        </td>
 	      </tr>
 	      <tr>
-	        <td><label for="mailid">이메일</label></td>
+	        <td><label for="email">이메일</label></td>
 	        <td colspan="2">
 	          <input type="text" name="email" id="email" class="form-control" placeholder="이메일을 입력하세요">
 	          <p id="emailMessage" style="display:none;">이메일을 입력해주세요.</p>
@@ -287,7 +287,7 @@
 	        </td>
 	      </tr>
 	      <tr>
-	        <td><label for="interest">관심분야</label></td>
+	        <td><label>관심분야</label></td>
 	        <td colspan="2">
 	          <input type="checkbox" id="interest_1" name="interest" value="백엔드">
 	          <label class="form-control-select" for="interest_1">백엔드</label>
@@ -301,10 +301,10 @@
 	      </tr>
 	    </table>
 		<div style="text-align: center;">
-			<button type="button" id="btn-regist">가입하기</button>
-		</div>	  	
+			<button type="submit" id="btn-regist">가입하기</button>
+		</div>
 	</form>
 	</div>
 </th:block>
-</body> 
+</body>
 </html>
