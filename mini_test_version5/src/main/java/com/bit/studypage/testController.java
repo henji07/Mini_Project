@@ -44,11 +44,11 @@ public class testController {
 		return "view/findPw";
 	}
 	
-	@GetMapping("myPage")
-	public String test9() {
-
-		return "view/myPage";
-	}
+//	@GetMapping("myPage")
+//	public String test9() {
+//
+//		return "view/myPage";
+//	}
 	
 	@GetMapping("write")
 	public String test10() {

@@ -13,5 +13,6 @@ public interface CommentsRepository extends JpaRepository<Comments,Long> {
     List<Comments> findByCommWriter(String userNickname);
     String countByCommWriter(String commWriter);
     Page<Comments> findByCommWriterOrderByCommentId(Pageable pageable,String commWriter);
+    void deleteAllByPostId(Long postId);
 
 }

@@ -42,11 +42,15 @@ public class MyPageController {
         this.likesServiceImpl = likesServiceImpl;
         this.delUsersService = delUsersService;
     }
-
+@GetMapping("/1234")
+public String ggg(HttpSession session){
+    session.invalidate();
+    return "redirect:/myPageView";
+}
     //처음 page가 load됐을 때 view에 model을 담기
-    @GetMapping("/myPageView")
+    @GetMapping("/myPage")
     public ModelAndView viewMyPage(HttpSession session, @RequestParam(name="page", defaultValue = "0") int page) {
-        log.info("시이발!");
+
         ModelAndView mv = new ModelAndView();
         mv.setViewName("view/myPage.html");
         Users users = usersServiceImpl.loginUser(1L);
@@ -59,12 +63,11 @@ public class MyPageController {
         Pageable pageable2 = PageRequest.of(page, 10, Sort.Direction.DESC, "commentId");
         Page<Comments> commPage = commentsServiceImpl.getCommentsPage(pageable2,users.getUserNickname());
         mv.addObject("comments", commPage);
-        System.out.println("썅"+commPage);
 
         Pageable pageable3 = PageRequest.of(page, 10, Sort.Direction.DESC, "likeId");
         Page<Likes> likePage = likesServiceImpl.likesPage(users.getUsersId(),pageable3);
         mv.addObject("likes", likePage);
-        System.out.println("썅18"+likePage);
+        System.out.println(likePage + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
 //        List<CommDTO> commList = new ArrayList<>();
 //        for (Comments c : commentsServiceImpl.getCommentsList(users.getUserNickname())) {
@@ -94,7 +97,6 @@ public class MyPageController {
 
     @GetMapping("/boards")
     public Page<Board> getBoards(@RequestParam(name="pageNum",defaultValue = "0") int page, HttpSession session) {
-        log.info("시이발!3");
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "boardId");
         Users user = (Users)session.getAttribute("user");
         Page<Board> boardPage = boardServiceImpl.pageList(user.getUserNickname(),pageable);
@@ -102,13 +104,11 @@ public class MyPageController {
         System.out.println(boardPage.getTotalElements());
         System.out.println(boardPage.getTotalPages());
         System.out.println(boardPage);
-        log.info("시이발!4");
 //        return "myPage :: #profile-historycontainer";
         return boardPage;
     }
     @GetMapping("/comm")
     public Page<Comments> getComms(@RequestParam(name="pageNum",defaultValue = "0") int page, HttpSession session) {
-        log.info("시이발!3");
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "commentId");
         Users user = (Users)session.getAttribute("user");
         Page<Comments> commPage = commentsServiceImpl.getCommentsPage(pageable,user.getUserNickname());
@@ -116,14 +116,12 @@ public class MyPageController {
         System.out.println(commPage.getTotalElements());
         System.out.println(commPage.getTotalPages());
         System.out.println(commPage);
-        log.info("시이발!4");
 //        return "myPage :: #profile-historycontainer";
         return commPage;
     }
 
     @GetMapping("/like")
     public Page<Likes> getLikes(@RequestParam(name="pageNum",defaultValue = "0") int page, HttpSession session) {
-        log.info("시이발!3");
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "likeId");
         Users user = (Users)session.getAttribute("user");
         Page<Likes> likePage = likesServiceImpl.likesPage(user.getUsersId(),pageable);
@@ -131,7 +129,6 @@ public class MyPageController {
         System.out.println(likePage.getTotalElements());
         System.out.println(likePage.getTotalPages());
         System.out.println(likePage);
-        log.info("시이발!4");
 //        return "myPage :: #profile-historycontainer";
         return likePage;
     }
@@ -209,6 +206,7 @@ public class MyPageController {
     }
     @DeleteMapping("/del-board")
     public void delBoard(@RequestParam("board-check") List<Long> board){
+        System.out.println("보드 불러온거"+board);
         for (Long i : board) {
             boardServiceImpl.delBoard(i);
         }

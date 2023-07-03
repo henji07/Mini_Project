@@ -36,6 +36,7 @@ public class CommentsServiceImpl implements CommentsService {
         List<CommDTO> commList = new ArrayList<>();
         for (Comments c : commentsRepository.findByCommWriter(userNickname)) {
             CommDTO cdto = c.entityToDto();
+            System.out.println("123123123  "+c);
             cdto.setPostTitle(boardRepository.findByBoardId(c.getPostId()).getBoardTitle());
             commList.add(cdto);
         }
