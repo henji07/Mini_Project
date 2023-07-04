@@ -30,7 +30,7 @@ public class CommentController {
 	// 댓글 작성
     @ApiOperation(value = "댓글 작성", notes = "댓글을 작성한다.")
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/comments/{boardId}")
+    @PostMapping("/comments-insert/{boardId}")
     public ResponseCommentDTO<?> writeComment(@PathVariable("boardId") Long boardId, @RequestBody CommentDTO commentDto) {
         // 원래 로그인을 하면, User 정보는 세션을 통해서 구하고 주면 되지만,
         // 로그인은 생략하고, 임의로 findById 로 유저 정보를 넣어줌.

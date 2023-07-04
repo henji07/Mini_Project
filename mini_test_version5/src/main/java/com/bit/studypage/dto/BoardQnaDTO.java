@@ -20,12 +20,13 @@ public class BoardQnaDTO {
 	private int boardCnt;
 	
 	private List<FileQnaDTO> fileList;
-	private List<Long> toDeleteFileIds; // 삭제할 파일 ID 목록
+	private List<Long> attachDelete; // 삭제할 파일 ID 목록
 	
 	private int commentCount; // 댓글 수
 	
 	// CommentDTO 리스트 추가
 	private List<CommentDTO> comments;
+	
 	
 }
 

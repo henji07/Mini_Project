@@ -1,11 +1,10 @@
 package com.bit.studypage.service.impl;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -44,39 +43,45 @@ public class BoardQnaServiceImpl implements BoardQnaService {
     @Value("${file.path}")
     private String fileUploadDir;
 	
-	//글 등록
+	/* 글 등록 */
 	@Override
 	public Map<String, Object> insertBoard(BoardQnaDTO boardDTO, List<MultipartFile> files) {
 		
-		// 임시로 파일 정보를 저장할 리스트와 결과를 저장할 맵 생성
+		//임시로 파일 정보를 저장할 리스트 
 		List<Map<String, Object>> tmpFileList = new ArrayList<>();
+		//실행 결과를 저장할 맵 생성
 		Map<String, Object> result = new HashMap<>();
+		//boardId는 새로 추가할 게시물의 고유 아이디. boardId를 모르니까 임시 저장 
 		long boardId = 0;
 		
 		try {
 		// 파일이 있는 경우, 각 파일을 처리  
 		if(ObjectUtils.isNotEmpty(files)) {
+			
             System.out.println(files.size());
+            
+            	//files 리스트의 각 MultipartFile에 대하여 반복문 실행
             	for(MultipartFile f : files) {
-            		// 파일 정보를 저장할 맵 생성
+            		//data 맵: 각 첨부 파일의 정보를 저장할 목적으로 생성
             		Map<String, Object> data = new HashMap<>();
             		
-            		// 파일의 원래 이름에서 확장자를 추출하고, 새 파일 이름을 생성
+            		//원본 파일 이름, 파일 확장자, 저장할 파일 이름, 파일 타입 등의 정보를 추출, 저장될 새 이름 만들기
             		String originalFileName = f.getOriginalFilename();
-            		
                     String ext = StringUtils.substring(originalFileName, StringUtils.lastIndexOf(originalFileName, "."));
                     String storeFileName = "qna/" + UUID.randomUUID().toString() + ext;
                     String fileType = f.getContentType();
             		
-                    //파일을 서버에 업로드하고, 파일 정보를 맵에 저장
+                    //fle 객체는 첨부 파일을 서버에 업로드하기 위한 File 객체
+                    //transferTo 메서드는 MultipartFile 객체에 저장된 파일을 실제 파일 시스템에 저장
             		File fle = new File(fileUploadDir + storeFileName);
             		f.transferTo(fle);
             		
+            		//data 맵에 파일 정보를 저장
             		data.put("originalFileName", originalFileName);
             		data.put("fileType", fileType);
             		data.put("storeFileName", storeFileName);
             		
-            		// 임시 파일 정보 리스트에 추가
+            		//tmpFileList에 data 맵 추가
             		tmpFileList.add(data);
             	}
 			}
@@ -87,21 +92,23 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		
 		System.out.println(boardDTO.toString());
 		
-		// BoardQna 엔티티로 변환하고 저장
+		//BoardQna 엔티티로 변환하고 저장 - 데이터베이스에 저장될 수 있는 형태
 		BoardQna board = BoardQna.builder().data(boardDTO).build();
 		
-		// 보드 엔티티를 데이터베이스에 저장하고 결과를 반환
+		// board 엔티티 객체를 데이터베이스에 저장하고, 그 결과를 entity 객체에 저장
 		BoardQna entity = boardRepository.save(board);
 		
-		// 저장된 엔티티에서 게시글 아이디를 가져옴
+		// entity 객체가 비어있지 않다면, 이 객체에서 게시글의 아이디를 가져와 boardId 변수에 저장
 		if(ObjectUtils.isNotEmpty(entity)) {
 			boardId = entity.getBoardId();
 			
-			// 파일 정보가 있는 경우, 각 파일 정보를 FileQnaEntity로 변환하고 저장
+			//파일 정보가 있는 경우, 각 파일 정보를 FileQnaEntity로 변환하고 저장
+			//tmpFileList가 비어있지 않다면, 이 리스트의 각 요소(맵 형태의 파일 데이터)에 대하여 반복문을 실행
+			//조건문을 통해 첨부된 파일이 있는 경우에만 로직을 수행
 			if(ObjectUtils.isNotEmpty(tmpFileList)) {
 				
 				for(Map<String,Object> data: tmpFileList) {
-					
+					//FileQnaEntity.builder()를 통해 각 파일 데이터를 FileQnaEntity 객체로 변환
 					FileQnaEntity fqEntity = FileQnaEntity.builder()
 	        				.originalFileName((String)data.get("originalFileName"))
 	        				.fileType((String)data.get("fileType"))
@@ -117,43 +124,67 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		}
 		
 		
-		// 결과 맵에 게시글 아이디를 저장하고 반환
+		//최종적으로 result 맵에 게시글의 아이디를 저장하고, result 맵을 반환
 		result.put("boardId", boardId);
 		return result;
 	}
 
-	//글 수정
-	public BoardQnaDTO updateBoard(BoardQnaDTO boardDTO) {
+	/* 글 수정 */
+	public Map<String, Object> updateBoard(BoardQnaDTO boardDTO, List<MultipartFile> files) {
 		
-		System.out.println(boardDTO.toString());
-		BoardQnaDTO dto = null;
-		Optional<BoardQna> option = boardRepository.findById(boardDTO.getBoardId());
+		System.out.println("수정하려는 게시글 정보=" + boardDTO.toString());
 		
+		//반환할 맵 객체를 null로 초기화
+		Map<String, Object> returnMap = null;
+		
+		//1. 수정할 게시글 조회 - 게시글 ID 사용해 저장소에서 해당 게시글 찾기
+		Optional<BoardQna> option = boardRepository.findById(boardDTO.getBoardId());	
+		System.out.println("수정할 게시글 조회= " +option);
+
+		//찾은 게시글이 존재하는 경우
 		if(ObjectUtils.isNotEmpty(option)) {
-			BoardQna board = option.get();
-			
-			if(ObjectUtils.isNotEmpty(board)) {
-				board.updateContent(boardDTO);
-				BoardQna entity = boardRepository.save(board);
-				
-				if(ObjectUtils.isNotEmpty(entity)) {
-					dto = new BoardQnaDTO();
-					BeanUtils.copyProperties(entity, dto);
-				}
-			}
-			
-		}
+	        // Optional 객체에서 게시글 정보 가져오기
+	        BoardQna board = option.get();
+	        // 가져온 게시글이 존재하는 경우
+	        if(ObjectUtils.isNotEmpty(board)) {
+	            // 새로운 게시글 정보로 게시글 내용을 업데이트
+	            board.updateContent(boardDTO);
+	            
+	    		//2. 삭제된 파일이 있으면 삭제
+	   		 	for (Long fileId : boardDTO.getAttachDelete()) {
+	            	fileRepository.deleteById(fileId);
+	   		 	}
+	   		 	
+	   		 	
+	            // 변경된 내용을 저장소에 저장
+	            BoardQna entity = boardRepository.save(board);
+	            
+	            // 저장한 게시글이 존재하는 경우
+	            if(ObjectUtils.isNotEmpty(entity)) {
+	                // 저장한 게시글의 정보를 담을 DTO 객체 생성
+	                BoardQnaDTO dto = new BoardQnaDTO();
+	                // 저장된 게시글의 정보를 DTO 객체로 복사
+	                BeanUtils.copyProperties(entity, dto);
+	                // DTO 객체를 맵으로 변환
+	                returnMap = new HashMap<>();
+	                // 맵에 게시글의 ID를 "boardId"라는 키로 저장
+	                returnMap.put("boardId", dto.getBoardId());
+	            }
+	        }
+	    }
 		
-		return dto;
+	    // 최종적으로 생성된 맵 반환
+	    return returnMap;
 	}
+        
 	
 	
-	//글 삭제
+	/* 글 삭제 */
 	public void deleteBoard(long boardId) {
 		boardRepository.deleteById(boardId);
 	}
 	
-	//글 상세 조회
+	/* 글 상세 조회 */
 	@Override
 	public BoardQnaDTO getBoardDetail(long boardId) {
 		// 결과를 저장할 DTO 생성
@@ -191,7 +222,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	    return dto;
 	}
 
-	//글 목록 
+	/* 글 목록 */ 
 	@Override
 	public List<BoardQnaDTO> getBoardList(int pageNum) {
 		
@@ -226,7 +257,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		return dataList;
 	}
 
-	//전체 페이지 수 반환 
+	/* 전체 페이지 수 반환 */
 	@Override
 	public Object getTotalPages() {
 		int pageSize = 5;
@@ -234,7 +265,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	    return (int) Math.ceil((double) totalBoards / pageSize);
 	}
 	
-	//파일 정보 가져오기 
+	/* 파일 정보 가져오기 */
 	public FileQnaDTO inqurityFileInfo(long id) {
 		
 		FileQnaDTO dto = null;
@@ -249,13 +280,6 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		}
 		
 		return dto;
-	}
-	
-	//파일 삭제 
-	@Override
-	public void deleteFile(long id) {
-		fileRepository.deleteById(id);
-		
 	}
 
 	

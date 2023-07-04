@@ -11,7 +11,9 @@
 
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript"> 
+   
    $(function() {	   
+	   
 	   //글 삭제
        $("#btnDelete").on("click", (e) => {
     	   
@@ -50,7 +52,7 @@
 
     	    $.ajax({
     	        type: 'POST',
-    	        url: '/comments/' + boardId,
+    	        url: '/comments-insert/' + boardId,
     	        contentType: 'application/json',
     	        data: JSON.stringify({content: commentContent,}),
     	        success: function(response) {
@@ -152,23 +154,23 @@
 	            </li>
             </ul>
           </div>
+          
           <!-- 댓글 리스트 -->
 		  <div id="comments">
 		      <h4>댓글 목록</h4>
-		      <!-- 기존 댓글들은 여기에 표시 -->
-		      <div class="comment-item" th:each="comment : ${comments}">
-		      	  <div class="writer">
-			         <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
-			         <span th:text="${comment.writer}"></span>
-			      </div>
-		          <div class="content" th:text="${comment.content}"></div>     
-		      </div>
-		  </div>
+			  <!-- 기존 댓글들은 여기에 표시 -->     
+			  <li class="comment-item" th:each="comment : ${comments}">
+	            <span th:text="${comment.writer}"></span>
+		        <span th:text="${comment.content}"></span>
+		      	<button class="edit-button">수정</button>
+			  	<button class="delete-button">삭제</button>  
+			  </li>
+		   </div>
           
           <!-- 댓글 입력 부분 -->
 		  <div id="commentSection">
 		   <h4>댓글 작성</h4>
-		     <textarea id="commentContent" name="commentContent"></textarea>
+		     <textarea id="commentContent" name="commentContent" placeholder="댓글을 입력해주세요."></textarea>
 		     <a type="button" id="btnComment">댓글 등록</a>
 		  </div>
           <div id="postActions">

@@ -17,16 +17,15 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.CommentDTO;
-import com.bit.studypage.dto.FileQnaDTO;
 import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.service.BoardQnaService;
 
@@ -152,17 +151,13 @@ public class BoardQnaController {
       }
     
     //글 수정 
-    @PutMapping("/board")
-    public ResponseEntity<?> updateBoard(BoardQnaDTO boardDTO) {
+    @PostMapping("/board-modify")
+    public ResponseEntity<?> updateBoard(@RequestPart("board") BoardQnaDTO boardDTO, 
+    									 @RequestPart(value = "files", required = false) List<MultipartFile> files) {
         ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
         try {
-        	
-        	// 먼저 파일 삭제를 처리
-            for (Long fileId : boardDTO.getToDeleteFileIds()) {
-            	boardService.deleteFile(fileId);
-            }
             
-            boardService.updateBoard(boardDTO);
+            boardService.updateBoard(boardDTO, files);
 
             //리턴해줄 맵
             Map<String, String> returnMap = new HashMap<String, String>();
