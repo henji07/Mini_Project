@@ -16,7 +16,7 @@ public interface BoardQnaService {
 	public Map<String, Object> insertBoard(BoardQnaDTO boardDTO, List<MultipartFile> files);
 	
 	//글 수정
-	public Map<String, Object> updateBoard(BoardQnaDTO boardDTO);
+	public Map<String, Object> updateBoard(BoardQnaDTO boardDTO, List<MultipartFile> files);
 	
 	//글 삭제
 	public void deleteBoard(long boardId);

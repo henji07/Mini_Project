@@ -5,7 +5,7 @@ import com.bit.studypage.entity.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+//test용 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

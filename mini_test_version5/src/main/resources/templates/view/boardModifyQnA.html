@@ -43,29 +43,38 @@
  		$("#btnUpdate").click(function() {
  			if (window.confirm("변경사항을 저장하시겠습니까?")) {	
  			
- 				let formData = {
- 			            boardId: $("#boardId").val(),
- 			            boardTitle: $("#boardTitle").val(),
- 			            boardContent: $("#boardContent").val(),
- 			            attachDelete: toDelete
- 			        };
+ 				// FormData 객체 생성
+ 				let formData = new FormData();
+ 				formData.append('board', new Blob([JSON.stringify({
+ 				    boardId: $("#boardId").val(),
+ 				    boardTitle: $("#boardTitle").val(),
+ 				    boardContent: $("#boardContent").val(),
+ 				    attachDelete: toDelete
+ 				})], {
+ 				    type: "application/json"
+ 				}));
+ 				// fileList에 있는 모든 파일을 추가
+ 				Array.prototype.forEach.call($('#fileInput')[0].files, function(file) {
+				    formData.append('files', file);
+				});
+	
+ 				console.log(formData); 
  				
- 				 console.log(formData); 
- 				
-	 		    $.ajax({
-	 		        url: "/board/board-modify",
-	 		        type: 'post',
-	 		        data: JSON.stringify(formData), 
-	 		        contentType: "application/json",
-	 		        success: (obj) => {
-	 		            console.log(obj);
-	 		            alert(obj.item.msg);
-	 		            location.href = `/board/board/${boardId}`;
-	 		        },
-	 		        error: (error) => {
-	 		            console.log(error);
-	 		        }
-	 		    });
+ 				$.ajax({
+ 					url: "/board/board-modify",
+ 					type: 'post',
+ 					data: formData, 
+ 					contentType: false,
+ 					processData: false,
+ 					success: (obj) => {
+ 						console.log(obj);
+ 						alert(obj.item.msg);
+ 						location.href = `/board/board/${boardId}`;
+ 					},
+ 					error: (error) => {
+ 						console.log(error);
+ 					}
+ 				});
  			}
  		});
 
@@ -125,17 +134,17 @@
           <input id="boardContent" name="boardContent" th:value="${board.boardContent}">
           <div id="fileSection">
             <h4>첨부 파일</h4>
-            <button class="addFile" style="float: right;">파일 추가</button>
             <!-- 첨부 파일 추가 및 삭제 버튼 추가 -->
+            <button class="addFile" style="float: right;">파일 추가</button>
 		    <button id="btnDeleteFile" type="button" style="float: right;">삭제</button> 
-            <input type="file" id="fileInput" name="fileList" style="display: none" multiple>
+            <input type="file" id="fileInput" name="fileInput" style="display: none" multiple>
             <ul id="fileList" name="fileList">
                 <!-- 첨부파일이 있으면 이름을 표시하고 다운로드 링크를 제공 -->
 	            <li th:each="fle : ${board.fileList}">
 	            	<input type="checkbox" class="fileCheckbox" />
 	            	<input type="hidden" class="fileId" th:value="${fle.id}">
 	            	<img th:src="@{/board/attach/{filename}(filename=${fle.filePath})}" width="50" />
-	                <span th:text="${fle.fileName}"></span>                
+	                <span th:text="${fle.fileName}"></span>         
 	            </li>
             </ul>
           </div>       

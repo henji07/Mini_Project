@@ -130,7 +130,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	}
 
 	/* 글 수정 */
-	public Map<String, Object> updateBoard(BoardQnaDTO boardDTO) {
+	public Map<String, Object> updateBoard(BoardQnaDTO boardDTO, List<MultipartFile> files) {
 		
 		System.out.println("수정하려는 게시글 정보=" + boardDTO.toString());
 		
@@ -154,6 +154,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	   		 	for (Long fileId : boardDTO.getAttachDelete()) {
 	            	fileRepository.deleteById(fileId);
 	   		 	}
+	   		 	
 	   		 	
 	            // 변경된 내용을 저장소에 저장
 	            BoardQna entity = boardRepository.save(board);
