@@ -10,10 +10,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +28,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.CommentDTO;
 import com.bit.studypage.dto.ResponseDTO;
-import com.bit.studypage.entity.BoardQna;
 import com.bit.studypage.service.BoardQnaService;
 
 import lombok.RequiredArgsConstructor;
@@ -225,7 +224,10 @@ public class BoardQnaController {
         }
     }
 
-    
-   
+    //시큐리티 권한 처리 
+    @GetMapping("/api/user")
+    public ResponseEntity<String> getLoggedInUser(Authentication authentication) {
+        return ResponseEntity.ok(authentication.getName());
+    }
 
 }

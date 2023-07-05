@@ -36,7 +36,7 @@ public class SecurityConfiguration {
 
                 //특정 URL에 대한 권한 설정
                 .authorizeHttpRequests(authorizeRequests -> {
-                    authorizeRequests.requestMatchers("/myPage/**", "/write/**")
+                    authorizeRequests.requestMatchers("/myPage/**", "/write/**", "/board/insert-board-view/**", "/board//modify-board-view/**")
                             // ROLE_은 붙이지 않음. hasAnyRole()을 사용할 때 자동으로 ROLE_이 붙기 때문이다.
                             .hasRole("USER");
 

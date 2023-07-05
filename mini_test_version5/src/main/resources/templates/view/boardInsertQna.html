@@ -11,6 +11,14 @@
 
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript">
+	// 로그인한 사용자의 아이디를 받아오는 코드 추가
+   $(document).ready(function() {
+     $.get("/board/api/user", function(data, status) {
+       $('#boardWriter').val(data);
+       $('#boardWriter').attr('readonly', true);
+     });
+   });
+   
    //글 등록
    $(function() {
         $("#btnInsert").on("click", () => {
@@ -73,7 +81,7 @@
         <td><input id="boardTitle" type="text" name="boardTitle" placeholder="제목을 입력해주세요."></td>
       </tr>
       <tr>
-        <td><input id="boardWriter" type="text" name="boardWriter" placeholder="작성자"></td>
+        <td><input id="boardWriter" type="text" name="boardWriter" readonly></td>
       </tr>
       <tr>
         <td><textarea id="boardContent" name="boardContent" cols="40" rows="10" placeholder="내용을 입력하세요."></textarea></td>

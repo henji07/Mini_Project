@@ -93,7 +93,7 @@
     </li>   
   </div>
 <!-- 하단 페이징 -->
-<!-- 상수로 페이지 그룹 사이즈를 설정해주세요. -->
+<!-- 상수로 페이지 그룹 사이즈를 설정. -->
 <th:block th:with="pageGroupSize=5">
 <div class="pagination-bottom">
     <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage <= 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr; Previous</button>
