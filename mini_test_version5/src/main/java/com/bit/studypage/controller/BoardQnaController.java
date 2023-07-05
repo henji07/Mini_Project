@@ -71,15 +71,17 @@ public class BoardQnaController {
     }
 	
 	//검색 리스트로 이동 
-	@GetMapping("/search")
-    public ModelAndView getSearchList(@RequestParam(required = false) String keyword) {
+	@GetMapping("/search/{pageNum}")
+    public ModelAndView getSearchList(@RequestParam(required = false) String keyword, @PathVariable int pageNum) {
 		
 		ModelAndView mv = new ModelAndView();
 
-        List<BoardQnaDTO> searchList = boardService.searchBoardsByTitle(keyword);
+        List<BoardQnaDTO> searchList = boardService.searchBoardsByTitle(keyword, pageNum);
 
         mv.addObject("searchList", searchList);
         mv.addObject("keyword", keyword);
+        mv.addObject("currentPage", pageNum);
+        mv.addObject("totalPages", boardService.getTotalPages());
         mv.setViewName("view/boardSearchQna.html");
 
         return mv;

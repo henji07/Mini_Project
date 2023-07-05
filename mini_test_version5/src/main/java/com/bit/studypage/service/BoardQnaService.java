@@ -35,7 +35,7 @@ public interface BoardQnaService {
 	public FileQnaDTO inqurityFileInfo(long id);
 	
 	//게시판 검색 기능을 구현
-	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword);
+	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword, int pageNum);
 
 
 }

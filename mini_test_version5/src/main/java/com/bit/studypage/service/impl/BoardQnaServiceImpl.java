@@ -313,9 +313,18 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	}
 	
 	//게시판 검색 기능을 구현
-	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword) {
+	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword, int pageNum) {
 		
-        List<BoardQna> boardList = boardRepository.findByTitleContaining(searchKeyword);
+		int pageSize = 5;  // 한 페이지에 보여질 게시글 수
+
+	    // Pageable 인스턴스 생성
+	    Pageable pageable = PageRequest.of(pageNum - 1, pageSize, Sort.by(Sort.Direction.DESC, "boardId"));
+
+	    // 검색된 게시글 리스트를 페이징 처리하여 가져옴
+	    Page<BoardQna> pageInfo = boardRepository.findByTitleContaining(searchKeyword, pageable);
+	    
+	    // BoardQna 리스트를 BoardQnaDTO 리스트로 변환
+	    List<BoardQna> boardList = pageInfo.getContent();
         
         List<BoardQnaDTO> dataList = new ArrayList<>();
 

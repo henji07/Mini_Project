@@ -21,7 +21,7 @@ public interface BoardQnaRepository extends JpaRepository<BoardQna, Long> {
 	
 	//게시판 제목을 기반으로 게시판을 검색
 	@Query("SELECT b FROM BoardQna b WHERE b.boardTitle LIKE %:searchKeyword%")
-	List<BoardQna> findByTitleContaining(@Param("searchKeyword") String searchKeyword);
+	Page<BoardQna> findByTitleContaining(@Param("searchKeyword") String searchKeyword, Pageable pageable);
 	
 
 }
