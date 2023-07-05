@@ -12,6 +12,7 @@ import com.bit.studypage.entity.Comment;
 import com.bit.studypage.entity.Users;
 import com.bit.studypage.repository.BoardQnaRepository;
 import com.bit.studypage.repository.CommentRepository;
+import com.bit.studypage.repository.UsersRepository;
 import com.bit.studypage.service.CommentService;
 
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class CommentServiceImpl implements CommentService {
 	
 	private final CommentRepository commentRepository;
     private final BoardQnaRepository boardRepository;
+    private final UsersRepository userRepository;
 
     // 댓글 작성하기
     @Transactional
@@ -33,22 +35,28 @@ public class CommentServiceImpl implements CommentService {
 
         Comment comment = Comment.builder()
                 .content(commentDto.getContent())
-                .user(user)
-                .board(board)
+                .userId(user.getUsersId())
+                .boardId(board.getBoardId())
                 .build();
 
         commentRepository.save(comment);
 
-        return CommentDTO.toDto(comment);         
+        return CommentDTO.toDto(comment, user.getName());         
     }
     
     // 글에 해당하는 전체 댓글 불러오기
     @Transactional(readOnly = true)
     public List<CommentDTO> getComments(long boardId) {
-        List<Comment> comments = commentRepository.findAllByBoardBoardId(boardId);
+        List<Comment> comments = commentRepository.findAllByBoardId(boardId);
         List<CommentDTO> commentDtos = new ArrayList<>();
 
-        comments.forEach(s -> commentDtos.add(CommentDTO.toDto(s)));
+        comments.forEach(s -> {
+            Users user = userRepository.findById(s.getUserId()).orElseThrow(() -> {
+                return new IllegalArgumentException("사용자를 찾을 수 없습니다.");
+            });
+            commentDtos.add(CommentDTO.toDto(s, user.getName())); // user의 이름을 함께 전달
+        });
+        
         return commentDtos;
     }
     

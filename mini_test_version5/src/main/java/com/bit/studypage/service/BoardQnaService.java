@@ -3,6 +3,7 @@ package com.bit.studypage.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.studypage.dto.BoardQnaDTO;
@@ -32,6 +33,9 @@ public interface BoardQnaService {
 	
 	//파일 정보 가져오기
 	public FileQnaDTO inqurityFileInfo(long id);
+	
+	//게시판 검색 기능을 구현
+	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword);
 
 
 }

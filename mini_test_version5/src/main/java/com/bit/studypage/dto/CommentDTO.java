@@ -14,11 +14,11 @@ public class CommentDTO {
     private String content;
     private String writer;
 
-    public static CommentDTO toDto(Comment comment) {
+    public static CommentDTO toDto(Comment comment, String userName) {
         return new CommentDTO(
-                comment.getId(),
+        		comment.getId(),
                 comment.getContent(),
-                comment.getUser().getName()
+                userName
         );
     }
 }

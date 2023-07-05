@@ -1,6 +1,7 @@
 package com.bit.studypage.controller;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,7 +36,7 @@ public class CommentController {
         // 원래 로그인을 하면, User 정보는 세션을 통해서 구하고 주면 되지만,
         // 로그인은 생략하고, 임의로 findById 로 유저 정보를 넣어줌.
         // 추후에 로그인 기능을 도입하고 유저 정보는 세션을 통해서 넣어주면 됨.
-        Users user = memberRepository.findById((long) 1).get();
+    	Users user = memberRepository.findById((long) 2).orElseThrow(() -> new NoSuchElementException("No User found with id 1"));
         
         System.out.println("댓글 작성 요청 - boardId: " + boardId);
         System.out.println("댓글 내용: " + commentDto.getContent());

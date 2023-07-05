@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.CommentDTO;
 import com.bit.studypage.dto.ResponseDTO;
+import com.bit.studypage.entity.BoardQna;
 import com.bit.studypage.service.BoardQnaService;
 
 import lombok.RequiredArgsConstructor;
@@ -66,6 +68,21 @@ public class BoardQnaController {
 
         return mv;
 
+    }
+	
+	//검색 리스트로 이동 
+	@GetMapping("/search")
+    public ModelAndView getSearchList(@RequestParam(required = false) String keyword) {
+		
+		ModelAndView mv = new ModelAndView();
+
+        List<BoardQnaDTO> searchList = boardService.searchBoardsByTitle(keyword);
+
+        mv.addObject("searchList", searchList);
+        mv.addObject("keyword", keyword);
+        mv.setViewName("view/boardSearchQna.html");
+
+        return mv;
     }
 	
    
@@ -152,7 +169,7 @@ public class BoardQnaController {
     
     //글 수정 
     @PostMapping("/board-modify")
-    public ResponseEntity<?> updateBoard(@RequestPart("board") BoardQnaDTO boardDTO, 
+    public ResponseEntity<?> updateBoard(@RequestPart(value = "board", required = false) BoardQnaDTO boardDTO, 
     									 @RequestPart(value = "files", required = false) List<MultipartFile> files) {
         ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
         try {

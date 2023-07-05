@@ -65,5 +65,4 @@ public class BoardQna {
 		this.boardCnt = boardCnt;
 	}
 	
-
 }

@@ -139,7 +139,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		
 		//1. 수정할 게시글 조회 - 게시글 ID 사용해 저장소에서 해당 게시글 찾기
 		Optional<BoardQna> option = boardRepository.findById(boardDTO.getBoardId());	
-		System.out.println("수정할 게시글 조회= " +option);
+		System.out.println("수정할 게시글 조회= " + option);
 
 		//찾은 게시글이 존재하는 경우
 		if(ObjectUtils.isNotEmpty(option)) {
@@ -155,10 +155,40 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	            	fileRepository.deleteById(fileId);
 	   		 	}
 	   		 	
-	   		 	
-	            // 변경된 내용을 저장소에 저장
+	   		 	// 변경된 내용을 저장소에 저장
 	            BoardQna entity = boardRepository.save(board);
-	            
+	   		 	
+	   		 	//3. 새로 업로드된 파일이 있으면 저장
+	            if(files != null && !files.isEmpty()) {
+	                for(MultipartFile f : files) {
+	                    try {
+	                        // 원본 파일 이름, 파일 확장자, 저장할 파일 이름, 파일 타입 등의 정보를 추출, 저장될 새 이름 만들기
+	                        String originalFileName = f.getOriginalFilename();
+	                        String ext = StringUtils.substring(originalFileName, StringUtils.lastIndexOf(originalFileName, "."));
+	                        String storeFileName = "qna/" + UUID.randomUUID().toString() + ext;
+	                        String fileType = f.getContentType();
+
+	                        // fle 객체는 첨부 파일을 서버에 업로드하기 위한 File 객체
+	                        // transferTo 메서드는 MultipartFile 객체에 저장된 파일을 실제 파일 시스템에 저장
+	                        File fle = new File(fileUploadDir + storeFileName);
+	                        f.transferTo(fle);
+
+	                        // FileQnaEntity 객체 생성 및 설정
+	                        FileQnaEntity fqEntity = FileQnaEntity.builder()
+	                                .originalFileName(originalFileName)
+	                                .fileType(fileType)
+	                                .storeFileName(storeFileName)
+	                                .boardId(entity.getBoardId()).build();  // 현재 수정하는 게시글의 id 설정
+
+	                        // 파일 정보 저장
+	                        fileRepository.save(fqEntity);
+	                    } catch (Exception e) {
+	                        e.printStackTrace();
+	                        // Exception handling
+	                    }
+	                }
+	            }
+	   		 		            
 	            // 저장한 게시글이 존재하는 경우
 	            if(ObjectUtils.isNotEmpty(entity)) {
 	                // 저장한 게시글의 정보를 담을 DTO 객체 생성
@@ -247,7 +277,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 				BeanUtils.copyProperties(b, dto);
 				
 				// 댓글 수 조회
-	            int commentCount = commentRepository.countByBoard_BoardId(b.getBoardId());
+	            int commentCount = commentRepository.countByBoardId(b.getBoardId());
 	            dto.setCommentCount(commentCount);
 				
 				dataList.add(dto);
@@ -265,7 +295,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	    return (int) Math.ceil((double) totalBoards / pageSize);
 	}
 	
-	/* 파일 정보 가져오기 */
+	/* 데이터 베이스에서 파일 정보 가져오기 */
 	public FileQnaDTO inqurityFileInfo(long id) {
 		
 		FileQnaDTO dto = null;
@@ -281,7 +311,29 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		
 		return dto;
 	}
-
 	
+	//게시판 검색 기능을 구현
+	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword) {
+		
+        List<BoardQna> boardList = boardRepository.findByTitleContaining(searchKeyword);
+        
+        List<BoardQnaDTO> dataList = new ArrayList<>();
+
+        if(ObjectUtils.isNotEmpty(boardList)) {
+            for(BoardQna b : boardList) {
+
+                BoardQnaDTO dto = new BoardQnaDTO();
+                BeanUtils.copyProperties(b, dto);
+
+                // 댓글 수 조회
+                int commentCount = commentRepository.countByBoardId(b.getBoardId());
+                dto.setCommentCount(commentCount);
+
+                dataList.add(dto);
+            }
+        }
+
+        return dataList;
+    }
 	
 }

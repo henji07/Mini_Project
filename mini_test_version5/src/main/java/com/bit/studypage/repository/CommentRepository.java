@@ -11,9 +11,9 @@ import com.bit.studypage.entity.Comment;
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 	
 	//댓글 목록 
-	List<Comment> findAllByBoardBoardId(long boardId);
+    List<Comment> findAllByBoardId(long boardId);
 	
-	//댓글 수 
-	int countByBoard_BoardId(Long boardId);
+    //댓글 수 
+    int countByBoardId(Long boardId);
 
 }

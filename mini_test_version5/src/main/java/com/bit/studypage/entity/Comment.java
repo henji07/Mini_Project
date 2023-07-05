@@ -18,11 +18,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Getter
 @Table(name = "comment_test")
-@Builder
 public class Comment {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,15 +31,17 @@ public class Comment {
     @Column(nullable = false, name="comment_content")
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "users_id")
-    @OnDelete(action = OnDeleteAction.CASCADE) // 연관된 user가 삭제되면 같이 삭제됨
-    private Users user;
+    @Column(name="users_id")
+    private long userId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "board_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private BoardQna board;
-
+    @Column(name = "board_id")
+    private long boardId;
+    
+    @Builder
+    public Comment(String content, long userId, long boardId) {
+    	this.content = content;
+    	this.userId = userId;
+    	this.boardId = boardId;
+    }
 
 }

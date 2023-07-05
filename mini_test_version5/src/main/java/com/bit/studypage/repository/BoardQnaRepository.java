@@ -1,8 +1,12 @@
 package com.bit.studypage.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.bit.studypage.entity.BoardQna;
@@ -14,5 +18,10 @@ public interface BoardQnaRepository extends JpaRepository<BoardQna, Long> {
 	
 	//페이징 
 	Page<BoardQna> findAllByOrderByBoardIdDesc(Pageable pageable);
+	
+	//게시판 제목을 기반으로 게시판을 검색
+	@Query("SELECT b FROM BoardQna b WHERE b.boardTitle LIKE %:searchKeyword%")
+	List<BoardQna> findByTitleContaining(@Param("searchKeyword") String searchKeyword);
+	
 
 }

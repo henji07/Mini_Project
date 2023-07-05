@@ -60,17 +60,15 @@
     <input type="text" id="search-input-qna" placeholder="검색" />
     <button id="search-button">검색</button>
   </div>
-<!-- 상단 페이징 -->
-<div class="pagination-top">
-    <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
-    <div class="pagination-top-buttons">
-      <button class="pagination-top-button" th:disabled="${currentPage == 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr;</button>
-      <button class="pagination-top-button" th:disabled="${currentPage == totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">&rarr;</button>
-    </div>
+<!-- 검색창 아래에 위치할 검색 키워드 표시 -->
+<div class="search-keyword-display">
+    <p th:text="'\' ' + ${keyword} + ' \'에 대한 검색 결과'"></p>
 </div>
+<!-- 상단 페이징 -->
+
 <!-- 게시물 부분 -->
   <div class="board-write-container">
-    <li class="board-write" th:each="board : ${qnaList}">
+    <li class="board-write" th:each="board : ${searchList}">
       <div class="post-number" th:text="${board.boardId}"></div>
       <div class="answer-count">
       	<p id="anwer-count-title">답변</p>
@@ -90,17 +88,6 @@
     </li>   
   </div>
 <!-- 하단 페이징 -->
-<!-- 상수로 페이지 그룹 사이즈를 설정해주세요. -->
-<th:block th:with="pageGroupSize=5">
-<div class="pagination-bottom">
-    <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage <= 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr; Previous</button>
-    
-    <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
-        <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/{pageNum}(pageNum=${i})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
-    </div>
 
-    <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage >= totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">Next &rarr;</button>
-</div>
-</th:block>
 </body> 
 </html>
