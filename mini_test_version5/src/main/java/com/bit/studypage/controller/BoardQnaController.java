@@ -70,7 +70,9 @@ public class BoardQnaController {
 
     }
 	
-	//검색 리스트로 이동 
+	//검색 결과 화면으로 이동 
+	//required = false로 설정되면 해당 파라미터가 필수가 아니라는 것
+	//파라미터가 누락되더라도 예외가 발생하지 않고 기본값으로 null이 할당
 	@GetMapping("/search/{pageNum}")
     public ModelAndView getSearchList(@RequestParam(required = false) String keyword, @PathVariable int pageNum) {
 		
@@ -81,7 +83,12 @@ public class BoardQnaController {
         mv.addObject("searchList", searchList);
         mv.addObject("keyword", keyword);
         mv.addObject("currentPage", pageNum);
-        mv.addObject("totalPages", boardService.getTotalPages());
+        mv.addObject("totalPages", boardService.getSearchTotalPages(keyword));
+        
+        if (searchList.isEmpty()) {
+            mv.addObject("noResultMessage", "검색 결과가 없습니다.");
+        }
+        
         mv.setViewName("view/boardSearchQna.html");
 
         return mv;

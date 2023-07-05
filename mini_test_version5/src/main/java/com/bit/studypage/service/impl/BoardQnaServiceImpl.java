@@ -287,7 +287,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		return dataList;
 	}
 
-	/* 전체 페이지 수 반환 */
+	/* 기존 게시물 전체 페이지 수 반환 */
 	@Override
 	public Object getTotalPages() {
 		int pageSize = 5;
@@ -312,7 +312,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		return dto;
 	}
 	
-	//게시판 검색 기능을 구현
+	/* 게시판 검색 기능 */
 	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword, int pageNum) {
 		
 		int pageSize = 5;  // 한 페이지에 보여질 게시글 수
@@ -344,5 +344,12 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 
         return dataList;
     }
+	
+	/*검색된 게시물 기반으로 총 페이지 수 계산*/
+	public int getSearchTotalPages(String keyword) {
+	    int pageSize = 5;
+	    long totalBoards = boardRepository.countByTitleContaining(keyword);
+	    return (int) Math.ceil((double) totalBoards / pageSize);
+	}
 	
 }

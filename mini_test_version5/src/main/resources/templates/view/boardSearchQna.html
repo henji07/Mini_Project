@@ -14,10 +14,11 @@
 	
    //검색 기능 
    $(function() {
-	   $("#search-button").click(function() {
-	       var keyword = document.getElementById("search-input-qna").value;
-	       location.href = "/board/search/1?keyword=" + encodeURIComponent(keyword);
-	   });
+    $("#search-form").submit(function(event) {
+        event.preventDefault();  // 기본적인 폼 제출을 막는다.
+        var keyword = document.getElementById("search-input-qna").value;
+        location.href = "/board/search/1?keyword=" + encodeURIComponent(keyword);
+     });
    });
 
    </script>
@@ -55,23 +56,30 @@
 
   <hr class="horizontal-line-underdropdown">
 <!-- 검색창 -->
-  <div class="search-box-qna">
+<!-- <form> 태그를 사용하면 브라우저는 기본적으로 엔터 키를 누르는 것을 "폼 제출"으로 인식하고 폼의 action 속성에 지정된 URL로 페이지를 리다이렉트 -->
+<form id="search-form" action="/board/search/1" method="get" class="search-box-qna">
     <i class="fas fa-search search-icon-qna"></i>
-    <input type="text" id="search-input-qna" placeholder="검색" />
-    <button id="search-button">검색</button>
-  </div>
+    <input type="text" name="keyword" id="search-input-qna" placeholder="검색" />
+    <button type="submit" id="search-button">검색</button>
+</form>
 <!-- 검색창 아래에 위치할 검색 키워드 표시 -->
 <div class="search-keyword-display">
-    <p th:text="'\' ' + ${keyword} + ' \'에 대한 검색 결과'"></p>
+    <p style="text-align: center;" th:text="'\' ' + ${keyword} + ' \'에 대한 검색 결과'"></p>
 </div>
+<!-- 검색 결과가 없을 때 메시지 표시 -->
+<div th:if="${noResultMessage}" class="no-result-message">
+    <p style="text-align: center;" th:text="${noResultMessage}"></p>
+</div>
+
 <!-- 상단 페이징 -->
 <div class="pagination-top">
     <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
     <div class="pagination-top-buttons">
-      <button class="pagination-top-button" th:disabled="${currentPage == 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr;</button>
-      <button class="pagination-top-button" th:disabled="${currentPage == totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">&rarr;</button>
+      <button class="pagination-top-button" th:disabled="${currentPage == 1}" th:onclick="'location.href=\'/board/search/' + (${currentPage} - 1) + '?keyword=' + encodeURIComponent(${keyword}) + '\''">&larr;</button>
+      <button class="pagination-top-button" th:disabled="${currentPage == totalPages}" th:onclick="'location.href=\'/board/search/' + (${currentPage} + 1) + '?keyword=' + encodeURIComponent(${keyword}) + '\''">&rarr;</button>
     </div>
 </div>
+
 <!-- 게시물 부분 -->
   <div class="board-write-container">
     <li class="board-write" th:each="board : ${searchList}">
@@ -97,14 +105,15 @@
 <!-- 상수로 페이지 그룹 사이즈를 설정해주세요. -->
 <th:block th:with="pageGroupSize=5">
 <div class="pagination-bottom">
-    <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage <= 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr; Previous</button>
+    <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage <= 1}" th:onclick="'location.href=\'/board/search/' + (${currentPage} - 1) + '?keyword=' + encodeURIComponent(${keyword}) + '\''">&larr; Previous</button>
     
     <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
-        <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/{pageNum}(pageNum=${i})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
+        <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/search/{pageNum}?keyword={keyword}(pageNum=${i},keyword=${keyword})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
     </div>
 
-    <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage >= totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">Next &rarr;</button>
+    <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage >= totalPages}" th:onclick="'location.href=\'/board/search/' + (${currentPage} + 1) + '?keyword=' + encodeURIComponent(${keyword}) + '\''">Next &rarr;</button>
 </div>
 </th:block>
+
 </body> 
 </html>
