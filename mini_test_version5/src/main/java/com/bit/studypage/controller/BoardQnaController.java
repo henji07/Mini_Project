@@ -26,7 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
-import com.bit.studypage.dto.CommentDTO;
+import com.bit.studypage.dto.CommentQnaDTO;
 import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.service.BoardQnaService;
 
@@ -150,7 +150,7 @@ public class BoardQnaController {
         BoardQnaDTO dto = boardService.getBoardDetail(boardId);
         
         // 댓글 리스트를 가져오기.
-        List<CommentDTO> comments = dto.getComments();
+        List<CommentQnaDTO> comments = dto.getComments();
 
         mv.addObject("board", dto);
         mv.addObject("comments", comments);

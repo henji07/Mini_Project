@@ -24,7 +24,7 @@ import com.bit.studypage.dto.FileQnaDTO;
 import com.bit.studypage.entity.BoardQna;
 import com.bit.studypage.entity.FileQnaEntity;
 import com.bit.studypage.repository.BoardQnaRepository;
-import com.bit.studypage.repository.CommentRepository;
+import com.bit.studypage.repository.CommentQnaRepository;
 import com.bit.studypage.repository.FileQnaRepository;
 import com.bit.studypage.service.BoardQnaService;
 
@@ -38,7 +38,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	
 	private final BoardQnaRepository boardRepository;
 	private final FileQnaRepository fileRepository;
-	private final CommentRepository commentRepository;
+	private final CommentQnaRepository commentRepository;
 	
     @Value("${file.path}")
     private String fileUploadDir;
@@ -58,7 +58,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		// 파일이 있는 경우, 각 파일을 처리  
 		if(ObjectUtils.isNotEmpty(files)) {
 			
-            System.out.println(files.size());
+            System.out.println("파일사이즈"+files.size());
             
             	//files 리스트의 각 MultipartFile에 대하여 반복문 실행
             	for(MultipartFile f : files) {
@@ -121,7 +121,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 				
 			}
 			
-		}
+		} 
 		
 		
 		//최종적으로 result 맵에 게시글의 아이디를 저장하고, result 맵을 반환

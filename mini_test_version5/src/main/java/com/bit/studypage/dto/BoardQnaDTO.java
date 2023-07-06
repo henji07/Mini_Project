@@ -3,6 +3,8 @@ package com.bit.studypage.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.bit.studypage.entity.BoardQna;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -26,8 +28,19 @@ public class BoardQnaDTO {
 	public int commentCount; // 댓글 수
 	
 	// CommentDTO 리스트 추가
-	private List<CommentDTO> comments;
+	private List<CommentQnaDTO> comments;
 	
+	//Entity에서 DTO로 변환하는 코드
+	public static BoardQnaDTO fromEntity(BoardQna entity) {
+        BoardQnaDTO dto = new BoardQnaDTO();
+        dto.setBoardId(entity.getBoardId());
+        dto.setBoardTitle(entity.getBoardTitle());
+        dto.setBoardContent(entity.getBoardContent());
+        dto.setBoardWriter(entity.getBoardWriter());
+        dto.setBoardRegdate(entity.getBoardRegdate());
+
+        return dto;
+    }
 	
 }
 

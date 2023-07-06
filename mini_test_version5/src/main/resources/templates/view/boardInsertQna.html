@@ -41,9 +41,14 @@
           var formData = new FormData($('#insertForm')[0]);
           
           //파일 데이터 얻기, #btnAtt 눌렀을 때 
-          var file_data = $('#btnAtt').prop('files')[0];  
-     //     formData.append('uploadFiles', file_data);
+          if($('#btnAtt').prop('files') != null) {
+        	  console.log("파일확인"+$('#btnAtt').prop('files'));
+        	  var file_data = $('#btnAtt').prop('files')[0];
+          } 
 
+          formData.append('uploadFiles', file_data);
+
+          
           //ajax로 db조회
           $.ajax({
             url: "/board/board-insert",
@@ -99,6 +104,7 @@
       </tr>
     </table>
   </form>
+  
   <a id="postListLink" href="/board/qnaPage/1">글 목록</a>
 </div>
 </section>

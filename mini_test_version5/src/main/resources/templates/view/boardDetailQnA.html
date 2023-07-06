@@ -62,8 +62,9 @@
     	                var newComment = $("<div>").addClass("comment-item");
     	                var commentAuthor = $("<div>").addClass("writer").text(response.data.writer); // 작성자 정보 추가
         				var commentContent = $("<div>").addClass("content").text(response.data.content);
+        				var commentCreatedAt = $("<div>").addClass("createdAt").text(response.data.createdAt); 
     	                	                
-    	                newComment.append(commentAuthor, commentContent);
+    	                newComment.append(commentAuthor, commentContent,commentCreatedAt);
     	                
     	                $("#comments").append(newComment);  // 댓글 컨테이너에 새 댓글 요소 추가
     	                $("#commentContent").val('');  // 댓글 입력란 초기화
@@ -74,7 +75,16 @@
     	            }
     	        },
     	        error: function(jqXHR, textStatus, errorThrown) {
-    	            alert("댓글 작성에 실패하였습니다." + textStatus);
+    	        	//validateAuthentication에 작성된 오류 메시지 사용자에게 표시 
+    	            alert(jqXHR.responseJSON.message);
+    	        	
+    	         	// 현재 페이지 URL을 세션 스토리지에 저장
+    	            if (window.location.pathname !== '/login') {
+    	                sessionStorage.setItem('prevUrl', window.location.pathname);
+    	            }
+    	        	
+    	         	// 로그인 페이지로 이동
+    	            window.location.href = "/login";
     	        }
     	    });
     	});
@@ -99,8 +109,10 @@
 	                	   
 	                       var newComment = $("<div>").addClass("comment-item");
 	                       var commentAuthor = $("<div>").addClass("writer").text(comment.writer); // 작성자 정보를 화면에 표시
-	                       var commentContent = $("<div>").addClass("content").text(comment.content);       
-	                       newComment.append(commentAuthor, commentContent);
+	                       var commentContent = $("<div>").addClass("content").text(comment.content); 
+	                       var commnetCreatedAt = $("<div>").addClass("createdAt").text(comment.createdAt); 
+	                       
+	                       newComment.append(commentAuthor, commentContent, comment.createdAt);
 	                	   
 	                       $("#comments").append(newComment);
 	                       
@@ -149,7 +161,7 @@
             <ul id="fileList">
                 <!-- 첨부파일이 있으면 이름을 표시하고 다운로드 링크를 제공 -->
 	            <li th:each="fle : ${board.fileList}">
-	            	<img th:src="@{/board/attach/{filename}(filename=${fle.filePath})}" width="50" />
+	            	<img th:src="@{/board/attach/{filename}(filename=${fle.filePath})}" width="50" height="50"/>
 	                <span th:text="${fle.fileName}"></span>              
 	            </li>
             </ul>
@@ -162,8 +174,7 @@
 			  <li class="comment-item" th:each="comment : ${comments}">
 	            <span th:text="${comment.writer}"></span>
 		        <span th:text="${comment.content}"></span>
-		      	<button class="edit-button">수정</button>
-			  	<button class="delete-button">삭제</button>  
+				<span id="comment-date" th:text="${#dates.format(comment.createdAt, 'yyyy-MM-dd HH:mm:ss')}"></span>
 			  </li>
 		   </div>
           
@@ -173,6 +184,7 @@
 		     <textarea id="commentContent" name="commentContent" placeholder="댓글을 입력해주세요."></textarea>
 		     <a type="button" id="btnComment">댓글 등록</a>
 		  </div>
+		  
           <div id="postActions">
             <a th:href="@{/board/modify-board-view/{boardId}(boardId=${board.boardId})}" type="submit" id="btnUpdate">글 수정</a>
             <a href="/board/qnaPage/1" type="button" id="btnList">글 목록</a>

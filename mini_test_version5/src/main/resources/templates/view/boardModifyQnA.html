@@ -14,26 +14,34 @@
    <script type="text/javascript" th:inline="javascript"> 
    
    $(function() {
-	   
 	   // 삭제할 항목을 저장할 배열
 	   let toDelete = [];
 	   // 추가할 파일 저장할 배열 
 	   let toAdd = [];
+	   
 	   let boardId = $("#boardId").val();
 
 	   // 파일 추가 버튼 클릭 이벤트
-	   $("#btnAddFile").click(function() {
+	   $("#btnAddFile").click(function (){
+		   console.log("dd");
 	       // 파일 선택 창 열기
 	       $("#fileInput").click();
 	   });
 
 	   // 파일 선택 이벤트
 	   $("#fileInput").change(function() {
-	       // 선택된 파일 목록에 추가
-	       let newFiles = Array.from(this.files);
-	       toAdd = toAdd.concat(newFiles);
-	       // 파일 목록 업데이트
-	       updateFileList();
+			// 선택된 파일 목록에 추가
+		    let newFiles = Array.from(this.files);
+		    toAdd = toAdd.concat(newFiles);
+		    // 새로 추가된 파일만 리스트에 추가
+		    newFiles.forEach(function(file, index) {
+		        let reader = new FileReader();
+		        reader.onload = function(e) {
+		            // FileReader 결과 사용하여 이미지를 미리 보여준다
+		            $("#fileList").append('<li><input type="checkbox" class="fileCheckbox" /><input type="hidden" class="fileId" value="new-' + index + '"><img src="' + e.target.result + '" width="50" height="50" /><span>' + file.name + '</span></li>');
+		        }
+		        reader.readAsDataURL(file);
+		    });
 	   });
 
 	   // 파일 목록 업데이트
@@ -45,26 +53,55 @@
 	   }
 
 	   $("#btnDeleteFile").click(function() {
-	       if (window.confirm("정말 삭제하시겠습니까?")) {
-	           // 모든 체크박스 확인
-	           $(".fileCheckbox").each(function() {
-	               if ($(this).is(":checked")) {
-	                   // 체크된 체크박스의 fileId를 삭제 배열에 추가
-	                   const fileId = $(this).siblings(".fileId").val();
-	                   if (!toDelete.includes(fileId)) {
-	                       toDelete.push(fileId);
-	                   }
-	                   // 파일 항목 감추기
-	                   $(this).parent().hide();
-	               }
-	           });
-	       }
-	   });
+		    if (window.confirm("정말 삭제하시겠습니까?")) {
+		        // 모든 체크박스 확인
+		        $(".fileCheckbox").each(function() {
+		            if ($(this).is(":checked")) {
+		                // 체크된 체크박스의 fileId를 확인
+		                const fileId = $(this).siblings(".fileId").val();
+		                if (fileId.startsWith("new-")) {
+		                    // 새 파일이면 toAdd에서 삭제
+		                    const index = parseInt(fileId.substring(4));
+		                    if (index >= 0 && index < toAdd.length) {
+		                        toAdd.splice(index, 1);
+		                        // fileId 수정하기
+		                        $(".fileId").each(function() {
+		                            const oldFileId = $(this).val();
+		                            if (oldFileId.startsWith("new-")) {
+		                                const oldIndex = parseInt(oldFileId.substring(4));
+		                                if (oldIndex > index) {
+		                                    $(this).val("new-" + (oldIndex - 1));
+		                                }
+		                            }
+		                        });
+		                    }
+		                } else {
+		                    // 기존 파일이면 toDelete에 추가
+		                    if (!toDelete.includes(fileId)) {
+		                        toDelete.push(fileId);
+		                    }
+		                }
+		                // 파일 항목 감추기
+		                $(this).parent().hide();
+		            }
+		        });
+		    }
+		});
+
 
 	   $("#btnUpdate").click(function() {
 	       if (window.confirm("변경사항을 저장하시겠습니까?")) {	
 	           // FormData 객체 생성
 	           let formData = new FormData();
+	           //FormData 객체에 JSON 데이터 추가
+	           //FormData는 HTML <form> 요소의 데이터를 쉽게 구성하고 전송하기 위한 객체
+	           //new Blob([JSON.stringify({...})], { type: "application/json" })
+	           //        -> JSON 객체를 문자열로 변환한 후 Blob 객체로 래핑
+	           //Blob은 바이너리 데이터를 나타내는 객체로, 일반적으로 파일 업로드 시 사용
+	           //JSON.stringify({...})는 JavaScript 객체를 JSON 문자열로 변환하는 함수
+	           //({...})안에 들어가는 값은 객체 리터럴 내부에 들어가는 실제 데이터
+	           //		-> HTML 요소에서 해당하는 값들을 가져온 것
+	           //=> JSON 형식의 데이터를 FormData에 추가하여 서버로 전송하기 위한 작업
 	           formData.append('board', new Blob([JSON.stringify({
 	               boardId: $("#boardId").val(),
 	               boardTitle: $("#boardTitle").val(),
@@ -152,7 +189,7 @@
           <div id="fileSection">
             <h4>첨부 파일</h4>
             <!-- 첨부 파일 추가 및 삭제 버튼 추가 -->
-            <button class="btnAddFile" style="float: right;">파일 추가</button>
+            <button id="btnAddFile" type="button" style="float: right;">파일 추가</button>
 		    <button id="btnDeleteFile" type="button" style="float: right;">파일 삭제</button> 
             <input type="file" id="fileInput" name="fileInput" style="display: none" multiple>
             <ul id="fileList" name="fileList">
@@ -160,7 +197,7 @@
 	            <li th:each="fle : ${board.fileList}">
 	            	<input type="checkbox" class="fileCheckbox" />
 	            	<input type="hidden" class="fileId" th:value="${fle.id}">
-	            	<img th:src="@{/board/attach/{filename}(filename=${fle.filePath})}" width="50" />
+	            	<img th:src="@{/board/attach/{filename}(filename=${fle.filePath})}" width="50" height="50" />
 	                <span th:text="${fle.fileName}"></span>         
 	            </li>
             </ul>

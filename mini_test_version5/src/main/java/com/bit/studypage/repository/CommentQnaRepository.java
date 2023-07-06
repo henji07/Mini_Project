@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bit.studypage.entity.Comment;
+import com.bit.studypage.entity.CommentQna;
 
 @Repository
-public interface CommentRepository extends JpaRepository<Comment, Integer> {
+public interface CommentQnaRepository extends JpaRepository<CommentQna, Integer> {
 	
 	//댓글 목록 
-    List<Comment> findAllByBoardId(long boardId);
+   public List<CommentQna> findAllByBoardId(long boardId);
 	
     //댓글 수 
-    int countByBoardId(Long boardId);
+   public int countByBoardId(Long boardId);
 
 }

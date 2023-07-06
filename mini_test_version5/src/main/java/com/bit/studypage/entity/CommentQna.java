@@ -1,18 +1,14 @@
 package com.bit.studypage.entity;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +16,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Getter
-@Table(name = "comment_test")
-public class Comment {
+@Table(name = "comment_qna")
+public class CommentQna {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -37,11 +33,24 @@ public class Comment {
     @Column(name = "board_id")
     private long boardId;
     
+    @Column(name = "user_id")
+    private String userStringId; 
+    
+    @Column(name = "board_title")
+    private String boardTitle;
+    
+    @Column(name = "created_at")
+    private LocalDateTime createdAt; 
+    
     @Builder
-    public Comment(String content, long userId, long boardId) {
+    public CommentQna(String content, long userId, long boardId, 
+    				  String userStringId, String boardTitle, LocalDateTime createdAt) {
     	this.content = content;
     	this.userId = userId;
     	this.boardId = boardId;
+    	this.userStringId = userStringId;
+    	this.boardTitle = boardTitle;
+    	this.createdAt = createdAt;
     }
 
 }

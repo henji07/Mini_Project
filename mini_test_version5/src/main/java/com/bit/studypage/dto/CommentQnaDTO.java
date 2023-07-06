@@ -1,24 +1,28 @@
 package com.bit.studypage.dto;
 
-import com.bit.studypage.entity.Comment;
+import java.time.LocalDateTime;
+
+import com.bit.studypage.entity.CommentQna;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-//test용 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentDTO {
+public class CommentQnaDTO {
 	private int id;
     private String content;
     private String writer;
+    private LocalDateTime createdAt;
 
-    public static CommentDTO toDto(Comment comment, String userName) {
-        return new CommentDTO(
+    public static CommentQnaDTO toDto(CommentQna comment, String userId) {
+        return new CommentQnaDTO(
         		comment.getId(),
                 comment.getContent(),
-                userName
+                userId,
+                comment.getCreatedAt() 
         );
     }
 }
