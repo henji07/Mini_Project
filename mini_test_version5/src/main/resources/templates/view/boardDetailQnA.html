@@ -158,11 +158,15 @@
           <div id="boardContent" name="boardContent" th:text="${board.boardContent}"></div>
           <div id="fileSection">
             <h4>첨부 파일</h4>
+            <p style="font-size:14px;">다운로드시 파일명을 클릭하세요.</p>
             <ul id="fileList">
                 <!-- 첨부파일이 있으면 이름을 표시s -->
 	            <li th:each="fle : ${board.fileList}">
 	            	<img th:src="@{/board/attach/{filename}(filename=${fle.filePath})}" width="50" height="50"/>
-	                <span th:text="${fle.fileName}"></span>              
+	                <!--  파일 다운로드 링크 -->
+		            <a style="color:black;" th:href="@{/board/attach/{filename}(filename=${fle.filePath})}" download>
+		                <span th:text="${fle.fileName}"></span>
+		            </a>                  
 	            </li>
             </ul>
           </div>

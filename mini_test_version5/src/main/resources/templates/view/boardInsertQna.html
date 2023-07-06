@@ -11,7 +11,20 @@
 
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript">
-	// 로그인한 사용자의 아이디를 받아오는 코드 추가
+   
+   //파일 이름 불러오기 
+    function displayFiles(input) {
+        var fileList = input.files;
+        var fileNames = "";
+
+        for (var i = 0; i < fileList.length; i++) {
+            fileNames += "<li>" + fileList[i].name + "</li>";
+        }
+
+        document.getElementById("fileList").innerHTML = fileNames;
+    }
+   
+// 로그인한 사용자의 아이디를 받아오는 코드 추가
    $(document).ready(function() {
      $.get("/board/api/user", function(data, status) {
        $('#boardWriter').val(data);
@@ -19,54 +32,59 @@
      });
    });
    
-   //글 등록
+ //글 등록
    $(function() {
-        $("#btnInsert").on("click", () => {
-          //입력 유효성 검사
-          if($("#boardTitle").val() === "") {
-            alert("제목을 입력하세요.");
-            $("#boardTitle").focus();
-            return;
-          }
+       $("#btnInsert").on("click", () => {
+           //입력 유효성 검사
+           if($("#boardTitle").val() === "") {
+               alert("제목을 입력하세요.");
+               $("#boardTitle").focus();
+               return;
+           }
 
-          if($("#boardContent").val() === "") {
-            alert("내용을 입력하세요.");
-            $("#boardContent").focus();
-            return;
-          }
-          
-          //formData 객체 생성 
-          var formData = new FormData($('#insertForm')[0]);
-          
-          //파일 데이터 얻기, #btnAtt 눌렀을 때 
-          if($('#btnAtt').prop('files') != null) {
-        	  console.log("파일확인"+$('#btnAtt').prop('files'));
-        	  var file_data = $('#btnAtt').prop('files')[0];
-          } 
+           if($("#boardContent").val() === "") {
+               alert("내용을 입력하세요.");
+               $("#boardContent").focus();
+               return;
+           }
+           
+           //formData 객체 생성 
+           var formData = new FormData();  // FormData 초기화
+           
+           // text 데이터 추가
+           formData.append("boardTitle", $("#boardTitle").val());
+           formData.append("boardWriter", $("#boardWriter").val());
+           formData.append("boardContent", $("#boardContent").val());
 
-          formData.append('uploadFiles', file_data);
+           //파일 데이터 얻기, #btnAtt 눌렀을 때 
+           if($('#btnAtt').prop('files') != null) {
+               console.log("파일확인"+$('#btnAtt').prop('files'));
+               var files = $('#btnAtt').prop('files');
+               for (var i = 0; i < files.length; i++) { // loop through files
+                   formData.append('uploadFiles', files[i]); // append each file separately
+               }
+           } 
 
-          
-          //ajax로 db조회
-          $.ajax({
-            url: "/board/board-insert",
-            type: "POST",
-            data: formData, 
-            processData: false,  //jQuery가 데이터를 쿼리 문자열로 자동 변환하는 것을 방지
-            contentType: false, //브라우저가 multipart/form-data의 형태로 데이터를 인코딩하게 함
-            success: (result) => {
-              console.log(result);
-              alert(result.item.msg);
-              window.location.href="/board/qnaPage/1";
-            },
-            error: (error) => {
-              console.log(error);
-              alert("글 등록 실패");
-            }
-          });
-        });    
-        
-      });
+           //ajax로 db조회
+           $.ajax({
+               url: "/board/board-insert",
+               type: "POST",
+               data: formData, 
+               processData: false,  //jQuery가 데이터를 쿼리 문자열로 자동 변환하는 것을 방지
+               contentType: false, //브라우저가 multipart/form-data의 형태로 데이터를 인코딩하게 함
+               success: (result) => {
+                   console.log(result);
+                   alert(result.item.msg);
+                   window.location.href="/board/qnaPage/1";
+               },
+               error: (error) => {
+                   console.log(error);
+                   alert("글 등록 실패");
+               }
+           });
+       });    
+   });
+
 
    </script>
 </th:block>
@@ -93,10 +111,10 @@
       <tr>
         <td>
 		  <div id="image_upload">
-		    <input type="file" id="btnAtt" name="uploadFiles" multiple>
+		    <input type="file" id="btnAtt" name="uploadFiles" multiple onchange="displayFiles(this)">
 		  </div>
 		  <div id="attZone" style="font-size: 13px;">파일을 첨부하려면 파일선택 버튼을 누르세요.</div>
-		  <div id="image_preview" style="width: 50px; height: 50px;">
+		  <ul id="fileList"></ul>
 		  </div>
 		</td>
       </tr>
