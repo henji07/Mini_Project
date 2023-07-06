@@ -120,7 +120,7 @@ public class BoardQnaController {
         }
     }
     
-    //파일 로컬에 저장되어 있는 거 읽어오기 
+    //서버에 저장되어 있는 거 읽어오기 
     @Value("${file.path}")
     private String fileUploadDir;
 	
@@ -143,7 +143,7 @@ public class BoardQnaController {
         
     //게시 글 및 댓글 상세 조회
     @GetMapping("/board/{boardId}")
-    public ModelAndView getBoard(@PathVariable long boardId) {
+    public ModelAndView getBoard(@PathVariable long boardId, Authentication authentication) {
         ModelAndView mv = new ModelAndView();
 
         //게시물 조회 
@@ -154,6 +154,17 @@ public class BoardQnaController {
 
         mv.addObject("board", dto);
         mv.addObject("comments", comments);
+        
+        // 로그인한 사용자 정보 전달
+        // 사용자가 로그인한 상태인지 확인
+        if (authentication != null && authentication.isAuthenticated()) {
+        	//getName() 메서드는 Authentication 인터페이스에서 정의된 메서드로, 
+        	//실제 구현은 Principal 객체의 getName() 메서드를 호출하여 사용자의 이름을 가져옴
+        	//로그인한 사용자 정보를 가져와서 username이라는 변수에 저장
+            String username = authentication.getName();
+            mv.addObject("username", username);
+        }
+        
         mv.setViewName("/view/boardDetailQna");
 
         return mv;
@@ -181,16 +192,19 @@ public class BoardQnaController {
     									 @RequestPart(value = "files", required = false) List<MultipartFile> files) {
         ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
         try {
-            
+        	// 서비스에서 게시글 수정 로직 실행
             boardService.updateBoard(boardDTO, files);
 
-            //리턴해줄 맵
+            // 클라이언트에게 전달할 응답 메시지 맵 생성
             Map<String, String> returnMap = new HashMap<String, String>();
 
+            // 수정이 정상적으로 되었음을 알리는 메시지
             returnMap.put("msg", "정상적으로 수정되었습니다.");
 
+            // 응답 DTO에 메시지 맵을 설정
             responseDTO.setItem(returnMap);
 
+            // 정상적인 응답 반환
             return ResponseEntity.ok().body(responseDTO);
 
         } catch (Exception e) {
@@ -222,12 +236,6 @@ public class BoardQnaController {
 
             return ResponseEntity.badRequest().body(responseDTO);
         }
-    }
-
-    //시큐리티 권한 처리 
-    @GetMapping("/api/user")
-    public ResponseEntity<String> getLoggedInUser(Authentication authentication) {
-        return ResponseEntity.ok(authentication.getName());
     }
 
 }

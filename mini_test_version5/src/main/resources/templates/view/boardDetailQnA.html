@@ -171,11 +171,13 @@
 		  <div id="comments">
 		      <h4>댓글 목록</h4>
 			  <!-- 기존 댓글들은 여기에 표시 -->     
-			  <li class="comment-item" th:each="comment : ${comments}">
+			  <div class="comment-item" th:each="comment : ${comments}">
 	            <span th:text="${comment.writer}"></span>
 		        <span th:text="${comment.content}"></span>
-				<span id="comment-date" th:text="${#dates.format(comment.createdAt, 'yyyy-MM-dd HH:mm:ss')}"></span>
-			  </li>
+				<span id="comment-date" th:text="${#strings.substring(comment.createdAte, 0, 10) }"></span>
+            	<a type="button" id="btnCommentDelete">삭제</a>
+
+			  </div>
 		   </div>
           
           <!-- 댓글 입력 부분 -->
@@ -186,9 +188,17 @@
 		  </div>
 		  
           <div id="postActions">
-            <a th:href="@{/board/modify-board-view/{boardId}(boardId=${board.boardId})}" type="submit" id="btnUpdate">글 수정</a>
+            <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
+          	<div th:if="${username != null and board.boardWriter == username}">
+            	<a th:href="@{/board/modify-board-view/{boardId}(boardId=${board.boardId})}" type="submit" id="btnUpdate">글 수정</a>
+          	</div>
+          	
             <a href="/board/qnaPage/1" type="button" id="btnList">글 목록</a>
-            <a type="button" id="btnDelete">글 삭제</a>
+            
+            <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
+            <div th:if="${username != null and board.boardWriter == username}">
+            	<a type="button" id="btnDelete">글 삭제</a>
+            </div>
           </div>
         </div>
       </section>

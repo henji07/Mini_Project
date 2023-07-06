@@ -3,6 +3,8 @@ package com.bit.studypage.entity;
 
 import java.time.LocalDateTime;
 
+import com.bit.studypage.dto.CommentQnaDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -52,5 +54,11 @@ public class CommentQna {
     	this.boardTitle = boardTitle;
     	this.createdAt = createdAt;
     }
+    
+    @Builder
+	public CommentQna(CommentQnaDTO data) {
+    	this.content = data.getContent();
+    	this.createdAt = data.getCreatedAt();
+	}
 
 }

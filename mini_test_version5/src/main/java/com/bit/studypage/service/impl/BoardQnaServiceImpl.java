@@ -62,7 +62,9 @@ public class BoardQnaServiceImpl implements BoardQnaService {
             
             	//files 리스트의 각 MultipartFile에 대하여 반복문 실행
             	for(MultipartFile f : files) {
-            		//data 맵: 각 첨부 파일의 정보를 저장할 목적으로 생성
+            		//파일 null이면 안 들어가게 
+            		if(!f.isEmpty()) {
+            			//data 맵: 각 첨부 파일의 정보를 저장할 목적으로 생성
             		Map<String, Object> data = new HashMap<>();
             		
             		//원본 파일 이름, 파일 확장자, 저장할 파일 이름, 파일 타입 등의 정보를 추출, 저장될 새 이름 만들기
@@ -83,6 +85,8 @@ public class BoardQnaServiceImpl implements BoardQnaService {
             		
             		//tmpFileList에 data 맵 추가
             		tmpFileList.add(data);
+            		}
+            		
             	}
 			}
 		} catch (Exception ex) {
@@ -159,7 +163,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	            BoardQna entity = boardRepository.save(board);
 	   		 	
 	   		 	//3. 새로 업로드된 파일이 있으면 저장
-	            if(files != null && !files.isEmpty()) {
+	            if(ObjectUtils.isNotEmpty(files)) {
 	                for(MultipartFile f : files) {
 	                    try {
 	                        // 원본 파일 이름, 파일 확장자, 저장할 파일 이름, 파일 타입 등의 정보를 추출, 저장될 새 이름 만들기
