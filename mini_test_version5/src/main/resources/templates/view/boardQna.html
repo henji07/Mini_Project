@@ -21,6 +21,33 @@
         location.href = "/board/search/1?keyword=" + encodeURIComponent(keyword);
      });
    });
+   
+   function changeSortOption() {
+	    var sortOption = document.getElementById("list-options").value;
+	    var currentUrl = window.location.href;
+	    var baseUrl = currentUrl.includes("?") ? currentUrl.substring(0, currentUrl.indexOf("?")) : currentUrl;
+	    var queryParam = currentUrl.includes("?") ? currentUrl.substring(currentUrl.indexOf("?")) : "";
+	    var newUrl;
+
+	    if (sortOption !== "") {
+	        if (queryParam.includes("sortOption=")) {
+	            // 이미 sortOption 쿼리 파라미터가 있으면, 그 값을 변경
+	            newUrl = currentUrl.replace(/(sortOption=)[^\&]+/, "$1" + sortOption);
+	        } else if (queryParam !== "") {
+	            // 다른 쿼리 파라미터가 있으면, sortOption을 추가
+	            newUrl = baseUrl + queryParam + "&sortOption=" + sortOption;
+	        } else {
+	            // 아무런 쿼리 파라미터도 없으면, sortOption만 추가
+	            newUrl = baseUrl + "?sortOption=" + sortOption;
+	        }
+	    } else {
+	        // sortOption 쿼리 파라미터를 제거
+	        newUrl = baseUrl + queryParam.replace(/&?sortOption=[^\&]+/, "");
+	    }
+
+	    window.location.href = newUrl;
+	}
+
 
    </script>
 </th:block>
@@ -47,11 +74,11 @@
   
 <!-- 드롭다운 -->
 <div class="options-container">
-    <select name="list-options" id="list-options">
+    <select name="list-options" id="list-options" onchange="changeSortOption()">
         <option value="">글 정렬</option>
         <option value="recently">최신순</option>
         <option value="view">조회순</option>
-        <option value="popular">인기순</option>
+        <!-- <option value="popular">인기순</option> -->
     </select>
 </div>
 
@@ -63,6 +90,7 @@
     <input type="text" name="keyword" id="search-input-qna" placeholder="검색" />
     <button type="submit" id="search-button">검색</button>
 </form>
+
 <!-- 상단 페이징 -->
 <div class="pagination-top">
     <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
@@ -71,38 +99,45 @@
       <button class="pagination-top-button" th:disabled="${currentPage == totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">&rarr;</button>
     </div>
 </div>
+
 <!-- 게시물 부분 -->
-  <div class="board-write-container">
-    <li class="board-write" th:each="board : ${qnaList}">
-      <div class="post-number" th:text="${board.boardId}"></div>
-      <div class="answer-count">
-      	<p id="anwer-count-title">답변</p>
-      	<div class="answer-count-count" th:text="${board.commentCount}"></div>
-      </div>
-      <div class="board-writer-title">
-        <div class="author">
-          <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
-          <div th:text="${board.boardWriter}"></div>
-        </div>
-        <a th:href="@{/board/board/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
-      </div>
-      <div class="board-details">
-	      <div class="view-count" th:text="'조회  ' + ${board.boardCnt}"></div>
-	      <div class="reg-date" th:text="${#strings.substring(board.boardRegdate, 0, 10) }"></div>
-      </div>
-    </li>   
-  </div>
+ <div class="board-write-container">
+ 
+   <li class="board-write" th:each="board : ${qnaList}">
+   
+     <div class="post-number" th:text="${board.boardId}"></div>
+     
+     <div class="answer-count">
+     	<p id="anwer-count-title">답변</p>
+     	<div class="answer-count-count" th:text="${board.commentCount}"></div>
+     </div>
+     
+     <div class="board-writer-title">
+       <div class="author">
+         <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
+         <div th:text="${board.boardWriter}"></div>
+       </div>
+       <a th:href="@{/board/board/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
+     </div>
+     
+     <div class="board-details">
+      <div class="view-count" th:text="'조회  ' + ${board.boardCnt}"></div>
+      <div class="reg-date" th:text="${#strings.substring(board.boardRegdate, 0, 10) }"></div>
+     </div>
+   </li>  
+    
+ </div>
 <!-- 하단 페이징 -->
 <!-- 상수로 페이지 그룹 사이즈를 설정. -->
 <th:block th:with="pageGroupSize=5">
 <div class="pagination-bottom">
-    <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage <= 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '\''">&larr; Previous</button>
+    <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage <= 1}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} - 1) + '?sortOption=' + ${sortOption} + '\''">&larr; Previous</button>
     
     <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
-        <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/{pageNum}(pageNum=${i})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
+        <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/{pageNum}(pageNum=${i}, sortOption=${sortOption})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
     </div>
 
-    <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage >= totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '\''">Next &rarr;</button>
+    <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage >= totalPages}" th:onclick="'location.href=\'/board/qnaPage/' + (${currentPage} + 1) + '?sortOption=' + ${sortOption} + '\''">Next &rarr;</button>
 </div>
 </th:block>
 </div>

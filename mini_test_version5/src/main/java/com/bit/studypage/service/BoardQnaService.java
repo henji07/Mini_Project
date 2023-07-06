@@ -26,7 +26,7 @@ public interface BoardQnaService {
 	public BoardQnaDTO getBoardDetail(long boardId);
 	
 	//글 목록 조회 
-	public List<BoardQnaDTO> getBoardList(int pageNum);
+	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption);
 
 	//전체 페이지 수 반환 
 	public Object getTotalPages();

@@ -52,12 +52,13 @@ public class BoardQnaController {
 	
 	//글 목록 화면으로 이동 
 	@GetMapping("/qnaPage/{pageNum}")
-    public ModelAndView getBoardList(@PathVariable int pageNum) {
+    public ModelAndView getBoardList(@PathVariable int pageNum, 
+    		 						 @RequestParam(required = false) String sortOption) {
 
         ModelAndView mv = new ModelAndView();
 
         //게시글 목록을 가져옴
-        List<BoardQnaDTO> boardList = boardService.getBoardList(pageNum);
+        List<BoardQnaDTO> boardList = boardService.getBoardList(pageNum, sortOption);
         
         mv.addObject("qnaList", boardList);
         mv.addObject("currentPage", pageNum);
@@ -156,11 +157,7 @@ public class BoardQnaController {
         mv.addObject("comments", comments);
         
         // 로그인한 사용자 정보 전달
-        // 사용자가 로그인한 상태인지 확인
         if (authentication != null && authentication.isAuthenticated()) {
-        	//getName() 메서드는 Authentication 인터페이스에서 정의된 메서드로, 
-        	//실제 구현은 Principal 객체의 getName() 메서드를 호출하여 사용자의 이름을 가져옴
-        	//로그인한 사용자 정보를 가져와서 username이라는 변수에 저장
             String username = authentication.getName();
             mv.addObject("username", username);
         }
@@ -236,6 +233,12 @@ public class BoardQnaController {
 
             return ResponseEntity.badRequest().body(responseDTO);
         }
+    }
+
+    //시큐리티 권한 처리 - 글쓰기 화면에서 로그인한 사용자의 아이디를 받아옴 
+    @GetMapping("/api/user")
+    public ResponseEntity<String> getLoggedInUser(Authentication authentication) {
+        return ResponseEntity.ok(authentication.getName());
     }
 
 }

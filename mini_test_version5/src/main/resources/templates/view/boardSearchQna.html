@@ -20,6 +20,32 @@
         location.href = "/board/search/1?keyword=" + encodeURIComponent(keyword);
      });
    });
+   
+   function changeSortOption() {
+	    var sortOption = document.getElementById("list-options").value;
+	    var currentUrl = window.location.href;
+	    var baseUrl = currentUrl.includes("?") ? currentUrl.substring(0, currentUrl.indexOf("?")) : currentUrl;
+	    var queryParam = currentUrl.includes("?") ? currentUrl.substring(currentUrl.indexOf("?")) : "";
+	    var newUrl;
+
+	    if (sortOption !== "") {
+	        if (queryParam.includes("sortOption=")) {
+	            // 이미 sortOption 쿼리 파라미터가 있으면, 그 값을 변경
+	            newUrl = currentUrl.replace(/(sortOption=)[^\&]+/, "$1" + sortOption);
+	        } else if (queryParam !== "") {
+	            // 다른 쿼리 파라미터가 있으면, sortOption을 추가
+	            newUrl = baseUrl + queryParam + "&sortOption=" + sortOption;
+	        } else {
+	            // 아무런 쿼리 파라미터도 없으면, sortOption만 추가
+	            newUrl = baseUrl + "?sortOption=" + sortOption;
+	        }
+	    } else {
+	        // sortOption 쿼리 파라미터를 제거
+	        newUrl = baseUrl + queryParam.replace(/&?sortOption=[^\&]+/, "");
+	    }
+
+	    window.location.href = newUrl;
+	}
 
    </script>
 </th:block>
@@ -43,14 +69,14 @@
   </div>
   
   <hr class="horizontal-line">
-  
+
 <!-- 드롭다운 -->
 <div class="options-container">
-    <select name="list-options" id="list-options">
+    <select name="list-options" id="list-options" onchange="changeSortOption()">
         <option value="">글 정렬</option>
         <option value="recently">최신순</option>
-        <option value="older">등록순</option>
-        <option value="popular">인기순</option>
+        <option value="view">조회순</option>
+        <!-- <option value="popular">인기순</option> -->
     </select>
 </div>
 
@@ -114,6 +140,7 @@
     <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage >= totalPages}" th:onclick="'location.href=\'/board/search/' + (${currentPage} + 1) + '?keyword=' + encodeURIComponent(${keyword}) + '\''">Next &rarr;</button>
 </div>
 </th:block>
-
+</div>
+</th:block>
 </body> 
 </html>

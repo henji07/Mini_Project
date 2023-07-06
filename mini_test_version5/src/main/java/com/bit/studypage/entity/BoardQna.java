@@ -39,13 +39,13 @@ public class BoardQna {
 	private String boardContent;
 	
 	@Column(name="board_view_cnt", nullable = false)
-    private int boardCnt;
+    private int boardCnt;//조회수
 	
 	@Column(name="board_writer")
 	private String boardWriter;
 	
 	@Column(name="board_reg_date")
-	private LocalDateTime boardRegdate;
+	private LocalDateTime boardRegdate;//작성일 
 	
 	@Builder
 	public BoardQna(BoardQnaDTO data) {

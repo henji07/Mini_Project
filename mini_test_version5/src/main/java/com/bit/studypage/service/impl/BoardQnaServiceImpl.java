@@ -2,6 +2,7 @@ package com.bit.studypage.service.impl;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -258,15 +259,26 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 
 	/* 글 목록 */ 
 	@Override
-	public List<BoardQnaDTO> getBoardList(int pageNum) {
+	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption) {
 		
 		int pageSize = 5;  // 한 페이지에 보여질 게시글 수
+		
+		Sort sort; //옵션 객체 생성 
+		
+		// 정렬 옵션에 따라 Sort 객체를 생성
+	    if ("recently".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "boardId");
+	    } else if ("view".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "boardCnt");
+	    } else {
+	        sort = Sort.by(Sort.Direction.DESC, "boardId");
+	    }
 		
 		//Spring Data JPA의 Pageable 인터페이스와 Page 클래스를 사용해서 페이지네이션을 구현
 		//PageRequest의 of 메소드를 사용해 페이지 번호와 페이지 크기를 입력하고, 정렬 조건을 지정
 		//페이지 번호는 0부터 시작하므로 사용자가 입력하는 페이지 번호에서 1을 빼줌
 		//boardRepository의 findAll 메소드에 pageable 객체를 전달해 원하는 페이지의 데이터를 가져온다.
-		Pageable pageable = PageRequest.of(pageNum - 1, pageSize, Sort.by(Sort.Direction.DESC, "boardId"));
+		Pageable pageable = PageRequest.of(pageNum - 1, pageSize, sort);
 		Page<BoardQna> pageInfo =  boardRepository.findAll(pageable);
 		
 		//이를 BoardDTO 객체 리스트로 변환한 후 반환
@@ -355,5 +367,6 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	    long totalBoards = boardRepository.countByTitleContaining(keyword);
 	    return (int) Math.ceil((double) totalBoards / pageSize);
 	}
+
 	
 }
