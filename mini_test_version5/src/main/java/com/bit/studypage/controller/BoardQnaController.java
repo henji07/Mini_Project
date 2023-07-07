@@ -33,7 +33,6 @@ import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.entity.Users;
 import com.bit.studypage.service.BoardQnaService;
 import com.bit.studypage.service.LikeQnaService;
-import com.bit.studypage.service.MemberService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -47,7 +46,6 @@ public class BoardQnaController {
 
 	private final BoardQnaService boardService;
 	private final LikeQnaService likeService;
-	private final MemberService memberService;
 	
 	
 	//글 등록 화면으로 이동
@@ -254,7 +252,7 @@ public class BoardQnaController {
         return ResponseEntity.ok(authentication.getName());
     }
     
-    //이름 값에서 아이디 값 뽑기 
+    //이름 값에서 아이디 값 뽑기 - 좋아요 여부 체크할 때 쓰는 api
     @GetMapping("/api/user/id")
     public ResponseEntity<Long> getLoggedInUserId(Authentication authentication) {
     	if (authentication.getPrincipal() instanceof Users) {

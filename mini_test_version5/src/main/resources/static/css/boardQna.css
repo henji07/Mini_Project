@@ -265,3 +265,18 @@
   font-weight: bold;
   color: #f97800 !important;
 }
+
+#likeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px
+}
+
+#likeButton i {
+  margin-right: 10px;
+}
+
+.far.fa-heart {
+  color: red;
+}
