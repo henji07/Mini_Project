@@ -20,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.Principal;
 import java.util.*;
 
 @RestController
@@ -32,6 +33,7 @@ public class MyPageController {
     LikesServiceImpl likesServiceImpl;
     DelUsersServiceImpl delUsersService;
 
+    Long loginId;
 
     @Autowired
     public MyPageController(UsersServiceImpl usersServiceImpl, BoardServiceImpl boardServiceImpl, CommentsServiceImpl commentsServiceImpl, ProfileImgServiceImpl profileImgServiceImpl, LikesServiceImpl likesServiceImpl, DelUsersServiceImpl delUsersService) {
@@ -42,30 +44,34 @@ public class MyPageController {
         this.likesServiceImpl = likesServiceImpl;
         this.delUsersService = delUsersService;
     }
-@GetMapping("/1234")
-public String ggg(HttpSession session){
-    session.invalidate();
-    return "redirect:/myPageView";
-}
+
+    @GetMapping("/1234")
+    public ModelAndView ggg() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("view/maptest.html");
+        return mv;
+    }
+
     //처음 page가 load됐을 때 view에 model을 담기
     @GetMapping("/myPage")
-    public ModelAndView viewMyPage(HttpSession session, @RequestParam(name="page", defaultValue = "0") int page) {
-
+    public ModelAndView viewMyPage(Principal principal, HttpSession session, @RequestParam(name = "page", defaultValue = "0") int page) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("view/myPage.html");
-        Users users = usersServiceImpl.loginUser(1L);
+        loginId = usersServiceImpl.getUsersId(principal.getName());
+        Users users = usersServiceImpl.loginUser(loginId);
+        System.out.println(loginId + "로그인유저 아이디 확인!-!4");
         session.setAttribute("user", users);
 
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "boardId");
-        Page<Board> boardPage = boardServiceImpl.pageList(users.getUserNickname(),pageable);
+        Page<Board> boardPage = boardServiceImpl.pageList(users.getUserNickname(), pageable);
         mv.addObject("boards", boardPage);
 
         Pageable pageable2 = PageRequest.of(page, 10, Sort.Direction.DESC, "commentId");
-        Page<Comments> commPage = commentsServiceImpl.getCommentsPage(pageable2,users.getUserNickname());
+        Page<Comments> commPage = commentsServiceImpl.getCommentsPage(pageable2, users.getUserNickname());
         mv.addObject("comments", commPage);
 
         Pageable pageable3 = PageRequest.of(page, 10, Sort.Direction.DESC, "likeId");
-        Page<Likes> likePage = likesServiceImpl.likesPage(users.getUsersId(),pageable3);
+        Page<Likes> likePage = likesServiceImpl.likesPage(users.getUsersId(), pageable3);
         mv.addObject("likes", likePage);
         System.out.println(likePage + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
@@ -78,13 +84,22 @@ public String ggg(HttpSession session){
 
         List<Board> boardLike = boardServiceImpl.getBoardList(likesServiceImpl.getLike(users.getUsersId()));
 
-        String[] interest = usersServiceImpl.loginUser(1L).getInterest().split(",");
+        String[] interest = usersServiceImpl.loginUser(loginId).getInterest().split(",");
         List<String> interestsList = Arrays.asList(interest);
         mv.addObject("interests", interestsList);
         mv.addObject("boardList", boardServiceImpl.getBoardList(users.getUserNickname()));
         mv.addObject("commList", commentsServiceImpl.getCommentsList(users.getUserNickname()));
-        mv.addObject("profileImg", profileImgServiceImpl.getProfileImg(1L));
-        mv.addObject("interest", usersServiceImpl.loginUser(1L).getInterest().split(","));
+        if (profileImgServiceImpl.getProfileImg(loginId) != null) {
+            mv.addObject("profileImg", profileImgServiceImpl.getProfileImg(loginId));
+        } else {ProfileImg profileImg = new ProfileImg();
+            profileImg.setOriginName("히히.jpg");
+            profileImg.setUserId(loginId);
+            profileImg.setPath("C:\\profile\\히히.jpg");
+            profileImgServiceImpl.updateProfileImg(profileImg);
+            mv.addObject("profileImg", profileImgServiceImpl.getProfileImg(loginId));
+            System.out.println("히히발싸");
+        }
+        mv.addObject("interest", usersServiceImpl.loginUser(loginId).getInterest().split(","));
         mv.addObject("countBoard", boardServiceImpl.getCountBoard(users.getUserNickname()));
         mv.addObject("countComments", commentsServiceImpl.getCountComm(users.getUserNickname()));
         mv.addObject("commentsList", commentsServiceImpl.getCommList(users.getUserNickname()));
@@ -96,10 +111,10 @@ public String ggg(HttpSession session){
     }
 
     @GetMapping("/boards")
-    public Page<Board> getBoards(@RequestParam(name="pageNum",defaultValue = "0") int page, HttpSession session) {
+    public Page<Board> getBoards(@RequestParam(name = "pageNum", defaultValue = "0") int page, HttpSession session) {
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "boardId");
-        Users user = (Users)session.getAttribute("user");
-        Page<Board> boardPage = boardServiceImpl.pageList(user.getUserNickname(),pageable);
+        Users user = (Users) session.getAttribute("user");
+        Page<Board> boardPage = boardServiceImpl.pageList(user.getUserNickname(), pageable);
 //        model.addAttribute("boards", boardPage);
         System.out.println(boardPage.getTotalElements());
         System.out.println(boardPage.getTotalPages());
@@ -107,11 +122,12 @@ public String ggg(HttpSession session){
 //        return "myPage :: #profile-historycontainer";
         return boardPage;
     }
+
     @GetMapping("/comm")
-    public Page<Comments> getComms(@RequestParam(name="pageNum",defaultValue = "0") int page, HttpSession session) {
+    public Page<Comments> getComms(@RequestParam(name = "pageNum", defaultValue = "0") int page, HttpSession session) {
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "commentId");
-        Users user = (Users)session.getAttribute("user");
-        Page<Comments> commPage = commentsServiceImpl.getCommentsPage(pageable,user.getUserNickname());
+        Users user = (Users) session.getAttribute("user");
+        Page<Comments> commPage = commentsServiceImpl.getCommentsPage(pageable, user.getUserNickname());
 //        model.addAttribute("boards", boardPage);
         System.out.println(commPage.getTotalElements());
         System.out.println(commPage.getTotalPages());
@@ -121,10 +137,10 @@ public String ggg(HttpSession session){
     }
 
     @GetMapping("/like")
-    public Page<Likes> getLikes(@RequestParam(name="pageNum",defaultValue = "0") int page, HttpSession session) {
+    public Page<Likes> getLikes(@RequestParam(name = "pageNum", defaultValue = "0") int page, HttpSession session) {
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "likeId");
-        Users user = (Users)session.getAttribute("user");
-        Page<Likes> likePage = likesServiceImpl.likesPage(user.getUsersId(),pageable);
+        Users user = (Users) session.getAttribute("user");
+        Page<Likes> likePage = likesServiceImpl.likesPage(user.getUsersId(), pageable);
 //        model.addAttribute("boards", boardPage);
         System.out.println(likePage.getTotalElements());
         System.out.println(likePage.getTotalPages());
@@ -132,7 +148,6 @@ public String ggg(HttpSession session){
 //        return "myPage :: #profile-historycontainer";
         return likePage;
     }
-
 
 
     //    @PostMapping("/interest")
@@ -144,14 +159,14 @@ public String ggg(HttpSession session){
     @PostMapping("/changeImg")
     public String changeImg(@RequestParam("image") MultipartFile image, Model model, HttpSession session) throws IOException {
         if (!image.isEmpty()) {
-            ProfileImg profileImg = new ProfileImg();
+            ProfileImg profileImg = profileImgServiceImpl.getProfileImg(loginId);
             String origin = image.getOriginalFilename();
-            Path path = Paths.get("C:\\profile").resolve(image.getOriginalFilename());
+            Path path = Paths.get("C:\\profile").resolve(origin);
             profileImg.setOriginName(origin);
+            System.out.println("이미지 변경 이름 : " + origin);
             profileImg.setPath(path.toString());
             Users user = (Users) session.getAttribute("user");
             profileImg.setUserId(user.getUsersId());
-            profileImg.setImgId(1L);
             Files.copy(image.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
             profileImgServiceImpl.updateProfileImg(profileImg);
             model.addAttribute("profileImg", origin);
@@ -189,6 +204,7 @@ public String ggg(HttpSession session){
     public String checkPass(String pass, HttpSession session) {
         Users user = (Users) session.getAttribute("user");
         log.info("비번체크" + pass);
+        log.info("tldlqkf" + user.getPassword());
         if (user.getPassword().equals(pass)) {
             log.info("ok리턴");
             return "ok";
@@ -204,23 +220,26 @@ public String ggg(HttpSession session){
         log.info("유저 삭제한당" + user);
         usersServiceImpl.delUser(user);
     }
+
     @DeleteMapping("/del-board")
-    public void delBoard(@RequestParam("board-check") List<Long> board){
-        System.out.println("보드 불러온거"+board);
+    public void delBoard(@RequestParam("board-check") List<Long> board) {
+        System.out.println("보드 불러온거" + board);
         for (Long i : board) {
             boardServiceImpl.delBoard(i);
         }
-        System.out.println("보드삭제"+board);
+        System.out.println("보드삭제" + board);
     }
+
     @DeleteMapping("/del-comm")
-    public void delComm(@RequestParam("board-check")List<Long> comm){
+    public void delComm(@RequestParam("board-check") List<Long> comm) {
         for (Long i : comm) {
             commentsServiceImpl.delComm(i);
         }
         System.out.println("댓글삭제");
     }
+
     @DeleteMapping("/del-like")
-    public void delLike(@RequestParam("board-check")List<Long> like){
+    public void delLike(@RequestParam("board-check") List<Long> like) {
         for (Long i : like) {
             likesServiceImpl.delLike(i);
         }

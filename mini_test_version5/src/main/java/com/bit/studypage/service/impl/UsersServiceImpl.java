@@ -28,6 +28,11 @@ public class UsersServiceImpl implements UserService {
         userRepository.delete(users);
     }
 
+    @Override
+    public Long getUsersId(String userName) {
+        return userRepository.findByUserId(userName).getUsersId();
+    }
+
 //    @Override
 //    public String getInterest(Long userId) {
 //

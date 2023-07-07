@@ -20,7 +20,7 @@ public class testController {
 		return "view/boardCommunicate";
 	}
 	
-	@GetMapping("certificatePage")
+//	@GetMapping("certificatePage")
 	public String test4() {
 		
 		return "view/boardCertificate";
