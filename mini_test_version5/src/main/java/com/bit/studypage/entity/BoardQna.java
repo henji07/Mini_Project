@@ -47,6 +47,9 @@ public class BoardQna {
 	@Column(name="board_reg_date")
 	private LocalDateTime boardRegdate;//작성일 
 	
+	@Column(name = "like_count")
+    private long likeCount;
+	
 	@Builder
 	public BoardQna(BoardQnaDTO data) {
 		this.boardTitle = data.getBoardTitle();
@@ -54,6 +57,7 @@ public class BoardQna {
 		this.boardCnt = 0;
 		this.boardWriter = data.getBoardWriter();
 		this.boardRegdate = LocalDateTime.now();
+		this.likeCount = 0;
 	}
 
 	public void updateContent(BoardQnaDTO dto) {
@@ -63,6 +67,10 @@ public class BoardQna {
 	
 	public void updateReadCount(int boardCnt) {
 		this.boardCnt = boardCnt;
+	}
+
+	public void addLikeCount(long likeCount) {
+		this.likeCount = likeCount;		
 	}
 	
 }

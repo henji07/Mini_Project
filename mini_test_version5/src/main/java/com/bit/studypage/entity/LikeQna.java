@@ -1,9 +1,6 @@
 package com.bit.studypage.entity;
 
-
 import java.time.LocalDateTime;
-
-import com.bit.studypage.dto.CommentQnaDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,40 +15,35 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Getter
-@Table(name = "comment_qna")
-public class CommentQna {
+@Table(name = "like_qna")
+public class LikeQna {
 	
-    @Id
-    @Column(name = "comment_id")
-    private int id;
-
-    @Column(nullable = false, name="comment_content")
-    private String content;
-
-    @Column(name="users_id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="like_id")
+	private long likeId;
+	
+	@Column(name="users_id")
     private long userId;
+	
+	@Column(name = "user_id")
+    private String userStringId;
 
     @Column(name = "board_id")
     private long boardId;
     
-    @Column(name = "user_id")
-    private String userStringId; 
-    
     @Column(name = "board_title")
     private String boardTitle;
     
-    @Column(name = "created_at")
-    private LocalDateTime createdAt; 
+    @Column(name = "like_count")
+    private long likeCount;
     
     @Builder
-    public CommentQna(String content, long userId, long boardId, 
-    				  String userStringId, String boardTitle, LocalDateTime createdAt) {
-    	this.content = content;
+    public LikeQna(long userId, String userStringId, long boardId, String boardTitle, long likeCount) {
     	this.userId = userId;
-    	this.boardId = boardId;
     	this.userStringId = userStringId;
+    	this.boardId = boardId;
     	this.boardTitle = boardTitle;
-    	this.createdAt = createdAt;
+    	this.likeCount = likeCount;
     }
-
 }

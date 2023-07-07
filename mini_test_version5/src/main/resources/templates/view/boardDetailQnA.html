@@ -7,11 +7,120 @@
 <head>
 <th:block layout:fragment="css">
 	<link rel="stylesheet" href="/css/boardDetailQna.css">
+	<!-- 하트 이모티콘 생기게 해주는 스타일시트 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </th:block>
 
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript"> 
    
+   // 좋아요 체크 
+   $(document).ready(function() {
+	   //사용자 아이디 얻기 
+     $.get("/board/api/user/id", function(data, status) {
+    	 var userId = data;
+         console.log("아이디: " + userId);
+         
+         //게시물 번호 얻기 
+         var boardId = $("#boardId").val();
+         console.log("게시판번호: " + boardId);
+         
+         $.ajax({
+ 	        type: 'GET',
+ 	        url: '/board/check-like/' + boardId + '/' + userId,
+ 	        success: function(isLiked) {
+ 	            if(isLiked) {
+ 	                //사용자가 좋아요 이미 누른 경우 하트 채워주기 
+ 	                $("#heart").removeClass("far").addClass("fas");
+ 	            }
+ 	        }
+ 	    });
+     });
+   });
+   
+   // 좋아요 기능
+   function toggleLike() {
+       var boardId = $("#boardId").val();  // 현재 페이지의 게시글 ID 가져오기
+       var boardTitle = $("#boardTitle").text();
+       
+       var userId = sessionStorage.getItem("userId");  
+       var userStringId = sessionStorage.getItem("userStringId");
+
+       var heart = document.getElementById("heart");
+       var likeCounter = document.getElementById("likeCount");
+
+       if (heart.classList.contains("far")) {  // 아직 좋아요를 누르지 않은 상태
+           heart.classList.remove("far");
+           heart.classList.add("fas");
+
+           // 좋아요 등록 요청
+           $.ajax({
+               type: 'POST',
+               url: '/board/like-insert/' + boardId,  // 요청 URL
+               contentType: 'application/json',
+               data: JSON.stringify({
+                   boardId: boardId,
+                   userId: userId,
+                   userStringId: userStringId,
+                   boardTitle: boardTitle,
+                   //likeCount: likeCount,
+                 
+               }),
+               success: (result) => {
+                   console.log(result);
+                   alert(result.item.msg); 
+                   $("#likeCount").text(result.likeCount);
+               },
+               error: function(jqXHR, textStatus, errorThrown) {
+            	   if (jqXHR.status === 401) {
+            		   //로그인 안 했을 때 
+                       alert(jqXHR.responseJSON.message);           		   
+	       	           // 로그인 페이지로 이동
+	       	           window.location.href = "/login";
+	       	           
+                   } else if (jqXHR.status === 409) {
+                	   //좋아요 중복  
+                       alert(jqXHR.responseJSON.message);
+                   } else {
+                       alert(jqXHR.responseJSON.message);
+                   }
+                   
+               }
+           });
+       } else {  // 이미 좋아요를 누른 상태
+           heart.classList.remove("fas");
+           heart.classList.add("far");
+
+           // 좋아요 삭제 요청
+           $.ajax({
+               type: 'DELETE',
+               url: '/board/like-delete/' + boardId,  // 요청 URL
+               contentType: 'application/json',
+               data: JSON.stringify({
+                   boardId: boardId
+               }),
+               success: (result) => {
+                   console.log(result);
+                   alert(result.item.msg); 
+                   $("#likeCount").text(result.likeCount);
+               },
+               error: function(jqXHR, textStatus, errorThrown) {
+            	   if (jqXHR.status === 401) {
+            	        //로그인 안 했을 때 
+            	        alert(jqXHR.responseJSON.message);           		   
+            	        // 로그인 페이지로 이동
+            	        window.location.href = "/login";
+            	    } else if (jqXHR.status === 404) {
+            	        //좋아요 누르지 않았을 때  
+            	        alert(jqXHR.responseJSON.message);
+            	    } else {
+            	        alert(jqXHR.responseJSON.message);
+            	    }
+               }
+           });
+       }
+   }
+	
    $(function() {	   
 	   
 	   //글 삭제
@@ -156,6 +265,13 @@
             <span id="postViews" th:text="'조회수: ' + ${board.boardCnt}"></span>
           </div>
           <div id="boardContent" name="boardContent" th:text="${board.boardContent}"></div>
+          
+          <!-- 좋아요 -->
+          <div id="likeButton" onclick="toggleLike()">
+			  <i id="heart" class="far fa-heart"></i> 좋아요 
+			  <span id="likeCount" th:text="${board.likeCount}" style="margin-left:10px;"></span>
+		  </div>
+
           <div id="fileSection">
             <h4>첨부 파일</h4>
             <p style="font-size:14px;">다운로드시 파일명을 클릭하세요.</p>

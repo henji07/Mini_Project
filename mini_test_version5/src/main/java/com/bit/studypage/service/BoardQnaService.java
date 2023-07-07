@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.FileQnaDTO;
 import com.bit.studypage.entity.BoardQna;
-import com.bit.studypage.entity.FileQnaEntity;
+import com.bit.studypage.entity.FileQna;
 
 public interface BoardQnaService {
 

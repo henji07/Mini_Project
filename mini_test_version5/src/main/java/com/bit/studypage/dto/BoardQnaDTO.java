@@ -27,6 +27,8 @@ public class BoardQnaDTO {
 	
 	public int commentCount; // 댓글 수
 	
+	private long likeCount;
+	
 	// CommentDTO 리스트 추가
 	private List<CommentQnaDTO> comments;
 	
@@ -38,7 +40,6 @@ public class BoardQnaDTO {
         dto.setBoardContent(entity.getBoardContent());
         dto.setBoardWriter(entity.getBoardWriter());
         dto.setBoardRegdate(entity.getBoardRegdate());
-
         return dto;
     }
 	

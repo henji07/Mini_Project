@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -27,9 +28,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.CommentQnaDTO;
+import com.bit.studypage.dto.LikeQnaDTO;
 import com.bit.studypage.dto.ResponseDTO;
+import com.bit.studypage.entity.Users;
 import com.bit.studypage.service.BoardQnaService;
+import com.bit.studypage.service.LikeQnaService;
+import com.bit.studypage.service.MemberService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,6 +46,8 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardQnaController {
 
 	private final BoardQnaService boardService;
+	private final LikeQnaService likeService;
+	private final MemberService memberService;
 	
 	
 	//글 등록 화면으로 이동
@@ -157,8 +165,13 @@ public class BoardQnaController {
         mv.addObject("comments", comments);
         
         // 로그인한 사용자 정보 전달
+        // authentication 객체가 null이 아님을 확인
+        //authentication.isAuthenticated(): 사용자가 이미 인증되었는지를 확인하는 메소드
+        //=> 인증 객체가 초기화되었고, 그 사용자가 이미 인증되었다면'
         if (authentication != null && authentication.isAuthenticated()) {
+        	//인증된 사용자의 이름을 가져와 username 변수에 저장
             String username = authentication.getName();
+            //username을 모델에 추가
             mv.addObject("username", username);
         }
         
@@ -240,5 +253,73 @@ public class BoardQnaController {
     public ResponseEntity<String> getLoggedInUser(Authentication authentication) {
         return ResponseEntity.ok(authentication.getName());
     }
+    
+    //이름 값에서 아이디 값 뽑기 
+    @GetMapping("/api/user/id")
+    public ResponseEntity<Long> getLoggedInUserId(Authentication authentication) {
+    	if (authentication.getPrincipal() instanceof Users) {
+            Users user = (Users) authentication.getPrincipal();
+            Long userId = user.getUsersId();
+            
+            System.out.println("userId=" + userId);
+            return ResponseEntity.ok(userId);
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // or your error handling
+    }
+    
+    //좋아요 
+    @PostMapping("/like-insert/{boardId}")
+    public ResponseEntity<?> insert(@PathVariable("boardId") long boardId, 
+    								@RequestBody @Valid LikeQnaDTO likeDTO, Authentication authentication) {
+    	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+    	
+    	System.out.println("컨트롤러에 오나?");
+    	
+        //서비스 호출 
+		likeService.insertLike(likeDTO, authentication);
+        Map<String, String> returnMap = new HashMap<String, String>();
+
+        returnMap.put("msg", "좋아요 반영되었습니다.");
+
+        responseDTO.setItem(returnMap);
+        
+        System.out.println("리스폰스디티오="+responseDTO);
+        
+        return ResponseEntity.ok().body(responseDTO);   	   	
+    	
+    }
+    
+    //좋아요 취소 
+    @DeleteMapping("/like-delete/{boardId}")
+    public ResponseEntity<?> delete(@PathVariable("boardId") long boardId, 
+    							    Authentication authentication) {
+    	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+    	
+        //서비스 호출 
+		likeService.removeLike(boardId, authentication);
+
+        Map<String, String> returnMap = new HashMap<String, String>();
+
+        returnMap.put("msg", "좋아요 취소되었습니다.");
+
+        responseDTO.setItem(returnMap);
+
+        return ResponseEntity.ok().body(responseDTO);
+    	
+    }
+    
+    //좋아요 체크 여부 
+    @GetMapping("/check-like/{boardId}/{userId}")
+    public ResponseEntity<?> checkLike(@PathVariable("boardId") long boardId, @PathVariable("userId") long userId) {
+    	System.out.println("체크 컨트롤러");
+        // 해당 게시글에 대한 사용자의 좋아요 상태를 확인
+        boolean isLiked = likeService.isLikedByUser(boardId, userId);
+        
+        System.out.println("좋아요 누르셨나요" + isLiked);
+
+        // 좋아요 상태를 JSON 형태로 반환
+        return ResponseEntity.ok().body(isLiked);
+    }
+
 
 }

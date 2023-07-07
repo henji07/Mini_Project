@@ -16,7 +16,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @NoArgsConstructor
-public class FileQnaEntity {
+public class FileQna {
 
 	@Id
 	@Column(name="id")
@@ -36,7 +36,7 @@ public class FileQnaEntity {
     private long boardId;
     
     @Builder
-    public FileQnaEntity(String originalFileName, String fileType, String storeFileName, long boardId) {
+    public FileQna(String originalFileName, String fileType, String storeFileName, long boardId) {
         this.fileName = originalFileName;
         this.fileType = fileType;
         this.filePath = storeFileName;

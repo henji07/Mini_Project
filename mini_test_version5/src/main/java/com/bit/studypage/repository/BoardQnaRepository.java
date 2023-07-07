@@ -1,6 +1,5 @@
 package com.bit.studypage.repository;
 
-import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.entity.BoardQna;
 
 //JpaRepository를 상속받도록 함으로써 기본적인 동작이 모두 가능

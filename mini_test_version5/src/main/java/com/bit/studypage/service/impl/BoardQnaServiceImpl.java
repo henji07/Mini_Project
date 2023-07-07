@@ -23,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.FileQnaDTO;
 import com.bit.studypage.entity.BoardQna;
-import com.bit.studypage.entity.FileQnaEntity;
+import com.bit.studypage.entity.FileQna;
 import com.bit.studypage.repository.BoardQnaRepository;
 import com.bit.studypage.repository.CommentQnaRepository;
 import com.bit.studypage.repository.FileQnaRepository;
@@ -114,7 +114,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 				
 				for(Map<String,Object> data: tmpFileList) {
 					//FileQnaEntity.builder()를 통해 각 파일 데이터를 FileQnaEntity 객체로 변환
-					FileQnaEntity fqEntity = FileQnaEntity.builder()
+					FileQna fqEntity = FileQna.builder()
 	        				.originalFileName((String)data.get("originalFileName"))
 	        				.fileType((String)data.get("fileType"))
 	        				.storeFileName((String)data.get("storeFileName"))
@@ -179,7 +179,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	                        f.transferTo(fle);
 
 	                        // FileQnaEntity 객체 생성 및 설정
-	                        FileQnaEntity fqEntity = FileQnaEntity.builder()
+	                        FileQna fqEntity = FileQna.builder()
 	                                .originalFileName(originalFileName)
 	                                .fileType(fileType)
 	                                .storeFileName(storeFileName)
@@ -237,12 +237,12 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 				BeanUtils.copyProperties(board, dto);
 				
 				// 게시글에 해당하는 파일 엔티티를 찾음
-				List<FileQnaEntity> fileEntityList = fileRepository.findAllByBoardId(boardId);
+				List<FileQna> fileEntityList = fileRepository.findAllByBoardId(boardId);
 				List<FileQnaDTO> fileQnaDTOList = new ArrayList<>();
 				
 				// 파일 엔티티가 있는 경우, 각 파일 엔티티의 정보를 FileQnaDTO에 복사
 	            if(ObjectUtils.isNotEmpty(fileEntityList)) {	            	
-	            	for(FileQnaEntity f : fileEntityList) {
+	            	for(FileQna f : fileEntityList) {
 	            		FileQnaDTO fileDTO = new FileQnaDTO();
 		                BeanUtils.copyProperties(f, fileDTO);
 		                fileQnaDTOList.add(fileDTO);
@@ -315,8 +315,8 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	public FileQnaDTO inqurityFileInfo(long id) {
 		
 		FileQnaDTO dto = null;
-		Optional<FileQnaEntity> optional = fileRepository.findById(id);
-		FileQnaEntity entity = null;
+		Optional<FileQna> optional = fileRepository.findById(id);
+		FileQna entity = null;
 		
 		if(ObjectUtils.isNotEmpty(optional)) {
 			entity = optional.get();

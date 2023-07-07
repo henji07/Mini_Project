@@ -31,7 +31,6 @@ public class CommentQnaServiceImpl implements CommentQnaService {
 	
 	private final CommentQnaRepository commentRepository;
     private final BoardQnaRepository boardRepository;
-    private final UsersRepository userRepository;
     private final MemberRepository memberRepository;
     
     //사용자의 인증 정보 확인
@@ -41,7 +40,7 @@ public class CommentQnaServiceImpl implements CommentQnaService {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "로그인 해주세요.");
         }
 
-        // 사용자의 아이디를 가져옴
+        // 인증된 사용자의 아이디를 가져옴
         String userId = authentication.getName();
 
         // 아이디를 이용해 사용자를 찾음. 사용자가 없을 경우 예외를 발생시킴
@@ -96,7 +95,7 @@ public class CommentQnaServiceImpl implements CommentQnaService {
         // 각 댓글에 대해
         comments.forEach(s -> {
         	// 댓글 작성자를 찾음. 작성자가 없을 경우 예외 발생
-            Users user = userRepository.findById(s.getUserId()).orElseThrow(() -> {
+            Users user = memberRepository.findById(s.getUserId()).orElseThrow(() -> {
                 return new IllegalArgumentException("사용자를 찾을 수 없습니다.");
             });
             

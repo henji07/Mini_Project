@@ -194,5 +194,29 @@
   font-weight: bold;
 }
 
+#likeButton {
+  cursor: pointer;
+  padding: 20px;
+  border: 1px solid grey;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto auto auto;
+  width: 100px
+}
+
+#likeButton i {
+  margin-right: 10px;
+}
+
+.far.fa-heart {
+  color: grey;
+}
+
+.fas.fa-heart {
+  color: red;
+}
+
 
 

@@ -12,7 +12,7 @@
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript">
    
-   //파일 이름 불러오기 
+   	//파일 이름 불러오기 
     function displayFiles(input) {
         var fileList = input.files;
         var fileNames = "";
@@ -24,7 +24,7 @@
         document.getElementById("fileList").innerHTML = fileNames;
     }
    
-// 로그인한 사용자의 아이디를 받아오는 코드 추가
+	// 로그인한 사용자의 아이디를 받아오는 코드 추가
    $(document).ready(function() {
      $.get("/board/api/user", function(data, status) {
        $('#boardWriter').val(data);
@@ -32,7 +32,7 @@
      });
    });
    
- //글 등록
+ 	//글 등록
    $(function() {
        $("#btnInsert").on("click", () => {
            //입력 유효성 검사
@@ -57,13 +57,15 @@
            formData.append("boardContent", $("#boardContent").val());
 
            //파일 데이터 얻기, #btnAtt 눌렀을 때 
-           if($('#btnAtt').prop('files') != null) {
-               console.log("파일확인"+$('#btnAtt').prop('files'));
-               var files = $('#btnAtt').prop('files');
-               for (var i = 0; i < files.length; i++) { // loop through files
-                   formData.append('uploadFiles', files[i]); // append each file separately
-               }
-           } 
+           if($('#btnAtt').prop('files').length > 0) {
+			    console.log("파일확인"+$('#btnAtt').prop('files'));
+			    var files = $('#btnAtt').prop('files');
+			    for (var i = 0; i < files.length; i++) { // loop through files
+			        formData.append('uploadFiles', files[i]); // append each file separately
+			    }
+			} else {
+			    formData.append('uploadFiles', new Blob(), 'filename'); 
+			}
 
            //ajax로 db조회
            $.ajax({

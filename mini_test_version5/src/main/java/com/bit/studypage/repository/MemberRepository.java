@@ -24,5 +24,7 @@ public interface MemberRepository extends JpaRepository<Users, Long>{
 
 	//userId 찾기 - 댓글
 	Optional<Users> findByUserId(String userId);	
+	
+	
 
 }

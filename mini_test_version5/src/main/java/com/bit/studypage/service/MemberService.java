@@ -26,5 +26,6 @@ public interface MemberService {
 
 	//전화번호 중복체크 
 	public boolean isPhoneDuplicate(String phone);
+
 	
 }
