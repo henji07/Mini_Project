@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.bit.studypage.dto.BoardCmmntQnaDTO;
 import com.bit.studypage.dto.CommentQnaDTO;
 import com.bit.studypage.entity.BoardQna;
 import com.bit.studypage.entity.CommentQna;
@@ -22,6 +23,7 @@ import com.bit.studypage.repository.CommentQnaRepository;
 import com.bit.studypage.repository.MemberRepository;
 import com.bit.studypage.repository.UsersRepository;
 import com.bit.studypage.service.CommentQnaService;
+import com.bit.studypage.service.dao.BoardQnaDao;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,6 +34,8 @@ public class CommentQnaServiceImpl implements CommentQnaService {
 	private final CommentQnaRepository commentRepository;
     private final BoardQnaRepository boardRepository;
     private final MemberRepository memberRepository;
+    
+    private final BoardQnaDao boardQnaDao;
     
     //사용자의 인증 정보 확인
     public Users validateAuthentication(Authentication authentication) {
@@ -115,6 +119,11 @@ public class CommentQnaServiceImpl implements CommentQnaService {
         });
         commentRepository.deleteById(commentId);
         return "삭제 완료";
+    }
+    
+    public List<BoardCmmntQnaDTO> getBoardQnaCommnetList(long boardId){
+    	System.out.println(boardId);
+    	return boardQnaDao.selectCommentList(boardId);
     }
     
 

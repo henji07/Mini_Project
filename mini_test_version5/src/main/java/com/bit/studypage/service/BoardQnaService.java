@@ -14,7 +14,7 @@ import com.bit.studypage.entity.FileQna;
 public interface BoardQnaService {
 
 	//글 등록
-	public Map<String, Object> insertBoard(BoardQnaDTO boardDTO, List<MultipartFile> files);
+	public Map<String, Object> insertBoard(BoardQnaDTO boardDTO, List<MultipartFile> files,String userId);
 	
 	//글 수정
 	public Map<String, Object> updateBoard(BoardQnaDTO boardDTO, List<MultipartFile> files);
@@ -23,7 +23,7 @@ public interface BoardQnaService {
 	public void deleteBoard(long boardId);
 	
 	//글 상세 조회
-	public BoardQnaDTO getBoardDetail(long boardId);
+	public BoardQnaDTO getBoardDetail(long boardId, long userId);
 	
 	//글 목록 조회 
 	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption);

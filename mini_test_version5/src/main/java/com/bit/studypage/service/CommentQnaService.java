@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.security.core.Authentication;
 
+import com.bit.studypage.dto.BoardCmmntQnaDTO;
 import com.bit.studypage.dto.CommentQnaDTO;
 import com.bit.studypage.entity.Users;
 
@@ -20,5 +21,7 @@ public interface CommentQnaService {
     
     //댓글 삭제 
 	public String deleteComment(int commentId);
+	
+	public List<BoardCmmntQnaDTO> getBoardQnaCommnetList(long boardId);
 
 }

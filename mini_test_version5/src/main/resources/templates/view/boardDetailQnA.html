@@ -10,33 +10,162 @@
 	<!-- 하트 이모티콘 생기게 해주는 스타일시트 -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </th:block>
+</head>
+<body> 
+<th:block layout:fragment="content">  
+	
+	
+<form id="updateForm">
+   <div class="container py-5">
+	 <input type="hidden" id="boardId" name="boardId" th:value="${board.boardId}">
+      <section id="postSection">
+        <div id="postContainer">
+          <div id="boardTitle" name="boardTitle" th:text="${board.boardTitle}"></div>
+          <div id="postInfo">
+            <span id="postWriter" th:text="'작성자: ' + ${board.userName}" ></span>
+            <span id="postDate" th:text="'작성일: ' + ${#strings.substring(board.boardRegdate, 0, 10) }"></span>
+            <span id="postViews" th:text="'조회수: ' + ${board.boardCnt}"></span>
+          </div>
+          <div id="boardContent" name="boardContent" th:text="${board.boardContent}"></div>
+          
+          <!-- 좋아요 -->
+          <div id="btnLike">
+			  <i id="heart" th:if=${board.heart} class="fas fa-heart"></i>
+			  <i id="heart" th:unless=${board.heart} class="far fa-heart"></i>
+			   좋아요 
+			  <span id="likeCount" th:text="${board.likeCount}" style="margin-left:10px;"></span>
+		  </div>
+
+          <div id="fileSection">
+            <h4>첨부 파일</h4>
+            <p style="font-size:14px;">다운로드시 파일명을 클릭하세요.</p>
+            <ul id="fileList">
+                <!-- 첨부파일이 있으면 이름을 표시 -->
+	            <li th:each="fle : ${board.fileList}">
+	            	<img th:src="@{/board/attach/{filename}(filename=${fle.filePath})}" width="50" height="50"/>
+	                <!--  파일 다운로드 링크 -->
+		            <a style="color:black;" th:href="@{/board/attach/{filename}(filename=${fle.filePath})}" download>
+		                <span th:text="${fle.fileName}"></span>
+		            </a>                  
+	            </li>
+            </ul>
+          </div>
+          
+          <!-- 댓글 리스트 -->
+		  <div id="comments">
+		      <h4>댓글 목록</h4>
+			  <!-- 기존 댓글들은 여기에 표시 -->     
+			  <div class="comment-item" th:each="row : ${board.comments}">
+	            <div th:text="${row.userName}"></div>
+		        <div th:text="${row.commentContent}"></div>
+				<div th:text="${row.createdAt}"></div>
+				<a href="#" th:data-src="${row.commentId}" class="comment-modify">수정</a>
+            	<a href="#" th:data-src="${row.commentId}" class="comment-delete">삭제</a>
+			  </div>
+		   </div>
+          
+          <!-- 댓글 입력 부분 -->
+		  <div id="commentSection">
+		   <h4>댓글 작성</h4>
+		     <textarea id="commentContent" name="commentContent" placeholder="댓글을 입력해주세요."></textarea>
+		     <a type="button" id="btnComment">댓글 등록</a>
+		  </div>
+		  
+          <div id="postActions">
+            <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
+          	<div th:if="${username != null and board.boardWriter == username}">
+            	<a th:href="@{/board/modify-board-view/{boardId}(boardId=${board.boardId})}" type="submit" id="btnUpdate">글 수정</a>
+          	</div>
+          	
+            <a href="/board/qnaPage/1" type="button" id="btnList">글 목록</a>
+            
+            <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
+            <div th:if="${username != null and board.boardWriter == username}">
+            	<a href="#" id="btnDelete">글 삭제</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+</form>
+</th:block>
 
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript"> 
-   
-   // 좋아요 체크 
+
    $(document).ready(function() {
-	   //사용자 아이디 얻기 
-     $.get("/board/api/user/id", function(data, status) {
-    	 var userId = data;
-         console.log("아이디: " + userId);
-         
-         //게시물 번호 얻기 
-         var boardId = $("#boardId").val();
-         console.log("게시판번호: " + boardId);
-         
-         $.ajax({
- 	        type: 'GET',
- 	        url: '/board/check-like/' + boardId + '/' + userId,
- 	        success: function(isLiked) {
- 	            if(isLiked) {
- 	                //사용자가 좋아요 이미 누른 경우 하트 채워주기 
- 	                $("#heart").removeClass("far").addClass("fas");
- 	            }
- 	        }
- 	    });
-     });
+	  
+	   //댓글 삭제 
+	 $(".comment-delete").on("click",function(e){
+		 e.preventDefault();
+		 
+		 var commentId = $(this).data("src");
+		 console.log(commentId);
+		 deleteComment(commentId);
+		 
+		 $(this).parent().remove();
+	 });
+	   
+	 //글 삭제
+       $("#btnDelete").click( function(){
+ 
+           e.preventDefault();
+           if (window.confirm("정말 삭제하시겠습니까?")) {
+        	   deleteContens();
+           }
+       });
+	 
+	 $("#btnLike").on("click", function(){
+		 toggleLike();
+	 });
+	 
+       // 댓글 등록
+       $('#btnComment').on('click', function(e) {
+    	    e.preventDefault();
+
+    	    var commentContent = $('#commentContent').val();
+    	    var boardId = $("#boardId").val();
+    	    
+    	 	// 댓글 내용이 비어있는지 확인
+    	    if (!commentContent.trim()) {
+    	        alert('댓글 내용을 입력해주세요.');
+    	        return;
+    	    }
+    	 	
+    	    registCommnet();
+    	 	
+       });
+	   
    });
+   
+   
+   function deleteComment(commentId){
+	   
+   }
+   
+	// 좋아요 체크 
+   function getLike(){
+	 //사용자 아이디 얻기 
+	     $.get("/board/api/user/id", function(data, status) {
+	    	 var userId = data;
+	         console.log("아이디: " + userId);
+	         
+	         //게시물 번호 얻기 
+	         var boardId = $("#boardId").val();
+	         console.log("게시판번호: " + boardId);
+	         
+	         $.ajax({
+	 	        type: 'GET',
+	 	        url: '/board/check-like/' + boardId + '/' + userId,
+	 	        success: function(isLiked) {
+	 	            if(isLiked) {
+	 	                //사용자가 좋아요 이미 누른 경우 하트 채워주기 
+	 	                $("#heart").removeClass("far").addClass("fas");
+	 	            }
+	 	        }
+	 	    });
+	     });
+   }
    
    // 좋아요 기능
    function toggleLike() {
@@ -120,45 +249,32 @@
            });
        }
    }
-	
-   $(function() {	   
+   
+   //글 삭제 
+   function deleteContens(){
 	   
-	   //글 삭제
-       $("#btnDelete").on("click", (e) => {
-    	   
-           e.preventDefault();
-           if (window.confirm("정말 삭제하시겠습니까?")) {
-	           $.ajax({
-	               url: '/board/board',
-	               type: 'delete',
-	               data: {
-	                   boardId: $("#boardId").val()
-	               },
-	               success: (obj) => {
-	                   console.log(obj);
-	                   alert(obj.item.msg);
-	                   location.href = `/board/qnaPage/1`;
-	               },
-	               error: (error) => {
-	                   console.log(error);
-	               }
-	           });
+	   $.ajax({
+           url: '/board/board',
+           type: 'delete',
+           data: {
+               boardId: $("#boardId").val()
+           },
+           success: (obj) => {
+               console.log(obj);
+               alert(obj.item.msg);
+               location.href = `/board/qnaPage/1`;
+           },
+           error: (error) => {
+               console.log(error);
            }
        });
-	   
-       // 댓글 등록
-       $('#btnComment').on('click', function(e) {
-    	    e.preventDefault();
-
-    	    var commentContent = $('#commentContent').val();
-    	    var boardId = $("#boardId").val();
-    	    
-    	 	// 댓글 내용이 비어있는지 확인
-    	    if (!commentContent.trim()) {
-    	        alert('댓글 내용을 입력해주세요.');
-    	        return;
-    	    }
-
+   }
+	
+   //댓글 등록 
+   function registCommnet(){
+	   var commentContent = $('#commentContent').val();
+	    var boardId = $("#boardId").val();
+	    
     	    $.ajax({
     	        type: 'POST',
     	        url: '/comments-insert/' + boardId,
@@ -166,18 +282,8 @@
     	        data: JSON.stringify({content: commentContent,}),
     	        success: function(response) {
     	            if(response.success === "성공") {
-    	            	// 댓글 작성에 성공하면 화면에 새로운 댓글을 추가.
-    	                // 이를 위해 댓글을 담을 컨테이너를 준비하고, 해당 컨테이너에 새로 작성한 댓글의 내용을 추가.
-    	                var newComment = $("<div>").addClass("comment-item");
-    	                var commentAuthor = $("<div>").addClass("writer").text(response.data.writer); // 작성자 정보 추가
-        				var commentContent = $("<div>").addClass("content").text(response.data.content);
-        				var commentCreatedAt = $("<div>").addClass("createdAt").text(response.data.createdAt); 
-    	                	                
-    	                newComment.append(commentAuthor, commentContent,commentCreatedAt);
-    	                
-    	                $("#comments").append(newComment);  // 댓글 컨테이너에 새 댓글 요소 추가
-    	                $("#commentContent").val('');  // 댓글 입력란 초기화
-    	                console.log(newComment);
+    	            	$('#commentContent').val('');
+    	            	getRefresh();   	            	
     	            } else {
     	                // 에러 메시지를 사용자에게 표시
     	                alert(response.message);
@@ -196,12 +302,48 @@
     	            window.location.href = "/login";
     	        }
     	    });
-    	});
-   });
+    	}
    
-	 //기존 댓글 가져와서 표시
-	   $(document).ready(function(){
-	       var boardId = $("#boardId").val();
+   //댓글 쓰고 새로고침
+   function getRefresh(){
+	   
+	   var data = {boardId: $("#boardId").val()};
+	   
+	   console.log(data);
+	   
+	   $.ajax({
+		   type: 'POST',
+		   url: /*[[@{'/comments/refresh'}]]*/ '',
+		   contentType: 'application/json',
+	       data: JSON.stringify(data),
+		   success: function(res){
+			   if(res){
+				   console.log(res);
+				   var arr = [], idx = 0;
+				   $.each(res, function (index, ele) {
+					   arr[idx++] = "<div class='comment-item'>";
+					   arr[idx++] = "<div>" + ele.userName + "</div>";
+					   arr[idx++] = "<div>" + ele.commentContent + "</div>";
+					   arr[idx++] = "<div>" + ele.createdAt +"</div>";
+					   arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-modify'>수정</a>";
+					   arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-delete'>삭제</a>";
+					   arr[idx++] = "</div>";
+				   });
+				   $("#comments div").remove();
+				   $("#comments").append(arr.join(''));
+			   }
+		   },
+           error: function(jqXHR, textStatus, errorThrown) {
+               alert("댓글 작성에 실패하였습니다. 다시 시도해주세요.");
+           }
+	   });
+
+   }
+   
+   //my
+/* 	function getCommentList(){
+	       
+		var boardId = $("#boardId").val();
 	
 	       $.ajax({
 	           type: 'GET',
@@ -241,89 +383,9 @@
 	               alert("댓글 작성에 실패하였습니다. 다시 시도해주세요.");
 	           }
 	       });
-	   });
-
+	   } */
    
    </script>
-</th:block>
-    
-</head>
-
-<body> 
-<th:block layout:fragment="content">  
-	
-	
-<form id="updateForm">
-   <div class="container py-5">
-	 <input type="hidden" id="boardId" name="boardId" th:value="${board.boardId}">
-      <section id="postSection">
-        <div id="postContainer">
-          <div id="boardTitle" name="boardTitle" th:text="${board.boardTitle}"></div>
-          <div id="postInfo">
-            <span id="postWriter" th:text="'작성자: ' + ${board.boardWriter}" ></span>
-            <span id="postDate" th:text="'작성일: ' + ${#strings.substring(board.boardRegdate, 0, 10) }"></span>
-            <span id="postViews" th:text="'조회수: ' + ${board.boardCnt}"></span>
-          </div>
-          <div id="boardContent" name="boardContent" th:text="${board.boardContent}"></div>
-          
-          <!-- 좋아요 -->
-          <div id="likeButton" onclick="toggleLike()">
-			  <i id="heart" class="far fa-heart"></i> 좋아요 
-			  <span id="likeCount" th:text="${board.likeCount}" style="margin-left:10px;"></span>
-		  </div>
-
-          <div id="fileSection">
-            <h4>첨부 파일</h4>
-            <p style="font-size:14px;">다운로드시 파일명을 클릭하세요.</p>
-            <ul id="fileList">
-                <!-- 첨부파일이 있으면 이름을 표시s -->
-	            <li th:each="fle : ${board.fileList}">
-	            	<img th:src="@{/board/attach/{filename}(filename=${fle.filePath})}" width="50" height="50"/>
-	                <!--  파일 다운로드 링크 -->
-		            <a style="color:black;" th:href="@{/board/attach/{filename}(filename=${fle.filePath})}" download>
-		                <span th:text="${fle.fileName}"></span>
-		            </a>                  
-	            </li>
-            </ul>
-          </div>
-          
-          <!-- 댓글 리스트 -->
-		  <div id="comments">
-		      <h4>댓글 목록</h4>
-			  <!-- 기존 댓글들은 여기에 표시 -->     
-			  <div class="comment-item" th:each="comment : ${comments}">
-	            <span th:text="${comment.writer}"></span>
-		        <span th:text="${comment.content}"></span>
-				<span id="comment-date" th:text="${#strings.substring(comment.createdAte, 0, 10) }"></span>
-            	<a type="button" id="btnCommentDelete">삭제</a>
-
-			  </div>
-		   </div>
-          
-          <!-- 댓글 입력 부분 -->
-		  <div id="commentSection">
-		   <h4>댓글 작성</h4>
-		     <textarea id="commentContent" name="commentContent" placeholder="댓글을 입력해주세요."></textarea>
-		     <a type="button" id="btnComment">댓글 등록</a>
-		  </div>
-		  
-          <div id="postActions">
-            <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
-          	<div th:if="${username != null and board.boardWriter == username}">
-            	<a th:href="@{/board/modify-board-view/{boardId}(boardId=${board.boardId})}" type="submit" id="btnUpdate">글 수정</a>
-          	</div>
-          	
-            <a href="/board/qnaPage/1" type="button" id="btnList">글 목록</a>
-            
-            <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
-            <div th:if="${username != null and board.boardWriter == username}">
-            	<a type="button" id="btnDelete">글 삭제</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-</form>
 </th:block>
 </body> 
 </html>

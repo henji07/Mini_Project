@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
@@ -50,8 +51,18 @@ public class BoardQnaController {
 	
 	//글 등록 화면으로 이동
 	@GetMapping("/insert-board-view")
-    public ModelAndView insertBoardView() {
+    public ModelAndView insertBoardView(Authentication authentication) {
 		ModelAndView mv = new ModelAndView();
+		
+		String userName = null;
+		if(ObjectUtils.isNotEmpty(authentication)) {
+	        if (authentication.getPrincipal() instanceof Users) {
+	            Users user = (Users) authentication.getPrincipal();
+	            userName = user.getName();
+	        }
+        }
+		mv.addObject("userName", userName);
+		
 		mv.setViewName("view/boardInsertQna.html");
 		return mv;
     }
@@ -103,13 +114,23 @@ public class BoardQnaController {
    
     //글 등록 -> ajax
     @PostMapping("/board-insert")
-    public ResponseEntity<?> insertBoard(@RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO) {
+    public ResponseEntity<?> insertBoard(@RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO,
+    		Authentication authentication) {
         
     	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+    	
+    	String userId = null;
+        
+        if(ObjectUtils.isNotEmpty(authentication)) {
+	        if (authentication.getPrincipal() instanceof Users) {
+	            Users user = (Users) authentication.getPrincipal();
+	            userId = user.getUserId();
+	        }
+        }
 
         try {
             //서비스 호출 
-            boardService.insertBoard(boardDTO, files);
+            boardService.insertBoard(boardDTO, files, userId);
 
             Map<String, String> returnMap = new HashMap<String, String>();
 
@@ -131,6 +152,7 @@ public class BoardQnaController {
     @Value("${file.path}")
     private String fileUploadDir;
 	
+    //파일 
 	@GetMapping("/attach/{filename:.+}")
     public ResponseEntity<InputStreamResource> getImage(@PathVariable String filename) throws IOException {
      System.out.println("==========================="); 
@@ -152,15 +174,24 @@ public class BoardQnaController {
     @GetMapping("/board/{boardId}")
     public ModelAndView getBoard(@PathVariable long boardId, Authentication authentication) {
         ModelAndView mv = new ModelAndView();
+        
+        long userId = 0;
+        
+        if(ObjectUtils.isNotEmpty(authentication)) {
+	        if (authentication.getPrincipal() instanceof Users) {
+	            Users user = (Users) authentication.getPrincipal();
+	            userId = user.getUsersId();
+	        }
+        }
 
         //게시물 조회 
-        BoardQnaDTO dto = boardService.getBoardDetail(boardId);
+        BoardQnaDTO dto = boardService.getBoardDetail(boardId, userId);
         
         // 댓글 리스트를 가져오기.
-        List<CommentQnaDTO> comments = dto.getComments();
+    //    List<CommentQnaDTO> comments = dto.getComments();
 
         mv.addObject("board", dto);
-        mv.addObject("comments", comments);
+    //    mv.addObject("comments", comments);
         
         // 로그인한 사용자 정보 전달
         // authentication 객체가 null이 아님을 확인
@@ -187,7 +218,7 @@ public class BoardQnaController {
   		ModelAndView mv = new ModelAndView();
   		
   		//게시물 조회 
-        BoardQnaDTO dto = boardService.getBoardDetail(boardId);
+        BoardQnaDTO dto = boardService.getBoardDetail(boardId, 0);
   		
   		mv.addObject("board", dto);
   		mv.setViewName("view/boardModifyQnA.html");

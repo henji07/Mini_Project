@@ -18,8 +18,9 @@ public class BoardQnaDTO {
 	private String boardTitle;
 	private String boardContent;
 	private String boardWriter;
-	private LocalDateTime boardRegdate;
+	private String boardRegdate;
 	private int boardCnt;
+	private String userName;
 	
 	private List<FileQnaDTO> fileList;
 	private List<Long> attachDelete; // 삭제할 파일 ID 목록
@@ -29,19 +30,19 @@ public class BoardQnaDTO {
 	
 	private long likeCount;
 	
-	// CommentDTO 리스트 추가
-	private List<CommentQnaDTO> comments;
+	private List<BoardCmmntQnaDTO> comments;
+	
+	private boolean heart;
 	
 	//Entity에서 DTO로 변환하는 코드
-	public static BoardQnaDTO fromEntity(BoardQna entity) {
-        BoardQnaDTO dto = new BoardQnaDTO();
-        dto.setBoardId(entity.getBoardId());
-        dto.setBoardTitle(entity.getBoardTitle());
-        dto.setBoardContent(entity.getBoardContent());
-        dto.setBoardWriter(entity.getBoardWriter());
-        dto.setBoardRegdate(entity.getBoardRegdate());
-        return dto;
-    }
+	/*
+	 * public static BoardQnaDTO fromEntity(BoardQna entity) { BoardQnaDTO dto = new
+	 * BoardQnaDTO(); dto.setBoardId(entity.getBoardId());
+	 * dto.setBoardTitle(entity.getBoardTitle());
+	 * dto.setBoardContent(entity.getBoardContent());
+	 * dto.setBoardWriter(entity.getBoardWriter());
+	 * dto.setBoardRegdate(entity.getBoardRegdate()); return dto; }
+	 */
 	
 }
 

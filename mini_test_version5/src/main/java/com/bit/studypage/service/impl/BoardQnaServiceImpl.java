@@ -20,14 +20,19 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bit.studypage.dto.BoardCmmntQnaDTO;
 import com.bit.studypage.dto.BoardQnaDTO;
+import com.bit.studypage.dto.CommentQnaDTO;
 import com.bit.studypage.dto.FileQnaDTO;
 import com.bit.studypage.entity.BoardQna;
+import com.bit.studypage.entity.CommentQna;
 import com.bit.studypage.entity.FileQna;
 import com.bit.studypage.repository.BoardQnaRepository;
 import com.bit.studypage.repository.CommentQnaRepository;
 import com.bit.studypage.repository.FileQnaRepository;
+import com.bit.studypage.repository.LikeQnaRepository;
 import com.bit.studypage.service.BoardQnaService;
+import com.bit.studypage.service.dao.BoardQnaDao;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,13 +45,16 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	private final BoardQnaRepository boardRepository;
 	private final FileQnaRepository fileRepository;
 	private final CommentQnaRepository commentRepository;
+	private final LikeQnaRepository likeRepository;
+	
+	private final BoardQnaDao boardQnaDao;
 	
     @Value("${file.path}")
     private String fileUploadDir;
 	
 	/* 글 등록 */
 	@Override
-	public Map<String, Object> insertBoard(BoardQnaDTO boardDTO, List<MultipartFile> files) {
+	public Map<String, Object> insertBoard(BoardQnaDTO boardDTO, List<MultipartFile> files ,String userId) {
 		
 		//임시로 파일 정보를 저장할 리스트 
 		List<Map<String, Object>> tmpFileList = new ArrayList<>();
@@ -96,6 +104,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
         }
 		
 		System.out.println(boardDTO.toString());
+		boardDTO.setBoardWriter(userId);
 		
 		//BoardQna 엔티티로 변환하고 저장 - 데이터베이스에 저장될 수 있는 형태
 		BoardQna board = BoardQna.builder().data(boardDTO).build();
@@ -221,9 +230,12 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	
 	/* 글 상세 조회 */
 	@Override
-	public BoardQnaDTO getBoardDetail(long boardId) {
+	public BoardQnaDTO getBoardDetail(long boardId, long userId) {
+		
 		// 결과를 저장할 DTO 생성
-		BoardQnaDTO dto = new BoardQnaDTO();
+		BoardQnaDTO dto = boardQnaDao.selectBoardQnaInfo(boardId);
+		
+		/*
 		// 주어진 아이디로 게시글 엔티티를 찾음
 		Optional<BoardQna> option = boardRepository.findById(boardId);
 		
@@ -235,25 +247,38 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 				boardRepository.save(board); // 변경된 조회수 저장
 				
 				BeanUtils.copyProperties(board, dto);
-				
-				// 게시글에 해당하는 파일 엔티티를 찾음
-				List<FileQna> fileEntityList = fileRepository.findAllByBoardId(boardId);
-				List<FileQnaDTO> fileQnaDTOList = new ArrayList<>();
-				
-				// 파일 엔티티가 있는 경우, 각 파일 엔티티의 정보를 FileQnaDTO에 복사
-	            if(ObjectUtils.isNotEmpty(fileEntityList)) {	            	
-	            	for(FileQna f : fileEntityList) {
-	            		FileQnaDTO fileDTO = new FileQnaDTO();
-		                BeanUtils.copyProperties(f, fileDTO);
-		                fileQnaDTOList.add(fileDTO);
-	            	}
-	            }
-	            // 파일 DTO 리스트가 있는 경우, 이를 결과 DTO에 설정
-	            if(ObjectUtils.isNotEmpty(fileQnaDTOList)) {
-	            	dto.setFileList(fileQnaDTOList);
-	            }
-			}
-	    }
+		*/
+		
+		if(ObjectUtils.isNotEmpty(dto)) {
+			// 게시글에 해당하는 파일 엔티티를 찾음
+			List<FileQna> fileEntityList = fileRepository.findAllByBoardId(boardId);
+			List<FileQnaDTO> fileQnaDTOList = new ArrayList<>();
+			
+			// 파일 엔티티가 있는 경우, 각 파일 엔티티의 정보를 FileQnaDTO에 복사
+            if(ObjectUtils.isNotEmpty(fileEntityList)) {	            	
+            	for(FileQna f : fileEntityList) {
+            		FileQnaDTO fileDTO = new FileQnaDTO();
+	                BeanUtils.copyProperties(f, fileDTO);
+	                fileQnaDTOList.add(fileDTO);
+            	}
+            }
+            // 파일 DTO 리스트가 있는 경우, 이를 결과 DTO에 설정
+            if(ObjectUtils.isNotEmpty(fileQnaDTOList)) {
+            	dto.setFileList(fileQnaDTOList);
+            }
+          //  System.out.println(boardId);
+            List<BoardCmmntQnaDTO> commentList = boardQnaDao.selectCommentList(boardId);
+            
+            if(ObjectUtils.isNotEmpty(commentList)) {
+            //	System.out.println(commentList.size());
+            	dto.setComments(commentList);
+            }
+            
+            if(userId > 0) {
+            	dto.setHeart(likeRepository.existsByUserIdAndBoardId(userId, boardId));
+            }
+		}
+
 	    return dto;
 	}
 
@@ -261,7 +286,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	@Override
 	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption) {
 		
-		int pageSize = 5;  // 한 페이지에 보여질 게시글 수
+		int pageSize = 8;  // 한 페이지에 보여질 게시글 수
 		
 		Sort sort; //옵션 객체 생성 
 		
@@ -270,6 +295,8 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	        sort = Sort.by(Sort.Direction.DESC, "boardId");
 	    } else if ("view".equals(sortOption)) {
 	        sort = Sort.by(Sort.Direction.DESC, "boardCnt");
+	    } else if ("popular".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "likeCount");
 	    } else {
 	        sort = Sort.by(Sort.Direction.DESC, "boardId");
 	    }
@@ -306,7 +333,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	/* 기존 게시물 전체 페이지 수 반환 */
 	@Override
 	public Object getTotalPages() {
-		int pageSize = 5;
+		int pageSize = 8;
 	    long totalBoards = boardRepository.count();
 	    return (int) Math.ceil((double) totalBoards / pageSize);
 	}

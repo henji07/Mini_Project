@@ -194,7 +194,7 @@
   font-weight: bold;
 }
 
-#likeButton {
+#btnLike {
   cursor: pointer;
   padding: 20px;
   border: 1px solid grey;
@@ -206,7 +206,7 @@
   width: 100px
 }
 
-#likeButton i {
+#btnLike i {
   margin-right: 10px;
 }
 

@@ -1,6 +1,7 @@
 package com.bit.studypage.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -9,16 +10,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bit.studypage.dto.BoardCmmntQnaDTO;
 import com.bit.studypage.dto.CommentQnaDTO;
 import com.bit.studypage.dto.ResponseCommentDTO;
 import com.bit.studypage.service.CommentQnaService;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 public class CommentQnaController {
@@ -35,7 +40,7 @@ public class CommentQnaController {
     public ResponseCommentDTO<?> writeComment(@PathVariable("boardId") Long boardId, @RequestBody CommentQnaDTO commentDto, 
     										  Authentication authentication) {
         
-        System.out.println("댓글 작성 요청 - boardId: " + boardId);
+      //  System.out.println("댓글 작성 요청 - boardId: " + boardId);
         
         // 댓글 작성을 위해 Service 레이어의 메소드를 호출하고, 그 결과를 반환
         return new ResponseCommentDTO<>("성공", "댓글 작성을 완료했습니다.", commentService.writeComment(boardId, commentDto, authentication), null);
@@ -50,11 +55,30 @@ public class CommentQnaController {
     	// Service 레이어의 메소드를 호출하여 해당 게시글의 댓글들을 가져옴
     	List<CommentQnaDTO> comments = commentService.getComments(boardId);
     	
-    	System.out.println("댓글 개수: " + comments.size()); // 댓글 개수 출력
+    //	System.out.println("댓글 개수: " + comments.size()); // 댓글 개수 출력
 
     	// 댓글을 불러온 결과를 반환
         return new ResponseCommentDTO<>("성공", "댓글을 불러왔습니다.",comments, null);     
         
+    }
+    
+    
+    @PostMapping("/comments/refresh")
+    @ResponseBody
+    public List<BoardCmmntQnaDTO> getBoardQnaCommnetList(@RequestBody Map<String,Object> data){
+    	
+    	List<BoardCmmntQnaDTO> dataList = null;
+    	try {
+    		String boardIdStr = (String)data.get("boardId");
+    		long boardId = Long.parseLong(boardIdStr);
+    	
+    		dataList = commentService.getBoardQnaCommnetList(boardId);
+    	}
+    	catch(Exception e) {
+    		log.error(e.getMessage());
+    	}
+    	
+    	return dataList;
     }
     
     
