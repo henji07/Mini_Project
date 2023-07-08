@@ -66,9 +66,11 @@ public class QualificationController {
         if (name.equals("") || name.isEmpty()) {
             mv.addObject("List", qualificationService.getQuaList(pageable));
             qualificationList = qualificationService.getQuaList(pageable);
+            mv.addObject("name","");
         } else {
             mv.addObject("List", qualificationService.getSearchQuaList(name, pageable));
             qualificationList = qualificationService.getSearchQuaList(name, pageable);
+            mv.addObject("name",name);
             System.out.println("여기다!" + qualificationService.getSearchQuaList(name, pageable));
 //        return qualificationService.getSearchQuaList(name,pageable);
         }
@@ -87,8 +89,12 @@ public class QualificationController {
         return mv;
     }
 
-    @GetMapping("/select/qua")
-    public String select(@RequestParam("name") String name) throws IOException {
-        return apiService.test(name);
+    @GetMapping("/select/qua/{name}")
+    public ModelAndView select(@PathVariable String name) throws IOException {
+        ModelAndView mv = new ModelAndView();
+        System.out.println(name+"나옴");
+        mv.setViewName("/view/quaDetailes.html");
+        mv.addObject("quaInfo",apiService.test(name));
+        return mv;
     }
 }

@@ -223,7 +223,7 @@
             </div>
             <div id="search_quaList" style="">
                 <div class="post" th:each="item : ${List.content}">
-                    <a id="item-qua" href="#" class="title" th:text="${item.jmfldnm}"></a>
+                    <a id="item-qua" th:href="@{/select/qua/{name} (name=${item.jmfldnm})}" class="title" th:text="${item.jmfldnm}"></a>
                 </div>
                 <!--                <div class="post">-->
                 <!--                    <a href="#" class="title">게시물 제목2</a>-->
@@ -252,19 +252,19 @@
         <div class="pagination" id="page1">
             <th:block th:if="${List.totalPages > 0}">
 
-                <a th:href="@{/certificatePage(page=0)}"><< </a>
+                <a th:href="@{/certificatePage(name=${name},page=0)}"><< </a>
 
-                <a th:href="@{/certificatePage(page=${List.number - 10})}"> < </a>
+                <a th:href="@{/certificatePage(name=${name},page=${List.number - 10})}"> < </a>
 
                 <th:block th:each="i : ${#numbers.sequence(startPage,endPage - 1)}">
-                    <a th:href="@{/certificatePage(page = ${i})}" th:text="${i + 1}"
+                    <a th:href="@{/certificatePage(name=${name},page = ${i})}" th:text="${i + 1}"
                        th:class="${List.number == i ? 'selected' : ''}"></a>
                 </th:block>
 
-                <a th:href="@{/certificatePage(page=${(List.number + 10) > List.totalPages ? List.totalPages - 1 : List.number + 10 })}">
+                <a th:href="@{/certificatePage(name=${name}, page=${(List.number + 10) > List.totalPages ? List.totalPages - 1 : List.number + 10 })}">
                     > </a>
 
-                <a th:href="@{/certificatePage(page=${List.totalPages - 1})}"> >></a>
+                <a th:href="@{/certificatePage(name=${name},page=${List.totalPages - 1})}"> >></a>
             </th:block>
         </div>
 <!--        <div class="pagination" id="page2">-->
