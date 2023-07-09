@@ -1,8 +1,10 @@
 package com.bit.studypage.controller;
 
 import com.bit.studypage.entity.Qualification;
+import com.bit.studypage.pojo.ResponseData;
 import com.bit.studypage.service.ApiService;
 import com.bit.studypage.service.QualificationService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
@@ -92,9 +94,15 @@ public class QualificationController {
     @GetMapping("/select/qua/{name}")
     public ModelAndView select(@PathVariable String name) throws IOException {
         ModelAndView mv = new ModelAndView();
-        System.out.println(name+"나옴");
         mv.setViewName("/view/quaDetailes.html");
         mv.addObject("quaInfo",apiService.test(name));
+        mv.addObject("name",name);
+        System.out.println(apiService.test(name)+"오브젝트 넘어가는 거");
+        String jsonData = apiService.test(name);
+        ObjectMapper objectMapper = new ObjectMapper();
+        ResponseData responseData = objectMapper.readValue(jsonData, ResponseData.class);
+        mv.addObject("quaInfo2", responseData);
+        System.out.println("파싱: "+jsonData);
         return mv;
     }
 }
