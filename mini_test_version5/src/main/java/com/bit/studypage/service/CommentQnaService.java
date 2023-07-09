@@ -15,13 +15,11 @@ public interface CommentQnaService {
 	
 	// 댓글 작성 
 	public CommentQnaDTO writeComment(long boardId, CommentQnaDTO commentDto, Authentication authentication);
-	
-	//댓글 목록
-	public List<CommentQnaDTO> getComments(long boardId);
     
     //댓글 삭제 
 	public String deleteComment(int commentId);
 	
+	//댓글 목록 
 	public List<BoardCmmntQnaDTO> getBoardQnaCommnetList(long boardId);
 
 }

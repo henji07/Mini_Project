@@ -13,5 +13,5 @@ public interface BoardQnaDao {
 	List<BoardCmmntQnaDTO> selectCommentList(long boardId);
 	
 	BoardQnaDTO selectBoardQnaInfo(long boardId);
-
+	
 }

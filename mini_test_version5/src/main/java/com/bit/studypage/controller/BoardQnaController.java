@@ -187,20 +187,12 @@ public class BoardQnaController {
         //게시물 조회 
         BoardQnaDTO dto = boardService.getBoardDetail(boardId, userId);
         
-        // 댓글 리스트를 가져오기.
-    //    List<CommentQnaDTO> comments = dto.getComments();
 
         mv.addObject("board", dto);
-    //    mv.addObject("comments", comments);
         
         // 로그인한 사용자 정보 전달
-        // authentication 객체가 null이 아님을 확인
-        //authentication.isAuthenticated(): 사용자가 이미 인증되었는지를 확인하는 메소드
-        //=> 인증 객체가 초기화되었고, 그 사용자가 이미 인증되었다면'
         if (authentication != null && authentication.isAuthenticated()) {
-        	//인증된 사용자의 이름을 가져와 username 변수에 저장
             String username = authentication.getName();
-            //username을 모델에 추가
             mv.addObject("username", username);
         }
         
@@ -225,6 +217,7 @@ public class BoardQnaController {
   		return mv;
       }
     
+  	
     //글 수정 
     @PostMapping("/board-modify")
     public ResponseEntity<?> updateBoard(@RequestPart(value = "board", required = false) BoardQnaDTO boardDTO, 

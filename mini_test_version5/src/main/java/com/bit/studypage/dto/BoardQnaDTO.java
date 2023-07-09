@@ -1,9 +1,6 @@
 package com.bit.studypage.dto;
 
-import java.time.LocalDateTime;
 import java.util.List;
-
-import com.bit.studypage.entity.BoardQna;
 
 import lombok.Getter;
 import lombok.Setter;

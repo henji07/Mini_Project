@@ -46,23 +46,8 @@ public class CommentQnaController {
         return new ResponseCommentDTO<>("성공", "댓글 작성을 완료했습니다.", commentService.writeComment(boardId, commentDto, authentication), null);
     }
     
-	// 게시글에 달린 댓글들을 불러오는 API를 정의. HTTP 메소드는 GET.
-	// PathVariable로 boardId를 받아와 해당 게시글의 댓글을 모두 불러옴.
-    @ApiOperation(value = "댓글 불러오기", notes = "게시글에 달린 댓글을 모두 불러온다.")
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/comments/{boardId}")
-    public ResponseCommentDTO<?> getComments(@PathVariable("boardId") Long boardId) {
-    	// Service 레이어의 메소드를 호출하여 해당 게시글의 댓글들을 가져옴
-    	List<CommentQnaDTO> comments = commentService.getComments(boardId);
-    	
-    //	System.out.println("댓글 개수: " + comments.size()); // 댓글 개수 출력
-
-    	// 댓글을 불러온 결과를 반환
-        return new ResponseCommentDTO<>("성공", "댓글을 불러왔습니다.",comments, null);     
-        
-    }
     
-    
+    /*댓글 목록 가져오기 */
     @PostMapping("/comments/refresh")
     @ResponseBody
     public List<BoardCmmntQnaDTO> getBoardQnaCommnetList(@RequestBody Map<String,Object> data){
@@ -81,15 +66,21 @@ public class CommentQnaController {
     	return dataList;
     }
     
-    
-    // 댓글 삭제
-    @ApiOperation(value = "댓글 삭제", notes = "게시글에 달린 댓글을 삭제합니다.")
-    @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("/comments/{boardId}/{commentId}")
-    public ResponseCommentDTO deleteComment(@PathVariable("boardId") Integer boardId, @PathVariable("commentId") Integer commentId) {
-        // 추후 JWT 로그인 기능을 추가하고나서, 세션에 로그인된 유저와 댓글 작성자를 비교해서, 맞으면 삭제 진행하고
-        // 틀리다면 예외처리를 해주면 된다.
-
-        return new ResponseCommentDTO("성공", "댓글 삭제 완료", commentService.deleteComment(commentId), null);
-    }
+    /* 댓글 삭제 */
+    @PostMapping("/comments/delete")
+    @ResponseBody
+    public String deleteBoardQnaComment(@RequestBody Map<String, Object> data) {
+    		System.out.println("코멘트아이디"+data);
+        try {
+            String commentIdStr = Integer.toString((Integer) data.get("commentId"));
+            int commentId = (Integer) data.get("commentId");
+            
+            System.out.println("코멘트아이디"+commentId);
+            
+            return commentService.deleteComment(commentId);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return "댓글 삭제 과정에서 오류가 발생했습니다.";
+        }
+    }        
 }

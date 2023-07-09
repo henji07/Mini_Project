@@ -86,41 +86,18 @@ public class CommentQnaServiceImpl implements CommentQnaService {
         return CommentQnaDTO.toDto(comment, user.getUserId());         
     }
     
-    // 글에 해당하는 전체 댓글 불러오기
-    @Transactional(readOnly = true)
-    public List<CommentQnaDTO> getComments(long boardId) {
-    	
-    	// 게시글에 달린 모든 댓글을 가져옴
-        List<CommentQna> comments = commentRepository.findAllByBoardId(boardId);
-        
-        // DTO로 변환하여 저장할 리스트를 생성
-        List<CommentQnaDTO> commentDtos = new ArrayList<>();
-
-        // 각 댓글에 대해
-        comments.forEach(s -> {
-        	// 댓글 작성자를 찾음. 작성자가 없을 경우 예외 발생
-            Users user = memberRepository.findById(s.getUserId()).orElseThrow(() -> {
-                return new IllegalArgumentException("사용자를 찾을 수 없습니다.");
-            });
-            
-            // 댓글을 DTO로 변환하여 리스트에 추가
-            commentDtos.add(CommentQnaDTO.toDto(s, user.getUserId())); // user의 이름을 함께 전달
-        });
-        
-        // 댓글 DTO 리스트를 반환
-        return commentDtos;
-    }
-    
     // 댓글 삭제하기
     @Transactional
-    public String deleteComment(int commentId) {
-        CommentQna comment = commentRepository.findById(commentId).orElseThrow(()-> {
-            return new IllegalArgumentException("댓글 Id를 찾을 수 없습니다.");
-        });
+    public String deleteComment(int commentId) {	
+    	
+    	System.out.println("서비스"+commentId);
+ 
         commentRepository.deleteById(commentId);
+        
         return "삭제 완료";
     }
     
+    // 댓글 목록 불러오기 
     public List<BoardCmmntQnaDTO> getBoardQnaCommnetList(long boardId){
     	System.out.println(boardId);
     	return boardQnaDao.selectCommentList(boardId);
