@@ -145,8 +145,13 @@
     	    registCommnet();
     	 	
        });  
-       
-     	//좋아요 - 사용자 아이디 얻기 
+  
+   });
+   
+	// 좋아요 체크 
+   function getLike(){  
+		
+	 	//좋아요 - 사용자 아이디 얻기 
 	     $.get("/board/api/user/id", function(data, status) {
 	    	 var userId = data;
 	         console.log("아이디: " + userId);
@@ -157,11 +162,6 @@
 	         
 	         getLike();
 	     });
-	   
-   });
-   
-	// 좋아요 체크 
-   function getLike(){  
 		
          $.ajax({
  	        type: 'GET',

@@ -4,9 +4,11 @@ package com.bit.studypage.repository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bit.studypage.entity.BoardQna;
 
@@ -14,6 +16,12 @@ import com.bit.studypage.entity.BoardQna;
 //JpaRepository<대상으로 지정할 엔티티, 해당 엔티티의 PK의 타입>.
 @Repository
 public interface BoardQnaRepository extends JpaRepository<BoardQna, Long> {
+	
+	//조회수 증가
+	@Transactional
+	@Modifying
+	@Query("update BoardQna b set b.boardCnt = b.boardCnt + 1 where b.boardId = :boardId")
+	void increaseViewCount(@Param("boardId") long boardId);
 	
 	//페이징 
 	Page<BoardQna> findAllByOrderByBoardIdDesc(Pageable pageable);

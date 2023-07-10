@@ -234,6 +234,10 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		BoardQnaDTO dto = boardQnaDao.selectBoardQnaInfo(boardId);
 		
 		if(ObjectUtils.isNotEmpty(dto)) {
+			
+			// 게시글 조회 수 증가
+			boardRepository.increaseViewCount(boardId);
+			
 			// 게시글에 해당하는 파일 엔티티를 찾음
 			List<FileQna> fileEntityList = fileRepository.findAllByBoardId(boardId);
 			List<FileQnaDTO> fileQnaDTOList = new ArrayList<>();

@@ -58,7 +58,7 @@ public class BoardQnaController {
 		if(ObjectUtils.isNotEmpty(authentication)) {
 	        if (authentication.getPrincipal() instanceof Users) {
 	            Users user = (Users) authentication.getPrincipal();
-	            userName = user.getName();
+	            userName = user.getUserId();
 	        }
         }
 		mv.addObject("userName", userName);
@@ -138,6 +138,8 @@ public class BoardQnaController {
             returnMap.put("msg", "정상적으로 저장되었습니다.");
 
             responseDTO.setItem(returnMap);
+            
+            System.out.println("메시지"+responseDTO);
 
             return ResponseEntity.ok().body(responseDTO);
 
