@@ -235,20 +235,6 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		// 결과를 저장할 DTO 생성
 		BoardQnaDTO dto = boardQnaDao.selectBoardQnaInfo(boardId);
 		
-		/*
-		// 주어진 아이디로 게시글 엔티티를 찾음
-		Optional<BoardQna> option = boardRepository.findById(boardId);
-		
-		if(ObjectUtils.isNotEmpty(option)) {
-			BoardQna board = option.get();
-			// 게시글 엔티티가 있는 경우, 조회수를 증가시키고 정보를 DTO에 복사
-			if(ObjectUtils.isNotEmpty(board)) {
-				board.updateReadCount(board.getBoardCnt() + 1); // 조회수 증가
-				boardRepository.save(board); // 변경된 조회수 저장
-				
-				BeanUtils.copyProperties(board, dto);
-		*/
-		
 		if(ObjectUtils.isNotEmpty(dto)) {
 			// 게시글에 해당하는 파일 엔티티를 찾음
 			List<FileQna> fileEntityList = fileRepository.findAllByBoardId(boardId);

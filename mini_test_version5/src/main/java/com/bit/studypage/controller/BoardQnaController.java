@@ -194,6 +194,7 @@ public class BoardQnaController {
         if (authentication != null && authentication.isAuthenticated()) {
             String username = authentication.getName();
             mv.addObject("username", username);
+            mv.addObject("userId", userId);
         }
         
         mv.setViewName("/view/boardDetailQna");

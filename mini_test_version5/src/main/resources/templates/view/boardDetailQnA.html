@@ -58,11 +58,14 @@
 	            <div th:text="${row.userName}"></div>
 		        <div th:text="${row.commentContent}"></div>
 				<div th:text="${row.createdAt}"></div>
-			
-				<a href="#" th:data-src="${row.commentId}" class="comment-modify">수정</a>
-
-          		<a href="#" th:data-src="${row.commentId}" class="comment-delete">삭제</a>
-	
+				
+				<!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
+				<div th:if="${userId != null and row.usersId == userId}">
+					<a href="#" th:data-src="${row.commentId}" class="comment-modify">수정</a>
+				</div>
+          		<div th:if="${userId != null and row.usersId == userId}">
+          			<a href="#" th:data-src="${row.commentId}" class="comment-delete">삭제</a>
+          		</div>
 			  </div>
 		   </div>
          

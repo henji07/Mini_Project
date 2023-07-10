@@ -9,9 +9,10 @@ import com.bit.studypage.dto.BoardQnaDTO;
 
 @Mapper
 public interface BoardQnaDao {
-	
+	//댓글 리스트 
 	List<BoardCmmntQnaDTO> selectCommentList(long boardId);
 	
+	//글 상세 조회 
 	BoardQnaDTO selectBoardQnaInfo(long boardId);
 	
 }
