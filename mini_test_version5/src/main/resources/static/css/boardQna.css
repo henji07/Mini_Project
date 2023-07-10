@@ -72,7 +72,6 @@
 
 /*게시판 부분*/
 .board-write {
-  margin-bottom: 10px;
   padding: 10px;
   background-color: white;
   border-bottom: 1px solid #ccc;
@@ -125,7 +124,7 @@
   display: flex !important;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
+  margin-right: 20px;
   margin-left: 10px;
   text-align: center;
   flex-direction: column;
@@ -276,4 +275,11 @@
 
 .far.fa-heart {
   color: red;
+}
+
+
+/*글번호*/
+.post-number {
+	font-size: 12px;
+	margin-right: 10px;
 }
