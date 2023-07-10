@@ -137,8 +137,8 @@
 <div class="pagination-top">
     <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
     <div class="pagination-top-buttons">
-      <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} - 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous">&larr;</a>
-      <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} + 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next">&rarr;</a>
+      <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} - 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous"  th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr;</a>
+      <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} + 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">&rarr;</a>
     </div>
 </div>
 
@@ -180,12 +180,12 @@
 <th:block th:with="pageGroupSize=5">
     <div class="pagination-bottom">
 
-        <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} - 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous">&larr; Previous</a>
+        <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} - 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous" th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr; Previous</a>
         <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
             <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/{pageNum}(pageNum=${i}, sortOption=${sortOption})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
         </div>
 
-        <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} + 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next">Next &rarr;</a>
+        <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} + 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">Next &rarr;</a>
 
     </div>
 </th:block>

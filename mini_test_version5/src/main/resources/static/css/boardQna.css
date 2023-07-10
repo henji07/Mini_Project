@@ -212,8 +212,9 @@
     background-color: white;
 }
 
-.pagination-top-button:disabled {
-    cursor: not-allowed;
+.disabled-link {
+    pointer-events: none;
+    color: #b4b4b4 !important;
 }
 
 /*하단 페이징*/
@@ -246,10 +247,6 @@
     border: none;
     background-color: white;
     cursor: pointer;   
-}
-
-.pagination-bottom-button:disabled {
-    cursor: not-allowed;
 }
 
 
