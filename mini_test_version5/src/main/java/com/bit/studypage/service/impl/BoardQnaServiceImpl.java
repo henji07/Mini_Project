@@ -362,12 +362,25 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	}
 	
 	/* 게시판 검색 기능 */
-	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword, int pageNum) {
+	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword, int pageNum, String sortOption) {
 		
 		int pageSize = 5;  // 한 페이지에 보여질 게시글 수
+		
+		Sort sort; //옵션 객체 생성 
+		
+		// 정렬 옵션에 따라 Sort 객체를 생성
+	    if ("recently".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "boardId");
+	    } else if ("view".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "boardCnt");
+	    } else if ("popular".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "likeCount");
+	    } else {
+	        sort = Sort.by(Sort.Direction.DESC, "boardId");
+	    }
 
 	    // Pageable 인스턴스 생성
-	    Pageable pageable = PageRequest.of(pageNum - 1, pageSize, Sort.by(Sort.Direction.DESC, "boardId"));
+	    Pageable pageable = PageRequest.of(pageNum - 1, pageSize, sort);
 
 	    // 검색된 게시글 리스트를 페이징 처리하여 가져옴
 	    Page<BoardQna> pageInfo = boardRepository.findByTitleContaining(searchKeyword, pageable);

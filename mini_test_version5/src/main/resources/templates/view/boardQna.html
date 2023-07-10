@@ -61,34 +61,6 @@
 	    window.location.href = newUrl;
 	}
 
-   
-   //글 정렬 
-   function changeSortOption() {
-	    var sortOption = document.getElementById("list-options").value;
-	    var currentUrl = window.location.href;
-	    var baseUrl = currentUrl.includes("?") ? currentUrl.substring(0, currentUrl.indexOf("?")) : currentUrl;
-	    var queryParam = currentUrl.includes("?") ? currentUrl.substring(currentUrl.indexOf("?")) : "";
-	    var newUrl;
-
-	    if (sortOption !== "") {
-	        if (queryParam.includes("sortOption=")) {
-	            // 이미 sortOption 쿼리 파라미터가 있으면, 그 값을 변경
-	            newUrl = currentUrl.replace(/(sortOption=)[^\&]+/, "$1" + sortOption);
-	        } else if (queryParam !== "") {
-	            // 다른 쿼리 파라미터가 있으면, sortOption을 추가
-	            newUrl = baseUrl + queryParam + "&sortOption=" + sortOption;
-	        } else {
-	            // 아무런 쿼리 파라미터도 없으면, sortOption만 추가
-	            newUrl = baseUrl + "?sortOption=" + sortOption;
-	        }
-	    } else {
-	        // sortOption 쿼리 파라미터를 제거
-	        newUrl = baseUrl + queryParam.replace(/&?sortOption=[^\&]+/, "");
-	    }
-
-	    window.location.href = newUrl;
-	}
-
 
    </script>
 </th:block>

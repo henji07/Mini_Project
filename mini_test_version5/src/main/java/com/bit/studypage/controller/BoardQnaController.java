@@ -92,16 +92,17 @@ public class BoardQnaController {
 	//required = false로 설정되면 해당 파라미터가 필수가 아니라는 것
 	//파라미터가 누락되더라도 예외가 발생하지 않고 기본값으로 null이 할당
 	@GetMapping("/search/{pageNum}")
-    public ModelAndView getSearchList(@RequestParam(required = false) String keyword, @PathVariable int pageNum) {
+    public ModelAndView getSearchList(@RequestParam(required = false) String keyword, @PathVariable int pageNum, String sortOption) {
 		
 		ModelAndView mv = new ModelAndView();
 
-        List<BoardQnaDTO> searchList = boardService.searchBoardsByTitle(keyword, pageNum);
+        List<BoardQnaDTO> searchList = boardService.searchBoardsByTitle(keyword, pageNum, sortOption);
 
         mv.addObject("searchList", searchList);
         mv.addObject("keyword", keyword);
         mv.addObject("currentPage", pageNum);
         mv.addObject("totalPages", boardService.getSearchTotalPages(keyword));
+        mv.addObject("sortOption", sortOption);
         
         if (searchList.isEmpty()) {
             mv.addObject("noResultMessage", "검색 결과가 없습니다.");

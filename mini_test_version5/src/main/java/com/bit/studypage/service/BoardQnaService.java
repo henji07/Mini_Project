@@ -35,7 +35,7 @@ public interface BoardQnaService {
 	public FileQnaDTO inqurityFileInfo(long id);
 	
 	//게시판 검색 기능을 구현
-	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword, int pageNum);
+	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword, int pageNum, String sortOption);
 	
 	//검색된 게시물을 기반으로 총 페이지 수를 계산
 	public int getSearchTotalPages(String keyword);
