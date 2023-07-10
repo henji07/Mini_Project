@@ -382,6 +382,11 @@ public class BoardQnaServiceImpl implements BoardQnaService {
                 // 댓글 수 조회
                 int commentCount = commentRepository.countByBoardId(b.getBoardId());
                 dto.setCommentCount(commentCount);
+                
+                // 날짜를 String으로 변환
+	            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	            String formattedDateTime = b.getBoardRegdate().format(formatter);
+	            dto.setBoardRegdate(formattedDateTime);
 
                 dataList.add(dto);
             }

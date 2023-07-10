@@ -7,6 +7,8 @@
 <head>
 <th:block layout:fragment="css">
 	<link rel="stylesheet" href="/css/boardQna.css">
+	<!-- 하트 이모티콘 생기게 해주는 스타일시트 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </th:block>
 
 <th:block layout:fragment="script">
@@ -122,6 +124,13 @@
         </div>
         <a th:href="@{/board/board/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
       </div>
+      
+      <!-- 좋아요 -->
+      <div id="likeButton">
+		 <i id="heart" class="far fa-heart"></i> 
+		 <span id="likeCount" th:text="${board.likeCount}"></span>
+	  </div>
+	  
       <div class="board-details">
 	      <div class="view-count" th:text="'조회  ' + ${board.boardCnt}"></div>
 	      <div class="reg-date" th:text="${#strings.substring(board.boardRegdate, 0, 10) }"></div>
