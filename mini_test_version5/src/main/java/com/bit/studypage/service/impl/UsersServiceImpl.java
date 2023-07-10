@@ -37,4 +37,5 @@ public class UsersServiceImpl implements UserService {
 //    public String getInterest(Long userId) {
 //
 //    }
+
 }

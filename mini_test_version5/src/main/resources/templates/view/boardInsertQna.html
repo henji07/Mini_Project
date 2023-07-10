@@ -11,50 +11,58 @@
 
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript">
-   //글 등록
+   
+   	//파일 이름 불러오기 
+    function displayFiles(input) {
+        var fileList = input.files;
+        var fileNames = "";
+
+        for (var i = 0; i < fileList.length; i++) {
+            fileNames += "<li>" + fileList[i].name + "</li>";
+        }
+
+        document.getElementById("fileList").innerHTML = fileNames;
+    }
+
+ 	//글 등록
    $(function() {
-        $("#btnInsert").on("click", () => {
+       $("#btnInsert").on("click", () => {
+           //입력 유효성 검사
+           if($("#boardTitle").val() === "") {
+               alert("제목을 입력하세요.");
+               $("#boardTitle").focus();
+               return;
+           }
 
+           if($("#boardContent").val() === "") {
+               alert("내용을 입력하세요.");
+               $("#boardContent").focus();
+               return;
+           }
+           
+           //formData 객체 생성 
+           var formData = new FormData($('#insertForm')[0]);
 
-          //입력 유효성 검사
-          if($("#boardTitle").val() === "") {
-            alert("제목을 입력하세요.");
-            $("#boardTitle").focus();
-            return;
-          }
+           //ajax로 db조회
+           $.ajax({
+               url: "/board/board-insert",
+               type: "POST",
+               data: formData, 
+               processData: false,  //jQuery가 데이터를 쿼리 문자열로 자동 변환하는 것을 방지
+               contentType: false, //브라우저가 multipart/form-data의 형태로 데이터를 인코딩하게 함
+               success: (result) => {
+                   console.log(result);
+                   alert(result.item.msg);
+                   window.location.href="/board/qnaPage/1";
+               },
+               error: (error) => {
+                   console.log(error);
+                   alert("글 등록 실패");
+               }
+           });
+       });    
+   });
 
-          if($("#boardContent").val() === "") {
-            alert("내용을 입력하세요.");
-            $("#boardContent").focus();
-            return;
-          }
-          
-          //formData 객체 생성 
-          var formData = new FormData($('#insertForm')[0]);
-          
-          //파일 데이터 얻기, #btnAtt 눌렀을 때 
-          var file_data = $('#btnAtt').prop('files')[0];  
-          formData.append('uploadFiles', file_data);
-
-          //ajax로 db조회
-          $.ajax({
-            url: "/board/board-insert",
-            type: "POST",
-            data: formData, 
-            processData: false,  //jQuery가 데이터를 쿼리 문자열로 자동 변환하는 것을 방지
-            contentType: false, //브라우저가 multipart/form-data의 형태로 데이터를 인코딩하게 함
-            success: (result) => {
-              console.log(result);
-              alert(result.item.msg);
-              window.location.href="/board/qnaPage/1";
-            },
-            error: (error) => {
-              console.log(error);
-              alert("글 등록 실패");
-            }
-          });
-        });
-      });
 
    </script>
 </th:block>
@@ -73,17 +81,19 @@
         <td><input id="boardTitle" type="text" name="boardTitle" placeholder="제목을 입력해주세요."></td>
       </tr>
       <tr>
-        <td><input id="boardWriter" type="text" name="boardWriter" placeholder="작성자"></td>
+        <td><input id="boardWriter" type="text" name="boardWriter" readonly th:value="${userName}"></td>
       </tr>
       <tr>
         <td><textarea id="boardContent" name="boardContent" cols="40" rows="10" placeholder="내용을 입력하세요."></textarea></td>
       </tr>
       <tr>
         <td>
-		  <div id="image_preview">
-		    <input type="file" id="btnAtt" name="uploadFiles" multiple>
+		  <div id="image_upload">
+		    <input type="file" id="btnAtt" name="uploadFiles" multiple onchange="displayFiles(this)">
 		  </div>
 		  <div id="attZone" style="font-size: 13px;">파일을 첨부하려면 파일선택 버튼을 누르세요.</div>
+		  <ul id="fileList"></ul>
+		  </div>
 		</td>
       </tr>
       <tr>
@@ -91,6 +101,7 @@
       </tr>
     </table>
   </form>
+  
   <a id="postListLink" href="/board/qnaPage/1">글 목록</a>
 </div>
 </section>

@@ -1,6 +1,7 @@
 package com.bit.studypage.dto;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import lombok.Getter;
@@ -16,14 +17,27 @@ public class BoardQnaDTO {
 	private String boardTitle;
 	private String boardContent;
 	private String boardWriter;
-	private LocalDateTime boardRegdate;
+	private String boardRegdate;
 	private int boardCnt;
+	private String userName;
 	
-	private com.bit.studypage.dto.FileQnaDTO file;
+	private List<FileQnaDTO> fileList;
+	private List<Long> attachDelete; // 삭제할 파일 ID 목록
+	private List<Long> addFile; //추가할 파일 목록 
 	
-	private int commentCount; // 댓글 수
+	public int commentCount; // 댓글 수
 	
-	// CommentDTO 리스트 추가
-    private List<com.bit.studypage.dto.CommentDTO> comments;
+	private long likeCount;
+	
+	private List<BoardCmmntQnaDTO> comments;
+	
+	private boolean heart;
+	
+	//날짜 가져오기 
+	public void setBoardRegdate(String boardRegdate) {
+	    this.boardRegdate = boardRegdate;
+	}
+	
 	
 }
+

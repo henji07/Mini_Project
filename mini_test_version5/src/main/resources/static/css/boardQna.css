@@ -72,7 +72,6 @@
 
 /*게시판 부분*/
 .board-write {
-  margin-bottom: 10px;
   padding: 10px;
   background-color: white;
   border-bottom: 1px solid #ccc;
@@ -125,7 +124,7 @@
   display: flex !important;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
+  margin-right: 20px;
   margin-left: 10px;
   text-align: center;
   flex-direction: column;
@@ -212,8 +211,9 @@
     background-color: white;
 }
 
-.pagination-top-button:disabled {
-    cursor: not-allowed;
+.disabled-link {
+    pointer-events: none;
+    color: #b4b4b4 !important;
 }
 
 /*하단 페이징*/
@@ -248,10 +248,6 @@
     cursor: pointer;   
 }
 
-.pagination-bottom-button:disabled {
-    cursor: not-allowed;
-}
-
 
 .pagination-bottom-button.pagination-button-previous {
     margin-right: auto;
@@ -264,4 +260,26 @@
 .active {
   font-weight: bold;
   color: #f97800 !important;
+}
+
+#likeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px
+}
+
+#likeButton i {
+  margin-right: 10px;
+}
+
+.far.fa-heart {
+  color: red;
+}
+
+
+/*글번호*/
+.post-number {
+	font-size: 12px;
+	margin-right: 10px;
 }

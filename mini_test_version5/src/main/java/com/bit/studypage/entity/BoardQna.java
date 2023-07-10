@@ -38,20 +38,17 @@ public class BoardQna {
 	@Column(name="board_content")
 	private String boardContent;
 	
-	@Column(name="board_view_cnt", nullable = false)
-    private int boardCnt;
+	@Column(name="board_cnt", nullable = false)
+    private int boardCnt;//조회수
 	
 	@Column(name="board_writer")
 	private String boardWriter;
 	
 	@Column(name="board_reg_date")
-	private LocalDateTime boardRegdate;
+	private LocalDateTime boardRegdate;//작성일 
 	
-	@OneToOne(mappedBy = "boardQna", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    private FileQnaEntity fileEntity;
-	
-	@OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Comment> comments;
+	@Column(name = "like_count")
+    private long likeCount;
 	
 	@Builder
 	public BoardQna(BoardQnaDTO data) {
@@ -60,6 +57,7 @@ public class BoardQna {
 		this.boardCnt = 0;
 		this.boardWriter = data.getBoardWriter();
 		this.boardRegdate = LocalDateTime.now();
+		this.likeCount = 0;
 	}
 
 	public void updateContent(BoardQnaDTO dto) {
@@ -70,11 +68,9 @@ public class BoardQna {
 	public void updateReadCount(int boardCnt) {
 		this.boardCnt = boardCnt;
 	}
-	
-	public void setFileEntity(FileQnaEntity fileEntity) {
-		this.fileEntity = fileEntity;
-		fileEntity.setBoardQna(this);
+
+	public void addLikeCount(long likeCount) {
+		this.likeCount = likeCount;		
 	}
 	
-
 }
