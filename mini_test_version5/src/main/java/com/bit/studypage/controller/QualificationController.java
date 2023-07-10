@@ -3,6 +3,7 @@ package com.bit.studypage.controller;
 import com.bit.studypage.entity.Qualification;
 import com.bit.studypage.pojo.ResponseData;
 import com.bit.studypage.service.ApiService;
+import com.bit.studypage.service.QualificationInfoService;
 import com.bit.studypage.service.QualificationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.domain.Page;
@@ -21,10 +22,12 @@ import java.util.List;
 public class QualificationController {
     QualificationService qualificationService;
     ApiService apiService;
+    QualificationInfoService qualificationInfoService;
 
-    QualificationController(QualificationService qualificationService, ApiService apiService) {
+    QualificationController(QualificationService qualificationService, ApiService apiService, QualificationInfoService qualificationInfoService) {
         this.qualificationService = qualificationService;
         this.apiService = apiService;
+        this.qualificationInfoService = qualificationInfoService;
     }
 
     @PostMapping("/select/qua")
@@ -99,10 +102,12 @@ public class QualificationController {
         mv.addObject("name",name);
         System.out.println(apiService.test(name)+"오브젝트 넘어가는 거");
         String jsonData = apiService.test(name);
+        System.out.println("에러가 왜뜸?"+jsonData);
         ObjectMapper objectMapper = new ObjectMapper();
         ResponseData responseData = objectMapper.readValue(jsonData, ResponseData.class);
         mv.addObject("quaInfo2", responseData);
-        System.out.println("파싱: "+jsonData);
+        mv.addObject("info",qualificationInfoService.getInfo(name));
+        System.out.println("테스트"+qualificationInfoService.getInfo(name).toString());
         return mv;
     }
 }

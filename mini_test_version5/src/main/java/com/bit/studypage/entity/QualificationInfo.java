@@ -1,8 +1,10 @@
 package com.bit.studypage.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 public class QualificationInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
