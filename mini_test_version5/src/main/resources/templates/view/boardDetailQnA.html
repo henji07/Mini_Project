@@ -61,7 +61,7 @@
 				
 				<!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
 				<div th:if="${userId != null and row.usersId == userId}">
-					<!-- <a href="#" th:data-src="${row.commentId}" class="comment-modify">수정</a> -->
+					<a href="#" th:data-src="${row.commentId}" class="comment-modify">수정</a>
           			<a href="#" th:data-src="${row.commentId}" class="comment-delete">삭제</a>
           		</div>
 			  </div>
@@ -101,21 +101,28 @@
 	 //댓글 삭제 
 	 $(".comment-delete").on("click",function(e){
 		 e.preventDefault();
-		 
-		 var commentId = $(this).data("src");
-		 console.log(commentId);
-		 deleteComment(commentId);
-		 
-		 $(this).parent().remove();
-		 
+		 if (window.confirm("정말 삭제하시겠습니까?")) {
+			 var commentId = $(this).data("src");
+			 console.log(commentId);
+			 deleteComment(commentId);
+			 
+			 $(this).parent().remove();
+		 }
 	 });
 	   
-	 //댓글 수정 
-     $(".comment-modify").click( function(){
-  	   
-         e.preventDefault();
-         
-     });
+	// 댓글 수정 
+   	$(".comment-modify").on("click", function(e) {
+	   	 e.preventDefault();
+	     
+	     var commentId = $(this).data("src");
+	     var commentContent = prompt("수정할 내용을 입력하세요.");
+	     
+	     if (commentContent) {
+	         modifyComment(commentId, commentContent);
+	     } else {
+	         alert('댓글 내용을 입력하세요.');
+	     }
+   	});
 	   
 	 //글 삭제
        $("#btnDelete").click( function(e){
@@ -343,9 +350,34 @@
    }
    
    //댓글 수정 
-   function modifyComment(commentId){
-	   
-	  
+   function modifyComment(commentId, commentContent){
+	   // 수정할 댓글 내용이 비어있지 않은 경우에만 요청을 보냄
+	   if (commentContent) {
+	        $.ajax({
+	            url: '/comments/modify',
+	            type: 'POST',
+	            contentType: 'application/json',
+	            data: JSON.stringify({
+	                "commentId": commentId,
+	                "newContent": commentContent
+	            }),
+	            success: function(response) {
+	                console.log(response);
+	                if(response === "수정 완료"){
+	                    alert('댓글이 성공적으로 수정되었습니다.');
+	                    
+	                 	// 해당 댓글의 내용을 바로 업데이트
+	                    $(`#comment-${commentId}`).text(commentContent);
+	                } else {
+	                    alert('댓글 수정에 실패했습니다.');
+	                }
+	            },
+	            error: function(error){
+	                console.log(error);
+	                alert('댓글 수정에 실패했습니다.');
+	            }
+	        });
+	   }
    }
    
    //댓글 쓰고 새로고침 후 댓글 목록 불러오기 
@@ -370,8 +402,8 @@
 					   arr[idx++] = "<div>" + ele.commentContent + "</div>";
 					   arr[idx++] = "<div>" + ele.createdAt +"</div>";
 						
-					   //arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-modify'>수정</a>";
 					   if (res.currentUserId == ele.userName) {
+						   	arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-modify'>수정</a>"
 					   		arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-delete'>삭제</a>";
 					   }
 					   
@@ -380,6 +412,18 @@
 				   });
 				   $("#comments div").remove();
 				   $("#comments").append(arr.join(''));
+				   
+					// 수정 버튼 이벤트
+	                $('.comment-modify').on('click', function(e) {
+	                    e.preventDefault();
+	                    var commentId = $(this).data("src");
+	                    var commentContent = prompt("수정할 내용을 입력하세요.");
+	                    if (commentContent) {
+	                        modifyComment(commentId, commentContent);
+	                    } else {
+	                        alert('댓글 내용을 입력하세요.');
+	                    }
+	                });
 				   
 					// 삭제 버튼 이벤트 
 	                $('.comment-delete').on('click', function(e) {

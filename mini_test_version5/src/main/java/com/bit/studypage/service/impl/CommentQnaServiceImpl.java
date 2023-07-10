@@ -1,8 +1,9 @@
 package com.bit.studypage.service.impl;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -21,7 +22,6 @@ import com.bit.studypage.entity.Users;
 import com.bit.studypage.repository.BoardQnaRepository;
 import com.bit.studypage.repository.CommentQnaRepository;
 import com.bit.studypage.repository.MemberRepository;
-import com.bit.studypage.repository.UsersRepository;
 import com.bit.studypage.service.CommentQnaService;
 import com.bit.studypage.service.dao.BoardQnaDao;
 
@@ -98,10 +98,29 @@ public class CommentQnaServiceImpl implements CommentQnaService {
     }
     
     // 댓글 목록 불러오기 
+    @Override
     public List<BoardCmmntQnaDTO> getBoardQnaCommnetList(long boardId){
     	System.out.println(boardId);
     	return boardQnaDao.selectCommentList(boardId);
     }
+    
+    //댓글 수정 
+    @Override
+    @Transactional
+  	public String modifyComment(int commentId, String newContent) {
+  		
+    	Map<String, Object> params = new HashMap<>();
+        params.put("commentId", commentId);
+        params.put("newContent", newContent);
+        
+        int updatedRows = boardQnaDao.updateComment(params);
+        
+        if(updatedRows > 0) {
+            return "수정 완료";
+        } else {
+            return "해당하는 댓글이 없습니다.";
+        }
+  	}
     
 
 }

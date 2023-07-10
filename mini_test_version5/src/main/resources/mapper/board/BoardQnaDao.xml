@@ -5,6 +5,7 @@
         
 <mapper namespace="com.bit.studypage.service.dao.BoardQnaDao">
 
+	<!-- 댓글 목록 -->
 	<select id="selectCommentList" resultType="BoardCmmntQnaDTO">
 		SELECT 
 			   C.comment_id
@@ -17,6 +18,14 @@
 		ORDER BY comment_id 
 	</select>
 	
+	<!-- 댓글 수정 -->
+	<update id="updateComment" parameterType="map">
+	    UPDATE comment_qna
+	    SET comment_content = #{newContent}
+	    WHERE comment_id = #{commentId}
+	</update>
+	
+	<!-- 글 조회 -->
 	<select id="selectBoardQnaInfo" resultType="BoardQnaDTO">
 		SELECT b.board_id
 			  ,b.board_cnt
@@ -29,5 +38,6 @@
 		  FROM board_qna b
 		 WHERE b.board_id = #{boardId}
 	</select>
+	
 
 </mapper>

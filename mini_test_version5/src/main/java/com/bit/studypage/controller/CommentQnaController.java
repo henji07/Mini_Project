@@ -87,7 +87,7 @@ public class CommentQnaController {
     public String deleteBoardQnaComment(@RequestBody Map<String, Object> data) {
     		System.out.println("코멘트아이디"+data);
         try {
-            String commentIdStr = Integer.toString((Integer) data.get("commentId"));
+            //String commentIdStr = Integer.toString((Integer) data.get("commentId"));
             int commentId = (Integer) data.get("commentId");
             
             System.out.println("코멘트아이디"+commentId);
@@ -98,4 +98,22 @@ public class CommentQnaController {
             return "댓글 삭제 과정에서 오류가 발생했습니다.";
         }
     }        
+    
+    /* 댓글 수정 */
+    @PostMapping("/comments/modify")
+    @ResponseBody
+    public String modifyBoardQnaComment(@RequestBody Map<String, Object> data) {
+    	try {
+            int commentId = (Integer) data.get("commentId");
+            String newContent = (String) data.get("newContent");
+            
+            System.out.println("수정 댓글=" + commentService.modifyComment(commentId, newContent));
+            
+            return commentService.modifyComment(commentId, newContent);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return "댓글 수정 과정에서 오류가 발생했습니다.";
+        }
+    } 
+    
 }

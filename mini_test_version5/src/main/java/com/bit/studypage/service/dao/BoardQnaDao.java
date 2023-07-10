@@ -1,6 +1,7 @@
 package com.bit.studypage.service.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,5 +15,8 @@ public interface BoardQnaDao {
 	
 	//글 상세 조회 
 	BoardQnaDTO selectBoardQnaInfo(long boardId);
+
+	//댓글 수정 
+	int updateComment(Map<String, Object> params);
 	
 }
