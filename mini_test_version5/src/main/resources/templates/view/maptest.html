@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/default-layout}">
+<head>
+    <th:block layout:fragment="script">
+        <script type="text/javascript" th:inline="javascript"
+                th:src="@{//dapi.kakao.com/v2/maps/sdk.js?appkey=a95706de90abdb114c59bff2337c7f71}"></script>
+        <script th:inline="javascript">
+            $(document).ready(() => {
+                /*[@thymesVar id="x" type="java.lang.Double" th:remove="all-but-first"], [@thymesVar id="y" type="java.lang.Double" th:remove="all-but-first"]*/
+                var x = [[${x}]];
+                var y = [[${y}]];
+                var quaPlaces = /*[[${quaPlaces}]]*/ [];
+
+                var container = document.getElementById("map"); //지도를 담을 영역의 DOM 레퍼런스
+                var options = {
+                    //지도를 생성할 때 필요한 기본 옵션
+                    center: new kakao.maps.LatLng(y,x), //지도의 중심좌표.
+                    level: 3, //지도의 레벨(확대, 축소 정도)
+                };
+
+                var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+                // 마커가 표시될 위치입니다
+                for(var i = 0; i < quaPlaces.length; i++) {
+                    // 마커가 표시될 위치입니다
+                    var markerPosition = new kakao.maps.LatLng(quaPlaces[i].y,quaPlaces[i].x);
+
+                    // 마커를 생성합니다
+                    var marker = new kakao.maps.Marker({
+                        position: markerPosition
+                    });
+
+                    // 마커가 지도 위에 표시되도록 설정합니다
+                    marker.setMap(map);
+                }
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    var calendarEl = document.getElementById('calendar');
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                    });
+                    calendar.render();
+                });
+            })
+        </script>
+    </th:block>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div id="map" style="width: 1000px; height: 1000px"></div>
+</th:block>
+</body>
+</html>

@@ -9,5 +9,6 @@ public interface UserService {
     void updateUesr(Users user);
 //    String getInterest(Long userId);
     void delUser(Users users);
+    Long getUsersId(String userName);
 
 }

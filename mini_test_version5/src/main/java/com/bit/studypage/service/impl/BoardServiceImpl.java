@@ -3,8 +3,10 @@ package com.bit.studypage.service.impl;
 import com.bit.studypage.entity.Board;
 import com.bit.studypage.entity.Likes;
 import com.bit.studypage.repository.BoardRepository;
+import com.bit.studypage.repository.CommentsRepository;
 import com.bit.studypage.repository.LikesRepository;
 import com.bit.studypage.service.BoardService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,11 +19,13 @@ import java.util.List;
 public class BoardServiceImpl implements BoardService {
     BoardRepository boardRepository;
     LikesRepository likesRepository;
+    CommentsRepository commentsRepository;
 
     @Autowired
-    BoardServiceImpl(BoardRepository boardRepository,LikesRepository likesRepository){
+    BoardServiceImpl(BoardRepository boardRepository,LikesRepository likesRepository, CommentsRepository commentsRepository){
         this.boardRepository = boardRepository;
         this.likesRepository=likesRepository;
+        this.commentsRepository = commentsRepository;
     };
     @Override
     public List<Board> getBoardList(String userNickname){
@@ -44,9 +48,13 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    @Transactional
     public void delBoard(Long boardId) {
         boardRepository.deleteById(boardId);
+        commentsRepository.deleteAllByPostId(boardId);
+        likesRepository.deleteAllByPostId(boardId);
     }
+
 
     @Override
     public String getCountBoard(String userNickname) {

@@ -20,7 +20,7 @@ public class testController {
 		return "view/boardCommunicate";
 	}
 	
-	@GetMapping("certificatePage")
+//	@GetMapping("certificatePage")
 	public String test4() {
 		
 		return "view/boardCertificate";
@@ -44,11 +44,11 @@ public class testController {
 		return "view/findPw";
 	}
 	
-	@GetMapping("myPage")
-	public String test9() {
-
-		return "view/myPage";
-	}
+//	@GetMapping("myPage")
+//	public String test9() {
+//
+//		return "view/myPage";
+//	}
 	
 	@GetMapping("write")
 	public String test10() {

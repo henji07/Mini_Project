@@ -12,4 +12,5 @@ import java.util.List;
 public interface LikesRepository extends JpaRepository<Likes,Long> {
     List<Likes> findByUsersId(Long userId);
     Page<Likes> findByUsersIdOrderByUsersId(Long userId, Pageable pageable);
+    void deleteAllByPostId(Long postId);
 }

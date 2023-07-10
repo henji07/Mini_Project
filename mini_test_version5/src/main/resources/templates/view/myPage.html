@@ -37,8 +37,8 @@
                         url: "/myPage/name-info",
                         data: $("#name-info").serialize(),
                         success: (response) => {
-                            alert(response);
-                            location.href = `/myPageView`;
+                            alert("수정되었습니다.")
+                            location.href = `/myPage`;
                             // 서버에서 응답이 온 경우의 동작
                         }
                     });
@@ -50,7 +50,8 @@
                         data: $("#profile-member-form").serialize(),
                         success: (obj) => {
                             console.log(obj);
-                            location.href = `/myPageView`;
+                            alert("수정되었습니다.")
+                            location.href = `/myPage`;
                         }
                     })
                 })
@@ -206,14 +207,14 @@
                         cateUrl = "/del-like";
                         console.log(cateUrl);
                     } else console.log(cateUrl);
-                    console.log($("#del-history"));
+                    console.log($("#del-history").serialize()+"여기에요");
                     $.ajax({
                         url: cateUrl,
                         type: "DELETE",
                         data: $("#del-history").serialize(),
                         success: () => {
                             alert("삭제되었습니다.");
-                            location.href = `/myPageView`;
+                            location.href = `/myPage`;
                         }
                     })
                 })
@@ -376,53 +377,60 @@
                         </div>
 
                         <div class="profile-box" id="profile-historycontainer">
-                            <table id="profile-write-board1">
-                                <tr id="profile-th">
-                                    <th>선택</th>
-                                    <th class="profile-title-bar">제목</th>
-                                    <th>작성일</th>
-                                    <th>조회수</th>
-                                </tr>
-                                <form action="" id="del-history">
+                            <form action="" id="del-history" style="width: 100%">
+                                <table id="profile-write-board1">
+                                    <tr id="profile-th">
+                                        <th>선택</th>
+                                        <th class="profile-title-bar">제목</th>
+                                        <th>작성일</th>
+                                        <th>조회수</th>
+                                    </tr>
                                     <tr th:each="board : ${boards.content}">
                                         <td><input type="checkbox" name="board-check" th:value="${board.boardId}"/></td>
-                                        <!--                                        <input th:value="${board.boardId}" type="hidden" name="del-check"/>-->
-                                        <!--                                    <td th:text="${board.boardId}"></td>-->
-                                        <td th:text="${board.boardTitle}"></td>
-                                        <td th:text="${board.boardRegDate}"></td>
-                                        <td th:text="${board.boardViewCnt}"></td>
+                                        <!-- <input th:value="${board.boardId}" type="hidden" name="del-check" /> -->
+                                        <!-- <td th:text="${board.boardId}"></td> -->
+                                        <td th:if="${board != null}" th:text="${board.boardTitle}"></td>
+                                        <td th:unless="${board != null}">Board is null</td>
+                                        <td th:if="${board != null}" th:text="${board.boardRegDate}"></td>
+                                        <td th:unless="${board != null}">-</td>
+                                        <td th:if="${board != null}" th:text="${board.boardViewCnt}"></td>
+                                        <td th:unless="${board != null}">-</td>
                                     </tr>
-
-
-                            </table>
-                            <table id="profile-write-board2">
-                                <tr id="profile-th">
-                                    <th>선택</th>
-                                    <th class="profile-title-bar">댓글</th>
-                                    <th>게시글</th>
-                                    <th>날짜</th>
-                                </tr>
-                                <tr th:each="comm:${comments.content}">
-                                    <td><input type="checkbox" name="board-check"/></td>
-                                    <td th:text="${comm.commentContent}"></td>
-                                    <td th:text="${comm.boardTitle}"></td>
-                                    <td th:text="${comm.createdAt}"></td>
-                                </tr>
-                            </table>
-                            <table id="profile-write-board3">
-                                <tr id="profile-th">
-                                    <th>선택</th>
-                                    <th class="profile-title-bar">제목</th>
-                                    <th>작성일</th>
-                                    <th>조회수</th>
-                                </tr>
-                                <tr th:each="like:${likeBoard}">
-                                    <td><input type="checkbox" name="board-check"/></td>
-                                    <td th:text="${like.boardTitle}"></td>
-                                    <td th:text="${like.boardRegDate}"></td>
-                                    <td th:text="${like.boardViewCnt}"></td>
-                                </tr>
-                            </table>
+                                </table>
+                                <table id="profile-write-board2">
+                                    <tr id="profile-th">
+                                        <th>선택</th>
+                                        <th class="profile-title-bar">댓글</th>
+                                        <th>게시글</th>
+                                        <th>날짜</th>
+                                    </tr>
+                                    <tr th:each="comm : ${comments.content}">
+                                        <td><input type="checkbox" name="board-check"/></td>
+                                        <td th:if="${comm != null}" th:text="${comm.commentContent}"></td>
+                                        <td th:unless="${comm != null}">No comment</td>
+                                        <td th:if="${comm != null}" th:text="${comm.boardTitle}"></td>
+                                        <td th:unless="${comm != null}">-</td>
+                                        <td th:if="${comm != null}" th:text="${comm.createdAt}"></td>
+                                        <td th:unless="${comm != null}">-</td>
+                                    </tr>
+                                </table>
+                                <table id="profile-write-board3">
+                                    <tr id="profile-th">
+                                        <th>선택</th>
+                                        <th class="profile-title-bar">제목</th>
+                                        <th>작성일</th>
+                                        <th>조회수</th>
+                                    </tr>
+                                    <tr th:each="like : ${likeBoard}">
+                                        <td><input type="checkbox" name="board-check"/></td>
+                                        <td th:if="${like != null}" th:text="${like.boardTitle}"></td>
+                                        <td th:unless="${like != null}">No board</td>
+                                        <td th:if="${like != null}" th:text="${like.boardRegDate}"></td>
+                                        <td th:unless="${like != null}">-</td>
+                                        <td th:if="${like != null}" th:text="${like.boardViewCnt}"></td>
+                                        <td th:unless="${like != null}">-</td>
+                                    </tr>
+                                </table>
                             </form>
                             <div class="profile-box" id="profile-ect-container">
                                 <div>
@@ -431,7 +439,7 @@
                                         id="profile-select-all-board"
                                 />
                                 </div>
-                                <span class="pagination-bottom-pages1">
+                                <span class="pagination-bottom-pages1" th:if="${boards != null}">
                                     <ul style="list-style:none;">
                                         <li th:if="${boards.hasPrevious()}" style="float: left;">
                                             <a href="#" class="page-link1"
@@ -447,7 +455,7 @@
                                         </li>
                                     </ul>
                                 </span>
-                                <span class="pagination-bottom-pages2">
+                                <span class="pagination-bottom-pages2" th:if="${comments != null}">
                                     <ul style="list-style:none;">
                                         <li th:if="${comments.hasPrevious()}" style="float: left;">
                                             <a href="#" class="page-link1"

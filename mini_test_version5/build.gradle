@@ -60,7 +60,10 @@ dependencies {
 	//@ApiOperation
 	implementation 'io.springfox:springfox-swagger2:2.9.2'
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
-
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+//	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.0'
+//	implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
+	implementation 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations'
 }
 
 tasks.named('test') {
