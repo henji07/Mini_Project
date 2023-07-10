@@ -70,7 +70,7 @@ public class BoardQnaController {
 	//글 목록 화면으로 이동 
 	@GetMapping("/qnaPage/{pageNum}")
     public ModelAndView getBoardList(@PathVariable int pageNum, 
-    		 						 @RequestParam(required = false) String sortOption) {
+    		 						 @RequestParam(required = false) String sortOption, Authentication authentication) {
 
         ModelAndView mv = new ModelAndView();
 

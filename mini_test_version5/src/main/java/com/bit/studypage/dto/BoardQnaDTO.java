@@ -1,5 +1,7 @@
 package com.bit.studypage.dto;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import lombok.Getter;
@@ -31,15 +33,11 @@ public class BoardQnaDTO {
 	
 	private boolean heart;
 	
-	//Entity에서 DTO로 변환하는 코드
-	/*
-	 * public static BoardQnaDTO fromEntity(BoardQna entity) { BoardQnaDTO dto = new
-	 * BoardQnaDTO(); dto.setBoardId(entity.getBoardId());
-	 * dto.setBoardTitle(entity.getBoardTitle());
-	 * dto.setBoardContent(entity.getBoardContent());
-	 * dto.setBoardWriter(entity.getBoardWriter());
-	 * dto.setBoardRegdate(entity.getBoardRegdate()); return dto; }
-	 */
+	//날짜 가져오기 
+	public void setBoardRegdate(String boardRegdate) {
+	    this.boardRegdate = boardRegdate;
+	}
+	
 	
 }
 

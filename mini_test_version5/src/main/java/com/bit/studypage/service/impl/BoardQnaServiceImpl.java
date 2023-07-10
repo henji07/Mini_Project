@@ -1,8 +1,8 @@
 package com.bit.studypage.service.impl;
 
 import java.io.File;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,10 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.studypage.dto.BoardCmmntQnaDTO;
 import com.bit.studypage.dto.BoardQnaDTO;
-import com.bit.studypage.dto.CommentQnaDTO;
 import com.bit.studypage.dto.FileQnaDTO;
 import com.bit.studypage.entity.BoardQna;
-import com.bit.studypage.entity.CommentQna;
 import com.bit.studypage.entity.FileQna;
 import com.bit.studypage.repository.BoardQnaRepository;
 import com.bit.studypage.repository.CommentQnaRepository;
@@ -288,9 +286,6 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	    }
 		
 		//Spring Data JPA의 Pageable 인터페이스와 Page 클래스를 사용해서 페이지네이션을 구현
-		//PageRequest의 of 메소드를 사용해 페이지 번호와 페이지 크기를 입력하고, 정렬 조건을 지정
-		//페이지 번호는 0부터 시작하므로 사용자가 입력하는 페이지 번호에서 1을 빼줌
-		//boardRepository의 findAll 메소드에 pageable 객체를 전달해 원하는 페이지의 데이터를 가져온다.
 		Pageable pageable = PageRequest.of(pageNum - 1, pageSize, sort);
 		Page<BoardQna> pageInfo =  boardRepository.findAll(pageable);
 		
@@ -308,6 +303,11 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 				// 댓글 수 조회
 	            int commentCount = commentRepository.countByBoardId(b.getBoardId());
 	            dto.setCommentCount(commentCount);
+	            
+	            // 날짜를 String으로 변환
+	            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	            String formattedDateTime = b.getBoardRegdate().format(formatter);
+	            dto.setBoardRegdate(formattedDateTime);
 				
 				dataList.add(dto);
 			}

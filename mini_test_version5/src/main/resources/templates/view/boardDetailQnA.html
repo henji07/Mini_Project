@@ -21,8 +21,8 @@
         <div id="postContainer">
           <div id="boardTitle" name="boardTitle" th:text="${board.boardTitle}"></div>
           <div id="postInfo">
-            <span id="postWriter" th:text="'작성자: ' + ${board.userName}" ></span>
-            <span id="postDate" th:text="'작성일: ' + ${#strings.substring(board.boardRegdate, 0, 10) }"></span>
+            <span id="postWriter" th:text="'작성자: ' + ${board.boardWriter}" ></span>
+            <span id="postDate" th:text="'작성일: ' + ${board.boardRegdate}"></span>
             <span id="postViews" th:text="'조회수: ' + ${board.boardCnt}"></span>
           </div>
           <div id="boardContent" name="boardContent" th:text="${board.boardContent}"></div>
@@ -61,9 +61,7 @@
 				
 				<!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
 				<div th:if="${userId != null and row.usersId == userId}">
-					<a href="#" th:data-src="${row.commentId}" class="comment-modify">수정</a>
-				</div>
-          		<div th:if="${userId != null and row.usersId == userId}">
+					<!-- <a href="#" th:data-src="${row.commentId}" class="comment-modify">수정</a> -->
           			<a href="#" th:data-src="${row.commentId}" class="comment-delete">삭제</a>
           		</div>
 			  </div>
@@ -359,20 +357,28 @@
 			   if(res){
 				   console.log(res);
 				   var arr = [], idx = 0;
-				   $.each(res, function (index, ele) {
+				   $.each(res.comments, function (index, ele) {
 					   arr[idx++] = "<div class='comment-item'>";
 					   arr[idx++] = "<div>" + ele.userName + "</div>";
 					   arr[idx++] = "<div>" + ele.commentContent + "</div>";
 					   arr[idx++] = "<div>" + ele.createdAt +"</div>";
 						
-					   arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-modify'>수정</a>";
+					   //arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-modify'>수정</a>";
+					   if (res.currentUserId == ele.userName) {
+					   		arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-delete'>삭제</a>";
+					   }
 					   
-					   arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-delete'>삭제</a>";
 					  
 					   arr[idx++] = "</div>";
 				   });
 				   $("#comments div").remove();
 				   $("#comments").append(arr.join(''));
+				   
+					// 삭제 버튼 이벤트 
+	                $('.comment-delete').on('click', function(e) {
+	                    e.preventDefault();
+	                    deleteComment($(this).data('src'));
+	                });
 			   }
 		   },
            error: function(jqXHR, textStatus, errorThrown) {

@@ -38,7 +38,7 @@ public class BoardQna {
 	@Column(name="board_content")
 	private String boardContent;
 	
-	@Column(name="board_view_cnt", nullable = false)
+	@Column(name="board_cnt", nullable = false)
     private int boardCnt;//조회수
 	
 	@Column(name="board_writer")

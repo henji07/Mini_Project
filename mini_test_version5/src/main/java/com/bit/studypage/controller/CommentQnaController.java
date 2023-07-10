@@ -1,12 +1,12 @@
 package com.bit.studypage.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bit.studypage.dto.BoardCmmntQnaDTO;
 import com.bit.studypage.dto.CommentQnaDTO;
 import com.bit.studypage.dto.ResponseCommentDTO;
+import com.bit.studypage.entity.Users;
 import com.bit.studypage.service.CommentQnaService;
 
 import io.swagger.annotations.ApiOperation;
@@ -50,7 +51,17 @@ public class CommentQnaController {
     /*댓글 목록 가져오기 */
     @PostMapping("/comments/refresh")
     @ResponseBody
-    public List<BoardCmmntQnaDTO> getBoardQnaCommnetList(@RequestBody Map<String,Object> data){
+    public Map<String, Object> getBoardQnaCommnetList(@RequestBody Map<String,Object> data, Authentication authentication){
+    	
+    	//사용자 정보 넘겨주기 
+    	String userId = null;
+        
+        if(ObjectUtils.isNotEmpty(authentication)) {
+	        if (authentication.getPrincipal() instanceof Users) {
+	            Users user = (Users) authentication.getPrincipal();
+	            userId = user.getUserId();
+	        }
+        }
     	
     	List<BoardCmmntQnaDTO> dataList = null;
     	try {
@@ -63,7 +74,11 @@ public class CommentQnaController {
     		log.error(e.getMessage());
     	}
     	
-    	return dataList;
+    	 Map<String, Object> result = new HashMap<>();
+    	    result.put("currentUserId", userId);
+    	    result.put("comments", dataList);
+    	    
+    	    return result;
     }
     
     /* 댓글 삭제 */

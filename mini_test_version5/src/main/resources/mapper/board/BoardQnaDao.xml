@@ -10,7 +10,7 @@
 			   C.comment_id
 			  ,C.comment_content
 			  ,C.users_id
-			  ,(SELECT U.user_name FROM users U WHERE U.users_id = C.users_id) AS USER_NAME
+			  ,(SELECT U.user_Id FROM users U WHERE U.users_id = C.users_id) AS USER_NAME
 			  ,DATE_FORMAT(C.created_at,'%Y-%m-%d %H:%i') AS CREATED_AT
 		  FROM comment_qna C
 		WHERE C.board_id = #{boardId}
@@ -19,7 +19,7 @@
 	
 	<select id="selectBoardQnaInfo" resultType="BoardQnaDTO">
 		SELECT b.board_id
-			  ,b.board_view_cnt
+			  ,b.board_cnt
 			  ,b.board_content
 			  ,DATE_FORMAT(b.board_reg_date,'%Y-%m-%d %H:%i') AS BOARD_REG_DATE
 			  ,b.board_title
