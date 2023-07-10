@@ -1,0 +1,270 @@
+/*이미지 아래부터 게시물 감싸는 부분*/
+.board-certificate-write-container {
+	font-family: 'Montserrat';
+	margin: 100px auto;
+	max-width: 50%;
+	display: block;
+}
+
+.board-certificate-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.board-certificate-title {
+	text-align: center;
+	flex-grow: 1;
+	width: 100%;
+}
+
+.board-certificate-title button {
+	font-size: 15px;
+	font-weight: bolder;
+	padding: 10px 20px;
+	background: none;
+	color: #aaaaaa;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.board-certificate-title button:hover {
+	color:#f97800;
+}
+
+.board-certificate-actions {
+	text-align: left;
+	width: 100%;
+	position: relative;
+}
+
+.board-certificate-actions button {
+	font-size: 15px;
+	font-weight: bolder;
+	padding: 10px 20px;
+	color: #aaaaaa;
+	background: none;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	transform: translateY(-100%);
+}
+
+.board-certificate-actions button:hover {
+	color:#f97800;
+}
+
+/*구분 선*/
+.horizontal-line {
+	border-top: 1px solid #ccc;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.horizontal-line-underdropdown {
+	border-top: 1px solid rgba(204, 204, 204, 0.1);
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/*게시물 부분*/
+.certificate-write .sub_a, .sub{
+	text-align: center;
+	display: block;
+	position: relative;
+	margin: 0 auto; 
+}
+
+.certificate-write .sub_a{
+	width: 100%;
+	height: 100%;
+	background-color: grey;
+  
+}
+
+.certificate-write {
+	list-style-type: none;
+	padding: 0;
+}
+
+.certificate-write > li {
+	margin-bottom: 0px;
+	padding: 0px;
+	background-color: white;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	align-items: center;
+}
+
+.certificate-write > li:first-child {
+	border-top: 1px solid #ccc;
+}
+
+/*게시물*/
+#container {
+  width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.notice {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;	
+  text-align: center;
+}
+
+.notice-title {
+	color: black;
+	font-weight: bolder;
+}
+
+.post {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.title {
+  font-weight: 50px;
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: black;
+}
+.meta {
+  font-size: 12px;
+  color: #777;
+}
+
+/*드롭다운*/
+.options-container {
+    text-align: right;
+}
+
+#list-options {
+    font-size: 0.9rem;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+/*검색창*/
+.certificate-search-box {
+	display: flex;
+	align-items: center;
+	background-color: #ffffff;
+	border: 1px solid #949494;
+	border-radius: 20px;
+	padding: 5px;
+	width: 300px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+.certificate-search-box .certificate-search-icon {
+	color: #888;
+	margin-right: 5px;
+}
+
+.certificate-search-box input[type="text"] {
+	flex-grow: 1;
+	border: none;
+	outline: none;
+}
+
+.certificate-search-box button {
+	background-color: #f97800;
+	border: none;
+	border-radius: 20px;
+	color: white;
+	padding: 8px 12px;
+	cursor: pointer;
+}
+
+/*상단 페이징*/
+.pagination-top {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-top: 20px;
+}
+
+.pagination-top-info {
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.pagination-top-buttons {
+    display: flex;
+}
+
+.pagination-top-button{
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+.pagination-top-button:disabled {
+    cursor: not-allowed;
+}
+
+/*하단 페이징*/
+.pagination-bottom {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	padding-right: 3;
+}
+.pagination-bottom .page-bottom-link {
+	font-size: 14px;
+	padding: 5px 10px;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 0 5px;
+}
+
+.pagination-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-bottom-button {
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    background-color: white;
+    cursor: pointer;   
+}
+
+.pagination-bottom-button:disabled {
+    cursor: not-allowed;
+}
+
+.pagination-bottom-pages {
+    font-size: 16px;
+    margin-left: 42%;
+    margin-right: 42%;
+}
+
+.pagination-bottom-button .pagination-button-previous {
+	position: relative;
+	margin-right: 20%;
+}
+
+.pagination-bottom-button .pagination-button-next {
+	position: absolute;
+	padding-left: 50px;
+	margin-left: 50px;
+}

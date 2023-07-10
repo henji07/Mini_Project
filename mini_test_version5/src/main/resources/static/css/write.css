@@ -1,0 +1,53 @@
+#summernote {
+	text-align: center;
+	margin-left: 10%;
+}
+
+.writer {
+	margin: 0 auto;
+}
+
+#bodymain {
+	min-width: 100fr;
+	justify-content: center;
+}
+
+.summer {
+	width: 100%;
+	position: relative;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+.w-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+  
+}
+.con1{
+	display: flex;
+	justify-content: center;
+}
+.con1 > *{
+	border: 1px solid black;
+	margin-left: 10px;
+	background-color: #f97800;
+	color: white;
+}
+.con2{
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 1%;
+}
+.con2 > *{
+	margin-left: 0;
+	width: auto;
+}
+.con2 > td > input{
+	margin-bottom: 1%;
+}
+
+.footbottom{
+	margin-bottom: 2%;
+}
