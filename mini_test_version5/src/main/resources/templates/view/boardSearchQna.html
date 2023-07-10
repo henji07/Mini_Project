@@ -101,7 +101,7 @@
 </div>
 
 <!-- 상단 페이징 -->
-<div class="pagination-top">
+<div class="pagination-top" th:if="${noResultMessage == null}">
     <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
     <div class="pagination-top-buttons">
       <button class="pagination-top-button" th:disabled="${currentPage == 1}" th:onclick="'location.href=\'/board/search/' + (${currentPage} - 1) + '?keyword=' + encodeURIComponent(${keyword}) + '\''">&larr;</button>
@@ -139,7 +139,7 @@
   </div>
 <!-- 하단 페이징 -->
 <!-- 상수로 페이지 그룹 사이즈를 설정. -->
-<th:block th:with="pageGroupSize=5">
+<th:block th:with="pageGroupSize=5" th:if="${noResultMessage == null}">
 <div class="pagination-bottom">
     <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage <= 1}" th:onclick="'location.href=\'/board/search/' + (${currentPage} - 1) + '?keyword=' + encodeURIComponent(${keyword}) + '\''">&larr; Previous</button>
     
