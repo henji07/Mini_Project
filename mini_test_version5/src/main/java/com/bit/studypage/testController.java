@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class testController {
 
-	@GetMapping("qnaPage")
-	public String test() {
-		
-		return "view/boardQna";
-	}
 	
 	@GetMapping("studyPage")
 	public String test2() {
@@ -36,13 +31,7 @@ public class testController {
 		
 		return "view/fullSearch";
 	}
-	
-	@GetMapping("login")
-	public String test6() {
-		
-		return "view/login";
-	}
-	
+
 	@GetMapping("login/findId")
 	public String test7() {
 		
@@ -57,7 +46,7 @@ public class testController {
 	
 	@GetMapping("myPage")
 	public String test9() {
-		
+
 		return "view/myPage";
 	}
 	

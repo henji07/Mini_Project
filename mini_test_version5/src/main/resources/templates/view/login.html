@@ -12,35 +12,46 @@
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript">
    /* <![CDATA[ */
+   //$(document).ready(function(){}) == $(function() {})
    $(function() {
-       $("#btn").on('click', function(event) {
-           event.preventDefault(); // 폼 전송 막기
+       $("#btn").on('click', function() {
+
            if($("#id").val() === "") {
                $("#id").next('label').addClass('warning');
                setTimeout(function() {
                    $("#id").next('label').removeClass('warning');
                }, 1500);
+               return;
            }
            else if($("#pw").val() === "") {
                $("#pw").next('label').addClass('warning');
                setTimeout(function() {
                    $("#pw").next('label').removeClass('warning');
                }, 1500);
+               return;
            }
        });
+
+       //현재 url 가져오기
+       const url = new URL(window.location.href);
+
+       //url에서 쿼리스트링 분리해서 가져오기
+       const urlParams = url.searchParams;
+
+       if(urlParams.get("error")) {
+           alert(urlParams.get("errorMsg"));
+       }
    });
    /* ]]> */
    </script>
 </th:block>
-    
 </head>
-
 <body> 
 <th:block layout:fragment="content">  
 <section class="login-wrap">
     <div class="login-container">
         <h1 class="login-title">Login</h1>
-        <form th:action="@{/login}" method="post">
+        <form th:action="@{/loginProcess}" method="post">
             <div class="input-wrap">
                 <input type="text" name="username" id="id" required autocomplete="off">
                 <label for="id">ID</label>
@@ -67,9 +78,9 @@
             <li><a target="_blank" th:href="@{/members/new}" class="find_text">회원가입</a></li>
         </ul>
         <div class="social">
-            <a href="#" id="google"></a>
-            <a href="#" id="naver"></a>
-            <a href="#" id="kakao"></a>
+            <a th:href="@{/oauth2/authorization/google}" id="google"></a>
+            <a th:href="@{/oauth2/authorization/naver}" id="naver"></a>
+            <a th:href="@{/oauth2/authorization/kakao}" id="kakao"></a>
         </div>
     </div>
 </section>

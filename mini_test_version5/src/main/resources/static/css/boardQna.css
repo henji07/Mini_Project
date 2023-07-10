@@ -72,7 +72,6 @@
 
 /*게시판 부분*/
 .board-write {
-  margin-bottom: 10px;
   padding: 10px;
   background-color: white;
   border-bottom: 1px solid #ccc;
@@ -122,11 +121,24 @@
   color: #f97800;
   border: 2px solid #f97800;
   border-radius: 5px;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
+  margin-right: 20px;
+  margin-left: 10px;
   text-align: center;
+  flex-direction: column;
+}
+
+#anwer-count-title {
+	display: block;
+	text-align: center;
+	margin: 0;
+}
+
+.answer-count-count {
+	display: block;
+	text-align: center;
 }
 
 /*드롭다운*/
@@ -199,8 +211,9 @@
     background-color: white;
 }
 
-.pagination-top-button:disabled {
-    cursor: not-allowed;
+.disabled-link {
+    pointer-events: none;
+    color: #b4b4b4 !important;
 }
 
 /*하단 페이징*/
@@ -235,14 +248,6 @@
     cursor: pointer;   
 }
 
-.pagination-bottom-button:disabled {
-    cursor: not-allowed;
-}
-
-.pagination-bottom-pages {
-    font-size: 16px;
-    margin: 0 auto;
-}
 
 .pagination-bottom-button.pagination-button-previous {
     margin-right: auto;
@@ -250,4 +255,31 @@
 
 .pagination-bottom-button.pagination-button-next {
     margin-left: auto;
+}
+
+.active {
+  font-weight: bold;
+  color: #f97800 !important;
+}
+
+#likeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px
+}
+
+#likeButton i {
+  margin-right: 10px;
+}
+
+.far.fa-heart {
+  color: red;
+}
+
+
+/*글번호*/
+.post-number {
+	font-size: 12px;
+	margin-right: 10px;
 }

@@ -1,6 +1,8 @@
 package com.bit.studypage.repository;
 
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +20,11 @@ public interface MemberRepository extends JpaRepository<Users, Long>{
 	boolean existsByEmail(String email);
 
 	//전화번호 중복체크 
-	boolean existsByPhone(String phone);	
+	boolean existsByPhone(String phone);
+
+	//userId 찾기 - 댓글
+	Optional<Users> findByUserId(String userId);	
+	
+	
 
 }

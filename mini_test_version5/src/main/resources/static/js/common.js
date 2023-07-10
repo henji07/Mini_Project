@@ -30,3 +30,4 @@ $.fn.serializeObject = function(){
 	    var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
 	    return re.test(password);
 	}
+

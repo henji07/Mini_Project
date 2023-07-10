@@ -3,7 +3,7 @@ package com.bit.studypage.service;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.bit.studypage.entity.Users;
-import com.bit.studypage.form.MemberForm;
+import com.bit.studypage.dto.MemberDTO;
 
 @Mapper
 public interface MemberService {
@@ -13,7 +13,7 @@ public interface MemberService {
 	public boolean isUserIdDuplicate(String userId);
 	
 	//회원 가입
-	public String join(MemberForm form);
+	public String join(MemberDTO form);
 	
 	//회원 정보 저장 
 	public Users save(Users users);
@@ -26,6 +26,6 @@ public interface MemberService {
 
 	//전화번호 중복체크 
 	public boolean isPhoneDuplicate(String phone);
-	
+
 	
 }
