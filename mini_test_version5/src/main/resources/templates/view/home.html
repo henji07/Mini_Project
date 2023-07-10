@@ -1,143 +1,201 @@
 <!DOCTYPE html>
 <html
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layouts/default-layout}">
-  
-  
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:p="http://www.w3.org/1999/html"
+        layout:decorate="~{layouts/default-layout}">
 <head>
 
-<th:block layout:fragment="script">
-   <script type="text/javascript" th:inline="javascript">
-   $(function() {
-	   var slideIndex = 0;
-	   var dots = document.querySelectorAll('.dot');
-	   var slides = document.querySelectorAll('.slide');
-	   var slider = document.querySelector('.slider');
-	
-	   showSlide(slideIndex);
-	   setInterval(nextSlide, 3000);
-	
-	   function showSlide(n) {
-	     slideIndex = n;
-	     var translateXValue = (-slideIndex * (100 / slides.length)) + '%';
-	     slider.style.transform = 'translateX(' + translateXValue + ')';
-	     for (var i = 0; i < dots.length; i++) {
-	       dots[i].classList.remove('active');
-	     }
-	     dots[slideIndex].classList.add('active');
-	   }
-	
-	   function nextSlide() {
-	     slideIndex++;
-	     if (slideIndex === slides.length) {
-	       slideIndex = 0;
-	     }
-	     showSlide(slideIndex);
-	   }
-	
-	   function prevSlide() {
-	     slideIndex--;
-	     if (slideIndex < 0) {
-	       slideIndex = slides.length - 1;
-	     }
-	     showSlide(slideIndex);
-	   }
-	
-	   function setSlide(n) {
-	     slideIndex = n;
-	     showSlide(slideIndex);
-	   }
-	
-	   for (var i = 0; i < dots.length; i++) {
-	     dots[i].addEventListener('click', function() {
-	       var index = Array.prototype.indexOf.call(dots, this);
-	       setSlide(index);
-	     });
-	   }
-   });
-   </script>
-</th:block>
-    
+
+
+    <th:block layout:fragment="script">
+        <script type="text/javascript" th:inline="javascript">
+            $(function() {
+                var slideIndex = 0;
+                var dots = document.querySelectorAll('.dot');
+                var slides = document.querySelectorAll('.slide');
+                var slider = document.querySelector('.slider');
+
+                var isLoggedIn = false;
+
+
+                showSlide(slideIndex);
+                setInterval(nextSlide, 3000);
+                // 아이콘 버튼 클릭시 로그인 확인
+                $(".image-button").on("click", function() {
+                    if(!isLoggedIn) {
+                        alert("로그인 해주세요.");
+                    }
+                });
+
+
+
+                function showSlide(n) {
+                    slideIndex = n;
+                    var translateXValue = (-slideIndex * (100 / slides.length)) + '%';
+                    slider.style.transform = 'translateX(' + translateXValue + ')';
+                    for (var i = 0; i < dots.length; i++) {
+                        dots[i].classList.remove('active');
+                    }
+                    dots[slideIndex].classList.add('active');
+                }
+
+                function nextSlide() {
+                    slideIndex++;
+                    if (slideIndex === slides.length) {
+                        slideIndex = 0;
+                    }
+                    showSlide(slideIndex);
+                }
+
+                function prevSlide() {
+                    slideIndex--;
+                    if (slideIndex < 0) {
+                        slideIndex = slides.length - 1;
+                    }
+                    showSlide(slideIndex);
+                }
+
+                function setSlide(n) {
+                    slideIndex = n;
+                    showSlide(slideIndex);
+                }
+
+                for (var i = 0; i < dots.length; i++) {
+                    dots[i].addEventListener('click', function() {
+                        var index = Array.prototype.indexOf.call(dots, this);
+                        setSlide(index);
+                    });
+                }
+            });
+            // 이미지 URL 저장
+            // var categoryImages = {
+            //     "소통해요": "/image/sotong.png",
+            //     "궁금해요": "/image/search.png",
+            //     "스터디": "/image/study.png",
+            //     "프로젝트": "/image/project.png"
+            //
+            // };
+            // /*<![CDATA[*/
+            // var category = /*[[${category}]]*/ 'default';
+            // console.log(category);
+            // /*]]>*/
+
+            //
+            // // 각 포스트 박스에 카테고리 이미지 적용
+            // $(".popular-post").each(function() {
+            //     $(this).find(".category-image").attr("src", categoryImages[category]);
+            // });
+
+          // $(document).ready(function (){
+          //     //  /*<![CDATA[*/
+          //     //  var category = /*[[${category}]]*/ 'default';
+          //      // console.log(categoryImages)
+          //           var categoryImages = {
+          //               "소통해요": "/image/sotong.png",
+          //               "궁금해요": "/image/curious.png",
+          //               "스터디": "/image/study.png",
+          //               "프로젝트": "/image/project.png"
+          //           };
+
+               $(".popular-posts-nav a").click(function(e) {
+                   e.preventDefault(); // prevent the default action
+
+                   var clickedCategory = $(this).data("category"); // get the category
+                   console.log(clickedCategory);
+
+                   // 카테고리에 따라 이미지 변경
+                   // $(".popular-post").each(function() {
+                   //     $(this).find(".category-image").attr("src", categoryImages[clickedCategory]);
+                   // });
+               });
+
+          //  /*]]>*/
+
+
+        </script>
+    </th:block>
+
 </head>
 
-<body> 
-<th:block layout:fragment="content">  
-<div class="slider-container">
-  <div class="slider">
-    <div class="slide">
-      <img src="./image/main1.png" alt="Slide 1" />
+<body>
+<th:block layout:fragment="content">
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <img src="./image/main1.png" alt="Slide 1" />
+            </div>
+            <div class="slide">
+                <img src="./image/main_2.png" alt="Slide 2" />
+            </div>
+            <div class="slide">
+                <img src="./image/main3.png" alt="Slide 3" />
+            </div>
+        </div>
     </div>
-    <div class="slide">
-      <img src="./image/main_2.png" alt="Slide 2" />
-    </div>
-    <div class="slide">
-      <img src="./image/main3.png" alt="Slide 3" />
-    </div>
-  </div>
-</div>
 
-<div class="dots">
-  <span class="dot active"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
-</div>
+    <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    <!--인기글 네비게이션-->
+    <div>
+        <nav class="popular-posts-nav">
+<!--            <ul>-->
+<!--                <li><a th:href="@{'/'+${'소통해요'}}" data-category="소통해요" >소통해요</a></li>-->
+<!--                <li><a th:href="@{'/'+${'궁금해요'}}" data-category="궁금해요">궁금해요</a></li>-->
+<!--                <li><a th:href="@{'/'+${'스터디'}}" data-category="스터디">스터디</a></li>-->
+<!--                <li><a th:href="@{'/'+${'프로젝트'}}" data-category="프로젝트">프로젝트</a></li>-->
+<!--            </ul>-->
+            <ul>
+                <li><a th:href="@{'/'+${'소통해요'}}" data-category="소통해요" >소통해요</a></li>
+                <li><a th:href="@{'/'+${'궁금해요'}}" data-category="궁금해요">궁금해요</a></li>
+                <li><a th:href="@{'/'+${'스터디'}}" data-category="스터디">스터디</a></li>
+                <li><a th:href="@{'/'+${'프로젝트'}}" data-category="프로젝트">프로젝트</a></li>
+            </ul>
+
+        </nav>
+    </div>
+    <!--인기글 박스-->
+
+    <div class="popular-posts-grid">
+        <th:block th:each="post, stat: ${top12Posts}" th:if="${stat.count} < 13">
+            <div class="popular-post">
+                <!-- 이 div를 추가함으로써 이미지가 왼쪽에 띄워집니다. -->
+                <div class="cate-img">
+                    <div class="cate-left">
+                        <img class="category-image" th:src="@{${categoryImages[post.searchCate]}}" alt="대표이미지">
+                    </div>
+                    <div class="cate-right">
+                        <img src="/image/hot.png" alt="인기글" > <!-- 이미지. margin-right를 추가하여 이미지와 텍스트 사이에 간격을 줄 수 있습니다. -->
+
+                    </div>
+                    </div>
+                <p>작성일자 | <span th:text="${post.searchRegDate}"></span></p> <!-- 날짜 -->
+                <div class="post-title">
+                    <span th:text="${post.searchTitle}"></span> <!-- 제목 -->
+                </div>
+                <div class="separator"></div>
+                <div class="post-details">
+                    <div class="author">
+                        <img src="/image/main-icon.png" alt="아이콘 이미지" class="author-image">
+                        <span th:text="${post.searchWriter}"></span><!-- 작성자 -->
+                    </div>
+                    <div class="views-count">
+                    <span id="boxcontent">
+                        <span class="box-icon"><img src="/image/eye.png" alt="조회수 아이콘"></span> <!-- 이미지 -->
+                        <span th:text="${post.searchCnt}"></span> <!-- 조회수 -->
+                        <span class="box-icon"><img src="/image/bubble.png" alt="댓글 아이콘" style="width: 25px; height: auto; margin-top: 5px"></span> <!-- 이미지 -->
+                        <span th:text="${post.commentCount}" style="margin-right: 20px"></span> <!-- 수정된 부분: 댓글 수 출력 -->
 
 
-<section class="popular_menus">
-  <div class="menu">
-    <div class="menu_header">
-      <h2>소통해요</h2>
-    </div>
-    <ul class="popular_posts">
-      <li><a href="#">인기글 1</a></li>
-      <li><a href="#">인기글 2</a></li>
-      <li><a href="#">인기글 3</a></li>
-      <li><a href="#">인기글 4</a></li>
-      <li><a href="#">인기글 5</a></li>
-    </ul>
-  </div>
-  <div class="menu">
-    <div class="menu_header">
-      <h2>함께해요</h2>
-    </div>
-    <ul class="popular_posts">
-      <li><a href="#">인기글 1</a></li>
-      <li><a href="#">인기글 2</a></li>
-      <li><a href="#">인기글 3</a></li>
-      <li><a href="#">인기글 4</a></li>
-      <li><a href="#">인기글 5</a></li>
-    </ul>
-  </div>
-</section>
+                    </span>
+                    </div>
+                </div>
+            </div>
 
-<section class="popular_menus">
-  <div class="menu">
-    <div class="menu_header">
-      <h2>궁금해요</h2>
+        </th:block>
     </div>
-    <ul class="popular_posts">
-      <li><a href="#">인기글 1</a></li>
-      <li><a href="#">인기글 2</a></li>
-      <li><a href="#">인기글 3</a></li>
-      <li><a href="#">인기글 4</a></li>
-      <li><a href="#">인기글 5</a></li>
-    </ul>
-  </div>
-  <div class="menu">
-    <div class="menu_header">
-      <h2>자격증</h2>
-    </div>
-    <ul class="popular_posts">
-      <li><a href="#">인기글 1</a></li>
-      <li><a href="#">인기글 2</a></li>
-      <li><a href="#">인기글 3</a></li>
-      <li><a href="#">인기글 4</a></li>
-      <li><a href="#">인기글 5</a></li>
-    </ul>
-  </div>
-</section>
-
 </th:block>
-</body> 
+</body>
 </html>

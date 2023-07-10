@@ -30,12 +30,12 @@ public class testController {
 		
 		return "view/boardCertificate";
 	}
-	
-	@GetMapping("fullSearch")
-	public String test5() {
-		
-		return "view/fullSearch";
-	}
+//
+//	@GetMapping("fullSearch")
+//	public String test5() {
+//
+//		return "view/fullSearch";
+//	}
 	
 	@GetMapping("login")
 	public String test6() {
