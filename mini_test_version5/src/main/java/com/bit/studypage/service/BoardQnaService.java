@@ -29,7 +29,7 @@ public interface BoardQnaService {
 	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption);
 
 	//전체 페이지 수 반환 
-	public Object getTotalPages();
+	public Object getTotalPages(String sortOption);
 	
 	//파일 정보 가져오기
 	public FileQnaDTO inqurityFileInfo(long id);

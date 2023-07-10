@@ -146,31 +146,35 @@
     	    registCommnet();
     	 	
        });  
-	   
-   });
-   
-	// 좋아요 체크 
-   function getLike(){
-	 //사용자 아이디 얻기 
+       
+     	//좋아요 - 사용자 아이디 얻기 
 	     $.get("/board/api/user/id", function(data, status) {
 	    	 var userId = data;
 	         console.log("아이디: " + userId);
 	         
-	         //게시물 번호 얻기 
+	         //좋아요 - 게시물 번호 얻기 
 	         var boardId = $("#boardId").val();
 	         console.log("게시판번호: " + boardId);
 	         
-	         $.ajax({
-	 	        type: 'GET',
-	 	        url: '/board/check-like/' + boardId + '/' + userId,
-	 	        success: function(isLiked) {
-	 	            if(isLiked) {
-	 	                //사용자가 좋아요 이미 누른 경우 하트 채워주기 
-	 	                $("#heart").removeClass("far").addClass("fas");
-	 	            }
-	 	        }
-	 	    });
+	         getLike();
 	     });
+	   
+   });
+   
+	// 좋아요 체크 
+   function getLike(){  
+		
+         $.ajax({
+ 	        type: 'GET',
+ 	        url: '/board/check-like/' + boardId + '/' + userId,
+ 	        success: function(isLiked) {
+ 	            if(isLiked) {
+ 	                //사용자가 좋아요 이미 누른 경우 하트 채워주기 
+ 	                $("#heart").removeClass("far").addClass("fas");
+ 	            }
+ 	        }
+ 	    });
+
    }
    
    // 좋아요 기능
@@ -187,6 +191,9 @@
        if (heart.classList.contains("far")) {  // 아직 좋아요를 누르지 않은 상태
            heart.classList.remove("far");
            heart.classList.add("fas");
+           
+        	// 좋아요 카운트를 1 증가시키기
+           likeCounter.innerText = Number(likeCounter.innerText) + 1;
 
            // 좋아요 등록 요청
            $.ajax({
@@ -203,7 +210,6 @@
                success: (result) => {
                    console.log(result);
                    alert(result.item.msg); 
-                   $("#likeCount").text(result.likeCount);
                },
                error: function(jqXHR, textStatus, errorThrown) {
             	   if (jqXHR.status === 401) {
@@ -224,6 +230,9 @@
        } else {  // 이미 좋아요를 누른 상태
            heart.classList.remove("fas");
            heart.classList.add("far");
+           
+           // 좋아요 카운트를 1 감소시키기
+           likeCounter.innerText = Number(likeCounter.innerText) - 1;
 
            // 좋아요 삭제 요청
            $.ajax({
@@ -236,7 +245,6 @@
                success: (result) => {
                    console.log(result);
                    alert(result.item.msg); 
-                   $("#likeCount").text(result.likeCount);
                },
                error: function(jqXHR, textStatus, errorThrown) {
             	   if (jqXHR.status === 401) {

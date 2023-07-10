@@ -318,10 +318,26 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 
 	/* 기존 게시물 전체 페이지 수 반환 */
 	@Override
-	public Object getTotalPages() {
+	public Object getTotalPages(String sortOption) {
 		int pageSize = 8;
-	    long totalBoards = boardRepository.count();
-	    return (int) Math.ceil((double) totalBoards / pageSize);
+		
+		Sort sort; //옵션 객체 생성 
+		
+		// 정렬 옵션에 따라 Sort 객체를 생성
+	    if ("recently".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "boardId");
+	    } else if ("view".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "boardCnt");
+	    } else if ("popular".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "likeCount");
+	    } else {
+	        sort = Sort.by(Sort.Direction.DESC, "boardId");
+	    }
+		
+	    Pageable pageable = PageRequest.of(0, pageSize, sort);
+	    Page<BoardQna> pageInfo = boardRepository.findAll(pageable);
+
+	    return pageInfo.getTotalPages();
 	}
 	
 	/* 데이터 베이스에서 파일 정보 가져오기 */
