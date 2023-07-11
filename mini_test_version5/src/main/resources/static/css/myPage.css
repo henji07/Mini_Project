@@ -240,7 +240,11 @@
 #profile-select-container{
   display: flex;
   justify-content: flex-start;
+<<<<<<< HEAD
+  height:10%;
+=======
   flex-grow: 1;
+>>>>>>> fcb6f8d0285295841ae9f9d7a32212a519f6499f
 }
 #profile-select-container .profile-select{
   margin: 0px 40px;
@@ -248,18 +252,18 @@
 }
 
 
-#profile-history-container{
+#profile-historycontainer{
   flex-grow: 5;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-#profile-history-container div{
+#profile--historycontainer div{
   height: 8%;
   text-align: center;
 }
-#profile-history-container #profile-board-bar{
+#profile-historycontainer #profile-board-bar{
   display: flex;
   justify-content: center;
   width: 100%;
@@ -287,11 +291,13 @@ table{
 }
 table > *{
   text-align: center;
-  height: 70px;
+  /*height: 70px;*/
+  /*여기체크*/
 }
 #profile-th{
   background-color: rgb(227, 133, 66);
-  height: 40px;
+  height: 35px;
+  /*border: 10px solid black;*/
 }
 td{
   border-bottom: 1px solid black;
@@ -343,7 +349,11 @@ td{
 #profile-text-con{
   flex-grow: 1;
   width: 100%;
+<<<<<<< HEAD
   font-size: 0.8rem;
+=======
+  font-size: 0.profile-8rem;
+>>>>>>> fcb6f8d0285295841ae9f9d7a32212a519f6499f
 }
 #profile-email-btn > button{
   background-color: rgb(250, 181, 97);
@@ -454,4 +464,38 @@ td{
   font-weight: 700;
   font-size: 15px;
   z-index: 999;
+<<<<<<< HEAD
+}
+#modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  height: 30%;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+=======
+>>>>>>> fcb6f8d0285295841ae9f9d7a32212a519f6499f
 }
