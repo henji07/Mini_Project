@@ -16943,6 +16943,7 @@ org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property o
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 2023-07-10 19:06:10.696 [http-nio-9993-exec-6] ERROR org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration$StaticView[render:202] - Cannot render error page for request [/select/qua/%EA%B1%B4%EC%84%A4%EA%B8%B0%EA%B3%84%EA%B8%B0%EC%88%A0%EC%82%AC] and exception [An error happened during template parsing (template: "class path resource [templates//view/quaDetailes.html]")] as the response has already been committed. As a result, the response may have the wrong status code.
+<<<<<<< HEAD
 2023-07-10 19:39:54.175 [http-nio-9993-exec-6] ERROR org.thymeleaf.TemplateEngine[process:1141] - [THYMELEAF][http-nio-9993-exec-6] Exception processing template "/view/quaDetailes.html": An error happened during template parsing (template: "class path resource [templates//view/quaDetailes.html]")
 org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates//view/quaDetailes.html]")
 	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241)
@@ -17520,3 +17521,5 @@ Consider the following:
 	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
 	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
 
+=======
+>>>>>>> fac7cddee7ee646aa7ce5216558deda78e415374

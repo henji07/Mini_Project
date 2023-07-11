@@ -1,22 +1,20 @@
 package com.bit.studypage.service.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.bit.studypage.dto.MemberDTO;
+import com.bit.studypage.entity.Users;
+import com.bit.studypage.repository.UsersRepository;
+import com.bit.studypage.service.MemberService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bit.studypage.dto.MemberDTO;
-import com.bit.studypage.entity.Users;
-import com.bit.studypage.repository.UsersRepository;
-import com.bit.studypage.service.MemberService;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -112,6 +110,7 @@ public class MemberServiceImpl implements MemberService {
     public boolean isPhoneDuplicate(String phone) {
         return false;
     }
-    
+
 
 }
+

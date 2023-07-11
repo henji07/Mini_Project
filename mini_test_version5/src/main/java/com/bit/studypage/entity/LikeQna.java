@@ -15,27 +15,27 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "like_qna")
 public class LikeQna {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="like_id")
 	private long likeId;
-	
+
 	@Column(name="users_id")
     private long userId;
-	
+
 	@Column(name = "user_id")
     private String userStringId;
 
     @Column(name = "board_id")
     private long boardId;
-    
+
     @Column(name = "board_title")
     private String boardTitle;
-    
+
     @Column(name = "like_count")
     private long likeCount;
-    
+
     @Builder
     public LikeQna(long userId, String userStringId, long boardId, String boardTitle, long likeCount) {
     	this.userId = userId;

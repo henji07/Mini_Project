@@ -22,19 +22,19 @@ public class FileQna {
 	@Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-	
+
 	@Column(name = "file_name")
     private String fileName;
-	
+
     @Column(name = "file_type")
     private String fileType;
-    
+
     @Column(name = "file_path")
     private String filePath;
-    
+
     @Column(name = "board_id")
     private long boardId;
-    
+
     @Builder
     public FileQna(String originalFileName, String fileType, String storeFileName, long boardId) {
         this.fileName = originalFileName;
@@ -42,6 +42,6 @@ public class FileQna {
         this.filePath = storeFileName;
         this.boardId = boardId;
     }
-    
-    
+
+
 }

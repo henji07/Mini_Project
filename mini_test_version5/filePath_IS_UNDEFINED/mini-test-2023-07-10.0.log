@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2023-07-10 19:36:55.620 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
 2023-07-10 19:36:55.658 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 24432 (C:\Users\82103\git\Mini_Project\mini_test_version5\bin\main started by 82103 in C:\Users\82103\git\Mini_Project\mini_test_version5)
 2023-07-10 19:36:55.659 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:633 - No active profile set, falling back to 1 default profile: "default"
@@ -2064,3 +2065,41 @@ Consider the following:
 2023-07-10 23:50:36.393 [http-nio-9993-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
 2023-07-10 23:50:36.393 [http-nio-9993-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 0 ms
 2023-07-10 23:50:36.395 [http-nio-9993-exec-1] WARN  o.s.c.LocalVariableTableParameterNameDiscoverer:123 - Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.bit.studypage.controller.BoardQnaController
+=======
+2023-06-18 23:03:33.007 [HikariPool-4 housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-4 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2023-06-18 23:03:33.008 [HikariPool-4 housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool:521 - HikariPool-4 - Fill pool skipped, pool has sufficient level or currently being filled (queueDepth=0).
+2023-06-18 23:03:34.234 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:211 - Restarting due to 10 class path changes (0 additions, 0 deletions, 10 modifications)
+2023-06-18 23:03:34.236 [File Watcher] DEBUG o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:212 - Change set: [C:\workspace\mini_test_version2\bin\main [C:\workspace\mini_test_version2\bin\main\mini\test\common\jpa\entity\Member$MemberBuilder.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\common\jpa\entity\Member.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\common\jpa\repository\MemberRepository.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\common\web\HomeController.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\member\model\MemberForm.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\member\service\MemberService.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\member\web\MemberController.class (MODIFY), C:\workspace\mini_test_version2\bin\main\mini\test\MiniTestApplication.class (MODIFY), C:\workspace\mini_test_version2\bin\main\static\css\createMemberForm.css (MODIFY), C:\workspace\mini_test_version2\bin\main\templates\view\createMemberForm.html (MODIFY)]]
+2023-06-18 23:03:34.246 [File Watcher] DEBUG o.s.boot.devtools.restart.Restarter:248 - Restarting application
+2023-06-18 23:03:34.246 [Thread-15] DEBUG o.s.boot.devtools.restart.Restarter:304 - Stopping application
+2023-06-18 23:03:34.246 [Thread-15] DEBUG o.s.b.a.ApplicationAvailabilityBean:77 - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2023-06-18 23:03:34.247 [Thread-15] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext:1055 - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@a872c69, started on Sun Jun 18 22:52:32 KST 2023
+2023-06-18 23:03:34.248 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase 2147482623
+2023-06-18 23:03:34.249 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'webServerGracefulShutdown' completed its stop procedure
+2023-06-18 23:03:34.249 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase 2147481599
+2023-06-18 23:03:34.257 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'webServerStartStop' completed its stop procedure
+2023-06-18 23:03:34.257 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:365 - Stopping beans in phase -2147483647
+2023-06-18 23:03:34.258 [Thread-15] DEBUG o.s.c.s.DefaultLifecycleProcessor:238 - Bean 'springBootLoggingLifecycle' completed its stop procedure
+2023-06-18 23:03:34.258 [Thread-15] DEBUG o.s.j.e.a.AnnotationMBeanExporter:452 - Unregistering JMX-exposed beans on shutdown
+2023-06-18 23:03:34.259 [Thread-15] DEBUG o.s.s.c.ThreadPoolTaskExecutor:218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2023-06-18 23:03:34.259 [Thread-15] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-18 23:03:34.259 [Thread-15] DEBUG o.h.internal.SessionFactoryImpl:770 - HHH000031: Closing
+2023-06-18 23:03:34.259 [Thread-15] DEBUG o.h.type.spi.TypeConfiguration$Scope:474 - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@1bb51c31] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@1ffcffb1]
+2023-06-18 23:03:34.259 [Thread-15] DEBUG o.h.s.i.AbstractServiceRegistryImpl:403 - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
+2023-06-18 23:03:34.259 [Thread-15] DEBUG o.h.b.r.i.BootstrapServiceRegistryImpl:296 - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
+2023-06-18 23:03:34.260 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-4 - Shutdown initiated...
+2023-06-18 23:03:34.260 [Thread-15] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-4 - Before shutdown stats (total=10, active=0, idle=10, waiting=0)
+2023-06-18 23:03:34.260 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@7b61572f: (connection evicted)
+2023-06-18 23:03:34.261 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@75a6a633: (connection evicted)
+2023-06-18 23:03:34.261 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@71993c5f: (connection evicted)
+2023-06-18 23:03:34.261 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@349bac08: (connection evicted)
+2023-06-18 23:03:34.261 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@45324d9b: (connection evicted)
+2023-06-18 23:03:34.261 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@565fc30: (connection evicted)
+2023-06-18 23:03:34.262 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@3d264307: (connection evicted)
+2023-06-18 23:03:34.262 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@54b45347: (connection evicted)
+2023-06-18 23:03:34.263 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@3bd92df: (connection evicted)
+2023-06-18 23:03:34.263 [HikariPool-4 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase:132 - HikariPool-4 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@29136ae4: (connection evicted)
+2023-06-18 23:03:34.263 [Thread-15] DEBUG com.zaxxer.hikari.pool.HikariPool:414 - HikariPool-4 - After shutdown stats (total=0, active=0, idle=0, waiting=0)
+2023-06-18 23:03:34.263 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-4 - Shutdown completed.
+2023-06-18 23:03:34.291 [Thread-15] DEBUG o.s.boot.devtools.restart.Restarter:280 - Starting application mini.test.MiniTestApplication with URLs [file:/C:/workspace/mini_test_version2/bin/main/]
+>>>>>>> fac7cddee7ee646aa7ce5216558deda78e415374
