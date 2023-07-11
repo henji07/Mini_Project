@@ -848,6 +848,7 @@ Action:
 
 Identify and stop the process that's listening on port 9993 or configure this application to listen on another port.
 
+<<<<<<< HEAD
 2023-06-23 15:37:12.779 [restartedMain] ERROR org.springframework.boot.SpringApplication[reportFailure:823] - Application run failed
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/bit/studypage/config/DataConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: class path resource [mapper/] cannot be resolved to URL because it does not exist
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:659)
@@ -1351,3 +1352,5 @@ java.lang.IllegalArgumentException: Can not set int field com.bit.studypage.enti
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+=======
+>>>>>>> fcb6f8d0285295841ae9f9d7a32212a519f6499f

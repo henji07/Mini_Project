@@ -2414,6 +2414,7 @@ Identify and stop the process that's listening on port 9993 or configure this ap
 2023-06-23 15:10:18.321 [RMI TCP Connection(5)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-06-23 15:10:18.323 [RMI TCP Connection(5)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
 2023-06-23 15:10:18.331 [RMI TCP Connection(5)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+<<<<<<< HEAD
 2023-06-23 15:37:06.706 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
 2023-06-23 15:37:06.779 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 10116 (C:\Mini_Project\mini_test_version5\build\classes\java\main started by seog in C:\Mini_Project\mini_test_version5)
 2023-06-23 15:37:06.781 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:633 - No active profile set, falling back to 1 default profile: "default"
@@ -3620,3 +3621,5 @@ java.lang.IllegalArgumentException: Can not set int field com.bit.studypage.enti
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+=======
+>>>>>>> fcb6f8d0285295841ae9f9d7a32212a519f6499f
