@@ -72,6 +72,10 @@
 
 /*게시판 부분*/
 .board-write {
+<<<<<<< HEAD
+=======
+  margin-bottom: 10px;
+>>>>>>> fcb6f8d0285295841ae9f9d7a32212a519f6499f
   padding: 10px;
   background-color: white;
   border-bottom: 1px solid #ccc;
@@ -93,7 +97,7 @@
 
 .title {
   font-size: 16px;
-  font-weight: 50px;
+  font-weight: 400;
   margin-bottom: 5px;
   margin-left: 40px;
   color: black;
@@ -121,6 +125,7 @@
   color: #f97800;
   border: 2px solid #f97800;
   border-radius: 5px;
+<<<<<<< HEAD
   display: flex !important;
   align-items: center;
   justify-content: center;
@@ -139,6 +144,13 @@
 .answer-count-count {
 	display: block;
 	text-align: center;
+=======
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  text-align: center;
+>>>>>>> fcb6f8d0285295841ae9f9d7a32212a519f6499f
 }
 
 /*드롭다운*/
@@ -211,9 +223,14 @@
     background-color: white;
 }
 
+
 .disabled-link {
     pointer-events: none;
     color: #b4b4b4 !important;
+}
+.pagination-top-button:disabled {
+    cursor: not-allowed;
+
 }
 
 /*하단 페이징*/
@@ -249,6 +266,15 @@
 }
 
 
+.pagination-bottom-button:disabled {
+    cursor: not-allowed;
+}
+
+.pagination-bottom-pages {
+    font-size: 16px;
+    margin: 0 auto;
+}
+
 .pagination-bottom-button.pagination-button-previous {
     margin-right: auto;
 }
@@ -283,3 +309,4 @@
 	font-size: 12px;
 	margin-right: 10px;
 }
+

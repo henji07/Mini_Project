@@ -1,0 +1,143 @@
+2023-06-17 17:35:55.320 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 28676 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 17:35:55.321 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 17:35:55.321 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 17:35:55.577 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.363 seconds (process running for 7112.313)
+2023-06-17 17:37:25.827 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 28676 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 17:37:25.827 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 17:37:25.827 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 17:37:26.056 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.249 seconds (process running for 7202.792)
+2023-06-17 17:38:47.404 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 28676 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 17:38:47.405 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 17:38:47.405 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 17:38:47.712 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.326 seconds (process running for 7284.448)
+2023-06-17 17:38:52.391 [http-nio-9993-exec-1] DEBUG mini.test.controller.HomeController:15 - hello
+2023-06-17 17:40:50.598 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 28676 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 17:40:50.599 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 17:40:50.599 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 17:40:50.859 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.28 seconds (process running for 7407.594)
+2023-06-17 17:41:05.947 [http-nio-9993-exec-8] DEBUG mini.test.controller.HomeController:15 - hello
+2023-06-17 18:16:39.605 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 6524 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:16:39.607 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:16:39.608 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:16:41.829 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 2.504 seconds (process running for 3.036)
+2023-06-17 18:16:59.208 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-17 18:17:28.498 [http-nio-9993-exec-10] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-17 18:18:14.383 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 6524 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:18:14.384 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:18:14.384 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:18:14.720 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.358 seconds (process running for 95.926)
+2023-06-17 18:18:16.382 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-17 18:18:35.764 [http-nio-9993-exec-8] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-17 18:35:37.300 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:35:37.302 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:35:37.302 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:35:39.536 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 2.529 seconds (process running for 2.988)
+2023-06-17 18:35:44.618 [http-nio-9993-exec-1] DEBUG mini.test.common.web.HomeController:15 - hello
+2023-06-17 18:42:24.263 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:42:24.264 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:42:24.264 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:42:24.604 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.367 seconds (process running for 408.055)
+2023-06-17 18:44:53.793 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:44:53.793 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:44:53.793 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:44:54.057 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.286 seconds (process running for 557.509)
+2023-06-17 18:45:57.443 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:45:57.443 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:45:57.443 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:45:57.750 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.328 seconds (process running for 621.202)
+2023-06-17 18:46:22.979 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:46:22.979 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:46:22.979 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:46:23.289 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.327 seconds (process running for 646.741)
+2023-06-17 18:50:37.523 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:50:37.523 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:50:37.524 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:50:37.799 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.297 seconds (process running for 901.25)
+2023-06-17 18:51:32.977 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:51:32.977 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:51:32.978 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:51:33.315 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.354 seconds (process running for 956.767)
+2023-06-17 18:51:50.703 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:51:50.703 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:51:50.703 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:51:50.985 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.298 seconds (process running for 974.437)
+2023-06-17 18:52:16.265 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:52:16.266 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:52:16.266 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:52:16.621 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.371 seconds (process running for 1000.073)
+2023-06-17 18:52:33.590 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:52:33.590 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:52:33.590 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:52:33.846 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.276 seconds (process running for 1017.298)
+2023-06-17 18:52:57.067 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:52:57.067 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:52:57.067 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:52:57.311 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.261 seconds (process running for 1040.763)
+2023-06-17 18:54:43.557 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:54:43.558 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:54:43.558 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:54:43.803 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.264 seconds (process running for 1147.255)
+2023-06-17 18:57:20.799 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:57:20.800 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:57:20.800 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:57:21.120 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.34 seconds (process running for 1304.572)
+2023-06-17 18:58:14.284 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:58:14.284 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:58:14.285 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:58:14.637 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.368 seconds (process running for 1358.088)
+2023-06-17 18:58:45.118 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:58:45.120 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:58:45.120 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:58:45.379 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.292 seconds (process running for 1388.831)
+2023-06-17 18:59:06.484 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 18:59:06.484 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 18:59:06.485 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 18:59:06.757 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.289 seconds (process running for 1410.208)
+2023-06-17 19:01:37.115 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:01:37.115 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:01:37.115 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:01:37.382 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.286 seconds (process running for 1560.834)
+2023-06-17 19:02:11.906 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:02:11.906 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:02:11.906 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:02:12.156 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.267 seconds (process running for 1595.607)
+2023-06-17 19:02:27.045 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:02:27.046 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:02:27.046 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:02:27.351 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.321 seconds (process running for 1610.802)
+2023-06-17 19:05:15.724 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:05:15.725 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:05:15.725 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:05:16.046 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.357 seconds (process running for 1779.498)
+2023-06-17 19:06:23.795 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:06:23.795 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:06:23.795 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:06:24.035 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.254 seconds (process running for 1847.486)
+2023-06-17 19:07:01.697 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:07:01.697 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:07:01.697 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:07:01.939 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.255 seconds (process running for 1885.39)
+2023-06-17 19:08:39.583 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:08:39.583 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:08:39.583 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:08:39.857 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.293 seconds (process running for 1983.308)
+2023-06-17 19:11:00.987 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:11:00.987 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:11:00.987 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:11:01.247 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.276 seconds (process running for 2124.699)
+2023-06-17 19:11:14.571 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:11:14.572 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:11:14.572 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:11:14.859 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.304 seconds (process running for 2138.31)
+2023-06-17 19:11:28.728 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:11:28.729 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:11:28.729 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:11:28.969 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.255 seconds (process running for 2152.421)
+2023-06-17 19:11:38.696 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:11:38.697 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:11:38.697 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:11:38.925 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.242 seconds (process running for 2162.376)
+2023-06-17 19:11:59.436 [restartedMain] INFO  mini.test.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 21296 (C:\Users\82103\OneDrive\바탕 화면\mini\mini_test\bin\main started by 82103 in C:\Users\82103\OneDrive\바탕 화면\mini\mini_test)
+2023-06-17 19:11:59.437 [restartedMain] DEBUG mini.test.MiniTestApplication:52 - Running with Spring Boot v3.0.7, Spring v6.0.9
+2023-06-17 19:11:59.437 [restartedMain] INFO  mini.test.MiniTestApplication:632 - No active profile set, falling back to 1 default profile: "default"
+2023-06-17 19:11:59.730 [restartedMain] INFO  mini.test.MiniTestApplication:57 - Started MiniTestApplication in 0.315 seconds (process running for 2183.181)

@@ -17,7 +17,6 @@ $.fn.serializeObject = function(){
     });
     return o;
 };
-
 /*이메일 형식 검증*/
 	function validateEmail(email) {
 	    var re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;

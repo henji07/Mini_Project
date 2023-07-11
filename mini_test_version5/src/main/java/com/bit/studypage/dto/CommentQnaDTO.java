@@ -22,7 +22,7 @@ public class CommentQnaDTO {
         		comment.getId(),
                 comment.getContent(),
                 userId,
-                comment.getCreatedAt() 
+                comment.getCreatedAt()
         );
     }
 }

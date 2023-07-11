@@ -30,13 +30,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class CommentQnaServiceImpl implements CommentQnaService {
-	
+
 	private final CommentQnaRepository commentRepository;
     private final BoardQnaRepository boardRepository;
     private final MemberRepository memberRepository;
-    
+
     private final BoardQnaDao boardQnaDao;
-    
+
     //사용자의 인증 정보 확인
     public Users validateAuthentication(Authentication authentication) {
     	// 인증 정보가 없거나 사용자가 인증되지 않았을 경우 예외 발생시킴
@@ -58,11 +58,11 @@ public class CommentQnaServiceImpl implements CommentQnaService {
     // 댓글 작성하기
     @Transactional
     public CommentQnaDTO writeComment(long boardId, CommentQnaDTO commentDto, Authentication authentication) {
-    	
+
     	// 사용자의 인증 정보를 확인하는 메소드 호출
     	Users user = validateAuthentication(authentication);
-    	
-    	
+
+
     	// 게시판 번호로 게시글 찾기, 게시글이 없을 경우 예외 발생
         BoardQna board = boardRepository.findById(boardId).orElseThrow(() -> {
             return new IllegalArgumentException("게시판을 찾을 수 없습니다.");
@@ -70,7 +70,7 @@ public class CommentQnaServiceImpl implements CommentQnaService {
 
         //Builder 패턴을 사용해 CommentQna 객체 생성
         // Builder 패턴을 사용하면 생성자에 많은 인자를 전달하는 것을 피하고, 객체 생성을 보다 명확하게 표현할 수 있다.
-        CommentQna comment = CommentQna.builder() 
+        CommentQna comment = CommentQna.builder()
                 .content(commentDto.getContent())//사용자가 입력한 댓글 내용을 가져옴
                 .userId(user.getUsersId())//현재 인증된 사용자의 ID를 가져옴
                 .userStringId(user.getUserId())//현재 인증된 사용자의 문자열 형식의 ID를 가져옴
@@ -83,25 +83,25 @@ public class CommentQnaServiceImpl implements CommentQnaService {
         commentRepository.save(comment);
 
         // DTO 객체로 변환하여 반환
-        return CommentQnaDTO.toDto(comment, user.getUserId());         
+        return CommentQnaDTO.toDto(comment, user.getUserId());
     }
-    
+
     // 댓글 삭제하기
     @Transactional
-    public String deleteComment(int commentId) {	
-    	
+    public String deleteComment(int commentId) {
+
     	System.out.println("서비스"+commentId);
- 
+
         commentRepository.deleteById(commentId);
-        
+
         return "삭제 완료";
     }
-    
-    // 댓글 목록 불러오기 
+
+    // 댓글 목록 불러오기
     public List<BoardCmmntQnaDTO> getBoardQnaCommnetList(long boardId){
     	System.out.println(boardId);
     	return boardQnaDao.selectCommentList(boardId);
     }
-    
+
 
 }

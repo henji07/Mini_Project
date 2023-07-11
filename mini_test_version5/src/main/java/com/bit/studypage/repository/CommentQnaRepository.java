@@ -9,11 +9,11 @@ import com.bit.studypage.entity.CommentQna;
 
 @Repository
 public interface CommentQnaRepository extends JpaRepository<CommentQna, Integer> {
-	
-	//댓글 목록 
+
+	//댓글 목록
    public List<CommentQna> findAllByBoardId(long boardId);
-	
-    //댓글 수 
+
+    //댓글 수
    public int countByBoardId(Long boardId);
 
 }

@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "comment_qna")
 public class CommentQna {
-	
+
     @Id
     @Column(name = "comment_id")
     private int id;
@@ -33,18 +33,18 @@ public class CommentQna {
 
     @Column(name = "board_id")
     private long boardId;
-    
+
     @Column(name = "user_id")
-    private String userStringId; 
-    
+    private String userStringId;
+
     @Column(name = "board_title")
     private String boardTitle;
-    
+
     @Column(name = "created_at")
-    private LocalDateTime createdAt; 
-    
+    private LocalDateTime createdAt;
+
     @Builder
-    public CommentQna(String content, long userId, long boardId, 
+    public CommentQna(String content, long userId, long boardId,
     				  String userStringId, String boardTitle, LocalDateTime createdAt) {
     	this.content = content;
     	this.userId = userId;

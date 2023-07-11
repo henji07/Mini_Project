@@ -21,6 +21,7 @@ import javax.sql.DataSource;
 @PropertySource("classpath:/application.properties")
 //매퍼 인터페이스 위치지정
 //@MapperScan(basePackages = "com.bit.studyPage.mapper")
+@MapperScan(basePackages = "com.bit.studyPage.mapper")
 public class DataConfiguration {
     @Autowired
     //스프링컨테이너 호출
@@ -36,6 +37,22 @@ public class DataConfiguration {
     public DataSource dataSource() {
         DataSource dataSource = new HikariDataSource(hikariConfig());
         return dataSource;
+    }
+
+    //Mybatis 연동
+    @Bean
+    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+        SqlSessionFactoryBean sqlSessionFactoryBean =
+                new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(dataSource);
+        sqlSessionFactoryBean.setConfigLocation(
+                applicationContext.getResource("classpath:mybatis-config.xml")
+        );
+        sqlSessionFactoryBean.setMapperLocations(
+                applicationContext.getResources("classpath:mapper/**/**.xml")
+        );
+
+        return sqlSessionFactoryBean.getObject();
     }
 
     @Bean

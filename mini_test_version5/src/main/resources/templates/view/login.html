@@ -16,12 +16,14 @@
    $(function() {
        $("#btn").on('click', function() {
 
+
            if($("#id").val() === "") {
                $("#id").next('label').addClass('warning');
                setTimeout(function() {
                    $("#id").next('label').removeClass('warning');
                }, 1500);
                return;
+
            }
            else if($("#pw").val() === "") {
                $("#pw").next('label').addClass('warning');
@@ -41,17 +43,20 @@
        if(urlParams.get("error")) {
            alert(urlParams.get("errorMsg"));
        }
+
    });
    /* ]]> */
    </script>
 </th:block>
 </head>
+
 <body> 
 <th:block layout:fragment="content">  
 <section class="login-wrap">
     <div class="login-container">
         <h1 class="login-title">Login</h1>
         <form th:action="@{/loginProcess}" method="post">
+
             <div class="input-wrap">
                 <input type="text" name="username" id="id" required autocomplete="off">
                 <label for="id">ID</label>
@@ -81,6 +86,7 @@
             <a th:href="@{/oauth2/authorization/google}" id="google"></a>
             <a th:href="@{/oauth2/authorization/naver}" id="naver"></a>
             <a th:href="@{/oauth2/authorization/kakao}" id="kakao"></a>
+
         </div>
     </div>
 </section>
