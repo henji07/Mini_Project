@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/default-layout}">
+  
+<head>
+<th:block layout:fragment="css">
+	<link rel="stylesheet" href="/css/boardDetailQna.css">
+	<!-- 하트 이모티콘 생기게 해주는 스타일시트 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</th:block>
+</head>
+<body> 
+<th:block layout:fragment="content">  
+	
+<form id="updateForm">
+   <div class="container py-5">
+	 <input type="hidden" id="boardId" name="boardId" th:value="${board.boardId}">
+      <section id="postSection">
+        <div id="postContainer">
+          <div id="boardTitle" name="boardTitle" th:text="${board.boardTitle}"></div>
+          <div id="postInfo">
+            <span id="postWriter" th:text="'작성자: ' + ${board.boardWriter}" ></span>
+            <span id="postDate" th:text="'작성일: ' + ${board.boardRegdate}"></span>
+            <span id="postViews" th:text="'조회수: ' + ${board.boardCnt}"></span>
+          </div>
+          <div id="boardContent" name="boardContent" th:text="${board.boardContent}"></div>
+          
+          <!-- 좋아요 -->
+          <div id="btnLike">
+			  <i id="heart" th:if=${board.heart} class="fas fa-heart"></i>
+			  <i id="heart" th:unless=${board.heart} class="far fa-heart"></i>
+			   좋아요 
+			  <span id="likeCount" th:text="${board.likeCount}" style="margin-left:10px;"></span>
+		  </div>
+
+          <div id="fileSection">
+            <h4>첨부 파일</h4>
+            <p style="font-size:14px;">다운로드시 파일명을 클릭하세요.</p>
+            <ul id="fileList">
+                <!-- 첨부파일이 있으면 이름을 표시 -->
+	            <li th:each="fle : ${board.fileList}">
+	            	<img th:src="@{/board/attach/{filename}(filename=${fle.filePath})}" width="50" height="50"/>
+	                <!--  파일 다운로드 링크 -->
+		            <a style="color:black;" th:href="@{/board/attach/{filename}(filename=${fle.filePath})}" download>
+		                <span th:text="${fle.fileName}"></span>
+		            </a>                  
+	            </li>
+            </ul>
+          </div>
+          
+          <!-- 댓글 리스트 -->
+		  <div id="comments">
+		      <h4>댓글 목록</h4>
+			  <!-- 기존 댓글들은 여기에 표시 -->     
+			  <div class="comment-item" th:each="row : ${board.comments}">
+	            <div class="comment-writer" th:text="${row.userName}"></div>
+		        <div class="comment-content" th:text="${row.commentContent}"></div>
+		        <div class="comment-footer">
+			        <div class="comment-create" th:text="${row.createdAt}"></div>
+			        <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
+					<div th:if="${userId != null and row.usersId == userId}" class="comment-btnContain">
+						<a href="#" th:data-src="${row.commentId}" class="comment-modify">수정</a>
+	          			<a href="#" th:data-src="${row.commentId}" class="comment-delete">삭제</a>
+	          		</div>
+		        </div>
+			  </div>
+		   </div>
+         
+          <!-- 댓글 입력 부분 -->
+		  <div id="commentSection">
+		   <h4>댓글 작성</h4>
+		     <textarea id="commentContent" name="commentContent" placeholder="댓글을 입력해주세요."></textarea>
+		     <a type="button" id="btnComment">댓글 등록</a>
+		  </div>
+		  
+          <div id="postActions">
+            <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
+          	<div th:if="${username != null and board.boardWriter == username}">
+            	<a th:href="@{/board/modify-board-view/{boardId}(boardId=${board.boardId})}" type="submit" id="btnUpdate">글 수정</a>
+          	</div>
+          	
+            <a href="/board/qnaPage/1" type="button" id="btnList">글 목록</a>
+            
+            <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
+            <div th:if="${username != null and board.boardWriter == username}">
+            	<a href="#" id="btnDelete">글 삭제</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+</form>
+</th:block>
+
+<th:block layout:fragment="script">
+   <script type="text/javascript" th:inline="javascript"> 
+
+   $(document).ready(function() {
+	  
+	 //댓글 삭제 
+	 $(".comment-delete").on("click",function(e){
+		 e.preventDefault();
+		 if (window.confirm("정말 삭제하시겠습니까?")) {
+			 var commentId = $(this).data("src");
+			 console.log(commentId);
+			 deleteComment(commentId);
+			 
+		 }
+	 });
+	   
+	// 댓글 수정 
+   	$(".comment-modify").on("click", function(e) {
+	   	 e.preventDefault();
+	     var commentId = $(this).data("src");
+	     var commentContent = prompt("수정할 댓글 내용을 입력하세요.");
+	     
+	     if (commentContent === null) {
+	         alert('취소되었습니다.');
+	     } else if (commentContent === '') {
+	         alert('댓글 내용을 입력하세요.');
+	     } else {
+	         modifyComment(commentId, commentContent);
+	     }
+   	});
+	   
+	 //글 삭제
+       $("#btnDelete").click( function(e){
+           e.preventDefault();
+           if (window.confirm("정말 삭제하시겠습니까?")) {
+        	   deleteContens();
+           }
+       });
+	 
+	 $("#btnLike").on("click", function(){
+		 toggleLike();
+	 });
+	 
+       // 댓글 등록
+       $('#btnComment').on('click', function(e) {
+    	    e.preventDefault();
+
+    	    var commentContent = $('#commentContent').val();
+    	    var boardId = $("#boardId").val();
+    	    
+    	 	// 댓글 내용이 비어있는지 확인
+    	    if (!commentContent.trim()) {
+    	        alert('댓글 내용을 입력해주세요.');
+    	        return;
+    	    }
+    	 	
+    	    registCommnet();
+    	 	
+       });  
+  
+   });
+   
+	// 좋아요 체크 
+   function getLike(){  
+		
+	 	//좋아요 - 사용자 아이디 얻기 
+	     $.get("/board/api/user/id", function(data, status) {
+	    	 var userId = data;
+	         console.log("아이디: " + userId);
+	         
+	         //좋아요 - 게시물 번호 얻기 
+	         var boardId = $("#boardId").val();
+	         console.log("게시판번호: " + boardId);
+	         
+	         getLike();
+	     });
+		
+         $.ajax({
+ 	        type: 'GET',
+ 	        url: '/board/check-like/' + boardId + '/' + userId,
+ 	        success: function(isLiked) {
+ 	            if(isLiked) {
+ 	                //사용자가 좋아요 이미 누른 경우 하트 채워주기 
+ 	                $("#heart").removeClass("far").addClass("fas");
+ 	            }
+ 	        }
+ 	    });
+
+   }
+   
+   // 좋아요 기능
+   function toggleLike() {
+       var boardId = $("#boardId").val();  // 현재 페이지의 게시글 ID 가져오기
+       var boardTitle = $("#boardTitle").text();
+       
+       var userId = sessionStorage.getItem("userId");  
+       var userStringId = sessionStorage.getItem("userStringId");
+
+       var heart = document.getElementById("heart");
+       var likeCounter = document.getElementById("likeCount");
+
+       if (heart.classList.contains("far")) {  // 아직 좋아요를 누르지 않은 상태
+           heart.classList.remove("far");
+           heart.classList.add("fas");
+           
+        	// 좋아요 카운트를 1 증가시키기
+           likeCounter.innerText = Number(likeCounter.innerText) + 1;
+
+           // 좋아요 등록 요청
+           $.ajax({
+               type: 'POST',
+               url: '/board/like-insert/' + boardId,  // 요청 URL
+               contentType: 'application/json',
+               data: JSON.stringify({
+                   boardId: boardId,
+                   userId: userId,
+                   userStringId: userStringId,
+                   boardTitle: boardTitle,
+                 
+               }),
+               success: (result) => {
+                   console.log(result);
+                   alert(result.item.msg); 
+               },
+               error: function(jqXHR, textStatus, errorThrown) {
+            	   if (jqXHR.status === 401) {
+            		   //로그인 안 했을 때 
+                       alert(jqXHR.responseJSON.message);           		   
+	       	           // 로그인 페이지로 이동
+	       	           window.location.href = "/login";
+	       	           
+                   } else if (jqXHR.status === 409) {
+                	   //좋아요 중복  
+                       alert(jqXHR.responseJSON.message);
+                   } else {
+                       alert(jqXHR.responseJSON.message);
+                   }
+                   
+               }
+           });
+       } else {  // 이미 좋아요를 누른 상태
+           heart.classList.remove("fas");
+           heart.classList.add("far");
+           
+           // 좋아요 카운트를 1 감소시키기
+           likeCounter.innerText = Number(likeCounter.innerText) - 1;
+
+           // 좋아요 삭제 요청
+           $.ajax({
+               type: 'DELETE',
+               url: '/board/like-delete/' + boardId,  // 요청 URL
+               contentType: 'application/json',
+               data: JSON.stringify({
+                   boardId: boardId
+               }),
+               success: (result) => {
+                   console.log(result);
+                   alert(result.item.msg); 
+               },
+               error: function(jqXHR, textStatus, errorThrown) {
+            	   if (jqXHR.status === 401) {
+            	        //로그인 안 했을 때 
+            	        alert(jqXHR.responseJSON.message);           		   
+            	        // 로그인 페이지로 이동
+            	        window.location.href = "/login";
+            	    } else if (jqXHR.status === 404) {
+            	        //좋아요 누르지 않았을 때  
+            	        alert(jqXHR.responseJSON.message);
+            	    } else {
+            	        alert(jqXHR.responseJSON.message);
+            	    }
+               }
+           });
+       }
+   }
+   
+   //글 삭제 
+   function deleteContens(){
+	   
+	   $.ajax({
+           url: '/board/board',
+           type: 'delete',
+           data: {
+               boardId: $("#boardId").val()
+           },
+           success: (obj) => {
+               console.log(obj);
+               alert(obj.item.msg);
+               location.href = `/board/qnaPage/1`;
+           },
+           error: (error) => {
+               console.log(error);
+           }
+       });
+   }
+	
+   //댓글 등록 
+   function registCommnet(){
+	   var commentContent = $('#commentContent').val();
+	    var boardId = $("#boardId").val();
+	    
+    	    $.ajax({
+    	        type: 'POST',
+    	        url: '/comments-insert/' + boardId,
+    	        contentType: 'application/json',
+    	        data: JSON.stringify({content: commentContent,}),
+    	        success: function(response) {
+    	            if(response.success === "성공") {
+    	            	$('#commentContent').val('');
+    	            	getRefresh();   	            	
+    	            } else {
+    	                // 에러 메시지를 사용자에게 표시
+    	                alert(response.message);
+    	            }
+    	        },
+    	        error: function(jqXHR, textStatus, errorThrown) {
+    	        	//validateAuthentication에 작성된 오류 메시지 사용자에게 표시 
+    	            alert(jqXHR.responseJSON.message);
+    	        	
+    	         	// 현재 페이지 URL을 세션 스토리지에 저장
+    	            if (window.location.pathname !== '/login') {
+    	                sessionStorage.setItem('prevUrl', window.location.pathname);
+    	            }
+    	        	
+    	         	// 로그인 페이지로 이동
+    	            window.location.href = "/login";
+    	        }
+    	    });
+    	}
+   
+   // 댓글 삭제 
+   function deleteComment(commentId){
+	   $.ajax({
+	        url: '/comments/delete',
+	        type: 'POST',
+	        contentType: 'application/json',
+	        data: JSON.stringify({
+	            "commentId": commentId
+	        }),
+	        success: function(response) {
+	            console.log(response);
+	            if(response === "삭제 완료"){
+	                alert('댓글이 성공적으로 삭제되었습니다.');
+	                getRefresh(); 
+	            } else {
+	                alert('댓글 삭제에 실패했습니다.');
+	            }
+	        },
+	        error: function(error){
+	            console.log(error);
+	            alert('댓글 삭제에 실패했습니다.');
+	        }
+	    });
+	  
+   }
+   
+   //댓글 수정 
+   function modifyComment(commentId, commentContent){
+	   // 수정할 댓글 내용이 비어있지 않은 경우에만 요청을 보냄
+	   if (commentContent) {
+	        $.ajax({
+	            url: '/comments/modify',
+	            type: 'POST',
+	            contentType: 'application/json',
+	            data: JSON.stringify({
+	                "commentId": commentId,
+	                "newContent": commentContent
+	            }),
+	            success: function(response) {
+	                console.log(response);
+	                if(response === "수정 완료"){
+	                    alert('댓글이 성공적으로 수정되었습니다.');
+	                    getRefresh();
+	                } else {
+	                    alert('댓글 수정에 실패했습니다.');
+	                }
+	            },
+	            error: function(error){
+	                console.log(error);
+	                alert('댓글 수정에 실패했습니다.');
+	            }
+	        });
+	   }
+   }
+   
+   //댓글 쓰고 새로고침 후 댓글 목록 불러오기 
+   function getRefresh(){
+	   
+	   var data = {boardId: $("#boardId").val()};
+	   
+	   console.log(data);
+	   
+	   $.ajax({
+		   type: 'POST',
+		   url: /*[[@{'/comments/refresh'}]]*/ '',
+		   contentType: 'application/json',
+	       data: JSON.stringify(data),
+		   success: function(res){
+			   if(res){
+				   console.log(res);
+				   var arr = [], idx = 0;
+				   $.each(res.comments, function (index, ele) {
+					   arr[idx++] = "<div class='comment-item'>";
+					   arr[idx++] = "<div class='comment-writer'>" + ele.userName + "</div>";
+					   arr[idx++] = "<div class='comment-content'>" + ele.commentContent + "</div>";
+					   arr[idx++] = "<div class='comment-footer'>";
+					   arr[idx++] = "<div class='comment-create'>" + ele.createdAt +"</div>";
+						
+					   if (res.currentUserId == ele.userName) {
+						   	arr[idx++] = "<div class='comment-btnContain'>";
+					        arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-modify'>수정</a>";
+					        arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-delete'>삭제</a>";
+					        arr[idx++] = "</div>"; // comment-btnContain 닫기 
+
+					   }
+					   
+					   arr[idx++] = "</div>"; //comment-footer 닫기
+					   arr[idx++] = "</div>"; //comment-item 닫기 
+				   });
+				   $("#comments div").remove();
+				   $("#comments").append(arr.join(''));
+				   
+					// 수정 버튼 이벤트
+	                $('.comment-modify').on('click', function(e) {
+	                    e.preventDefault();
+	                    var commentId = $(this).data("src");
+	                    var commentContent = prompt("수정할 내용을 입력하세요.");
+	                    if (commentContent) {
+	                        modifyComment(commentId, commentContent);
+	                    } else {
+	                        alert('댓글 내용을 입력하세요.');
+	                    }
+	                });
+				   
+					// 삭제 버튼 이벤트 
+	                $('.comment-delete').on('click', function(e) {
+	                    e.preventDefault();
+	                    deleteComment($(this).data('src'));
+	                });
+			   }
+		   },
+           error: function(jqXHR, textStatus, errorThrown) {
+               alert("댓글 작성에 실패하였습니다. 다시 시도해주세요.");
+           }
+	   });
+
+   }
+   
+   </script>
+</th:block>
+</body> 
+</html>

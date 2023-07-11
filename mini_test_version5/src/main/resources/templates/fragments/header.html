@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">     
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <body>
   <header class="header">	
     <div class="nav_logo">
@@ -14,7 +14,7 @@
       <li><a th:href="@{/main}">홈</a></li>
       <li><a th:href="@{/freePage}">소통해요</a></li>
       <li><a th:href="@{/studyPage}">함께해요</a></li>
-      <li><a th:href="@{/qnaPage}">궁금해요</a></li>
+      <li><a th:href="@{/board/qnaPage/1}">궁금해요</a></li>
       <li><a th:href="@{/certificatePage}">자격증</a></li>
     </ul>
     <div class="search_box">
@@ -23,9 +23,14 @@
       <button id="search_button"><a id="fullSearch" th:href="@{/fullSearch}">검색</a></button>
     </div>
     <div class="user_buttons">
-      <button id="login_button"><a th:href="@{/login}">로그인</a></button>
-      <button id="signup_button"><a th:href="@{/members/new}">회원가입</a></button>
-      <button id="profile_button" style="display: none;">프로필</button>
+      <div th:block sec:authorize="!isAuthenticated()">
+        <button id="login_button"><a th:href="@{/login}">로그인</a></button>
+        <button id="signup_button"><a th:href="@{/members/new}">회원가입</a></button>
+      </div>
+      <div th:block sec:authorize="isAuthenticated()">
+        <button id="profile_button"><a th:href="@{/myPage}">프로필</a></button>
+        <button id="logout_button"><a th:href="@{/logout}">로그아웃</a></button>
+      </div>
     </div>
   </header>
 </body>

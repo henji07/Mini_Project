@@ -157,12 +157,13 @@
 /*검색창*/
 .certificate-search-box {
 	display: flex;
-	align-items: center;
+	/*align-items: center;*/
+	justify-content: space-between;
 	background-color: #ffffff;
 	border: 1px solid #949494;
 	border-radius: 20px;
 	padding: 5px;
-	width: 300px;
+	width: 70%;
 	height: 30px;
 	margin: 0 auto;
 }
