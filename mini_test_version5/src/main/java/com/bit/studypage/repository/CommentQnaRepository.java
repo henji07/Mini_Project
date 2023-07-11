@@ -16,8 +16,5 @@ public interface CommentQnaRepository extends JpaRepository<CommentQna, Integer>
 	
     //댓글 수 
    public int countByBoardId(Long boardId);
-   
-   
-   
 
 }

@@ -107,7 +107,7 @@ public class CommentQnaController {
             int commentId = (Integer) data.get("commentId");
             String newContent = (String) data.get("newContent");
             
-            System.out.println("수정 댓글=" + commentService.modifyComment(commentId, newContent));
+            System.out.println("수정 댓글=" + commentId + newContent);
             
             return commentService.modifyComment(commentId, newContent);
         } catch (Exception e) {

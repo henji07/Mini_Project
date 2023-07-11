@@ -55,15 +55,16 @@
 		      <h4>댓글 목록</h4>
 			  <!-- 기존 댓글들은 여기에 표시 -->     
 			  <div class="comment-item" th:each="row : ${board.comments}">
-	            <div th:text="${row.userName}"></div>
-		        <div th:text="${row.commentContent}"></div>
-				<div th:text="${row.createdAt}"></div>
-				
-				<!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
-				<div th:if="${userId != null and row.usersId == userId}">
-					<a href="#" th:data-src="${row.commentId}" class="comment-modify">수정</a>
-          			<a href="#" th:data-src="${row.commentId}" class="comment-delete">삭제</a>
-          		</div>
+	            <div class="comment-writer" th:text="${row.userName}"></div>
+		        <div class="comment-content" th:text="${row.commentContent}"></div>
+		        <div class="comment-footer">
+			        <div class="comment-create" th:text="${row.createdAt}"></div>
+			        <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
+					<div th:if="${userId != null and row.usersId == userId}" class="comment-btnContain">
+						<a href="#" th:data-src="${row.commentId}" class="comment-modify">수정</a>
+	          			<a href="#" th:data-src="${row.commentId}" class="comment-delete">삭제</a>
+	          		</div>
+		        </div>
 			  </div>
 		   </div>
          
@@ -106,21 +107,21 @@
 			 console.log(commentId);
 			 deleteComment(commentId);
 			 
-			 $(this).parent().remove();
 		 }
 	 });
 	   
 	// 댓글 수정 
    	$(".comment-modify").on("click", function(e) {
 	   	 e.preventDefault();
-	     
 	     var commentId = $(this).data("src");
-	     var commentContent = prompt("수정할 내용을 입력하세요.");
+	     var commentContent = prompt("수정할 댓글 내용을 입력하세요.");
 	     
-	     if (commentContent) {
-	         modifyComment(commentId, commentContent);
-	     } else {
+	     if (commentContent === null) {
+	         alert('취소되었습니다.');
+	     } else if (commentContent === '') {
 	         alert('댓글 내용을 입력하세요.');
+	     } else {
+	         modifyComment(commentId, commentContent);
 	     }
    	});
 	   
@@ -365,9 +366,7 @@
 	                console.log(response);
 	                if(response === "수정 완료"){
 	                    alert('댓글이 성공적으로 수정되었습니다.');
-	                    
-	                 	// 해당 댓글의 내용을 바로 업데이트
-	                    $(`#comment-${commentId}`).text(commentContent);
+	                    getRefresh();
 	                } else {
 	                    alert('댓글 수정에 실패했습니다.');
 	                }
@@ -398,17 +397,21 @@
 				   var arr = [], idx = 0;
 				   $.each(res.comments, function (index, ele) {
 					   arr[idx++] = "<div class='comment-item'>";
-					   arr[idx++] = "<div>" + ele.userName + "</div>";
-					   arr[idx++] = "<div>" + ele.commentContent + "</div>";
-					   arr[idx++] = "<div>" + ele.createdAt +"</div>";
+					   arr[idx++] = "<div class='comment-writer'>" + ele.userName + "</div>";
+					   arr[idx++] = "<div class='comment-content'>" + ele.commentContent + "</div>";
+					   arr[idx++] = "<div class='comment-footer'>";
+					   arr[idx++] = "<div class='comment-create'>" + ele.createdAt +"</div>";
 						
 					   if (res.currentUserId == ele.userName) {
-						   	arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-modify'>수정</a>"
-					   		arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-delete'>삭제</a>";
+						   	arr[idx++] = "<div class='comment-btnContain'>";
+					        arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-modify'>수정</a>";
+					        arr[idx++] = "<a href='#' data-src='" + ele.commentId + "' class='comment-delete'>삭제</a>";
+					        arr[idx++] = "</div>"; // comment-btnContain 닫기 
+
 					   }
 					   
-					  
-					   arr[idx++] = "</div>";
+					   arr[idx++] = "</div>"; //comment-footer 닫기
+					   arr[idx++] = "</div>"; //comment-item 닫기 
 				   });
 				   $("#comments div").remove();
 				   $("#comments").append(arr.join(''));
