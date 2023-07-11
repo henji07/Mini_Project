@@ -1,6 +1,20 @@
 package com.bit.studypage.controller;
 /* Java 1.8 샘플 코드 */
 
+import com.bit.studypage.dto.ResponseDTO;
+import com.bit.studypage.entity.SearchBoard;
+import com.bit.studypage.service.SearchService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.bit.studypage.entity.QuaPlace;
 import com.bit.studypage.entity.Qualification;
@@ -12,6 +26,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -29,14 +44,16 @@ public class ApiController {
     private QualificationService qualificationService;
     private ObjectMapper objectMapper;
     private QuaPlaceRepository quaPlaceRepository;
+
     public ApiController(ObjectMapper objectMapper, QualificationService qualificationService, QuaPlaceRepository quaPlaceRepository) {
         this.objectMapper = objectMapper;
         this.qualificationService = qualificationService;
         this.quaPlaceRepository = quaPlaceRepository;
     }
+    @Autowired
+    private SearchService searchService;
 
-
-        @GetMapping("/apitest")
+    @GetMapping("/apitest")
     public void test(/*@RequestParam("name")String jmcd*/) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 //        System.out.println(jmcd+"DDDDDDDDDDDDDDDDD");
@@ -46,8 +63,8 @@ public class ApiController {
         for (int i = 10; i <= 24; i++) {
             list.add(String.format("%02d", i));
         }
-        for(String num : list) {
-            StringBuilder urlBuilder = new StringBuilder("http://openapi.q-net.or.kr/api/service/rest/InquiryExamAreaSVC/getList?brchCd="+num+"&ServiceKey=KPwD4FMIWudb2fU%2Fk5Ebb%2BJTG1kGh8tla0WBx3lMyrdVjhMto7uPQz1x%2BBcnAOm0I5c5POIQFhMGF5NqfDYsMw%3D%3D&_type=json"); /*URL*/
+        for (String num : list) {
+            StringBuilder urlBuilder = new StringBuilder("http://openapi.q-net.or.kr/api/service/rest/InquiryExamAreaSVC/getList?brchCd=" + num + "&ServiceKey=KPwD4FMIWudb2fU%2Fk5Ebb%2BJTG1kGh8tla0WBx3lMyrdVjhMto7uPQz1x%2BBcnAOm0I5c5POIQFhMGF5NqfDYsMw%3D%3D&_type=json"); /*URL*/
 //        urlBuilder.append("&" + URLEncoder.encode("jmCd","UTF-8") +"="+jmcdNum); /*과목코드*/
 //        System.out.println(urlBuilder);
             URL url = new URL(urlBuilder.toString());
@@ -94,5 +111,14 @@ public class ApiController {
 //        Qualification response = (Qualification) unmarshaller.unmarshal(reader);
 //        qualificationRepository.save(response);
     }
-}
+    @PostMapping("/api/searchMainBox")
+    public String searchPostsMain(@RequestParam("keyword") String keyword, Model model) {
+        System.out.println(keyword);
+        List<SearchBoard> searchResults = searchService.searchBoardByTitleContent(keyword);
+        System.out.println(searchResults);
+        model.addAttribute("searchResults", searchResults);
+        model.addAttribute("keyword", keyword);
+        return "/fullSearch";  // fullSearch 페이지를 반환합니다.
+    }
 
+}

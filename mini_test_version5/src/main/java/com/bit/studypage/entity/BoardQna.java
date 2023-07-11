@@ -26,30 +26,30 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardQna {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="board_id")
 	private Long boardId;
-	
+
 	@Column(name="board_title")
 	private String boardTitle;
-	
+
 	@Column(name="board_content")
 	private String boardContent;
-	
+
 	@Column(name="board_cnt", nullable = false)
     private int boardCnt;//조회수
-	
+
 	@Column(name="board_writer")
 	private String boardWriter;
-	
+
 	@Column(name="board_reg_date")
-	private LocalDateTime boardRegdate;//작성일 
-	
+	private LocalDateTime boardRegdate;//작성일
+
 	@Column(name = "like_count")
     private long likeCount;
-	
+
 	@Builder
 	public BoardQna(BoardQnaDTO data) {
 		this.boardTitle = data.getBoardTitle();
@@ -64,13 +64,13 @@ public class BoardQna {
 		this.boardTitle = dto.getBoardTitle();
 		this.boardContent = dto.getBoardContent();
 	}
-	
+
 	public void updateReadCount(int boardCnt) {
 		this.boardCnt = boardCnt;
 	}
 
 	public void addLikeCount(long likeCount) {
-		this.likeCount = likeCount;		
+		this.likeCount = likeCount;
 	}
-	
+
 }

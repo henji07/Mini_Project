@@ -10,6 +10,7 @@
 </th:block>
 
 <th:block layout:fragment="script">
+<<<<<<< HEAD
 	<script type="text/javascript" th:inline="javascript">
 	<!-- 관심사 값이 없어도 무조건 array로 가게 -->
 	$(document).ready(function() {
@@ -227,6 +228,7 @@
 	<div class="join-line">
 	<span class="join-line-text"></span>
 	<h4 class="join-type">일반 회원가입</h4>
+
 	<span class="join-line-text"></span>
 	</div>
 	<form id="inputForm">
@@ -253,12 +255,14 @@
 	        <td colspan="2">
 	          <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control" placeholder="비밀번호를 다시 입력하세요">
 	          <span id="confirmMsg"></span>
+
 	        </td>
 	      </tr>
 	      <tr>
 	        <td><label for="name">이름</label></td>
 	        <td colspan="2">
 	          <input type="text" name="name" id="name" class="form-control" placeholder="이름을 입력하세요">
+
 	          <p id="nameMessage" style="display:none;">이름을 입력해주세요.</p>
 	        </td>
 	      </tr>
@@ -268,6 +272,7 @@
 	          <input type="radio" name="gender" id="female" value="W" checked="checked">
 	          <label class="form-control-select" for="female">여자</label>
 	          <input type="radio" name="gender" id="male" value="M">
+
 	          <label class="form-control-select" for="male">남자</label>
 	        </td>
 	      </tr>
@@ -275,6 +280,7 @@
 	        <td><label for="phone">휴대전화</label></td>
 	        <td colspan="2">
 	          <input type="text" name="phone" id="phone" class="form-control" placeholder="전화번호를 입력하세요">
+
 	          <p id="phoneMessage" style="display:none;">전화번호를 입력해주세요.</p>
 	        </td>
 	      </tr>
@@ -282,12 +288,14 @@
 	        <td><label for="email">이메일</label></td>
 	        <td colspan="2">
 	          <input type="text" name="email" id="email" class="form-control" placeholder="이메일을 입력하세요">
+
 	          <p id="emailMessage" style="display:none;">이메일을 입력해주세요.</p>
 	          <p id="emailFormMessage" style="display:none;">올바른 이메일을 입력해주세요.</p>
 	        </td>
 	      </tr>
 	      <tr>
 	        <td><label>관심분야</label></td>
+
 	        <td colspan="2">
 	          <input type="checkbox" id="interest_1" name="interest" value="백엔드">
 	          <label class="form-control-select" for="interest_1">백엔드</label>
@@ -307,4 +315,5 @@
 	</div>
 </th:block>
 </body>
+
 </html>

@@ -21,6 +21,7 @@ $(document).ready(function () {
     $("#profile-con3-2").css("display", "none");
     $(".pagination-bottom-pages2").css("display", "none");
     $(".pagination-bottom-pages3").css("display", "none");
+
     var menuItems = $(".profile-menu1, .profile-menu2, .profile-menu3");
     menuItems.eq(0).addClass("profile-active"); // Set the default underline on menu1
 
@@ -28,6 +29,7 @@ $(document).ready(function () {
         menuItems.removeClass("profile-active"); // Remove underline from all menu items
         $(this).addClass("profile-active"); // Add underline to the clicked item
     });
+
 
 
     $("#profile-changeProfilePicBtn").on("click", function () {
@@ -66,6 +68,7 @@ $(document).ready(function () {
                 };
                 reader.readAsDataURL(file);
             } else return;
+
         }
     });
 
@@ -77,7 +80,6 @@ $(document).ready(function () {
         menuItems2.removeClass("profile-active2"); // Remove underline from all menu items
         $(this).addClass("profile-active2"); // Add underline to the clicked item
     });
-
 
     $(".profile-menu1").on("click", () => {
         $("#profile-member-form").css("display", "");
@@ -149,6 +151,7 @@ $(document).ready(function () {
     var phoneRegex = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 
     $('input[name="phone"]').on("blur", function () {
+
         var phone = $(this).val();
         if (!phoneRegex.test(phone)) {
             $(this).next(".profile-hidden").show();
@@ -175,7 +178,6 @@ $(document).ready(function () {
     var dots = document.querySelectorAll(".profile-dot");
     var slides = document.querySelectorAll(".profile-slide");
     var slider = document.querySelector(".profile-slider");
-
 
 
 });

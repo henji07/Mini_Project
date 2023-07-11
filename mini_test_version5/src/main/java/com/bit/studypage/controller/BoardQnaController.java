@@ -28,7 +28,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
-import com.bit.studypage.dto.CommentQnaDTO;
 import com.bit.studypage.dto.LikeQnaDTO;
 import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.entity.Users;
@@ -79,7 +78,7 @@ public class BoardQnaController {
         
         mv.addObject("qnaList", boardList);
         mv.addObject("currentPage", pageNum);
-        mv.addObject("totalPages", boardService.getTotalPages(sortOption));
+        mv.addObject("totalPages", boardService.getTotalPages());
         mv.addObject("sortOption", sortOption);
         
         mv.setViewName("view/boardQna.html");
