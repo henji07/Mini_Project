@@ -23,4 +23,8 @@ public interface CommentQnaService {
 	//댓글 목록
 	public List<BoardCmmntQnaDTO> getBoardQnaCommnetList(long boardId);
 
+	
+	//댓글 수정 
+	public String modifyComment(int commentId, String newContent);
+
 }

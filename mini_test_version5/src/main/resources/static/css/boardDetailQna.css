@@ -186,6 +186,70 @@
   font-size: 12px;
 }
 
+.comment-button {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    color: #444;
+    padding: 5px;
+    transition: all 0.3s ease 0s;
+}
+
+.comment-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* 중앙 정렬 */
+}
+
+.comment-btnContain {
+    display: flex;
+    gap: 10px; /* 버튼 간격 */
+}
+
+.comment-modify {
+    border: 1px solid #dbdbdb;
+    background: #fafafa;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.comment-modify:hover {
+    color: #fff;
+    background: #FFC596;
+    border-color: #FFC596;
+}
+
+.comment-delete {
+    border: 1px solid #dbdbdb;
+    background: #fafafa;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.comment-delete:hover {
+    color: #fff;
+    background: #FF8282;
+    border-color: #FF8282;
+}
+
+.comment-writer {
+	font-weight: bold;
+	margin-bottom: 5px;
+	color: #6e6e6e;
+}
+
+.comment-content {
+	
+	
+}
+ 
+.comment-create {
+	margin-top: 5px;
+	font-size: 14px;
+}
+
 .content {
   color: #333;
 }
@@ -217,6 +281,5 @@
 .fas.fa-heart {
   color: red;
 }
-
 
 

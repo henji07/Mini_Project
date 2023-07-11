@@ -79,7 +79,6 @@ public class testController {
 		
 		return "view/write";
 	}
-	
 
 	@GetMapping("naver-join")
 	public String test11() {

@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
@@ -30,18 +29,20 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.CommentQnaDTO;
 import com.bit.studypage.dto.LikeQnaDTO;
+
 import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.entity.Users;
 import com.bit.studypage.service.BoardQnaService;
 import com.bit.studypage.service.LikeQnaService;
 
 import jakarta.validation.Valid;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequiredArgsConstructor //생성자 주입
+@RequiredArgsConstructor //생성자 주입 
 @RequestMapping("/board")
 public class BoardQnaController {
 
@@ -49,52 +50,54 @@ public class BoardQnaController {
     private final LikeQnaService likeService;
 
 
+
     //글 등록 화면으로 이동
     @GetMapping("/insert-board-view")
     public ModelAndView insertBoardView(Authentication authentication) {
-        ModelAndView mv = new ModelAndView();
-
-        String userName = null;
-        if(ObjectUtils.isNotEmpty(authentication)) {
-            if (authentication.getPrincipal() instanceof Users) {
-                Users user = (Users) authentication.getPrincipal();
-                userName = user.getUserId();
-            }
+		ModelAndView mv = new ModelAndView();
+		
+		String userName = null;
+		if(ObjectUtils.isNotEmpty(authentication)) {
+	        if (authentication.getPrincipal() instanceof Users) {
+	            Users user = (Users) authentication.getPrincipal();
+	            userName = user.getUserId();
+	        }
         }
         mv.addObject("userName", userName);
+
 
         mv.setViewName("view/boardInsertQna.html");
         return mv;
     }
+	
+	//글 목록 화면으로 이동 
+	@GetMapping("/qnaPage/{pageNum}")
+    public ModelAndView getBoardList(@PathVariable("pageNum") int pageNum, 
+    		 						 @RequestParam(required = false) String sortOption) {
 
-    //글 목록 화면으로 이동
-    @GetMapping("/qnaPage/{pageNum}")
-    public ModelAndView getBoardList(@PathVariable("pageNum") int pageNum,
-                                     @RequestParam(required = false) String sortOption) {
 
         ModelAndView mv = new ModelAndView();
 
         //게시글 목록을 가져옴
         List<BoardQnaDTO> boardList = boardService.getBoardList(pageNum, sortOption);
-
+        
         mv.addObject("qnaList", boardList);
         mv.addObject("currentPage", pageNum);
         mv.addObject("totalPages", boardService.getTotalPages(sortOption));
         mv.addObject("sortOption", sortOption);
-
         mv.setViewName("view/boardQna.html");
 
         return mv;
 
     }
-
-    //검색 결과 화면으로 이동
-    //required = false로 설정되면 해당 파라미터가 필수가 아니라는 것
-    //파라미터가 누락되더라도 예외가 발생하지 않고 기본값으로 null이 할당
-    @GetMapping("/search/{pageNum}")
+	
+	//검색 결과 화면으로 이동 
+	//required = false로 설정되면 해당 파라미터가 필수가 아니라는 것
+	//파라미터가 누락되더라도 예외가 발생하지 않고 기본값으로 null이 할당
+	@GetMapping("/search/{pageNum}")
     public ModelAndView getSearchList(@RequestParam(required = false) String keyword, @PathVariable int pageNum, String sortOption) {
-
-        ModelAndView mv = new ModelAndView();
+		
+		ModelAndView mv = new ModelAndView();
 
         List<BoardQnaDTO> searchList = boardService.searchBoardsByTitle(keyword, pageNum, sortOption);
 
@@ -103,35 +106,35 @@ public class BoardQnaController {
         mv.addObject("currentPage", pageNum);
         mv.addObject("totalPages", boardService.getSearchTotalPages(keyword));
         mv.addObject("sortOption", sortOption);
-
+        
         if (searchList.isEmpty()) {
             mv.addObject("noResultMessage", "검색 결과가 없습니다.");
         }
-
+        
         mv.setViewName("view/boardSearchQna.html");
 
         return mv;
     }
-
-
+	
+   
     //글 등록 -> ajax
     @PostMapping("/board-insert")
     public ResponseEntity<?> insertBoard(@RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO,
-                                         Authentication authentication) {
-
-        ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
-
-        String userId = null;
-
+    		Authentication authentication) {
+        
+    	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+    	
+    	String userId = null;
+        
         if(ObjectUtils.isNotEmpty(authentication)) {
-            if (authentication.getPrincipal() instanceof Users) {
-                Users user = (Users) authentication.getPrincipal();
-                userId = user.getUserId();
-            }
+	        if (authentication.getPrincipal() instanceof Users) {
+	            Users user = (Users) authentication.getPrincipal();
+	            userId = user.getUserId();
+	        }
         }
 
         try {
-            //서비스 호출
+            //서비스 호출 
             boardService.insertBoard(boardDTO, files, userId);
 
             Map<String, String> returnMap = new HashMap<String, String>();
@@ -139,7 +142,7 @@ public class BoardQnaController {
             returnMap.put("msg", "정상적으로 저장되었습니다.");
 
             responseDTO.setItem(returnMap);
-
+            
             System.out.println("메시지"+responseDTO);
 
             return ResponseEntity.ok().body(responseDTO);
@@ -151,70 +154,68 @@ public class BoardQnaController {
             return ResponseEntity.badRequest().body(responseDTO);
         }
     }
-
-    //서버에 저장되어 있는 거 읽어오기
+    
+    //서버에 저장되어 있는 거 읽어오기 
     @Value("${file.path}")
     private String fileUploadDir;
 
-    //파일
     @GetMapping("/attach/{filename:.+}")
     public ResponseEntity<InputStreamResource> getImage(@PathVariable String filename) throws IOException {
-        System.out.println("===========================");
-        log.info("getImage");
-        System.out.println("filename = " + filename);
-        System.out.println("===========================");
-        Path file = Paths.get(fileUploadDir, filename);
-
+     System.out.println("==========================="); 
+	 log.info("getImage");
+	 System.out.println("filename = " + filename);
+	 System.out.println("==========================="); 
+    	Path file = Paths.get(fileUploadDir, filename);
+    	
         InputStreamResource resource = new InputStreamResource(Files.newInputStream(file));
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(Files.probeContentType(file)))
                 .body(resource);
-    }
+    } 
 
-
-
+    
+        
     //게시 글 및 댓글 상세 조회
     @GetMapping("/board/{boardId}")
     public ModelAndView getBoard(@PathVariable long boardId, Authentication authentication) {
         ModelAndView mv = new ModelAndView();
-
+        
         long userId = 0;
-
+        
         if(ObjectUtils.isNotEmpty(authentication)) {
-            if (authentication.getPrincipal() instanceof Users) {
-                Users user = (Users) authentication.getPrincipal();
-                userId = user.getUsersId();
-            }
+	        if (authentication.getPrincipal() instanceof Users) {
+	            Users user = (Users) authentication.getPrincipal();
+	            userId = user.getUsersId();
+	        }
         }
 
-        //게시물 조회
+        //게시물 조회 
         BoardQnaDTO dto = boardService.getBoardDetail(boardId, userId);
-
+        
 
         mv.addObject("board", dto);
-
+        
         // 로그인한 사용자 정보 전달
         if (authentication != null && authentication.isAuthenticated()) {
             String username = authentication.getName();
             mv.addObject("username", username);
             mv.addObject("userId", userId);
         }
-
         mv.setViewName("/view/boardDetailQna");
 
         return mv;
     }
-
+    
     //글 수정 화면으로 이동
-    @GetMapping("/modify-board-view/{boardId}")
-    public ModelAndView modifyBoardView(@PathVariable("boardId") long boardId) {
-
-        System.out.println("boardId = " + boardId);
-
-        ModelAndView mv = new ModelAndView();
-
-        //게시물 조회
+  	@GetMapping("/modify-board-view/{boardId}")
+      public ModelAndView modifyBoardView(@PathVariable("boardId") long boardId) {
+  		
+  		System.out.println("boardId = " + boardId);
+  		
+  		ModelAndView mv = new ModelAndView();
+  		
+  		//게시물 조회 
         BoardQnaDTO dto = boardService.getBoardDetail(boardId, 0);
 
         mv.addObject("board", dto);
@@ -222,11 +223,10 @@ public class BoardQnaController {
         return mv;
     }
 
-
     //글 수정
     @PostMapping("/board-modify")
-    public ResponseEntity<?> updateBoard(@RequestPart(value = "board", required = false) BoardQnaDTO boardDTO,
-                                         @RequestPart(value = "files", required = false) List<MultipartFile> files) {
+    public ResponseEntity<?> updateBoard(@RequestPart(value = "board", required = false) BoardQnaDTO boardDTO, 
+    									 @RequestPart(value = "files", required = false) List<MultipartFile> files) {
         ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
         try {
             // 서비스에서 게시글 수정 로직 실행
@@ -251,13 +251,13 @@ public class BoardQnaController {
             return ResponseEntity.badRequest().body(responseDTO);
         }
     }
-
-    //글 삭제
+    
+    //글 삭제 
     @DeleteMapping ("/board")
     public ResponseEntity<?> deleteBoard(BoardQnaDTO boardDTO) {
         ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
         try {
-            //Long으로 보내기 때문에 엔티티 안 만들어도 됨.
+            //Long으로 보내기 때문에 엔티티 안 만들어도 됨. 
             boardService.deleteBoard(boardDTO.getBoardId());
 
             Map<String, String> returnMap = new HashMap<String, String>();
@@ -274,56 +274,55 @@ public class BoardQnaController {
             return ResponseEntity.badRequest().body(responseDTO);
         }
     }
-
     //시큐리티 권한 처리 - 글쓰기 화면에서 로그인한 사용자의 아이디를 받아옴
     @GetMapping("/api/user")
     public ResponseEntity<String> getLoggedInUser(Authentication authentication) {
         return ResponseEntity.ok(authentication.getName());
     }
-
+    
     //이름 값에서 아이디 값 뽑기 - 좋아요 여부 체크할 때 쓰는 api
     @GetMapping("/api/user/id")
     public ResponseEntity<Long> getLoggedInUserId(Authentication authentication) {
-        if (authentication.getPrincipal() instanceof Users) {
+    	if (authentication.getPrincipal() instanceof Users) {
             Users user = (Users) authentication.getPrincipal();
             Long userId = user.getUsersId();
-
+            
             System.out.println("userId=" + userId);
             return ResponseEntity.ok(userId);
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // or your error handling
     }
-
-    //좋아요
+    
+    //좋아요 
     @PostMapping("/like-insert/{boardId}")
-    public ResponseEntity<?> insert(@PathVariable("boardId") long boardId,
-                                    @RequestBody @Valid LikeQnaDTO likeDTO, Authentication authentication) {
-        ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
-
-        System.out.println("컨트롤러에 오나?");
-
-        //서비스 호출
-        likeService.insertLike(likeDTO, authentication);
+    public ResponseEntity<?> insert(@PathVariable("boardId") long boardId, 
+    								@RequestBody @Valid LikeQnaDTO likeDTO, Authentication authentication) {
+    	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+    	
+    	System.out.println("컨트롤러에 오나?");
+    	
+        //서비스 호출 
+		likeService.insertLike(likeDTO, authentication);
         Map<String, String> returnMap = new HashMap<String, String>();
 
         returnMap.put("msg", "좋아요 반영되었습니다.");
 
         responseDTO.setItem(returnMap);
-
+        
         System.out.println("리스폰스디티오="+responseDTO);
-
-        return ResponseEntity.ok().body(responseDTO);
-
+        
+        return ResponseEntity.ok().body(responseDTO);   	   	
+    	
     }
-
-    //좋아요 취소
+    
+    //좋아요 취소 
     @DeleteMapping("/like-delete/{boardId}")
-    public ResponseEntity<?> delete(@PathVariable("boardId") long boardId,
-                                    Authentication authentication) {
-        ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
-
-        //서비스 호출
-        likeService.removeLike(boardId, authentication);
+    public ResponseEntity<?> delete(@PathVariable("boardId") long boardId, 
+    							    Authentication authentication) {
+    	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+    	
+        //서비스 호출 
+		likeService.removeLike(boardId, authentication);
 
         Map<String, String> returnMap = new HashMap<String, String>();
 
@@ -332,21 +331,22 @@ public class BoardQnaController {
         responseDTO.setItem(returnMap);
 
         return ResponseEntity.ok().body(responseDTO);
-
+    	
     }
-
-    //좋아요 체크 여부
+    
+    //좋아요 체크 여부 
     @GetMapping("/check-like/{boardId}/{userId}")
     public ResponseEntity<?> checkLike(@PathVariable("boardId") long boardId, @PathVariable("userId") long userId) {
-        System.out.println("체크 컨트롤러");
+    	System.out.println("체크 컨트롤러");
         // 해당 게시글에 대한 사용자의 좋아요 상태를 확인
         boolean isLiked = likeService.isLikedByUser(boardId, userId);
-
+        
         System.out.println("좋아요 누르셨나요" + isLiked);
 
         // 좋아요 상태를 JSON 형태로 반환
         return ResponseEntity.ok().body(isLiked);
     }
+
 
 
 }

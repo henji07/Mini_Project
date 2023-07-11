@@ -3,10 +3,12 @@ package com.bit.studypage.controller;
 import com.bit.studypage.entity.QuaPlace;
 import com.bit.studypage.repository.QuaPlaceRepository;
 import org.json.simple.JSONArray;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,7 +16,9 @@ import org.json.simple.parser.ParseException;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class TestKakao {
@@ -26,12 +30,12 @@ public class TestKakao {
     private static final String KAKAO_REST_API_KEY = "b28f8bf3673a26eeec85c66abbdb7bfc"; // 발급받은 API KEY
 
     @GetMapping("/testmap")
-    public ModelAndView convertAddressToCoordinates(String address) {
+    public ModelAndView convertAddressToCoordinates(@RequestParam(value = "add",defaultValue = "역삼동640-5") String address) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("view/maptest.html");
         System.out.println("주소나오나"+address);
-
-        String url = "https://dapi.kakao.com/v2/local/search/address.json?query=" + "역삼동640-5";
+        System.out.println("주소나오나2"+address);
+        String url = "https://dapi.kakao.com/v2/local/search/address.json?query=" + address;
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "KakaoAK " + KAKAO_REST_API_KEY);
@@ -54,7 +58,13 @@ public class TestKakao {
                         double lng = Double.parseDouble((String) addressObject.get("x"));
                         double lat = Double.parseDouble((String) addressObject.get("y"));
                         List<QuaPlace> quaPlaceList = quaPlaceRepository.findNearByLocations(lat,lng);
+                        Set<String> uniqueAreaNames = new HashSet<>();
+                        for (QuaPlace place : quaPlaceList) {
+                            uniqueAreaNames.add(place.getExamAreaNm());
+                        }
+                        System.out.println("ssssssssssssssssssssssss"+quaPlaceList.toString());
                         mv.addObject("quaPlaces",quaPlaceList);
+                        mv.addObject("uniqueAreaNames", uniqueAreaNames);
                         mv.addObject("y",lat);
                         mv.addObject("x",lng);
                     } else {

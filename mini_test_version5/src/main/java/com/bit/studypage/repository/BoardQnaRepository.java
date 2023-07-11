@@ -16,7 +16,7 @@ import com.bit.studypage.entity.BoardQna;
 //JpaRepository<대상으로 지정할 엔티티, 해당 엔티티의 PK의 타입>.
 @Repository
 public interface BoardQnaRepository extends JpaRepository<BoardQna, Long> {
-	
+
 	//조회수 증가
 	@Transactional
 	@Modifying
@@ -35,3 +35,4 @@ public interface BoardQnaRepository extends JpaRepository<BoardQna, Long> {
 	long countByTitleContaining(@Param("searchKeyword") String searchKeyword);
 	
 }
+

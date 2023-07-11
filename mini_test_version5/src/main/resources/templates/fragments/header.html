@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
   <th:block layout:fragment="script">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" th:inline="javascript">
-
-        // 검색 버튼 클릭 이벤트 처리
+       // 검색 버튼 클릭 이벤트 처리
         $(document).on('click', '#search_button', function() {
           console.log("버튼으로");
           let keyword = $('#search_input').val();
@@ -119,10 +119,16 @@
     <button type="button" id="search_button">검색</button>
   </div>
   <div class="user_buttons">
-    <button id="login_button"><a th:href="@{/login}">로그인</a></button>
-    <button id="signup_button"><a th:href="@{/members/new}">회원가입</a></button>
-    <button id="profile_button" style="display: none;">프로필</button>
+    <div th:block sec:authorize="!isAuthenticated()">
+      <button id="login_button"><a th:href="@{/login}">로그인</a></button>
+      <button id="signup_button"><a th:href="@{/members/new}">회원가입</a></button>
+    </div>
+    <div th:block sec:authorize="isAuthenticated()">
+      <button id="login_button"><a th:href="@{/myPage}">프로필</a></button>
+      <button id="signup_button"><a th:href="@{/logout}">로그아웃</a></button>
+    </div>
   </div>
 </header>
+
 </body>
 </html>
