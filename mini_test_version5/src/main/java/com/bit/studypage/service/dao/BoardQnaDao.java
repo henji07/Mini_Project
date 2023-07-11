@@ -6,7 +6,7 @@ import com.bit.studypage.dto.BoardCmmntQnaDTO;
 import com.bit.studypage.dto.BoardQnaDTO;
 import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
+//@Mapper
 public interface BoardQnaDao {
 	//댓글 리스트
 	List<BoardCmmntQnaDTO> selectCommentList(long boardId);

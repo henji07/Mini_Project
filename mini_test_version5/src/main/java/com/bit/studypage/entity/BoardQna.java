@@ -43,9 +43,8 @@ public class BoardQna {
 
 	@Column(name="board_writer")
 	private String boardWriter;
-
 	@Column(name="board_reg_date")
-	private LocalDateTime boardRegdate;//작성일
+	private LocalDateTime boardRegdate;
 
 	@Column(name = "like_count")
     private long likeCount;
@@ -72,5 +71,10 @@ public class BoardQna {
 	public void addLikeCount(long likeCount) {
 		this.likeCount = likeCount;
 	}
+
+
+
+
+
 
 }

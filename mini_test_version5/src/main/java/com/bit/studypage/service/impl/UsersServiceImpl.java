@@ -1,36 +1,37 @@
 package com.bit.studypage.service.impl;
 
 import com.bit.studypage.entity.Users;
-import com.bit.studypage.repository.UserRepository;
+
+import com.bit.studypage.repository.UsersRepository;
 import com.bit.studypage.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
+@RequiredArgsConstructor
 @Service
 public class UsersServiceImpl implements UserService {
-    private UserRepository userRepository;
-    @Autowired
-    public UsersServiceImpl(UserRepository userRepository){
-        this.userRepository = userRepository;
-    };
+    private final UsersRepository usersRepository;
+
+
     @Override
     public Users loginUser(Long usersId){
-        return userRepository.findById(usersId).get();
+        return usersRepository.findById(usersId).get();
     }
 
     @Override
     public void updateUesr(Users user) {
-        userRepository.save(user);
+        usersRepository.save(user);
     }
 
     @Override
     public void delUser(Users users) {
-        userRepository.delete(users);
+        usersRepository.delete(users);
     }
 
     @Override
     public Long getUsersId(String userName) {
-        return userRepository.findByUserId(userName).getUsersId();
+        return usersRepository.findByUserId(userName).getUsersId();
     }
 
 //    @Override

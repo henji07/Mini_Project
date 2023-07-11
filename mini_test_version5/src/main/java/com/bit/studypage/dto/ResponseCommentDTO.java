@@ -12,12 +12,12 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ResponseCommentDTO<T> {
 
-	private String success;
+    private String success;
     private String message;
     private T data;
     private List<T> dataList;
-    
- // 기본 생성자 추가
+
+    // 기본 생성자 추가
     public ResponseCommentDTO() {
     }
 }

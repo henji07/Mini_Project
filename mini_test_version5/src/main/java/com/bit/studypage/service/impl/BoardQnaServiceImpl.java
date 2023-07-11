@@ -32,6 +32,7 @@ import com.bit.studypage.repository.LikeQnaRepository;
 import com.bit.studypage.service.BoardQnaService;
 import com.bit.studypage.service.dao.BoardQnaDao;
 
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -418,6 +419,4 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		long totalBoards = boardRepository.countByTitleContaining(keyword);
 		return (int) Math.ceil((double) totalBoards / pageSize);
 	}
-
-
 }

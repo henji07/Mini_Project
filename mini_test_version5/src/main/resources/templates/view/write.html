@@ -12,13 +12,13 @@
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript">
    $(function() {
-   $(document).ready(function () {
-	      $('#summernote').summernote({
-	        placeholder: '내용을 작성해주세요',
-	        tabsize: 2,
-	        height: 500
-	      });
-	    });
+   // $(document).ready(function () {
+	//       $('#summernote').summernote({
+	//         placeholder: '내용을 작성해주세요',
+	//         tabsize: 2,
+	//         height: 500
+	//       });
+	//     });
    });
    </script>
 </th:block>
@@ -37,7 +37,7 @@
 </div>
 <div class="summer">
   <form method="post" action="editorProc.js">
-    <table style="width:70" maxlength="20">
+    <table style="width: auto" maxlength="20">
       <tr class="con2">
         <td>제 목 <input id="in" type="text" name="subject" style="width:63em"></td>
       </tr>

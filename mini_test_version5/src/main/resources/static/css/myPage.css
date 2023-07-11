@@ -240,11 +240,8 @@
 #profile-select-container{
   display: flex;
   justify-content: flex-start;
-<<<<<<< HEAD
   height:10%;
-=======
-  flex-grow: 1;
->>>>>>> fcb6f8d0285295841ae9f9d7a32212a519f6499f
+
 }
 #profile-select-container .profile-select{
   margin: 0px 40px;
@@ -349,11 +346,8 @@ td{
 #profile-text-con{
   flex-grow: 1;
   width: 100%;
-<<<<<<< HEAD
   font-size: 0.8rem;
-=======
-  font-size: 0.profile-8rem;
->>>>>>> fcb6f8d0285295841ae9f9d7a32212a519f6499f
+
 }
 #profile-email-btn > button{
   background-color: rgb(250, 181, 97);
@@ -464,7 +458,7 @@ td{
   font-weight: 700;
   font-size: 15px;
   z-index: 999;
-<<<<<<< HEAD
+
 }
 #modal {
   position: fixed;
@@ -496,6 +490,4 @@ td{
   color: black;
   text-decoration: none;
   cursor: pointer;
-=======
->>>>>>> fcb6f8d0285295841ae9f9d7a32212a519f6499f
 }

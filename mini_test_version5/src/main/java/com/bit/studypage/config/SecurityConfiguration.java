@@ -1,7 +1,9 @@
 package com.bit.studypage.config;
 
 import com.bit.studypage.handler.LoginFailureHandler;
+import com.bit.studypage.oauth.OAuth2UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,18 +17,21 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
-
-@RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-    private final LoginFailureHandler loginFailureHandler;
+    @Autowired
+    private LoginFailureHandler loginFailureHandler;
+
+    @Autowired
+    private OAuth2UserService oAuth2UserService;
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    };
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -58,13 +63,20 @@ public class SecurityConfiguration {
                     //로그인 실패 후 핸들러 등록
                     formLogin.failureHandler(loginFailureHandler);
                     formLogin.defaultSuccessUrl("/"); //로그인 성공 후 이동 페이지
-                    formLogin.failureUrl("/login");//로그인 실패 후 이동 페이지
+//                    formLogin.failureUrl("/login");//로그인 실패 후 이동 페이지
+                })
+                //OAuth2 로그인 설정
+                .oauth2Login(oauth2 -> {
+                    oauth2.loginPage("/login");
+                    oauth2.userInfoEndpoint(userInfoEndpointConfig -> {
+                        userInfoEndpointConfig.userService(oAuth2UserService);
+                    });
                 })
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login")
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
+                        .logoutSuccessUrl("/login")
                 )
 
                 .build();

@@ -1,6 +1,6 @@
 package com.bit.studypage.repository;
 
-import com.bit.studypage.entity.Board;
+
 import com.bit.studypage.entity.Comments;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
