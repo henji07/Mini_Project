@@ -23,6 +23,15 @@
      });
    });
    
+  //새로고침 되어도 글 정렬에서 선택한 값 그대로 있게 
+   window.onload = function() {
+	    // 페이지 로드 시 sortOption의 값을 확인하여 해당하는 옵션을 선택
+	    var sortOption = new URLSearchParams(window.location.search).get('sortOption');
+	    if (sortOption) {
+	        document.getElementById('list-options').value = sortOption;
+	    }
+	} 
+   
    //글 정렬
    function changeSortOption() {
 	    var sortOption = document.getElementById("list-options").value;
@@ -101,11 +110,11 @@
 </div>
 
 <!-- 상단 페이징 -->
-<div class="pagination-top" th:if="${noResultMessage == null}">
+<div class="pagination-top">
     <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
     <div class="pagination-top-buttons">
-      <button class="pagination-top-button" th:disabled="${currentPage == 1}" th:onclick="'location.href=\'/board/search/' + (${currentPage} - 1) + '?keyword=' + encodeURIComponent(${keyword}) + '\''">&larr;</button>
-      <button class="pagination-top-button" th:disabled="${currentPage == totalPages}" th:onclick="'location.href=\'/board/search/' + (${currentPage} + 1) + '?keyword=' + encodeURIComponent(${keyword}) + '\''">&rarr;</button>
+      <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} - 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous"  th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr;</a>
+      <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} + 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">&rarr;</a>
     </div>
 </div>
 
@@ -139,16 +148,18 @@
   </div>
 <!-- 하단 페이징 -->
 <!-- 상수로 페이지 그룹 사이즈를 설정. -->
-<th:block th:with="pageGroupSize=5" th:if="${noResultMessage == null}">
-<div class="pagination-bottom">
-    <button class="pagination-bottom-button pagination-button-previous" th:disabled="${currentPage <= 1}" th:onclick="'location.href=\'/board/search/' + (${currentPage} - 1) + '?keyword=' + encodeURIComponent(${keyword}) + '\''">&larr; Previous</button>
-    
-    <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
-        <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/search/{pageNum}?keyword={keyword}(pageNum=${i},keyword=${keyword})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
-    </div>
+<th:block th:with="pageGroupSize=5">
+    <div class="pagination-bottom">
 
-    <button class="pagination-bottom-button pagination-button-next" th:disabled="${currentPage >= totalPages}" th:onclick="'location.href=\'/board/search/' + (${currentPage} + 1) + '?keyword=' + encodeURIComponent(${keyword}) + '\''">Next &rarr;</button>
-</div>
+        <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} - 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous" th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr; Previous</a>
+        
+        <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
+            <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{'/board/search/' + ${i} + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
+        </div>
+
+        <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} + 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">Next &rarr;</a>
+
+    </div>
 </th:block>
 </div>
 </th:block>
