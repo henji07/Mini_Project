@@ -1,0 +1,891 @@
+2023-07-04 00:49:19.245 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool:804 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h4m41s304ms939µs600ns).
+2023-07-04 00:50:05.833 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 00:50:05.833 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-07-04 00:50:05.848 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2023-07-04 00:50:17.465 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-07-04 00:50:17.508 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 8000 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-07-04 00:50:17.509 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-07-04 00:50:17.807 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-04 00:50:17.807 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-04 00:50:18.571 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 00:50:18.572 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-04 00:50:18.609 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:50:18.610 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:50:18.612 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:50:18.613 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentsRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:50:18.614 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.DelUserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:50:18.616 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.FileQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:50:18.618 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.LikesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:50:18.619 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.ProfileImgRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:50:18.623 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:50:18.623 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 48 ms. Found 0 JDBC repository interfaces.
+2023-07-04 00:50:18.632 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 00:50:18.633 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-04 00:50:18.683 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 46 ms. Found 9 JPA repository interfaces.
+2023-07-04 00:50:18.804 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-07-04 00:50:19.386 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-07-04 00:50:19.399 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-07-04 00:50:19.400 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-07-04 00:50:19.400 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-04 00:50:19.493 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-07-04 00:50:19.495 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1683 ms
+2023-07-04 00:50:19.567 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-07-04 00:50:19.763 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f20968c
+2023-07-04 00:50:19.765 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-07-04 00:50:19.846 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-04 00:50:19.949 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-04 00:50:19.952 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-07-04 00:50:20.124 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 00:50:20.308 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-04 00:50:20.405 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-07-04 00:50:20.407 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-07-04 00:50:20.709 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 00:50:21.620 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-04 00:50:22.303 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 00:50:23.026 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-07-04 00:50:23.092 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-04 00:50:23.399 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5adbd912, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7dbf7e64, org.springframework.security.web.context.SecurityContextHolderFilter@7e62b4f8, org.springframework.security.web.header.HeaderWriterFilter@3cdcd44d, org.springframework.security.web.authentication.logout.LogoutFilter@5bebf160, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@18d6a1cf, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@48bdffc2, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@74e317d9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@63cd3005, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3ecb4ec4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@57b26429, org.springframework.security.web.access.ExceptionTranslationFilter@56f4a493, org.springframework.security.web.access.intercept.AuthorizationFilter@1b32ef15]
+2023-07-04 00:50:23.759 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-07-04 00:50:23.779 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-07-04 00:50:23.798 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-04 00:50:23.808 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 6.915 seconds (process running for 7.622)
+2023-07-04 00:50:42.757 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-04 00:50:42.757 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-07-04 00:50:42.757 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 0 ms
+2023-07-04 00:51:42.152 [http-nio-9090-exec-10] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "java.util.Map.get(Object)" is null
+	at com.bit.studypage.oauth.provider.GoogleUserInfo.getProvierId(GoogleUserInfo.java:16)
+	at com.bit.studypage.oauth.OAuth2UserService.loadUser(OAuth2UserService.java:62)
+	at org.springframework.security.oauth2.client.authentication.OAuth2LoginAuthenticationProvider.authenticate(OAuth2LoginAuthenticationProvider.java:117)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter.attemptAuthentication(OAuth2LoginAuthenticationFilter.java:195)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:231)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:181)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-04 00:52:39.185 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 00:52:39.188 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-07-04 00:52:39.195 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2023-07-04 00:52:47.629 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-07-04 00:52:47.685 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 23360 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-07-04 00:52:47.686 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-07-04 00:52:48.003 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-04 00:52:48.003 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-04 00:52:48.834 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 00:52:48.836 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-04 00:52:48.873 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:52:48.875 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:52:48.876 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:52:48.879 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentsRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:52:48.880 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.DelUserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:52:48.881 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.FileQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:52:48.882 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.LikesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:52:48.884 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.ProfileImgRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:52:48.886 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:52:48.887 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 47 ms. Found 0 JDBC repository interfaces.
+2023-07-04 00:52:48.896 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 00:52:48.897 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-04 00:52:48.947 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 46 ms. Found 9 JPA repository interfaces.
+2023-07-04 00:52:49.070 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-07-04 00:52:49.579 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-07-04 00:52:49.592 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-07-04 00:52:49.592 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-07-04 00:52:49.593 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-04 00:52:49.676 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-07-04 00:52:49.676 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1673 ms
+2023-07-04 00:52:49.784 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-07-04 00:52:50.280 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@53bf7ace
+2023-07-04 00:52:50.284 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-07-04 00:52:50.401 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-04 00:52:50.469 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-04 00:52:50.472 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-07-04 00:52:50.618 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 00:52:50.773 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-04 00:52:50.858 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-07-04 00:52:50.860 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-07-04 00:52:51.097 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 00:52:51.907 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-04 00:52:52.279 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 00:52:52.984 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-07-04 00:52:53.055 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-04 00:52:53.395 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@77cfb840, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6269813, org.springframework.security.web.context.SecurityContextHolderFilter@2a7bcefb, org.springframework.security.web.header.HeaderWriterFilter@6121645d, org.springframework.security.web.authentication.logout.LogoutFilter@13a8fb07, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@706608e2, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@17acd69c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@779a685b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1c4f2aa7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@460e7d4f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7131f4f4, org.springframework.security.web.access.ExceptionTranslationFilter@60cf3fb3, org.springframework.security.web.access.intercept.AuthorizationFilter@2214ab51]
+2023-07-04 00:52:53.762 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-07-04 00:52:53.784 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-07-04 00:52:53.806 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-04 00:52:53.816 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 6.81 seconds (process running for 7.673)
+2023-07-04 00:52:58.816 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-04 00:52:58.817 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-07-04 00:52:58.818 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+2023-07-04 00:53:03.299 [http-nio-9090-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "java.util.Map.get(Object)" is null
+	at com.bit.studypage.oauth.provider.GoogleUserInfo.getProvierId(GoogleUserInfo.java:16)
+	at com.bit.studypage.oauth.OAuth2UserService.loadUser(OAuth2UserService.java:62)
+	at org.springframework.security.oauth2.client.authentication.OAuth2LoginAuthenticationProvider.authenticate(OAuth2LoginAuthenticationProvider.java:117)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter.attemptAuthentication(OAuth2LoginAuthenticationFilter.java:195)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:231)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:181)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-04 00:56:20.395 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 00:56:20.397 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-07-04 00:56:20.404 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2023-07-04 00:56:26.168 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-07-04 00:56:26.221 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 23040 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-07-04 00:56:26.222 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-07-04 00:56:26.598 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-04 00:56:26.598 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-04 00:56:27.602 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 00:56:27.604 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-04 00:56:27.656 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:56:27.658 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:56:27.662 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:56:27.663 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentsRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:56:27.665 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.DelUserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:56:27.666 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.FileQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:56:27.669 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.LikesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:56:27.672 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.ProfileImgRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:56:27.675 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 00:56:27.675 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 66 ms. Found 0 JDBC repository interfaces.
+2023-07-04 00:56:27.689 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 00:56:27.691 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-04 00:56:27.768 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 72 ms. Found 9 JPA repository interfaces.
+2023-07-04 00:56:27.953 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-07-04 00:56:28.583 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-07-04 00:56:28.594 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-07-04 00:56:28.595 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-07-04 00:56:28.596 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-04 00:56:28.698 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-07-04 00:56:28.698 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 2099 ms
+2023-07-04 00:56:28.793 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-07-04 00:56:29.026 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4613b31a
+2023-07-04 00:56:29.030 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-07-04 00:56:29.128 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-04 00:56:29.177 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-04 00:56:29.180 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-07-04 00:56:29.339 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 00:56:29.478 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-04 00:56:29.565 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-07-04 00:56:29.567 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-07-04 00:56:29.822 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 00:56:30.825 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-04 00:56:31.628 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 00:56:32.362 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-07-04 00:56:32.433 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-04 00:56:32.728 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@570036f1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@62735596, org.springframework.security.web.context.SecurityContextHolderFilter@35df816e, org.springframework.security.web.header.HeaderWriterFilter@4df0d1e4, org.springframework.security.web.authentication.logout.LogoutFilter@571a3f47, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@89aaed3, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@4e3f7f38, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1f034243, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7920eeab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@638b382, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@41cadbc4, org.springframework.security.web.access.ExceptionTranslationFilter@1408a3d6, org.springframework.security.web.access.intercept.AuthorizationFilter@18209e15]
+2023-07-04 00:56:33.120 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-07-04 00:56:33.140 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-07-04 00:56:33.160 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-04 00:56:33.170 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 7.707 seconds (process running for 8.669)
+2023-07-04 00:56:46.987 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-04 00:56:46.987 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-07-04 00:56:46.988 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+2023-07-04 00:56:54.974 [http-nio-9090-exec-6] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "java.util.Map.get(Object)" is null
+	at com.bit.studypage.oauth.provider.GoogleUserInfo.getProvierId(GoogleUserInfo.java:16)
+	at com.bit.studypage.oauth.OAuth2UserService.loadUser(OAuth2UserService.java:61)
+	at org.springframework.security.oauth2.client.authentication.OAuth2LoginAuthenticationProvider.authenticate(OAuth2LoginAuthenticationProvider.java:117)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter.attemptAuthentication(OAuth2LoginAuthenticationFilter.java:195)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:231)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:181)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-04 00:56:55.402 [http-nio-9090-exec-9] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "java.util.Map.get(Object)" is null
+	at com.bit.studypage.oauth.provider.GoogleUserInfo.getProvierId(GoogleUserInfo.java:16)
+	at com.bit.studypage.oauth.OAuth2UserService.loadUser(OAuth2UserService.java:61)
+	at org.springframework.security.oauth2.client.authentication.OAuth2LoginAuthenticationProvider.authenticate(OAuth2LoginAuthenticationProvider.java:117)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter.attemptAuthentication(OAuth2LoginAuthenticationFilter.java:195)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:231)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:181)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-04 00:56:56.602 [http-nio-9090-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "java.util.Map.get(Object)" is null
+	at com.bit.studypage.oauth.provider.GoogleUserInfo.getProvierId(GoogleUserInfo.java:16)
+	at com.bit.studypage.oauth.OAuth2UserService.loadUser(OAuth2UserService.java:61)
+	at org.springframework.security.oauth2.client.authentication.OAuth2LoginAuthenticationProvider.authenticate(OAuth2LoginAuthenticationProvider.java:117)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter.attemptAuthentication(OAuth2LoginAuthenticationFilter.java:195)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:231)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:181)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-04 01:03:35.527 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 01:03:35.530 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-07-04 01:03:35.536 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2023-07-04 01:03:40.494 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-07-04 01:03:40.537 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 20052 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-07-04 01:03:40.539 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-07-04 01:03:40.837 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-04 01:03:40.837 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-04 01:03:41.662 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 01:03:41.663 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-04 01:03:41.699 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:03:41.701 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:03:41.703 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:03:41.704 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentsRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:03:41.706 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.DelUserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:03:41.707 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.FileQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:03:41.709 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.LikesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:03:41.710 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.ProfileImgRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:03:41.712 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:03:41.714 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 45 ms. Found 0 JDBC repository interfaces.
+2023-07-04 01:03:41.722 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 01:03:41.723 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-04 01:03:41.772 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 46 ms. Found 9 JPA repository interfaces.
+2023-07-04 01:03:41.889 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-07-04 01:03:42.394 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-07-04 01:03:42.402 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-07-04 01:03:42.404 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-07-04 01:03:42.404 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-04 01:03:42.491 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-07-04 01:03:42.493 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1653 ms
+2023-07-04 01:03:42.576 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-07-04 01:03:43.060 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e455ff6
+2023-07-04 01:03:43.064 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-07-04 01:03:43.158 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-04 01:03:43.211 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-04 01:03:43.213 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-07-04 01:03:43.348 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 01:03:43.491 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-04 01:03:43.578 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-07-04 01:03:43.580 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-07-04 01:03:43.826 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 01:03:44.640 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-04 01:03:45.016 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 01:03:45.725 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-07-04 01:03:45.794 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-04 01:03:46.127 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@32e69162, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38e122c6, org.springframework.security.web.context.SecurityContextHolderFilter@56ab8ff, org.springframework.security.web.header.HeaderWriterFilter@2a7bcefb, org.springframework.security.web.authentication.logout.LogoutFilter@37983b24, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@37ae874f, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@77cfb840, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2d7f857b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23f16184, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a45e59d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@ab5c3c9, org.springframework.security.web.access.ExceptionTranslationFilter@3efc5fa7, org.springframework.security.web.access.intercept.AuthorizationFilter@2a36fd4f]
+2023-07-04 01:03:46.547 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-07-04 01:03:46.568 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-07-04 01:03:46.591 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-04 01:03:46.601 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 6.667 seconds (process running for 7.439)
+2023-07-04 01:04:04.872 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-04 01:04:04.872 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-07-04 01:04:04.879 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 0 ms
+2023-07-04 01:04:12.228 [http-nio-9090-exec-2] INFO  c.b.s.controller.HomeController:19 - hello
+2023-07-04 01:04:18.659 [http-nio-9090-exec-10] INFO  c.b.s.controller.HomeController:19 - hello
+2023-07-04 01:15:35.666 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 01:15:35.666 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-07-04 01:15:35.678 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2023-07-04 01:15:40.226 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-07-04 01:15:40.273 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 22584 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-07-04 01:15:40.274 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-07-04 01:15:40.571 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-04 01:15:40.571 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-04 01:15:41.363 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 01:15:41.364 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-04 01:15:41.405 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:15:41.407 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:15:41.408 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:15:41.409 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentsRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:15:41.411 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.DelUserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:15:41.413 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.FileQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:15:41.415 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.LikesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:15:41.416 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.ProfileImgRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:15:41.418 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 01:15:41.419 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 50 ms. Found 0 JDBC repository interfaces.
+2023-07-04 01:15:41.431 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 01:15:41.432 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-04 01:15:41.482 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 47 ms. Found 9 JPA repository interfaces.
+2023-07-04 01:15:41.603 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-07-04 01:15:42.100 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-07-04 01:15:42.110 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-07-04 01:15:42.111 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-07-04 01:15:42.111 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-04 01:15:42.191 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-07-04 01:15:42.191 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1619 ms
+2023-07-04 01:15:42.294 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-07-04 01:15:42.532 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4b93652
+2023-07-04 01:15:42.536 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-07-04 01:15:42.660 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-04 01:15:42.721 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-04 01:15:42.724 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-07-04 01:15:42.887 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 01:15:43.032 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-04 01:15:43.122 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-07-04 01:15:43.123 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-07-04 01:15:43.365 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 01:15:44.206 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-04 01:15:44.718 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 01:15:45.386 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-07-04 01:15:45.460 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-04 01:15:45.776 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@758e197c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5c30a914, org.springframework.security.web.context.SecurityContextHolderFilter@4e1da4e, org.springframework.security.web.header.HeaderWriterFilter@617e383d, org.springframework.security.web.authentication.logout.LogoutFilter@16cf3f29, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@6635cbd4, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@685839e0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4f04a6fa, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@41e465d9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7fb1377a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4ab75e36, org.springframework.security.web.access.ExceptionTranslationFilter@18d418e8, org.springframework.security.web.access.intercept.AuthorizationFilter@4cbb5ab0]
+2023-07-04 01:15:46.142 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-07-04 01:15:46.163 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-07-04 01:15:46.183 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-04 01:15:46.192 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 6.499 seconds (process running for 7.247)
+2023-07-04 01:15:56.296 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-04 01:15:56.296 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-07-04 01:15:56.297 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+2023-07-04 09:41:19.179 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool:804 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8h22m18s796ms892µs300ns).
+2023-07-04 15:21:41.049 [http-nio-9090-exec-10] INFO  c.b.s.controller.HomeController:19 - hello
+2023-07-04 15:22:20.295 [http-nio-9090-exec-6] INFO  c.b.s.controller.HomeController:19 - hello
+2023-07-04 15:22:42.827 [http-nio-9090-exec-3] INFO  c.b.s.controller.HomeController:19 - hello
+2023-07-04 15:27:19.291 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 15:27:19.291 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-07-04 15:27:19.307 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2023-07-04 23:40:48.020 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-07-04 23:40:48.092 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 23032 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-07-04 23:40:48.093 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-07-04 23:40:48.495 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-04 23:40:48.496 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-04 23:40:49.531 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 23:40:49.533 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-04 23:40:49.587 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:40:49.589 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:40:49.591 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:40:49.593 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentsRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:40:49.595 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.DelUserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:40:49.596 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.FileQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:40:49.599 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.LikesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:40:49.600 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.ProfileImgRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:40:49.604 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:40:49.604 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 64 ms. Found 0 JDBC repository interfaces.
+2023-07-04 23:40:49.618 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 23:40:49.620 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-04 23:40:49.689 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 63 ms. Found 9 JPA repository interfaces.
+2023-07-04 23:40:49.855 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-07-04 23:40:50.371 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-07-04 23:40:50.383 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-07-04 23:40:50.384 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-07-04 23:40:50.385 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-04 23:40:50.480 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-07-04 23:40:50.481 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1984 ms
+2023-07-04 23:40:50.585 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-07-04 23:40:50.851 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@748e7420
+2023-07-04 23:40:50.853 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-07-04 23:40:50.931 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-04 23:40:51.030 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-04 23:40:51.033 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-07-04 23:40:51.214 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 23:40:51.378 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-04 23:40:51.462 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-07-04 23:40:51.464 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-07-04 23:40:51.790 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 23:40:52.806 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-04 23:40:53.024 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 23:40:53.733 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-07-04 23:40:53.806 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-04 23:40:54.099 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@77cfb840, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6269813, org.springframework.security.web.context.SecurityContextHolderFilter@1c4f2aa7, org.springframework.security.web.header.HeaderWriterFilter@27d7dd6c, org.springframework.security.web.authentication.logout.LogoutFilter@679a4345, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@706608e2, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@17acd69c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2a36fd4f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7112b2bf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7290470a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7131f4f4, org.springframework.security.web.access.ExceptionTranslationFilter@6121645d, org.springframework.security.web.access.intercept.AuthorizationFilter@6ea2d241]
+2023-07-04 23:40:54.467 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-07-04 23:40:54.488 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-07-04 23:40:54.508 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-04 23:40:54.518 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 7.164 seconds (process running for 7.887)
+2023-07-04 23:41:09.832 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-04 23:41:09.838 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-07-04 23:41:09.838 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 0 ms
+2023-07-04 23:41:09.919 [http-nio-9090-exec-1] INFO  c.b.s.controller.HomeController:19 - hello
+2023-07-04 23:42:47.632 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 23:42:47.634 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-07-04 23:42:47.641 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2023-07-04 23:42:54.986 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-07-04 23:42:55.032 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 4036 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-07-04 23:42:55.033 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-07-04 23:42:55.341 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-04 23:42:55.341 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-04 23:42:56.132 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 23:42:56.133 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-04 23:42:56.169 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:42:56.170 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:42:56.172 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:42:56.173 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentsRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:42:56.175 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.DelUserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:42:56.176 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.FileQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:42:56.177 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.LikesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:42:56.179 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.ProfileImgRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:42:56.181 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:42:56.182 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 45 ms. Found 0 JDBC repository interfaces.
+2023-07-04 23:42:56.194 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 23:42:56.195 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-04 23:42:56.252 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 53 ms. Found 9 JPA repository interfaces.
+2023-07-04 23:42:56.400 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-07-04 23:42:56.880 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-07-04 23:42:56.889 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-07-04 23:42:56.890 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-07-04 23:42:56.890 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-04 23:42:56.972 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-07-04 23:42:56.973 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1631 ms
+2023-07-04 23:42:57.080 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-07-04 23:42:57.324 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@dac1ec8
+2023-07-04 23:42:57.327 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-07-04 23:42:57.425 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-04 23:42:57.478 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-04 23:42:57.481 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-07-04 23:42:57.646 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 23:42:57.786 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-04 23:42:57.867 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-07-04 23:42:57.869 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-07-04 23:42:58.108 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 23:42:58.916 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-04 23:42:59.194 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 23:42:59.893 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-07-04 23:42:59.974 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-04 23:43:00.280 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4d1698cb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@68e481b6, org.springframework.security.web.context.SecurityContextHolderFilter@776581a6, org.springframework.security.web.header.HeaderWriterFilter@5790d36d, org.springframework.security.web.authentication.logout.LogoutFilter@2b78f1be, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@764649d9, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@596f9708, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@33fc7b2b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@20152b4d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@26452a81, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@42706342, org.springframework.security.web.access.ExceptionTranslationFilter@55d30cd5, org.springframework.security.web.access.intercept.AuthorizationFilter@28874038]
+2023-07-04 23:43:00.683 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-07-04 23:43:00.703 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-07-04 23:43:00.722 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-04 23:43:00.732 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 6.289 seconds (process running for 7.156)
+2023-07-04 23:43:08.433 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-04 23:43:08.434 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-07-04 23:43:08.435 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+2023-07-04 23:48:06.874 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 23:48:06.877 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-07-04 23:48:06.883 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2023-07-04 23:48:10.736 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-07-04 23:48:10.780 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 3144 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-07-04 23:48:10.781 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-07-04 23:48:11.068 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-04 23:48:11.068 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-04 23:48:11.864 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 23:48:11.866 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-04 23:48:11.902 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:48:11.903 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:48:11.905 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:48:11.907 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentsRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:48:11.908 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.DelUserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:48:11.910 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.FileQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:48:11.911 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.LikesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:48:11.912 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.ProfileImgRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:48:11.915 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:48:11.916 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 45 ms. Found 0 JDBC repository interfaces.
+2023-07-04 23:48:11.926 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 23:48:11.927 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-04 23:48:11.977 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 46 ms. Found 9 JPA repository interfaces.
+2023-07-04 23:48:12.103 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-07-04 23:48:12.589 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-07-04 23:48:12.597 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-07-04 23:48:12.597 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-07-04 23:48:12.598 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-04 23:48:12.684 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-07-04 23:48:12.685 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1615 ms
+2023-07-04 23:48:12.834 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-07-04 23:48:13.065 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@53bf7ace
+2023-07-04 23:48:13.069 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-07-04 23:48:13.167 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-04 23:48:13.233 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-04 23:48:13.236 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-07-04 23:48:13.393 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 23:48:13.529 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-04 23:48:13.591 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-07-04 23:48:13.593 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-07-04 23:48:13.865 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 23:48:14.786 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-04 23:48:15.052 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 23:48:15.902 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-07-04 23:48:15.972 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-04 23:48:16.271 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@52b3f2a5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@c4a555c, org.springframework.security.web.context.SecurityContextHolderFilter@983f83f, org.springframework.security.web.header.HeaderWriterFilter@6ea2d241, org.springframework.security.web.authentication.logout.LogoutFilter@37ae874f, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@578ee767, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@6fb63235, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@67ff31e9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6c0a4467, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3c32315d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66c9a6a8, org.springframework.security.web.access.ExceptionTranslationFilter@2214ab51, org.springframework.security.web.access.intercept.AuthorizationFilter@437019c5]
+2023-07-04 23:48:16.674 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-07-04 23:48:16.699 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-07-04 23:48:16.722 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-04 23:48:16.732 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 6.537 seconds (process running for 7.391)
+2023-07-04 23:48:35.081 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-04 23:48:35.081 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-07-04 23:48:35.081 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 0 ms
+2023-07-04 23:48:35.089 [http-nio-9090-exec-1] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /oauth2/authorization/kakao
+2023-07-04 23:48:35.114 [http-nio-9090-exec-1] DEBUG o.s.s.web.DefaultRedirectStrategy:56 - Redirecting to https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=b233d24573552f0b681c69783b11dd3e&scope=profile_nickname%20account_email&state=gjK2hwEHezX4LjkuMhTl4gVhkPFAIr1DIdNxEK9pzcg%3D&redirect_uri=http://localhost:9090/login/oauth2/code/kakao
+2023-07-04 23:48:37.972 [http-nio-9090-exec-2] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /login/oauth2/code/kakao?code=KhbS9LFhyyZAERQrD4QbM7rY-JlcfHVtvN_pTDn8kylHjB81wuJLSjCd_8D0foSCvwIEWAo9c5sAAAGJIWB3jw&state=gjK2hwEHezX4LjkuMhTl4gVhkPFAIr1DIdNxEK9pzcg%3D
+2023-07-04 23:48:38.294 [http-nio-9090-exec-2] DEBUG o.s.s.a.DefaultAuthenticationEventPublisher:121 - No event was found for the exception org.springframework.security.oauth2.core.OAuth2AuthenticationException
+2023-07-04 23:48:38.294 [http-nio-9090-exec-2] DEBUG o.s.s.web.DefaultRedirectStrategy:56 - Redirecting to /login?error
+2023-07-04 23:48:38.310 [http-nio-9090-exec-3] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /login?error
+2023-07-04 23:48:38.326 [http-nio-9090-exec-3] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /login?error
+2023-07-04 23:48:39.203 [http-nio-9090-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:39.299 [http-nio-9090-exec-4] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /css/home.css
+2023-07-04 23:48:39.301 [http-nio-9090-exec-5] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /css/footer.css
+2023-07-04 23:48:39.301 [http-nio-9090-exec-8] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /css/login.css
+2023-07-04 23:48:39.301 [http-nio-9090-exec-7] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /js/jquery-3.7.0.min.js
+2023-07-04 23:48:39.307 [http-nio-9090-exec-6] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /js/common.js
+2023-07-04 23:48:39.310 [http-nio-9090-exec-4] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /css/home.css
+2023-07-04 23:48:39.310 [http-nio-9090-exec-7] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /js/jquery-3.7.0.min.js
+2023-07-04 23:48:39.310 [http-nio-9090-exec-6] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /js/common.js
+2023-07-04 23:48:39.310 [http-nio-9090-exec-8] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /css/login.css
+2023-07-04 23:48:39.310 [http-nio-9090-exec-5] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /css/footer.css
+2023-07-04 23:48:39.320 [http-nio-9090-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:39.320 [http-nio-9090-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:39.320 [http-nio-9090-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:39.320 [http-nio-9090-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:39.320 [http-nio-9090-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:39.350 [http-nio-9090-exec-9] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/Pagelogo.png
+2023-07-04 23:48:39.351 [http-nio-9090-exec-10] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/footerLogo.png
+2023-07-04 23:48:39.353 [http-nio-9090-exec-9] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/Pagelogo.png
+2023-07-04 23:48:39.353 [http-nio-9090-exec-10] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/footerLogo.png
+2023-07-04 23:48:39.358 [http-nio-9090-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:39.359 [http-nio-9090-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:39.369 [http-nio-9090-exec-1] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/arrow2.png
+2023-07-04 23:48:39.369 [http-nio-9090-exec-1] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/arrow2.png
+2023-07-04 23:48:39.373 [http-nio-9090-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:39.386 [http-nio-9090-exec-2] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/btn_google_light_normal_ios.svg
+2023-07-04 23:48:39.386 [http-nio-9090-exec-3] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/icon-login-naver.svg
+2023-07-04 23:48:39.387 [http-nio-9090-exec-8] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/icon-login-kakao.svg
+2023-07-04 23:48:39.390 [http-nio-9090-exec-2] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/btn_google_light_normal_ios.svg
+2023-07-04 23:48:39.390 [http-nio-9090-exec-8] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/icon-login-kakao.svg
+2023-07-04 23:48:39.390 [http-nio-9090-exec-3] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/icon-login-naver.svg
+2023-07-04 23:48:39.394 [http-nio-9090-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:39.394 [http-nio-9090-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:39.394 [http-nio-9090-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:41.935 [http-nio-9090-exec-5] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /css/home.css
+2023-07-04 23:48:41.935 [http-nio-9090-exec-6] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /css/footer.css
+2023-07-04 23:48:41.938 [http-nio-9090-exec-5] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /css/home.css
+2023-07-04 23:48:41.938 [http-nio-9090-exec-6] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /css/footer.css
+2023-07-04 23:48:41.949 [http-nio-9090-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:41.949 [http-nio-9090-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:48:42.047 [http-nio-9090-exec-4] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /css/login.css
+2023-07-04 23:48:42.050 [http-nio-9090-exec-4] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /css/login.css
+2023-07-04 23:48:42.053 [http-nio-9090-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:54:48.566 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 23:54:48.569 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-07-04 23:54:48.578 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2023-07-04 23:54:54.088 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-07-04 23:54:54.130 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 24088 (C:\BitcampProject\Mini_Project\mini_test_version5\build\classes\java\main started by engk9 in C:\BitcampProject\Mini_Project\mini_test_version5)
+2023-07-04 23:54:54.132 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-07-04 23:54:54.440 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-04 23:54:54.440 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-04 23:54:55.291 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 23:54:55.292 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-04 23:54:55.327 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:54:55.328 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:54:55.330 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:54:55.332 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentsRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:54:55.334 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.DelUserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:54:55.335 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.FileQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:54:55.337 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.LikesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:54:55.338 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.ProfileImgRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:54:55.341 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-04 23:54:55.341 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 45 ms. Found 0 JDBC repository interfaces.
+2023-07-04 23:54:55.353 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-04 23:54:55.355 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-04 23:54:55.403 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 45 ms. Found 9 JPA repository interfaces.
+2023-07-04 23:54:55.537 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner:44 - No MyBatis mapper was found in '[com.bit.studyPage.mapper]' package. Please check your configuration.
+2023-07-04 23:54:56.042 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-07-04 23:54:56.050 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-07-04 23:54:56.051 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-07-04 23:54:56.052 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-04 23:54:56.135 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-07-04 23:54:56.136 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1694 ms
+2023-07-04 23:54:56.240 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-07-04 23:54:56.478 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@caa269f
+2023-07-04 23:54:56.481 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-07-04 23:54:56.563 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-04 23:54:56.631 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-04 23:54:56.634 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-07-04 23:54:56.807 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 23:54:56.960 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-04 23:54:57.032 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-07-04 23:54:57.034 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-07-04 23:54:57.330 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-04 23:54:58.262 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-04 23:54:58.504 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-04 23:54:59.206 [restartedMain] WARN  o.m.spring.SqlSessionFactoryBean:44 - Property 'mapperLocations' was specified but matching resources are not found.
+2023-07-04 23:54:59.275 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-04 23:54:59.609 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5f36abe6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@72a69649, org.springframework.security.web.context.SecurityContextHolderFilter@2a36fd4f, org.springframework.security.web.header.HeaderWriterFilter@2214ab51, org.springframework.security.web.authentication.logout.LogoutFilter@17acd69c, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@31d02c01, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@31639bc2, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@72b6f247, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@983f83f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2bdb055e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@52b3f2a5, org.springframework.security.web.access.ExceptionTranslationFilter@6a8e65ec, org.springframework.security.web.access.intercept.AuthorizationFilter@74dd103f]
+2023-07-04 23:55:00.027 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-07-04 23:55:00.054 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-07-04 23:55:00.076 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-04 23:55:00.088 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 6.575 seconds (process running for 7.367)
+2023-07-04 23:55:09.501 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-04 23:55:09.501 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-07-04 23:55:09.504 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 2 ms
+2023-07-04 23:55:09.516 [http-nio-9090-exec-1] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /oauth2/authorization/kakao
+2023-07-04 23:55:09.544 [http-nio-9090-exec-1] DEBUG o.s.s.web.DefaultRedirectStrategy:56 - Redirecting to https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=b233d24573552f0b681c69783b11dd3e&scope=profile_nickname%20account_email&state=b5Q-Z0GZmsOJg8ck6MVdC51l32kquz0rcgTbWVgbZF0%3D&redirect_uri=http://localhost:9090/login/oauth2/code/kakao
+2023-07-04 23:55:11.531 [http-nio-9090-exec-2] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /login/oauth2/code/kakao?code=7TicWMYH9WJnWoyAbmzg-jWx4aN2AkL9VQoI2M6mkHQMEBz-7FR47ZIvA0Yg_pNS9GhtWgo9dRoAAAGJIWZ48A&state=b5Q-Z0GZmsOJg8ck6MVdC51l32kquz0rcgTbWVgbZF0%3D
+2023-07-04 23:55:11.977 [http-nio-9090-exec-2] DEBUG o.s.s.a.DefaultAuthenticationEventPublisher:121 - No event was found for the exception org.springframework.security.oauth2.core.OAuth2AuthenticationException
+2023-07-04 23:55:11.977 [http-nio-9090-exec-2] DEBUG o.s.s.web.DefaultRedirectStrategy:56 - Redirecting to /login?error
+2023-07-04 23:55:11.988 [http-nio-9090-exec-3] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /login?error
+2023-07-04 23:55:12.009 [http-nio-9090-exec-3] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /login?error
+2023-07-04 23:55:13.827 [http-nio-9090-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:55:13.961 [http-nio-9090-exec-4] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /css/home.css
+2023-07-04 23:55:13.964 [http-nio-9090-exec-5] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /css/footer.css
+2023-07-04 23:55:13.964 [http-nio-9090-exec-6] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /css/login.css
+2023-07-04 23:55:13.965 [http-nio-9090-exec-8] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /js/common.js
+2023-07-04 23:55:13.966 [http-nio-9090-exec-7] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /js/jquery-3.7.0.min.js
+2023-07-04 23:55:13.973 [http-nio-9090-exec-6] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /css/login.css
+2023-07-04 23:55:13.973 [http-nio-9090-exec-7] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /js/jquery-3.7.0.min.js
+2023-07-04 23:55:13.973 [http-nio-9090-exec-8] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /js/common.js
+2023-07-04 23:55:13.973 [http-nio-9090-exec-4] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /css/home.css
+2023-07-04 23:55:13.973 [http-nio-9090-exec-5] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /css/footer.css
+2023-07-04 23:55:13.981 [http-nio-9090-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:55:13.981 [http-nio-9090-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:55:13.981 [http-nio-9090-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:55:13.987 [http-nio-9090-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:55:13.987 [http-nio-9090-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:55:14.010 [http-nio-9090-exec-10] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/Pagelogo.png
+2023-07-04 23:55:14.010 [http-nio-9090-exec-9] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/footerLogo.png
+2023-07-04 23:55:14.014 [http-nio-9090-exec-10] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/Pagelogo.png
+2023-07-04 23:55:14.014 [http-nio-9090-exec-9] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/footerLogo.png
+2023-07-04 23:55:14.017 [http-nio-9090-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:55:14.017 [http-nio-9090-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:55:14.028 [http-nio-9090-exec-1] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/arrow2.png
+2023-07-04 23:55:14.032 [http-nio-9090-exec-1] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/arrow2.png
+2023-07-04 23:55:14.038 [http-nio-9090-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:55:14.048 [http-nio-9090-exec-2] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/btn_google_light_normal_ios.svg
+2023-07-04 23:55:14.048 [http-nio-9090-exec-3] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/icon-login-naver.svg
+2023-07-04 23:55:14.049 [http-nio-9090-exec-8] DEBUG o.s.security.web.FilterChainProxy:223 - Securing GET /image/icon-login-kakao.svg
+2023-07-04 23:55:14.051 [http-nio-9090-exec-2] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/btn_google_light_normal_ios.svg
+2023-07-04 23:55:14.049 [http-nio-9090-exec-3] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/icon-login-naver.svg
+2023-07-04 23:55:14.052 [http-nio-9090-exec-8] DEBUG o.s.security.web.FilterChainProxy:227 - Secured GET /image/icon-login-kakao.svg
+2023-07-04 23:55:14.056 [http-nio-9090-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:55:14.056 [http-nio-9090-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext
+2023-07-04 23:55:14.062 [http-nio-9090-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter:119 - Set SecurityContextHolder to anonymous SecurityContext

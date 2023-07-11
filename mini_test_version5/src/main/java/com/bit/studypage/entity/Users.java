@@ -1,67 +1,72 @@
 package com.bit.studypage.entity;
 
+
+
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-@Slf4j
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Slf4j //로그 찍을 때 
 @Getter
 @ToString
 @Entity
-@Table(name = "users")
-public class Users implements UserDetails { ////UserDetails는 시큐리티가 관리하는 객체이다.
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name="users")
+public class Users implements UserDetails, OAuth2User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="users_id")
-    private Long memberSno;
+    @Column(name = "users_id")
+    private Long usersId;
 
-    @Column(name="user_id", nullable = false, unique = true)
+    @Column(name = "user_id")
     private String userId;
 
-    @Column(name="user_name")
+    @Column(name = "user_name")
     private String name;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name="email", nullable = false)
+    @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name="phone_number")
+    @Column(name = "phone_number")
     private String phone;
 
-    @Column(name="interest")
+    @Column(name = "interest")
     private String interest;
 
-    @Column(name="gender")
+    @Column(name = "gender")
     private String gender;
 
-    @ElementCollection(fetch = FetchType.EAGER) //엔티티 클래스 내의 컬렉션 필드를 매핑할 때, 관련 데이터를 즉시 로드하도록 지정하는 것(별도의 테이블로 관리)
+    @Column(name = "user_nickname")
+    private String userNickname;
+
+    @Column(name = "is_terms")
+    private int isTerms;
+    //엔티티 클래스 내의 컬렉션 필드를 매핑할 때,
+    // 관련 데이터를 즉시 로드하도록 지정하는 것(별도의 테이블로 관리)
+    @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default //@Builder 어노테이션이 적용된 클래스의 빌더 패턴에서 기본값을 설정하는 데 사용
     private List<String> roles = new ArrayList<>();
 
-    private String picture;
-
-    //빌더
-    //생성자 주입 - setter 만들면 안 되니까 data에 값을 넣는 것.
-    //엔티티 값을 레파지토리에 던져줘야 하니까 값을 설정해준다.
-    //새로 만들 때만 쓰는 거
-
-    public Users update(String name, String picture) {
-        this.name = name;
-        this.picture = picture;
-
-        return this;
-    }
+    //@Transient: 테이블의 컬럼으로는 생성되지 않고 객체에서만 사용가능한 멤버변수
+    //소셜로그인 시 사용자 정보를 담아줄 Map 선언
+    @Transient
+    Map<String, Object> attributes;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -94,4 +99,15 @@ public class Users implements UserDetails { ////UserDetails는 시큐리티가 �
     public boolean isEnabled() {
         return true;
     }
+
+    //소셜 로그인 정보를 리턴해주는 메소드
+    @Override
+    public Map<String, Object> getAttributes() {
+        return this.attributes;
+    }
+
+
 }
+
+
+
