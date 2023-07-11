@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+</head>
+<body>
+<h1>Search Results</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Writer</th>
+    <th>Registration Date</th>
+    <th>Content</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- 검색 결과를 반복문으로 표시 -->
+  <tr th:each="searchResult : ${searchResults}">
+    <td th:text="${searchResult.searchTitle}"></td>
+    <td th:text="${searchResult.searchWriter}"></td>
+    <td th:text="${searchResult.searchRegDate}"></td>
+    <td th:text="${searchResult.searchContent}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- 게시판 영역 -->
+<div id="mainWrapper">
+  <ul>
+    <!-- 게시판 목록 -->
+    <li>
+      <ul id="ulTable">
+        <li>
+          <ul>
+            <li>카테고리</li>
+            <li>제목</li>
+            <li>작성일</li>
+            <li>작성자</li>
+            <li>조회수</li>
+          </ul>
+        </li>
+        <!-- 게시물이 출력될 영역 -->
+        <li th:each="board : ${searchResults}">
+          <ul>
+            <li th:text="${board.searchCate}"></li>
+            <li th:text="${board.searchTitle}"></li>
+            <li th:text="${board.searchRegDate}"></li>
+            <li th:text="${board.searchWriter}"></li>
+            <li th:text="${board.searchCnt}"></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <!-- 게시판 아래 드롭다운 검색 폼 영역 -->
+    <li id="liSearchOption">
+      <div>
+        <select id="selSearchOption">
+          <option value="A">제목+내용</option>
+          <option value="T">제목</option>
+          <option value="C">내용</option>
+        </select>
+        <input id="txtKeyWord" />
+        <input type="button" value="검색" onclick="searchPostsByOption($('#selSearchOption').val(), $('#txtKeyWord').val())" />
+      </div>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>
