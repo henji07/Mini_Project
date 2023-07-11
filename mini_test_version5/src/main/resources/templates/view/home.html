@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html
-
         xmlns:th="http://www.thymeleaf.org"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:p="http://www.w3.org/1999/html"
         layout:decorate="~{layouts/default-layout}">
 <head>
 
 
-
     <th:block layout:fragment="script">
         <script type="text/javascript" th:inline="javascript">
-            $(function() {
+            $(function () {
                 var slideIndex = 0;
                 var dots = document.querySelectorAll('.dot');
                 var slides = document.querySelectorAll('.slide');
@@ -22,12 +20,11 @@
                 showSlide(slideIndex);
                 setInterval(nextSlide, 3000);
                 // 아이콘 버튼 클릭시 로그인 확인
-                $(".image-button").on("click", function() {
-                    if(!isLoggedIn) {
+                $(".image-button").on("click", function () {
+                    if (!isLoggedIn) {
                         alert("로그인 해주세요.");
                     }
                 });
-
 
 
                 function showSlide(n) {
@@ -62,7 +59,7 @@
                 }
 
                 for (var i = 0; i < dots.length; i++) {
-                    dots[i].addEventListener('click', function() {
+                    dots[i].addEventListener('click', function () {
                         var index = Array.prototype.indexOf.call(dots, this);
                         setSlide(index);
                     });
@@ -87,30 +84,30 @@
             //     $(this).find(".category-image").attr("src", categoryImages[category]);
             // });
 
-          // $(document).ready(function (){
-          //     //  /*<![CDATA[*/
-          //     //  var category = /*[[${category}]]*/ 'default';
-          //      // console.log(categoryImages)
-          //           var categoryImages = {
-          //               "소통해요": "/image/sotong.png",
-          //               "궁금해요": "/image/curious.png",
-          //               "스터디": "/image/study.png",
-          //               "프로젝트": "/image/project.png"
-          //           };
+            // $(document).ready(function (){
+            //     //  /*<![CDATA[*/
+            //     //  var category = /*[[${category}]]*/ 'default';
+            //      // console.log(categoryImages)
+            //           var categoryImages = {
+            //               "소통해요": "/image/sotong.png",
+            //               "궁금해요": "/image/curious.png",
+            //               "스터디": "/image/study.png",
+            //               "프로젝트": "/image/project.png"
+            //           };
 
-               $(".popular-posts-nav a").click(function(e) {
-                   e.preventDefault(); // prevent the default action
+            $(".popular-posts-nav a").click(function (e) {
+                e.preventDefault(); // prevent the default action
 
-                   var clickedCategory = $(this).data("category"); // get the category
-                   console.log(clickedCategory);
+                var clickedCategory = $(this).data("category"); // get the category
+                console.log(clickedCategory);
 
-                   // 카테고리에 따라 이미지 변경
-                   // $(".popular-post").each(function() {
-                   //     $(this).find(".category-image").attr("src", categoryImages[clickedCategory]);
-                   // });
-               });
+                // 카테고리에 따라 이미지 변경
+                // $(".popular-post").each(function() {
+                //     $(this).find(".category-image").attr("src", categoryImages[clickedCategory]);
+                // });
+            });
 
-          //  /*]]>*/
+            //  /*]]>*/
 
 
         </script>
@@ -123,13 +120,13 @@
     <div class="slider-container">
         <div class="slider">
             <div class="slide">
-                <img src="./image/main1.png" alt="Slide 1" />
+                <img src="./image/main1.png" alt="Slide 1"/>
             </div>
             <div class="slide">
-                <img src="./image/main_2.png" alt="Slide 2" />
+                <img src="./image/main_2.png" alt="Slide 2"/>
             </div>
             <div class="slide">
-                <img src="./image/main3.png" alt="Slide 3" />
+                <img src="./image/main3.png" alt="Slide 3"/>
             </div>
         </div>
     </div>
@@ -142,14 +139,14 @@
     <!--인기글 네비게이션-->
     <div>
         <nav class="popular-posts-nav">
-<!--            <ul>-->
-<!--                <li><a th:href="@{'/'+${'소통해요'}}" data-category="소통해요" >소통해요</a></li>-->
-<!--                <li><a th:href="@{'/'+${'궁금해요'}}" data-category="궁금해요">궁금해요</a></li>-->
-<!--                <li><a th:href="@{'/'+${'스터디'}}" data-category="스터디">스터디</a></li>-->
-<!--                <li><a th:href="@{'/'+${'프로젝트'}}" data-category="프로젝트">프로젝트</a></li>-->
-<!--            </ul>-->
+            <!--            <ul>-->
+            <!--                <li><a th:href="@{'/'+${'소통해요'}}" data-category="소통해요" >소통해요</a></li>-->
+            <!--                <li><a th:href="@{'/'+${'궁금해요'}}" data-category="궁금해요">궁금해요</a></li>-->
+            <!--                <li><a th:href="@{'/'+${'스터디'}}" data-category="스터디">스터디</a></li>-->
+            <!--                <li><a th:href="@{'/'+${'프로젝트'}}" data-category="프로젝트">프로젝트</a></li>-->
+            <!--            </ul>-->
             <ul>
-                <li><a th:href="@{'/'+${'소통해요'}}" data-category="소통해요" >소통해요</a></li>
+                <li><a th:href="@{'/'+${'소통해요'}}" data-category="소통해요">소통해요</a></li>
                 <li><a th:href="@{'/'+${'궁금해요'}}" data-category="궁금해요">궁금해요</a></li>
                 <li><a th:href="@{'/'+${'스터디'}}" data-category="스터디">스터디</a></li>
                 <li><a th:href="@{'/'+${'프로젝트'}}" data-category="프로젝트">프로젝트</a></li>
@@ -168,10 +165,10 @@
                         <img class="category-image" th:src="@{${categoryImages[post.searchCate]}}" alt="대표이미지">
                     </div>
                     <div class="cate-right">
-                        <img src="/image/hot.png" alt="인기글" > <!-- 이미지. margin-right를 추가하여 이미지와 텍스트 사이에 간격을 줄 수 있습니다. -->
+                        <img src="/image/hot.png" alt="인기글"> <!-- 이미지. margin-right를 추가하여 이미지와 텍스트 사이에 간격을 줄 수 있습니다. -->
 
                     </div>
-                    </div>
+                </div>
                 <p>작성일자 | <span th:text="${post.searchRegDate}"></span></p> <!-- 날짜 -->
                 <div class="post-title">
                     <span th:text="${post.searchTitle}"></span> <!-- 제목 -->
@@ -186,7 +183,9 @@
                     <span id="boxcontent">
                         <span class="box-icon"><img src="/image/eye.png" alt="조회수 아이콘"></span> <!-- 이미지 -->
                         <span th:text="${post.searchCnt}"></span> <!-- 조회수 -->
-                        <span class="box-icon"><img src="/image/bubble.png" alt="댓글 아이콘" style="width: 25px; height: auto; margin-top: 5px"></span> <!-- 이미지 -->
+                        <span class="box-icon"><img src="/image/bubble.png" alt="댓글 아이콘"
+                                                    style="width: 25px; height: auto; margin-top: 5px"></span>
+                        <!-- 이미지 -->
                         <span th:text="${post.commentCount}" style="margin-right: 20px"></span> <!-- 수정된 부분: 댓글 수 출력 -->
 
 
@@ -199,5 +198,4 @@
     </div>
 </th:block>
 </body>
->>>>>>> fcb6f8d0285295841ae9f9d7a32212a519f6499f
 </html>

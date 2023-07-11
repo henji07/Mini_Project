@@ -45,32 +45,32 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/board")
 public class BoardQnaController {
 
-	private final BoardQnaService boardService;
-	private final LikeQnaService likeService;
+    private final BoardQnaService boardService;
+    private final LikeQnaService likeService;
 
 
-	//글 등록 화면으로 이동
-	@GetMapping("/insert-board-view")
+    //글 등록 화면으로 이동
+    @GetMapping("/insert-board-view")
     public ModelAndView insertBoardView(Authentication authentication) {
-		ModelAndView mv = new ModelAndView();
+        ModelAndView mv = new ModelAndView();
 
-		String userName = null;
-		if(ObjectUtils.isNotEmpty(authentication)) {
-	        if (authentication.getPrincipal() instanceof Users) {
-	            Users user = (Users) authentication.getPrincipal();
-	            userName = user.getUserId();
-	        }
+        String userName = null;
+        if(ObjectUtils.isNotEmpty(authentication)) {
+            if (authentication.getPrincipal() instanceof Users) {
+                Users user = (Users) authentication.getPrincipal();
+                userName = user.getUserId();
+            }
         }
-		mv.addObject("userName", userName);
+        mv.addObject("userName", userName);
 
-		mv.setViewName("view/boardInsertQna.html");
-		return mv;
+        mv.setViewName("view/boardInsertQna.html");
+        return mv;
     }
 
-	//글 목록 화면으로 이동
-	@GetMapping("/qnaPage/{pageNum}")
+    //글 목록 화면으로 이동
+    @GetMapping("/qnaPage/{pageNum}")
     public ModelAndView getBoardList(@PathVariable("pageNum") int pageNum,
-    		 						 @RequestParam(required = false) String sortOption) {
+                                     @RequestParam(required = false) String sortOption) {
 
         ModelAndView mv = new ModelAndView();
 
@@ -88,20 +88,21 @@ public class BoardQnaController {
 
     }
 
-	//검색 결과 화면으로 이동
-	//required = false로 설정되면 해당 파라미터가 필수가 아니라는 것
-	//파라미터가 누락되더라도 예외가 발생하지 않고 기본값으로 null이 할당
-	@GetMapping("/search/{pageNum}")
-    public ModelAndView getSearchList(@RequestParam(required = false) String keyword, @PathVariable int pageNum) {
+    //검색 결과 화면으로 이동
+    //required = false로 설정되면 해당 파라미터가 필수가 아니라는 것
+    //파라미터가 누락되더라도 예외가 발생하지 않고 기본값으로 null이 할당
+    @GetMapping("/search/{pageNum}")
+    public ModelAndView getSearchList(@RequestParam(required = false) String keyword, @PathVariable int pageNum, String sortOption) {
 
-		ModelAndView mv = new ModelAndView();
+        ModelAndView mv = new ModelAndView();
 
-        List<BoardQnaDTO> searchList = boardService.searchBoardsByTitle(keyword, pageNum);
+        List<BoardQnaDTO> searchList = boardService.searchBoardsByTitle(keyword, pageNum, sortOption);
 
         mv.addObject("searchList", searchList);
         mv.addObject("keyword", keyword);
         mv.addObject("currentPage", pageNum);
         mv.addObject("totalPages", boardService.getSearchTotalPages(keyword));
+        mv.addObject("sortOption", sortOption);
 
         if (searchList.isEmpty()) {
             mv.addObject("noResultMessage", "검색 결과가 없습니다.");
@@ -116,17 +117,17 @@ public class BoardQnaController {
     //글 등록 -> ajax
     @PostMapping("/board-insert")
     public ResponseEntity<?> insertBoard(@RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO,
-    		Authentication authentication) {
+                                         Authentication authentication) {
 
-    	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+        ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
 
-    	String userId = null;
+        String userId = null;
 
         if(ObjectUtils.isNotEmpty(authentication)) {
-	        if (authentication.getPrincipal() instanceof Users) {
-	            Users user = (Users) authentication.getPrincipal();
-	            userId = user.getUserId();
-	        }
+            if (authentication.getPrincipal() instanceof Users) {
+                Users user = (Users) authentication.getPrincipal();
+                userId = user.getUserId();
+            }
         }
 
         try {
@@ -156,13 +157,13 @@ public class BoardQnaController {
     private String fileUploadDir;
 
     //파일
-	@GetMapping("/attach/{filename:.+}")
+    @GetMapping("/attach/{filename:.+}")
     public ResponseEntity<InputStreamResource> getImage(@PathVariable String filename) throws IOException {
-     System.out.println("===========================");
-	 log.info("getImage");
-	 System.out.println("filename = " + filename);
-	 System.out.println("===========================");
-    	Path file = Paths.get(fileUploadDir, filename);
+        System.out.println("===========================");
+        log.info("getImage");
+        System.out.println("filename = " + filename);
+        System.out.println("===========================");
+        Path file = Paths.get(fileUploadDir, filename);
 
         InputStreamResource resource = new InputStreamResource(Files.newInputStream(file));
 
@@ -181,10 +182,10 @@ public class BoardQnaController {
         long userId = 0;
 
         if(ObjectUtils.isNotEmpty(authentication)) {
-	        if (authentication.getPrincipal() instanceof Users) {
-	            Users user = (Users) authentication.getPrincipal();
-	            userId = user.getUsersId();
-	        }
+            if (authentication.getPrincipal() instanceof Users) {
+                Users user = (Users) authentication.getPrincipal();
+                userId = user.getUsersId();
+            }
         }
 
         //게시물 조회
@@ -206,29 +207,29 @@ public class BoardQnaController {
     }
 
     //글 수정 화면으로 이동
-  	@GetMapping("/modify-board-view/{boardId}")
-      public ModelAndView modifyBoardView(@PathVariable("boardId") long boardId) {
+    @GetMapping("/modify-board-view/{boardId}")
+    public ModelAndView modifyBoardView(@PathVariable("boardId") long boardId) {
 
-  		System.out.println("boardId = " + boardId);
+        System.out.println("boardId = " + boardId);
 
-  		ModelAndView mv = new ModelAndView();
+        ModelAndView mv = new ModelAndView();
 
-  		//게시물 조회
+        //게시물 조회
         BoardQnaDTO dto = boardService.getBoardDetail(boardId, 0);
 
-  		mv.addObject("board", dto);
-  		mv.setViewName("view/boardModifyQnA.html");
-  		return mv;
-      }
+        mv.addObject("board", dto);
+        mv.setViewName("view/boardModifyQnA.html");
+        return mv;
+    }
 
 
     //글 수정
     @PostMapping("/board-modify")
     public ResponseEntity<?> updateBoard(@RequestPart(value = "board", required = false) BoardQnaDTO boardDTO,
-    									 @RequestPart(value = "files", required = false) List<MultipartFile> files) {
+                                         @RequestPart(value = "files", required = false) List<MultipartFile> files) {
         ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
         try {
-        	// 서비스에서 게시글 수정 로직 실행
+            // 서비스에서 게시글 수정 로직 실행
             boardService.updateBoard(boardDTO, files);
 
             // 클라이언트에게 전달할 응답 메시지 맵 생성
@@ -283,7 +284,7 @@ public class BoardQnaController {
     //이름 값에서 아이디 값 뽑기 - 좋아요 여부 체크할 때 쓰는 api
     @GetMapping("/api/user/id")
     public ResponseEntity<Long> getLoggedInUserId(Authentication authentication) {
-    	if (authentication.getPrincipal() instanceof Users) {
+        if (authentication.getPrincipal() instanceof Users) {
             Users user = (Users) authentication.getPrincipal();
             Long userId = user.getUsersId();
 
@@ -296,13 +297,13 @@ public class BoardQnaController {
     //좋아요
     @PostMapping("/like-insert/{boardId}")
     public ResponseEntity<?> insert(@PathVariable("boardId") long boardId,
-    								@RequestBody @Valid LikeQnaDTO likeDTO, Authentication authentication) {
-    	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+                                    @RequestBody @Valid LikeQnaDTO likeDTO, Authentication authentication) {
+        ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
 
-    	System.out.println("컨트롤러에 오나?");
+        System.out.println("컨트롤러에 오나?");
 
         //서비스 호출
-		likeService.insertLike(likeDTO, authentication);
+        likeService.insertLike(likeDTO, authentication);
         Map<String, String> returnMap = new HashMap<String, String>();
 
         returnMap.put("msg", "좋아요 반영되었습니다.");
@@ -318,11 +319,11 @@ public class BoardQnaController {
     //좋아요 취소
     @DeleteMapping("/like-delete/{boardId}")
     public ResponseEntity<?> delete(@PathVariable("boardId") long boardId,
-    							    Authentication authentication) {
-    	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
+                                    Authentication authentication) {
+        ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
 
         //서비스 호출
-		likeService.removeLike(boardId, authentication);
+        likeService.removeLike(boardId, authentication);
 
         Map<String, String> returnMap = new HashMap<String, String>();
 
@@ -337,7 +338,7 @@ public class BoardQnaController {
     //좋아요 체크 여부
     @GetMapping("/check-like/{boardId}/{userId}")
     public ResponseEntity<?> checkLike(@PathVariable("boardId") long boardId, @PathVariable("userId") long userId) {
-    	System.out.println("체크 컨트롤러");
+        System.out.println("체크 컨트롤러");
         // 해당 게시글에 대한 사용자의 좋아요 상태를 확인
         boolean isLiked = likeService.isLikedByUser(boardId, userId);
 

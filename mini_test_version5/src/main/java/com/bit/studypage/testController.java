@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class testController {
 
-	@GetMapping("qnaPage")
-	public String test() {
-		
-		return "view/boardQna";
-	}
+//	@GetMapping("qnaPage")
+//	public String test() {
+//
+//		return "view/boardQna";
+//	}
 
 	@GetMapping("studyPage")
 	public String test2() {
@@ -24,17 +24,17 @@ public class testController {
 		
 		return "view/boardCommunicate";
 	}
-	@GetMapping("certificatePage")
-	public String test4() {
-		
-		return "view/boardCertificate";
-	}
+//	@GetMapping("certificatePage")
+//	public String test4() {
+//
+//		return "view/boardCertificate";
+//	}
 
-	@GetMapping("fullSearch")
-	public String test5() {
-		
-		return "view/fullSearch";
-	}
+//	@GetMapping("fullSearch")
+//	public String test5() {
+//
+//		return "view/fullSearch";
+//	}
 
 //
 //	@GetMapping("fullSearch")
@@ -43,11 +43,11 @@ public class testController {
 //		return "view/fullSearch";
 //	}
 	
-	@GetMapping("login")
-	public String test6() {
-		
-		return "view/login";
-	}
+//	@GetMapping("login")
+//	public String test6() {
+//
+//		return "view/login";
+//	}
 	
 	@GetMapping("login/findId")
 	public String test7() {
@@ -67,11 +67,11 @@ public class testController {
 //		return "view/myPage";
 //	}
 
-	@GetMapping("myPage")
-	public String test9() {
-		
-		return "view/myPage";
-	}
+//	@GetMapping("myPage")
+//	public String test9() {
+//
+//		return "view/myPage";
+//	}
 
 	
 	@GetMapping("write")
