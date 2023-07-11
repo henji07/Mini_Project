@@ -16,8 +16,7 @@ public interface QuaPlaceRepository extends JpaRepository<QuaPlace,Long> {
             "+ sin( radians(:lat) ) " +
             "* sin( radians( y ) ) ) ) AS distance " +
             "FROM qua_place " +
-            "HAVING distance < 20 " +
-            "ORDER BY distance", nativeQuery = true)
+            "HAVING distance < 3 " +
+            "ORDER BY distance", nativeQuery = true)   // 가까운 순서대로 정렬합니다.
     List<QuaPlace> findNearByLocations(@Param("lat") double lat, @Param("lng") double lng);
 }
-
