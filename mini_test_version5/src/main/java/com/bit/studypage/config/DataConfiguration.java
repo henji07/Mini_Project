@@ -43,11 +43,4 @@ public class DataConfiguration {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 
-
-
-
-
-
-
-
 }
