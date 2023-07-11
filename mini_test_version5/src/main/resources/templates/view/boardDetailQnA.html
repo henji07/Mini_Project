@@ -430,8 +430,12 @@
 				   
 					// 삭제 버튼 이벤트 
 	                $('.comment-delete').on('click', function(e) {
-	                    e.preventDefault();
-	                    deleteComment($(this).data('src'));
+	                	if (window.confirm("정말 삭제하시겠습니까?")) {
+	           			 var commentId = $(this).data("src");
+	           			 console.log(commentId);
+	           			 deleteComment(commentId);
+	           			 
+	           		 }
 	                });
 			   }
 		   },
