@@ -66,7 +66,7 @@ public class BoardQnaController {
 		return mv;
     }
 	
-	//글 목록 화면으로 이동 
+	//글 목록 화면으로 이동 //수정수정
 	@GetMapping("/qnaPage/{pageNum}")
     public ModelAndView getBoardList(@PathVariable("pageNum") int pageNum, 
     		 						 @RequestParam(required = false) String sortOption) {
