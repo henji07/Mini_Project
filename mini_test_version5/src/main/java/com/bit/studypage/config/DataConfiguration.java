@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 //어떤 설정파일을 읽을 것인지 지정
 @PropertySource("classpath:/application.properties")
 //매퍼 인터페이스 위치지정
-//@MapperScan(basePackages = "com.bit.studyPage.mapper")
+@MapperScan(basePackages = "com.bit.studypage.service.dao")
 public class DataConfiguration {
     @Autowired
     //스프링컨테이너 호출

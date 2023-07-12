@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
@@ -30,12 +29,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bit.studypage.dto.BoardQnaDTO;
 import com.bit.studypage.dto.CommentQnaDTO;
 import com.bit.studypage.dto.LikeQnaDTO;
+
 import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.entity.Users;
 import com.bit.studypage.service.BoardQnaService;
 import com.bit.studypage.service.LikeQnaService;
 
 import jakarta.validation.Valid;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,12 +46,13 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/board")
 public class BoardQnaController {
 
-	private final BoardQnaService boardService;
-	private final LikeQnaService likeService;
-	
-	
-	//글 등록 화면으로 이동
-	@GetMapping("/insert-board-view")
+    private final BoardQnaService boardService;
+    private final LikeQnaService likeService;
+
+
+
+    //글 등록 화면으로 이동
+    @GetMapping("/insert-board-view")
     public ModelAndView insertBoardView(Authentication authentication) {
 		ModelAndView mv = new ModelAndView();
 		
@@ -61,16 +63,18 @@ public class BoardQnaController {
 	            userName = user.getUserId();
 	        }
         }
-		mv.addObject("userName", userName);
-		
-		mv.setViewName("view/boardInsertQna.html");
-		return mv;
+        mv.addObject("userName", userName);
+
+
+        mv.setViewName("view/boardInsertQna.html");
+        return mv;
     }
 	
 	//글 목록 화면으로 이동 
 	@GetMapping("/qnaPage/{pageNum}")
     public ModelAndView getBoardList(@PathVariable("pageNum") int pageNum, 
     		 						 @RequestParam(required = false) String sortOption) {
+
 
         ModelAndView mv = new ModelAndView();
 
@@ -81,7 +85,6 @@ public class BoardQnaController {
         mv.addObject("currentPage", pageNum);
         mv.addObject("totalPages", boardService.getTotalPages(sortOption));
         mv.addObject("sortOption", sortOption);
-        
         mv.setViewName("view/boardQna.html");
 
         return mv;
@@ -155,9 +158,8 @@ public class BoardQnaController {
     //서버에 저장되어 있는 거 읽어오기 
     @Value("${file.path}")
     private String fileUploadDir;
-	
-    //파일 
-	@GetMapping("/attach/{filename:.+}")
+
+    @GetMapping("/attach/{filename:.+}")
     public ResponseEntity<InputStreamResource> getImage(@PathVariable String filename) throws IOException {
      System.out.println("==========================="); 
 	 log.info("getImage");
@@ -200,7 +202,6 @@ public class BoardQnaController {
             mv.addObject("username", username);
             mv.addObject("userId", userId);
         }
-        
         mv.setViewName("/view/boardDetailQna");
 
         return mv;
@@ -216,20 +217,19 @@ public class BoardQnaController {
   		
   		//게시물 조회 
         BoardQnaDTO dto = boardService.getBoardDetail(boardId, 0);
-  		
-  		mv.addObject("board", dto);
-  		mv.setViewName("view/boardModifyQnA.html");
-  		return mv;
-      }
-    
-  	
-    //글 수정 
+
+        mv.addObject("board", dto);
+        mv.setViewName("view/boardModifyQnA.html");
+        return mv;
+    }
+
+    //글 수정
     @PostMapping("/board-modify")
     public ResponseEntity<?> updateBoard(@RequestPart(value = "board", required = false) BoardQnaDTO boardDTO, 
     									 @RequestPart(value = "files", required = false) List<MultipartFile> files) {
         ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
         try {
-        	// 서비스에서 게시글 수정 로직 실행
+            // 서비스에서 게시글 수정 로직 실행
             boardService.updateBoard(boardDTO, files);
 
             // 클라이언트에게 전달할 응답 메시지 맵 생성
@@ -274,8 +274,7 @@ public class BoardQnaController {
             return ResponseEntity.badRequest().body(responseDTO);
         }
     }
-
-    //시큐리티 권한 처리 - 글쓰기 화면에서 로그인한 사용자의 아이디를 받아옴 
+    //시큐리티 권한 처리 - 글쓰기 화면에서 로그인한 사용자의 아이디를 받아옴
     @GetMapping("/api/user")
     public ResponseEntity<String> getLoggedInUser(Authentication authentication) {
         return ResponseEntity.ok(authentication.getName());
@@ -347,6 +346,7 @@ public class BoardQnaController {
         // 좋아요 상태를 JSON 형태로 반환
         return ResponseEntity.ok().body(isLiked);
     }
+
 
 
 }
