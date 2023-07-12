@@ -6,10 +6,10 @@ import java.util.Map;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bit.studypage.dto.BoardQnaDTO;
-import com.bit.studypage.dto.FileQnaDTO;
-import com.bit.studypage.entity.BoardQna;
-import com.bit.studypage.entity.FileQna;
+import com.bit.studypage.dto.board.BoardQnaDTO;
+import com.bit.studypage.dto.board.FileQnaDTO;
+import com.bit.studypage.entity.board.BoardQna;
+import com.bit.studypage.entity.board.FileQna;
 
 public interface BoardQnaService {
 
@@ -26,10 +26,10 @@ public interface BoardQnaService {
 	public BoardQnaDTO getBoardDetail(long boardId, long userId);
 	
 	//글 목록 조회 
-	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption);
+	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption, String category);
 
 	//전체 페이지 수 반환 
-	public Object getTotalPages(String sortOption);
+	public Object getTotalPages();
 	
 	//파일 정보 가져오기
 	public FileQnaDTO inqurityFileInfo(long id);
@@ -39,6 +39,12 @@ public interface BoardQnaService {
 	
 	//검색된 게시물을 기반으로 총 페이지 수를 계산
 	public int getSearchTotalPages(String keyword);
+
+	//대분류 카테고리 
+	public List<BoardQnaDTO> getBoardListByCategory(String category, int pageNum, String sortOption);
+
+	//대분류 카테고리 총 페이지 수 
+	public Object getTotalPagesByCategory(String category);
 
 
 }

@@ -5,8 +5,8 @@ import java.util.Map;
 
 import org.springframework.security.core.Authentication;
 
-import com.bit.studypage.dto.BoardCmmntQnaDTO;
-import com.bit.studypage.dto.CommentQnaDTO;
+import com.bit.studypage.dto.board.BoardCmmntQnaDTO;
+import com.bit.studypage.dto.board.CommentQnaDTO;
 import com.bit.studypage.entity.Users;
 
 public interface CommentQnaService {

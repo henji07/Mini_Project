@@ -5,10 +5,10 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.bit.studypage.dto.BoardCmmntQnaDTO;
-import com.bit.studypage.dto.BoardQnaDTO;
+import com.bit.studypage.dto.board.BoardCmmntQnaDTO;
+import com.bit.studypage.dto.board.BoardQnaDTO;
 
-//@Mapper
+@Mapper
 public interface BoardQnaDao {
 	//댓글 리스트 
 	List<BoardCmmntQnaDTO> selectCommentList(long boardId);

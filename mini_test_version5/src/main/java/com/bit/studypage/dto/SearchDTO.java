@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Setter
 @Getter
-@ToString
+
 public class SearchDTO {
 
     private String keyword;  // 키워드
