@@ -79,7 +79,12 @@
             #map {
                 height: 100%;
                 min-height: 300px;
-                width: 70%;
+                width: 75%;
+                min-width: 500px;
+            }
+            .map-info-text{
+                border: 1px solid black;
+                min-height: 20vh;
             }
         </style>
     </th:block>
@@ -164,14 +169,14 @@
                 //현재위치 마커
                 var redMarkerImageUrl = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
                 var markerImage = new kakao.maps.MarkerImage(redMarkerImageUrl, new kakao.maps.Size(32, 40));
+                var mmm =
+                    new kakao.maps.Marker({
+                        map: map,
+                        position: new kakao.maps.LatLng(y, x),
+                        image: markerImage,
+                        zIndex: 999
+                    });
 
-                // 중심 좌표에 빨간색 마커를 추가
-                new kakao.maps.Marker({
-                    map: map,
-                    position: new kakao.maps.LatLng(y, x),
-                    image: markerImage,
-                    zIndex: 999
-                });
 
                 var places = [];
                 quaPlaces.forEach(function (item) {
@@ -233,6 +238,98 @@
                         infowindow.close();
                     };
                 }
+
+
+                // document.querySelectorAll('.map-info').forEach(function(li) {
+                //     li.addEventListener('click', function() {
+                //         // Get the place name from the clicked li
+                //         var placeName = this.textContent;
+                //
+                //         // Find the corresponding place from the places array
+                //         var place = places.find(function(p) {
+                //             return p.examAreaNm === placeName;
+                //         });
+                //
+                //         if (place) {
+                //             // Create a new marker at the clicked place
+                //             var newMarkerPosition = place.latlng;
+                //
+                //             // Set the center of the map to the new marker position
+                //             map.setCenter(newMarkerPosition);
+                //
+                //             // Create a new marker
+                //             var newMarker = new kakao.maps.Marker({
+                //                 position: newMarkerPosition,
+                //                 image: markerImage,
+                //                 zIndex: 999
+                //             });
+                //
+                //             // Remove the old marker
+                //             if (selectedMarker) {
+                //                 selectedMarker.setMap(null);
+                //             }
+                //
+                //             // Display the new marker
+                //             newMarker.setMap(map);
+                //             selectedMarker = newMarker;
+                //         }
+                //     });
+                // });
+
+
+                var infowindow;  // 클로저 외부에 infowindow 변수 선언
+
+
+                $('.map-info').click(function () {
+                    // Get the clicked place's name
+                    mmm.setMap(null);
+                    var clickedPlaceName = $(this).text();
+
+                    // Find the corresponding place in the places array
+                    var clickedPlace = places.find(function (place) {
+                        return place.examAreaNm === clickedPlaceName;
+                    });
+
+                    if (!clickedPlace) {
+                        console.error('No place found with the name ' + clickedPlaceName);
+                        return;
+                    }
+
+                    // Update the content of the clicked element
+                    if (clickedPlace.telNo !== " ") {  // telNo 값이 있을 때만 추가
+                       var info2 = '<p>전화번호:<br> ' + clickedPlace.telNo + '</p>';
+                    }else var info2 = "";
+                    $(".map-info-text").html('<p>장소명: <br>' + clickedPlace.examAreaNm + '</p>' +
+                        '<p>주소: <br>' + clickedPlace.address + '</p>'+info2);
+
+                    // Move map center to the clicked place's coordinates
+                    map.setCenter(clickedPlace.latlng);
+
+                    // Remove existing markers
+                    if (selectedMarker) {
+                        selectedMarker.setMap(null);
+                        selectedMarker = null;
+                    }
+
+                    // Create a new marker at the clicked place
+                    selectedMarker = new kakao.maps.Marker({
+                        map: map,
+                        position: clickedPlace.latlng
+                    });
+
+                    // If there is an opened infowindow, close it
+                    if (infowindow) {
+                        infowindow.close();
+                    }
+
+                    // Create a new info window for the clicked place
+                    infowindow = new kakao.maps.InfoWindow({
+                        content: clickedPlace.content // Show the place's content in the info window
+                    });
+
+                    // Display the info window
+                    infowindow.open(map, selectedMarker);
+                });
 
 
                 // $(".mark").on("click", () => {
@@ -310,15 +407,20 @@
         <br>
         <br>
         <div class="map-con">
-            <div id="map"></div>
-            <div class="all-add">
-                <table>
-                    <th:block th:each="place:${uniqueAreaNames}">
-                        <li class="map-info" th:text="${place.examAreaNm}"></li>
-                    </th:block>
-                </table>
+<!--            <div class="map-list">-->
+                <div id="map"></div>
+                <div class="all-add">
+                    <table>
+                        <th:block th:each="place:${uniqueAreaNames}">
+                            <li class="map-info" th:text="${place}"></li>
+                        </th:block>
+                    </table>
+                </div>
             </div>
-        </div>
+            <div class="map-info-text">
+                목록에서 선택해주세요.
+            </div>
+<!--        </div>-->
     </div>
 </th:block>
 </body>

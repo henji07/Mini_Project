@@ -63,6 +63,7 @@ public class TestKakao {
                             uniqueAreaNames.add(place.getExamAreaNm());
                         }
                         System.out.println("ssssssssssssssssssssssss"+quaPlaceList.toString());
+                        System.out.println("Aaaaaaaaaaaaaaaaaaaaaaaaa"+uniqueAreaNames);
                         mv.addObject("quaPlaces",quaPlaceList);
                         mv.addObject("uniqueAreaNames", uniqueAreaNames);
                         mv.addObject("y",lat);
