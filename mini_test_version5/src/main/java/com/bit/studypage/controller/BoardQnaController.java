@@ -27,7 +27,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.studypage.dto.BoardQnaDTO;
-import com.bit.studypage.dto.CommentQnaDTO;
 import com.bit.studypage.dto.LikeQnaDTO;
 
 import com.bit.studypage.dto.ResponseDTO;
@@ -70,7 +69,7 @@ public class BoardQnaController {
         return mv;
     }
 	
-	//글 목록 화면으로 이동 
+	//글 목록 화면으로 이동 //수정수정
 	@GetMapping("/qnaPage/{pageNum}")
     public ModelAndView getBoardList(@PathVariable("pageNum") int pageNum, 
     		 						 @RequestParam(required = false) String sortOption) {
@@ -83,7 +82,7 @@ public class BoardQnaController {
         
         mv.addObject("qnaList", boardList);
         mv.addObject("currentPage", pageNum);
-        mv.addObject("totalPages", boardService.getTotalPages(sortOption));
+        mv.addObject("totalPages", boardService.getTotalPages());
         mv.addObject("sortOption", sortOption);
         mv.setViewName("view/boardQna.html");
 
