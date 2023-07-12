@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:fragment="config">
+    <meta charset="UTF-8">
+    <title>옹기종기</title>
+
+    <!--모든 페이지에서 사용할 공용 css링크-->
+    <!--thymeleaf에서 링크를 걸 때는 @{} 사용-->
+    <!--부트에서는 루트 폴더가 스태틱, 템플릿. 이렇게 써놓으면 static 찾아감-->
+    <!-- <link rel="stylesheet" th:href="@{/css/style.css}"> -->
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
+    <!--특정페이지에서만 사용할 css링크나 스타일시트-->
+    <!--css 따로 적용할 페이지에서 아래와 같이 작성해야된다.-->
+
+    <th:block layout:fragment="css">
+        <!--<style>
+
+        </style>
+        <link rel="stylesheet" th:href="">-->
+    </th:block>
+
+    <!--모든 페이지에서 사용할 공용 js링크-->
+    <script th:src="@{/js/jquery-3.7.0.min.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
+
+    <!--특정 페이지에서만 동작할 js 링크나 태그-->
+    <th:block layout:fragment="script">
+        <!--<script>
+        </script>
+
+        <script src=""></script>-->
+        <script type="text/javascript" th:inline="javascript">
+            $("#search_button").click(()=> {
+                console.log("1111111111111");
+                var keyword = $('#search_input').val();
+                console.log(keyword);
+                searchPosts(keyword);
+            })
+            function searchPostsMain(keyword) {
+                var url = '/api/searchMainBox?';
+                if (keyword) {
+                    url += 'keyword=' + encodeURIComponent(keyword);
+                }
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function (response) {
+                        window.location.href = "/api/searchMainBox?keyword=" + encodeURIComponent(keyword);
+                    },
+                    error: function (error) {
+                        console.error('검색 요청 실패:', error);
+                    }
+                });
+
+                $.ajax({
+                    url: '/api/searchMainBox',
+                    method: 'POST',
+                    data: {
+                        keyword: keyword
+                    },
+                    success: function (response) {
+                        document.write(response);
+                        console.log(response);
+                        window.location.href = response;
+                    },
+                    error: function (error) {
+                        console.error('검색 요청 실패:', error);
+                    }
+                });
+            }
+            function searchPosts(keyword) {
+                // 서버로 검색어 전송 및 결과 받아오는 AJAX 요청
+                $.ajax({
+                    url: '/api/search',
+                    method: 'POST',
+                    data: {keyword: keyword},
+                    success: (response) => {
+                        console.log('success', response)
+                        let searchResults = response.results;
+                        console.log(searchResults);
+                        // 테이블 초기화
+                        $('#ulTable > li:nth-child(2)').empty(); // 게시물이 출력될 영역 초기화
+                        console.log(response.item.searchBoardList.length);
+
+                        if (response.item.searchBoardList.length >= 1) {
+                            console.log("if문 들어왔음")
+                            response.item.searchBoardList.forEach(function (item) {
+                                // 게시물을 동적으로 생성하여 추가
+                                var listItem = $('<ul>');
+
+                                var categoryItem = $('<li>').text(item.searchCate);
+                                var titleItem = $('<li>').addClass('left').text(item.searchTitle);
+                                var regDateItem = $('<li>').text(item.searchRegDate);
+                                var writerItem = $('<li>').text(item.searchWriter);
+                                var hitItem = $('<li>').text(item.searchCnt);
+                                console.log(listItem, categoryItem, titleItem, regDateItem, writerItem, hitItem)
+                                listItem.append(categoryItem, titleItem, regDateItem, writerItem, hitItem);
+                                $('#ulTable > li:nth-child(2)').append(listItem);
+                            });
+                        }
+                    },
+                    error: function (error) {
+                        console.error('검색 요청 실패:', error);
+                    }
+                });
+            }
+        </script>
+    </th:block>
+</head>
+</html>

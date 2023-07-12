@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <th:block layout:fragment="script">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+
+      // 검색 버튼 클릭 이벤트 처리
+      //
+      // $(document).on('click', '#search_button', function() {
+      //   console.log("버튼으로");
+      //   let keyword = $('#search_input').val();
+      //   searchPostsMain(keyword);
+      //   // 'fullSearch.html' 페이지로 이동
+
+      // });
+      //
+      //
+      // //엔터 키로 검색 처리
+      // $(document).on('keydown', '#search_input', function(event) {
+      //   if (event.keyCode === 13) {
+      //     var keyword = $('#search_input').val();
+      //     searchPostsMain(keyword);
+      //     console.log("되냐?");
+      //
+      //
+      //     // 'fullSearch.html' 페이지로 이동
+      //
+      //   }
+      // });
+
+
+
+      // $('#search_button').click(function () {
+      //   let searchKeyword = $('#search_input').val(); // 검색어 가져오기
+      //   console.log(searchKeyword);
+      //   searchPostsMain(searchKeyword); // 검색 함수 호출
+      // });
+
+
+
+      // searchPostsMain 함수는 주어진 키워드를 사용해 서버에 GET 요청.
+      // 요청 성공 시, 응답을 받고 해당 키워드가 포함된 게시판 페이지로 이동.
+      // 요청 실패 시, 콘솔에 에러 메시지를 출력.
+      function searchPostsMain(keyword) {
+        console.log("search!!")
+        $.ajax({
+          // 키워드를 URL 끝에 추가하여 GET 요청을 구성
+          url: '/api/searchMainBox/' + encodeURIComponent(keyword),
+          method: 'GET', // GET 방식을 사용
+          success: function (response) {
+            // 성공적으로 응답 받으면 해당 키워드가 포함된 게시판 페이지로 이동
+            window.location.href = "/board?keyword=" + encodeURIComponent(keyword);
+
+          },
+          error: function (error) {
+            // 요청이 실패하면, 콘솔에 에러 메시지를 출력
+            console.error('검색 요청 실패:', error);
+          }
+
+        });
+      }
+
+      function searchPosts(keyword) {
+        // 서버로 검색어 전송 및 결과 받아오는 AJAX 요청
+        $.ajax({
+          url: '/api/search',
+          method: 'POST',
+          data: {keyword: keyword},
+          success: (response) => {
+            console.log('success', response)
+            let searchResults = response.results;
+            console.log(searchResults);
+            // 테이블 초기화
+            $('#ulTable > li:nth-child(2)').empty(); // 게시물이 출력될 영역 초기화
+            console.log(response.item.searchBoardList.length);
+
+            if (response.item.searchBoardList.length >= 1) {
+              console.log("if문 들어왔음")
+              response.item.searchBoardList.forEach(function (item) {
+                // 게시물을 동적으로 생성하여 추가
+                var listItem = $('<ul>');
+
+                var categoryItem = $('<li>').text(item.searchCate);
+                var titleItem = $('<li>').addClass('left').text(item.searchTitle);
+                var regDateItem = $('<li>').text(item.searchRegDate);
+                var writerItem = $('<li>').text(item.searchWriter);
+                var hitItem = $('<li>').text(item.searchCnt);
+                console.log(listItem, categoryItem, titleItem, regDateItem, writerItem, hitItem)
+                listItem.append(categoryItem, titleItem, regDateItem, writerItem, hitItem);
+                $('#ulTable > li:nth-child(2)').append(listItem);
+              });
+            }
+          },
+          error: function (error) {
+            console.error('검색 요청 실패:', error);
+          }
+        });
+      }
+
+    </script>
+
+  </th:block>
+</head>
+<body>
+<header class="header">
+  <div class="nav_logo">
+    <a th:href="@{/main}">
+      <img src="/image/Pagelogo.png" alt="Logo" />
+    </a>
+  </div>
+
+  <ul class="nav_menu">
+    <li><a th:href="@{/main}">홈</a></li>
+    <li><a th:href="@{/freePage}">소통해요</a></li>
+    <li><a th:href="@{/studyPage}">함께해요</a></li>
+    <li><a th:href="@{/board/qnaPage/1}">궁금해요</a></li>
+    <li><a th:href="@{/certificatePage}">자격증</a></li>
+  </ul>
+  <div class="search_box">
+    <i class="fas fa-search search_icon"></i>
+    <form action="/fullSearch" method="get">
+      <input type="text" id="search_input" name="keyword" placeholder="검색" />
+      <!--    <a href="/fullSearch">-->
+      <button type="submit" id="search_button">검색</button>
+    </form>
+    <!--    </a>-->
+  </div>
+  <div class="user_buttons">
+    <div th:block sec:authorize="!isAuthenticated()">
+      <button id="login_button"><a th:href="@{/login}">로그인</a></button>
+      <button id="signup_button"><a th:href="@{/members/new}">회원가입</a></button>
+    </div>
+    <div th:block sec:authorize="isAuthenticated()">
+      <button id="login_button"><a th:href="@{/myPage}">프로필</a></button>
+      <button id="signup_button"><a th:href="@{/logout}">로그아웃</a></button>
+    </div>
+  </div>
+</header>
+</body>
+</html>
