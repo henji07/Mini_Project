@@ -1,4 +1,5 @@
 package com.bit.studypage.controller;
+
 import java.util.*;
 
 
@@ -181,4 +182,6 @@ public class MemberController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("입력한 비밀번호가 일치하지 않습니다.");
         }
     }
+
 }
+

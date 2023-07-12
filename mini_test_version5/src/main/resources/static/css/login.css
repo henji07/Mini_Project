@@ -148,19 +148,43 @@
 }
 
 .social #google {
+<<<<<<< HEAD
     background: url('/image/btn_google_light_normal_ios.svg');
+=======
+<<<<<<< HEAD
+    background: url('/images/btn_google_light_normal_ios.svg');
+=======
+    background: url('/image/btn_google_light_normal_ios.svg');
+>>>>>>> origin/newyoojin
+>>>>>>> f5bc7e45a9ed07a5c903826d9e39be6d8a349c0c
     width: 40px;
     height: 40px;
 }
 
 .social #naver {
+<<<<<<< HEAD
     background: url('/image/icon-login-naver.svg');
+=======
+<<<<<<< HEAD
+    background: url('/images/icon-login-naver.svg');
+=======
+    background: url('/image/icon-login-naver.svg');
+>>>>>>> origin/newyoojin
+>>>>>>> f5bc7e45a9ed07a5c903826d9e39be6d8a349c0c
     width: 40px;
     height: 40px;
 }
 
 .social #kakao {
+<<<<<<< HEAD
     background: url('/image/icon-login-kakao.svg');
+=======
+<<<<<<< HEAD
+    background: url('/images/icon-login-kakao.svg');
+=======
+    background: url('/image/icon-login-kakao.svg');
+>>>>>>> origin/newyoojin
+>>>>>>> f5bc7e45a9ed07a5c903826d9e39be6d8a349c0c
     width: 40px;
     height: 40px;
 }

@@ -1,6 +1,5 @@
 package com.bit.studypage.controller;
 /* Java 1.8 샘플 코드 */
-
 import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.entity.SearchBoard;
 import com.bit.studypage.service.SearchService;

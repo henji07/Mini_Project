@@ -116,17 +116,17 @@
 /*답변 수*/
 .answer-count {
 
-  width: 60px;
-  height: 60px;
-  background-color: #ffffff;
-  color: #f97800;
-  border: 2px solid #f97800;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px;
-  text-align: center;
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    color: #f97800;
+    border: 2px solid #f97800;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    text-align: center;
 }
 
 /*드롭다운*/
