@@ -1,11 +1,12 @@
 package com.bit.studypage.repository;
 
-import com.bit.studypage.entity.SearchBoard;
-import org.apache.ibatis.annotations.Param;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-import java.util.List;
+import com.bit.studypage.entity.SearchBoard;
 
 public interface HomeRepository extends JpaRepository<SearchBoard, Long> {
 

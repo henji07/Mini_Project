@@ -25,16 +25,16 @@
             }
 
             //글 등록
-            $(function() {
+            $(function () {
                 $("#btnInsert").on("click", () => {
                     //입력 유효성 검사
-                    if($("#boardTitle").val() === "") {
+                    if ($("#boardTitle").val() === "") {
                         alert("제목을 입력하세요.");
                         $("#boardTitle").focus();
                         return;
                     }
 
-                    if($("#boardContent").val() === "") {
+                    if ($("#boardContent").val() === "") {
                         alert("내용을 입력하세요.");
                         $("#boardContent").focus();
                         return;
@@ -53,7 +53,7 @@
                         success: (result) => {
                             console.log(result);
                             alert(result.item.msg);
-                            window.location.href="/board/qnaPage/1";
+                            window.location.href = "/board/qnaPage/1";
                         },
                         error: (error) => {
                             console.log(error);
@@ -80,20 +80,20 @@
                         <tr>
                             <td><input id="boardTitle" type="text" name="boardTitle" placeholder="제목을 입력해주세요."></td>
                         </tr>
-
                         <tr>
-                            <td><input id="boardWriter" type="text" name="boardWriter" readonly th:value="${userName}"></td>
+                            <td><input id="boardWriter" type="text" name="boardWriter" readonly th:value="${userName}">
+                            </td>
                         </tr>
-
                         <tr>
-                            <td><textarea id="boardContent" name="boardContent" cols="40" rows="10" placeholder="내용을 입력하세요."></textarea></td>
+                            <td><textarea id="boardContent" name="boardContent" cols="40" rows="10"
+                                          placeholder="내용을 입력하세요."></textarea></td>
                         </tr>
-
                         <tr>
                             <td>
 
                                 <div id="image_upload">
-                                    <input type="file" id="btnAtt" name="uploadFiles" multiple onchange="displayFiles(this)">
+                                    <input type="file" id="btnAtt" name="uploadFiles" multiple
+                                           onchange="displayFiles(this)">
                                 </div>
                                 <div id="attZone" style="font-size: 13px;">파일을 첨부하려면 파일선택 버튼을 누르세요.</div>
                                 <ul id="fileList"></ul>
@@ -102,7 +102,9 @@
             </tr>
 
             <tr>
-                <td colspan="2" align="center"><button type="button" id="btnInsert">새 글 등록</button></td>
+                <td colspan="2" align="center">
+                    <button type="button" id="btnInsert">새 글 등록</button>
+                </td>
             </tr>
 
             </table>

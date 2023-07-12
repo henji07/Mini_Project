@@ -2,7 +2,7 @@ package com.bit.studypage.service;
 
 import org.springframework.security.core.Authentication;
 
-import com.bit.studypage.dto.LikeQnaDTO;
+import com.bit.studypage.dto.board.LikeQnaDTO;
 
 
 public interface LikeQnaService {
