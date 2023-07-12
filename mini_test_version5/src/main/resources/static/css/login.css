@@ -149,17 +149,20 @@
 
 .social #google {
     background: url('/image/btn_google_light_normal_ios.svg');
+    background: url('/image/btn_google_light_normal_ios.svg');
     width: 40px;
     height: 40px;
 }
 
 .social #naver {
     background: url('/image/icon-login-naver.svg');
+    background: url('/image/icon-login-naver.svg');
     width: 40px;
     height: 40px;
 }
 
 .social #kakao {
+    background: url('/image/icon-login-kakao.svg');
     background: url('/image/icon-login-kakao.svg');
     width: 40px;
     height: 40px;

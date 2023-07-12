@@ -9,13 +9,11 @@
         <link rel="stylesheet" href="/css/join.css">
     </th:block>
 
-    <<<<<<< HEAD
     <th:block layout:fragment="script">
-        <<<<<<< HEAD
         <script type="text/javascript" th:inline="javascript">
-            // <!-- 관심사 값이 없어도 무조건 array로 가게 -->
-            $(document).ready(function () {
-                $("#btn-regist").click(function () {
+            <!-- 관심사 값이 없어도 무조건 array로 가게 -->
+            $(document).ready(function() {
+                $("#btn-regist").click(function(){
 
                     var length = $("input:checkbox[name='interest']:checked").length;
 
@@ -43,7 +41,7 @@
                         type: "GET",
                         url: "/members/checkDuplicateId/" + userId
                     })
-                        .done(function (result) {
+                        .done(function(result) {
                             if (result === true) {
                                 alert("중복된 아이디입니다. 다른 아이디를 입력해주세요.");
                                 isIdDuplicated = true;
@@ -52,7 +50,7 @@
                                 isIdDuplicated = false;
                             }
                         })
-                        .fail(function (data, textStatus, errorThrown) {
+                        .fail(function(data, textStatus, errorThrown) {
                             console.log(data);
                             alert("에러");
                         });
@@ -79,6 +77,7 @@
                     return false;
                 }
             }
+
 
 
             function validateForm() {
@@ -130,7 +129,7 @@
 
             /* 등록, 회원 가입을 ajax로 호출 */
             /* 이동하지 않고 처리하기 위해. 성공했을 때만 메인으로 */
-            function registMember() {
+            function registMember(){
                 //비밀번호 패턴 체크
                 var password = $("#password").val();
 
@@ -143,7 +142,60 @@
 
                 //이메일 형식 올바른지 확인
                 var email = $("#email").val();
+
+                if (!validateEmail(email)) {
+                    alert("올바른 이메일 형식을 입력해주세요.");
+                    $("#email").focus();
+                    return;
+                }
+
+                //아이디가 중복되었는지 확인
+                if (isIdDuplicated) {
+                    alert("아이디 중복체크를 해주세요.");
+                    return; // 회원가입 절차를 중단.
+                }
+
+                /*inputForm 자체를 Object로 만든 거*/
+                var params = $("#inputForm").serializeObject();
+
+                /*체크된 게 있으면 input에 들어온 값이 들어오고 아니면 빈 배열이 리턴*/
+                var arr = new Array();
+
+
+
+                $("input:checkbox[name='interest']:checked").each(function(){
+                    arr.push($(this).val());
+                });
+                params.interest = arr;
+                console.log(params);
+                /*모든 조건 다 만족하면 가입 완료되게 */
+                $.ajax({
+                    type: "POST",
+                    url: /*[[@{/members/regist}]]*/'',
+                    dataType:"json",
+                    data: JSON.stringify(params),
+                    contentType: 'application/json'
+                })
+                    .done(function (jsonResult) {
+                        console.log(jsonResult);
+                        if(jsonResult.result == "0000"){
+                            alert("가입이 완료되었습니다.");
+                            location.href="/";
+                        }
+                        else{
+                            if(jsonResult.result == "9002"){
+                                alert("이미 가입된 이메일입니다.");
+                            }else if(jsonResult.result == "9003"){
+                                alert("이미 가입된 전화번호입니다.");
+                            }
+                        }
+                    })
+                    .fail(function(data, textStatus, errorThrown){
+                        console.log(data);
+                        alert("에러");
+                    });
             }
+
         </script>
     </th:block>
 
@@ -154,6 +206,7 @@
     <div class="join-container">
 
         <h2 id="join-join">회원가입</h2>
+
         <div class="join-line">
             <span class="join-line-text"></span>
             <h4 class="join-type">소셜 회원가입</h4>
@@ -174,7 +227,6 @@
         <div class="join-line">
             <span class="join-line-text"></span>
             <h4 class="join-type">일반 회원가입</h4>
-
             <span class="join-line-text"></span>
         </div>
         <form id="inputForm">
@@ -190,8 +242,7 @@
                 <tr>
                     <td><label for="password">비밀번호</label></td>
                     <td colspan="2">
-                        <input type="password" name="password" id="password" class="form-control"
-                               placeholder="비밀번호를 입력하세요">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="비밀번호를 입력하세요">
                         <p id="pwDefaultMessage">8~16자리수. 영문 대소문자, 숫자, 특수문자를 1개 이상 포함.</p>
                         <p id="pwMessage" style="display:none;">비밀번호를 입력해주세요.</p>
                         <p id="pwLengthMessage" style="display:none;">비밀번호 형식을 확인해주세요.</p>
@@ -200,17 +251,14 @@
                 <tr>
                     <td><label for="passwordConfirm">비밀번호 재확인</label></td>
                     <td colspan="2">
-                        <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control"
-                               placeholder="비밀번호를 다시 입력하세요">
+                        <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control" placeholder="비밀번호를 다시 입력하세요">
                         <span id="confirmMsg"></span>
-
                     </td>
                 </tr>
                 <tr>
                     <td><label for="name">이름</label></td>
                     <td colspan="2">
                         <input type="text" name="name" id="name" class="form-control" placeholder="이름을 입력하세요">
-
                         <p id="nameMessage" style="display:none;">이름을 입력해주세요.</p>
                     </td>
                 </tr>
@@ -220,7 +268,6 @@
                         <input type="radio" name="gender" id="female" value="W" checked="checked">
                         <label class="form-control-select" for="female">여자</label>
                         <input type="radio" name="gender" id="male" value="M">
-
                         <label class="form-control-select" for="male">남자</label>
                     </td>
                 </tr>
@@ -228,7 +275,6 @@
                     <td><label for="phone">휴대전화</label></td>
                     <td colspan="2">
                         <input type="text" name="phone" id="phone" class="form-control" placeholder="전화번호를 입력하세요">
-
                         <p id="phoneMessage" style="display:none;">전화번호를 입력해주세요.</p>
                     </td>
                 </tr>
@@ -236,14 +282,12 @@
                     <td><label for="email">이메일</label></td>
                     <td colspan="2">
                         <input type="text" name="email" id="email" class="form-control" placeholder="이메일을 입력하세요">
-
                         <p id="emailMessage" style="display:none;">이메일을 입력해주세요.</p>
                         <p id="emailFormMessage" style="display:none;">올바른 이메일을 입력해주세요.</p>
                     </td>
                 </tr>
                 <tr>
                     <td><label>관심분야</label></td>
-
                     <td colspan="2">
                         <input type="checkbox" id="interest_1" name="interest" value="백엔드">
                         <label class="form-control-select" for="interest_1">백엔드</label>
@@ -263,5 +307,4 @@
     </div>
 </th:block>
 </body>
-
 </html>

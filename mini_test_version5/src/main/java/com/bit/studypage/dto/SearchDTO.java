@@ -30,7 +30,7 @@ public class SearchDTO {
         return keyword;
     }
 
-// toString() 메소드
+    // toString() 메소드
     @Override
     public String toString() {
         return "SearchDTO{" +
