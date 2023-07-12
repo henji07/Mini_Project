@@ -7,11 +7,14 @@
   <th:block layout:fragment="script">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" th:inline="javascript">
-       // 검색 버튼 클릭 이벤트 처리
+        // 검색 버튼 클릭 이벤트 처리
+
         $(document).on('click', '#search_button', function() {
           console.log("버튼으로");
           let keyword = $('#search_input').val();
           searchPostsMain(keyword);
+          // 'fullSearch.html' 페이지로 이동
+
         });
 
 
@@ -21,9 +24,12 @@
             var keyword = $('#search_input').val();
             searchPostsMain(keyword);
             console.log("되냐?");
+
+
+            // 'fullSearch.html' 페이지로 이동
+
           }
         });
-
 
 
 
@@ -116,7 +122,9 @@
   <div class="search_box">
     <i class="fas fa-search search_icon"></i>
     <input type="text" id="search_input" name="keyword" placeholder="검색" />
+    <a href="/fullSearch">
     <button type="button" id="search_button">검색</button>
+    </a>
   </div>
   <div class="user_buttons">
     <div th:block sec:authorize="!isAuthenticated()">

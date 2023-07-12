@@ -2,8 +2,7 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-      
-
+<head>
 <th:block layout:fragment="script">
    <script type="text/javascript" th:inline="javascript">
    $(function() {
@@ -25,7 +24,8 @@
    });
    </script>
 </th:block>
-
+</head>
+<body>
 <footer th:fragment="footer">
   <div class="footer-container" style="background-color: orange; margin-top: 20px;">
    <div class="footer-content">
@@ -49,5 +49,7 @@
    </div>
  </div>
 </footer>
+
+</body>
 
 </html>

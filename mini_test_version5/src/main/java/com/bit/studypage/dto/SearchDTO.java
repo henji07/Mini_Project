@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Setter
 @Getter
-
+@ToString
 public class SearchDTO {
 
     private String keyword;  // 키워드
@@ -30,7 +30,7 @@ public class SearchDTO {
         return keyword;
     }
 
-// toString() 메소드
+    // toString() 메소드
     @Override
     public String toString() {
         return "SearchDTO{" +

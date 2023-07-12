@@ -267,24 +267,24 @@
                 <a th:href="@{/certificatePage(name=${name},page=${List.totalPages - 1})}"> >></a>
             </th:block>
         </div>
-<!--        <div class="pagination" id="page2">-->
-<!--            <th:block th:if="${List.totalPages > 0}">-->
+        <!--        <div class="pagination" id="page2">-->
+        <!--            <th:block th:if="${List.totalPages > 0}">-->
 
-<!--                <a th:href="@{/certificatePage2(page=0)}"><< </a>-->
+        <!--                <a th:href="@{/certificatePage2(page=0)}"><< </a>-->
 
-<!--                <a th:href="@{/certificatePage2(page=${List.number - 10})}"> < </a>-->
+        <!--                <a th:href="@{/certificatePage2(page=${List.number - 10})}"> < </a>-->
 
-<!--                <th:block th:each="i : ${#numbers.sequence(startPage,endPage - 1)}">-->
-<!--                    <a th:href="@{/certificatePage2(page = ${i})}" th:text="${i + 1}"-->
-<!--                       th:class="${List.number == i ? 'selected' : ''}"></a>-->
-<!--                </th:block>-->
+        <!--                <th:block th:each="i : ${#numbers.sequence(startPage,endPage - 1)}">-->
+        <!--                    <a th:href="@{/certificatePage2(page = ${i})}" th:text="${i + 1}"-->
+        <!--                       th:class="${List.number == i ? 'selected' : ''}"></a>-->
+        <!--                </th:block>-->
 
-<!--                <a th:href="@{/certificatePage2(page=${(List.number + 10) > List.totalPages ? List.totalPages - 1 : List.number + 10 })}">-->
-<!--                    > </a>-->
+        <!--                <a th:href="@{/certificatePage2(page=${(List.number + 10) > List.totalPages ? List.totalPages - 1 : List.number + 10 })}">-->
+        <!--                    > </a>-->
 
-<!--                <a th:href="@{/certificatePage2(page=${List.totalPages - 1})}"> >></a>-->
-<!--            </th:block>-->
-<!--        </div>-->
+        <!--                <a th:href="@{/certificatePage2(page=${List.totalPages - 1})}"> >></a>-->
+        <!--            </th:block>-->
+        <!--        </div>-->
 
     </div>
 </th:block>
