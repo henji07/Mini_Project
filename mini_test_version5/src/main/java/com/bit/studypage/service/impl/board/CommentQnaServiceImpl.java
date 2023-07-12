@@ -1,4 +1,4 @@
-package com.bit.studypage.service.impl;
+package com.bit.studypage.service.impl.board;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -14,14 +14,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.bit.studypage.dto.BoardCmmntQnaDTO;
-import com.bit.studypage.dto.CommentQnaDTO;
-import com.bit.studypage.entity.BoardQna;
-import com.bit.studypage.entity.CommentQna;
+import com.bit.studypage.dto.board.BoardCmmntQnaDTO;
+import com.bit.studypage.dto.board.CommentQnaDTO;
 import com.bit.studypage.entity.Users;
-import com.bit.studypage.repository.BoardQnaRepository;
-import com.bit.studypage.repository.CommentQnaRepository;
+import com.bit.studypage.entity.board.BoardQna;
+import com.bit.studypage.entity.board.CommentQna;
 import com.bit.studypage.repository.MemberRepository;
+import com.bit.studypage.repository.board.BoardQnaRepository;
+import com.bit.studypage.repository.board.CommentQnaRepository;
 import com.bit.studypage.service.CommentQnaService;
 import com.bit.studypage.service.dao.BoardQnaDao;
 

@@ -2,8 +2,6 @@ package com.bit.studypage.controller;
 
 import java.util.*;
 
-
-import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.entity.Users;
 import com.bit.studypage.repository.UsersRepository;
 import jakarta.validation.Valid;
@@ -17,6 +15,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import com.bit.studypage.dto.MemberDTO;
+import com.bit.studypage.dto.board.ResponseDTO;
 import com.bit.studypage.service.MemberService;
 
 import lombok.RequiredArgsConstructor;

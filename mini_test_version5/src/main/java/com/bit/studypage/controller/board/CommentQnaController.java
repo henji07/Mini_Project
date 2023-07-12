@@ -1,4 +1,4 @@
-package com.bit.studypage.controller;
+package com.bit.studypage.controller.board;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bit.studypage.dto.BoardCmmntQnaDTO;
-import com.bit.studypage.dto.CommentQnaDTO;
-import com.bit.studypage.dto.ResponseCommentDTO;
+import com.bit.studypage.dto.board.BoardCmmntQnaDTO;
+import com.bit.studypage.dto.board.CommentQnaDTO;
+import com.bit.studypage.dto.board.ResponseCommentDTO;
 import com.bit.studypage.entity.Users;
 import com.bit.studypage.service.CommentQnaService;
 

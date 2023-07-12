@@ -1,9 +1,9 @@
-package com.bit.studypage.entity;
+package com.bit.studypage.entity.board;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.bit.studypage.dto.BoardQnaDTO;
+import com.bit.studypage.dto.board.BoardQnaDTO;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -48,6 +48,9 @@ public class BoardQna {
 
 	@Column(name = "like_count")
     private long likeCount;
+	
+	@Column(name = "board_main_cate")
+	private String boardMaincate; //대분류 카테고리 
 
 	@Builder
 	public BoardQna(BoardQnaDTO data) {

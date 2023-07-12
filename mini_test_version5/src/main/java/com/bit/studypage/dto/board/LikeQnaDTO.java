@@ -1,6 +1,6 @@
-package com.bit.studypage.dto;
+package com.bit.studypage.dto.board;
 
-import com.bit.studypage.entity.LikeQna;
+import com.bit.studypage.entity.board.LikeQna;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

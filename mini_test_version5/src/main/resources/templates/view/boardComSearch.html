@@ -15,7 +15,6 @@
    <script type="text/javascript" th:inline="javascript">
 	
    //검색 기능 
-   //검색 버튼 누르거나 엔터 치면 검색 되도록 
    $(function() {
     $("#search-form").submit(function(event) {
         event.preventDefault();  // 기본적인 폼 제출을 막는다.
@@ -24,18 +23,17 @@
      });
    });
    
-   //새로고침 되어도 글 정렬에서 선택한 값 그대로 있게 
-    window.onload = function() {
+  //새로고침 되어도 글 정렬에서 선택한 값 그대로 있게 
+   window.onload = function() {
 	    // 페이지 로드 시 sortOption의 값을 확인하여 해당하는 옵션을 선택
 	    var sortOption = new URLSearchParams(window.location.search).get('sortOption');
 	    if (sortOption) {
 	        document.getElementById('list-options').value = sortOption;
 	    }
 	} 
-
-  
-  //글 정렬
-  function changeSortOption() {
+   
+   //글 정렬
+   function changeSortOption() {
 	    var sortOption = document.getElementById("list-options").value;
 	    var currentUrl = window.location.href;
 	    var baseUrl = currentUrl.includes("?") ? currentUrl.substring(0, currentUrl.indexOf("?")) : currentUrl;
@@ -61,7 +59,6 @@
 	    window.location.href = newUrl;
 	}
 
-
    </script>
 </th:block>
     
@@ -84,7 +81,7 @@
   </div>
   
   <hr class="horizontal-line">
-  
+
 <!-- 드롭다운 -->
 <div class="options-container">
     <select name="list-options" id="list-options" onchange="changeSortOption()">
@@ -95,8 +92,7 @@
     </select>
 </div>
 
-<hr class="horizontal-line-underdropdown">
-
+  <hr class="horizontal-line-underdropdown">
 <!-- 검색창 -->
 <!-- <form> 태그를 사용하면 브라우저는 기본적으로 엔터 키를 누르는 것을 "폼 제출"으로 인식하고 폼의 action 속성에 지정된 URL로 페이지를 리다이렉트 -->
 <form id="search-form" action="/board/search/1" method="get" class="search-box-qna">
@@ -104,60 +100,64 @@
     <input type="text" name="keyword" id="search-input-qna" placeholder="검색" />
     <button type="submit" id="search-button">검색</button>
 </form>
+<!-- 검색창 아래에 위치할 검색 키워드 표시 -->
+<div class="search-keyword-display">
+    <p style="text-align: center;" th:text="'\' ' + ${keyword} + ' \'에 대한 검색 결과'"></p>
+</div>
+<!-- 검색 결과가 없을 때 메시지 표시 -->
+<div th:if="${noResultMessage}" class="no-result-message">
+    <p style="text-align: center;" th:text="${noResultMessage}"></p>
+</div>
 
 <!-- 상단 페이징 -->
 <div class="pagination-top">
     <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
     <div class="pagination-top-buttons">
-      <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} - 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous"  th:classappend="${currentPage == null || currentPage == 1 ? 'disabled-link' : ''}">&larr;</a>
-      <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} + 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == null || currentPage == totalPages ? 'disabled-link' : ''}">&rarr;</a>
+      <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} - 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous"  th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr;</a>
+      <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} + 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">&rarr;</a>
     </div>
 </div>
 
 <!-- 게시물 부분 -->
- <div class="board-write-container">
- 
-   <li class="board-write" th:each="board : ${qnaList}">
-   
-     <div class="post-number" th:text="${board.boardId}"></div>
-     
-     <div class="answer-count">
-     	<p id="anwer-count-title">답변</p>
-     	<div class="answer-count-count" th:text="${board.commentCount}"></div>
-     </div>
-     
-     <div class="board-writer-title">
-       <div class="author">
-         <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
-         <div th:text="${board.boardWriter}"></div>
-       </div>
-       <a th:href="@{/board/board/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
-     </div>
-     
-     <!-- 좋아요 -->
+  <div class="board-write-container">
+    <li class="board-write" th:each="board : ${searchList}">
+      <div class="post-number" th:text="${board.boardId}"></div>
+      <div class="answer-count">
+      	<p id="anwer-count-title">답변</p>
+      	<div class="answer-count-count" th:text="${board.commentCount}"></div>
+      </div>
+      <div class="board-writer-title">
+        <div class="author">
+          <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
+          <div th:text="${board.boardWriter}"></div>
+        </div>
+        <a th:href="@{/board/board/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
+      </div>
+      
+      <!-- 좋아요 -->
       <div id="likeButton">
 		 <i id="heart" class="far fa-heart"></i> 
 		 <span id="likeCount" th:text="${board.likeCount}"></span>
 	  </div>
-     
-     <div class="board-details">
-      <div class="view-count" th:text="'조회  ' + ${board.boardCnt}"></div>
-      <div class="reg-date" th:text="${#strings.substring(board.boardRegdate, 0, 10) }"></div>
-     </div>
-   </li>  
-    
- </div>
+	  
+      <div class="board-details">
+	      <div class="view-count" th:text="'조회  ' + ${board.boardCnt}"></div>
+	      <div class="reg-date" th:text="${#strings.substring(board.boardRegdate, 0, 10) }"></div>
+      </div>
+    </li>   
+  </div>
 <!-- 하단 페이징 -->
 <!-- 상수로 페이지 그룹 사이즈를 설정. -->
 <th:block th:with="pageGroupSize=5">
     <div class="pagination-bottom">
 
-        <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} - 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous" th:classappend="${currentPage == null || currentPage == 1 ? 'disabled-link' : ''}">&larr; Previous</a>
+        <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} - 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous" th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr; Previous</a>
+        
         <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
-            <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/{pageNum}(pageNum=${i}, sortOption=${sortOption})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
+            <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{'/board/search/' + ${i} + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
         </div>
 
-        <a style="color: black;" th:href="@{'/board/qnaPage/' + (${currentPage} + 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == null || currentPage == totalPages ? 'disabled-link' : ''}">Next &rarr;</a>
+        <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} + 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">Next &rarr;</a>
 
     </div>
 </th:block>

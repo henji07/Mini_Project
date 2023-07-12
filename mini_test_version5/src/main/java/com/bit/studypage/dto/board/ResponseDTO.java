@@ -1,4 +1,4 @@
-package com.bit.studypage.dto;
+package com.bit.studypage.dto.board;
 
 import java.util.List;
 

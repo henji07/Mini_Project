@@ -1,6 +1,6 @@
 package com.bit.studypage.controller;
 
-import com.bit.studypage.dto.ResponseDTO;
+import com.bit.studypage.dto.board.ResponseDTO;
 import com.bit.studypage.entity.SearchBoard;
 import com.bit.studypage.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;

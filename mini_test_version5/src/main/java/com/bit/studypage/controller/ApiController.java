@@ -1,6 +1,4 @@
 package com.bit.studypage.controller;
-/* Java 1.8 샘플 코드 */
-import com.bit.studypage.dto.ResponseDTO;
 import com.bit.studypage.entity.SearchBoard;
 import com.bit.studypage.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.bit.studypage.dto.board.ResponseDTO;
 import com.bit.studypage.entity.QuaPlace;
 import com.bit.studypage.entity.Qualification;
 import com.bit.studypage.repository.QuaPlaceRepository;

@@ -1,4 +1,4 @@
-package com.bit.studypage.service.impl;
+package com.bit.studypage.service.impl.board;
 
 import java.io.File;
 import java.time.format.DateTimeFormatter;
@@ -20,15 +20,15 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bit.studypage.dto.BoardCmmntQnaDTO;
-import com.bit.studypage.dto.BoardQnaDTO;
-import com.bit.studypage.dto.FileQnaDTO;
-import com.bit.studypage.entity.BoardQna;
-import com.bit.studypage.entity.FileQna;
-import com.bit.studypage.repository.BoardQnaRepository;
-import com.bit.studypage.repository.CommentQnaRepository;
-import com.bit.studypage.repository.FileQnaRepository;
-import com.bit.studypage.repository.LikeQnaRepository;
+import com.bit.studypage.dto.board.BoardCmmntQnaDTO;
+import com.bit.studypage.dto.board.BoardQnaDTO;
+import com.bit.studypage.dto.board.FileQnaDTO;
+import com.bit.studypage.entity.board.BoardQna;
+import com.bit.studypage.entity.board.FileQna;
+import com.bit.studypage.repository.board.BoardQnaRepository;
+import com.bit.studypage.repository.board.CommentQnaRepository;
+import com.bit.studypage.repository.board.FileQnaRepository;
+import com.bit.studypage.repository.board.LikeQnaRepository;
 import com.bit.studypage.service.BoardQnaService;
 import com.bit.studypage.service.dao.BoardQnaDao;
 
@@ -273,7 +273,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 
 	/* 글 목록 */ 
 	@Override
-	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption) {
+	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption, String category) {
 		
 		int pageSize = 8;  // 한 페이지에 보여질 게시글 수
 		
@@ -292,7 +292,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		
 		//Spring Data JPA의 Pageable 인터페이스와 Page 클래스를 사용해서 페이지네이션을 구현
 		Pageable pageable = PageRequest.of(pageNum - 1, pageSize, sort);
-		Page<BoardQna> pageInfo =  boardRepository.findAll(pageable);
+		Page<BoardQna> pageInfo =  boardRepository.findByBoardMaincate(category, pageable);
 		
 		//이를 BoardDTO 객체 리스트로 변환한 후 반환
 		List<BoardQna> boardList = pageInfo.getContent();
@@ -401,6 +401,65 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	public int getSearchTotalPages(String keyword) {
 	    int pageSize = 5;
 	    long totalBoards = boardRepository.countByTitleContaining(keyword);
+	    return (int) Math.ceil((double) totalBoards / pageSize);
+	}
+
+	//카테고리별로 이동 
+	@Override
+	public List<BoardQnaDTO> getBoardListByCategory(String category, int pageNum, String sortOption) {
+		int pageSize = 8;  // 한 페이지에 보여질 게시글 수
+
+	    Sort sort; //옵션 객체 생성 
+
+	    // 정렬 옵션에 따라 Sort 객체를 생성
+	    if ("recently".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "boardId");
+	    } else if ("view".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "boardCnt");
+	    } else if ("popular".equals(sortOption)) {
+	        sort = Sort.by(Sort.Direction.DESC, "likeCount");
+	    } else {
+	        sort = Sort.by(Sort.Direction.DESC, "boardId");
+	    }
+
+	    // Pageable 인스턴스 생성
+	    Pageable pageable = PageRequest.of(pageNum - 1, pageSize, sort);
+
+	    // 해당 카테고리의 게시글 리스트를 페이징 처리하여 가져옴
+	    Page<BoardQna> pageInfo = boardRepository.findByBoardMaincate(category, pageable);
+	    
+	    // BoardQna 리스트를 BoardQnaDTO 리스트로 변환
+	    List<BoardQna> boardList = pageInfo.getContent();
+	    
+	    List<BoardQnaDTO> dataList = new ArrayList<>();
+	    
+	    if(ObjectUtils.isNotEmpty(boardList)) {
+	        for(BoardQna b : boardList) {
+	            
+	            BoardQnaDTO dto = new BoardQnaDTO();
+	            BeanUtils.copyProperties(b, dto);
+	            
+	            // 댓글 수 조회
+	            int commentCount = commentRepository.countByBoardId(b.getBoardId());
+	            dto.setCommentCount(commentCount);
+	            
+	            // 날짜를 String으로 변환
+	            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	            String formattedDateTime = b.getBoardRegdate().format(formatter);
+	            dto.setBoardRegdate(formattedDateTime);
+	            
+	            dataList.add(dto);
+	        }
+	    }
+	    
+	    return dataList;
+	}
+
+	//카테고리별 총 페이지 수 
+	@Override
+	public Object getTotalPagesByCategory(String category) {
+		int pageSize = 8;
+	    long totalBoards = boardRepository.countByBoardMaincate(category);
 	    return (int) Math.ceil((double) totalBoards / pageSize);
 	}
 

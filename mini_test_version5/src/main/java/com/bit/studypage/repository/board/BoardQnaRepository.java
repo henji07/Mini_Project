@@ -1,4 +1,4 @@
-package com.bit.studypage.repository;
+package com.bit.studypage.repository.board;
 
 
 import org.springframework.data.domain.Page;
@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bit.studypage.entity.BoardQna;
+import com.bit.studypage.entity.board.BoardQna;
 
 //JpaRepository를 상속받도록 함으로써 기본적인 동작이 모두 가능
 //JpaRepository<대상으로 지정할 엔티티, 해당 엔티티의 PK의 타입>.
@@ -33,6 +33,13 @@ public interface BoardQnaRepository extends JpaRepository<BoardQna, Long> {
 	//게시판 제목을 기반으로 검색된 게시물의 수를 반환
 	@Query("SELECT COUNT(DISTINCT b.boardId) FROM BoardQna b WHERE b.boardTitle LIKE %:searchKeyword%")
 	long countByTitleContaining(@Param("searchKeyword") String searchKeyword);
+
+	//카테고리별로 찾아가기 
+	Page<BoardQna> findByBoardMaincate(String category, Pageable pageable);
+
+	//카테고리 별 페이지 수 
+	long countByBoardMaincate(String category);
+
 	
 }
 

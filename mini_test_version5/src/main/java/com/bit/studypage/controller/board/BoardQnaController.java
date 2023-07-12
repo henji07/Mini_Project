@@ -1,4 +1,4 @@
-package com.bit.studypage.controller;
+package com.bit.studypage.controller.board;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -26,10 +26,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bit.studypage.dto.BoardQnaDTO;
-import com.bit.studypage.dto.LikeQnaDTO;
-
-import com.bit.studypage.dto.ResponseDTO;
+import com.bit.studypage.dto.board.BoardQnaDTO;
+import com.bit.studypage.dto.board.LikeQnaDTO;
+import com.bit.studypage.dto.board.ResponseDTO;
 import com.bit.studypage.entity.Users;
 import com.bit.studypage.service.BoardQnaService;
 import com.bit.studypage.service.LikeQnaService;
@@ -47,8 +46,39 @@ public class BoardQnaController {
 
     private final BoardQnaService boardService;
     private final LikeQnaService likeService;
-
-
+    
+//    //대분류 카테고리별로 이동 
+//    @GetMapping("/qnaPage/{category}/{pageNum}")
+//    public ModelAndView getBoardListByCategory(@PathVariable("category") String category,
+//                                               @PathVariable("pageNum") int pageNum,
+//                                               @RequestParam(required = false) String sortOption) {
+//        ModelAndView mv = new ModelAndView();
+//
+//        // 게시글 목록을 가져옴
+//        List<BoardQnaDTO> boardList = boardService.getBoardListByCategory(category, pageNum, sortOption);
+//
+//        mv.addObject("qnaList", boardList);
+//        mv.addObject("currentPage", pageNum);
+//        mv.addObject("totalPages", boardService.getTotalPagesByCategory(category));
+//        mv.addObject("sortOption", sortOption);
+//        
+//       //카테고리에 따라 다른 페이지를 보여줌
+//		switch (category) {
+//		    case "freePage":
+//		    mv.setViewName("view/boardCom.html");
+//		    break;
+//		case "studyPage":
+//		    mv.setViewName("view/boardTogether.html");
+//		    break;
+//		case "qnaPage":
+//		    mv.setViewName("view/boardQna.html");
+//		    break;
+//		default:
+//		    mv.setViewName("view/boardQna.html"); // if category does not match any known categories
+//		}
+//		
+//		return mv;
+//    }
 
     //글 등록 화면으로 이동
     @GetMapping("/insert-board-view")
@@ -63,38 +93,54 @@ public class BoardQnaController {
 	        }
         }
         mv.addObject("userName", userName);
+        mv.setViewName("view/boardInsertQna.html"); 
 
-
-        mv.setViewName("view/boardInsertQna.html");
-        return mv;
+		return mv;
     }
 	
-	//글 목록 화면으로 이동 //수정수정
-	@GetMapping("/qnaPage/{pageNum}")
+	//글 목록 화면으로 이동 //카테고리 별로 가져오는 거 됨 
+	@GetMapping("/qnaPage/{category}/{pageNum}")
     public ModelAndView getBoardList(@PathVariable("pageNum") int pageNum, 
-    		 						 @RequestParam(required = false) String sortOption) {
+    		 						 @RequestParam(required = false) String sortOption,
+    		 						 @PathVariable("category") String category) {
 
 
         ModelAndView mv = new ModelAndView();
 
         //게시글 목록을 가져옴
-        List<BoardQnaDTO> boardList = boardService.getBoardList(pageNum, sortOption);
+        List<BoardQnaDTO> boardList = boardService.getBoardList(pageNum, sortOption, category);
         
         mv.addObject("qnaList", boardList);
         mv.addObject("currentPage", pageNum);
         mv.addObject("totalPages", boardService.getTotalPages());
         mv.addObject("sortOption", sortOption);
-        mv.setViewName("view/boardQna.html");
-
-        return mv;
+        
+      //카테고리에 따라 다른 페이지를 보여줌
+  		switch (category) {
+  		    case "freePage":
+  		    mv.setViewName("view/boardCom.html");
+  		    break;
+  		case "studyPage":
+  		    mv.setViewName("view/boardTogether.html");
+  		    break;
+  		case "qnaPage":
+  		    mv.setViewName("view/boardQna.html");
+  		    break;
+  		default:
+  		    mv.setViewName("view/boardQna.html"); // if category does not match any known categories
+  		}
+  		
+  		return mv;
 
     }
 	
 	//검색 결과 화면으로 이동 
 	//required = false로 설정되면 해당 파라미터가 필수가 아니라는 것
 	//파라미터가 누락되더라도 예외가 발생하지 않고 기본값으로 null이 할당
-	@GetMapping("/search/{pageNum}")
-    public ModelAndView getSearchList(@RequestParam(required = false) String keyword, @PathVariable int pageNum, String sortOption) {
+	@GetMapping("/search/{category}/{pageNum}")
+    public ModelAndView getSearchList(@RequestParam(required = false) String keyword, 
+						    		@PathVariable int pageNum, String sortOption, 
+						    		@PathVariable("category") String category) {
 		
 		ModelAndView mv = new ModelAndView();
 
@@ -110,9 +156,22 @@ public class BoardQnaController {
             mv.addObject("noResultMessage", "검색 결과가 없습니다.");
         }
         
-        mv.setViewName("view/boardSearchQna.html");
-
-        return mv;
+      //카테고리에 따라 다른 페이지를 보여줌
+  		switch (category) {
+  		    case "freePage":
+  		    mv.setViewName("view/boardComSearch.html");
+  		    break;
+  		case "studyPage":
+  		    mv.setViewName("view/boardTogetherSearch.html");
+  		    break;
+  		case "qnaPage":
+  		    mv.setViewName("view/boardSearchQna.html");
+  		    break;
+  		default:
+  		    mv.setViewName("view/boardSearchQna.html"); 
+  		}
+  		
+  		return mv;
     }
 	
    
@@ -201,14 +260,15 @@ public class BoardQnaController {
             mv.addObject("username", username);
             mv.addObject("userId", userId);
         }
+        
         mv.setViewName("/view/boardDetailQna");
-
-        return mv;
+  		
+  		return mv;
     }
     
     //글 수정 화면으로 이동
-  	@GetMapping("/modify-board-view/{boardId}")
-      public ModelAndView modifyBoardView(@PathVariable("boardId") long boardId) {
+  	@GetMapping("/{category}/modify-board-view/{boardId}")
+      public ModelAndView modifyBoardView(@PathVariable("category") String category, @PathVariable("boardId") long boardId) {
   		
   		System.out.println("boardId = " + boardId);
   		
@@ -218,8 +278,23 @@ public class BoardQnaController {
         BoardQnaDTO dto = boardService.getBoardDetail(boardId, 0);
 
         mv.addObject("board", dto);
-        mv.setViewName("view/boardModifyQnA.html");
-        return mv;
+        
+        //카테고리에 따라 다른 페이지를 보여줌
+  		switch (category) {
+  		    case "freePage":
+  		    mv.setViewName("view/boardComModify.html");
+  		    break;
+  		case "studyPage":
+  		    mv.setViewName("view/boardTogetherModify.html");
+  		    break;
+  		case "qnaPage":
+  		    mv.setViewName("view/boardModifyQna.html");
+  		    break;
+  		default:
+  		    mv.setViewName("view/boardModifyQna.html");
+  		}
+  		
+  		return mv;
     }
 
     //글 수정

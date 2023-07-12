@@ -1,11 +1,11 @@
-package com.bit.studypage.repository;
+package com.bit.studypage.repository.board;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bit.studypage.entity.LikeQna;
+import com.bit.studypage.entity.board.LikeQna;
 
 @Repository
 public interface LikeQnaRepository extends JpaRepository<LikeQna,Long> {

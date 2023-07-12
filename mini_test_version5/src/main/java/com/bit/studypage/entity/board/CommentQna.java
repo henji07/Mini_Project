@@ -1,9 +1,9 @@
-package com.bit.studypage.entity;
+package com.bit.studypage.entity.board;
 
 
 import java.time.LocalDateTime;
 
-import com.bit.studypage.dto.CommentQnaDTO;
+import com.bit.studypage.dto.board.CommentQnaDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

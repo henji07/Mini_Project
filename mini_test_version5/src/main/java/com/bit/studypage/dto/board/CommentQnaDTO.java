@@ -1,8 +1,8 @@
-package com.bit.studypage.dto;
+package com.bit.studypage.dto.board;
 
 import java.time.LocalDateTime;
 
-import com.bit.studypage.entity.CommentQna;
+import com.bit.studypage.entity.board.CommentQna;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

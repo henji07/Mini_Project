@@ -1,4 +1,4 @@
-package com.bit.studypage.entity;
+package com.bit.studypage.entity.board;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

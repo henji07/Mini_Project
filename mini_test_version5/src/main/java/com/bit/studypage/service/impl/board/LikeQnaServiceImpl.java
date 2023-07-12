@@ -1,4 +1,4 @@
-package com.bit.studypage.service.impl;
+package com.bit.studypage.service.impl.board;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -9,13 +9,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.bit.studypage.dto.LikeQnaDTO;
-import com.bit.studypage.entity.BoardQna;
-import com.bit.studypage.entity.LikeQna;
+import com.bit.studypage.dto.board.LikeQnaDTO;
 import com.bit.studypage.entity.Users;
-import com.bit.studypage.repository.BoardQnaRepository;
-import com.bit.studypage.repository.LikeQnaRepository;
+import com.bit.studypage.entity.board.BoardQna;
+import com.bit.studypage.entity.board.LikeQna;
 import com.bit.studypage.repository.MemberRepository;
+import com.bit.studypage.repository.board.BoardQnaRepository;
+import com.bit.studypage.repository.board.LikeQnaRepository;
 import com.bit.studypage.service.LikeQnaService;
 
 
