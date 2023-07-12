@@ -12,6 +12,7 @@
     align-items: center;
     border: 1px solid #ddd;
     background-color: #f5f5f5;
+    
 }
 
 .board-title {
@@ -91,46 +92,35 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    
 }
 
 .title {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 50px;
     margin-bottom: 5px;
-    margin-left: 40px;
-    color: black;
+    font-weight: bolder;
+    color: #8c8c8c	;
+    display: block;
+    margin-left: 35px;
 }
 
 .author {
     font-size: 14px;
-    color: #888;
+    color: #646464;
     display: flex;
     align-items: center;
+    font-weight: bold;
 }
 
 .profile-img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     margin-right: 10px;
 }
 
 /*답변 수*/
-.answer-count {
-    width: 60px;
-    height: 60px;
-    background-color: #ffffff;
-    color: #f97800;
-    border: 2px solid #f97800;
-    border-radius: 5px;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
-    margin-left: 10px;
-    text-align: center;
-    flex-direction: column;
-}
 
 #anwer-count-title {
     display: block;
@@ -141,6 +131,10 @@
 .answer-count-count {
     display: block;
     text-align: center;
+}
+
+.view-count {
+	margin-right: 5px;
 }
 
 /*드롭다운*/
@@ -268,11 +262,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100px
+    width: 50px
 }
 
 #likeButton i {
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .far.fa-heart {
@@ -284,4 +278,14 @@
 .post-number {
     font-size: 12px;
     margin-right: 10px;
+}
+
+.board_info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center; 
+    color: #828282;
+    font-size: 14px;
+    margin-block-start: auto;
 }

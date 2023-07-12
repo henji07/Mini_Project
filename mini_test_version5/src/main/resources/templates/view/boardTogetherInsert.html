@@ -55,7 +55,7 @@
                success: (result) => {
                    console.log(result);
                    alert(result.item.msg);
-                   window.location.href="/board/qnaPage/qnaPage/1";
+                   window.location.href="/board/qnaPage/studyPage/1";
                },
                error: (error) => {
                    console.log(error);
@@ -76,8 +76,8 @@
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
 <section id="formSection">
 <div id="formContainer">
-<h3 style="color: #FF8C0A; width: 100px; font-size: 14px; text-align: center; display: block; margin: 0 auto; padding: 10px; border: 2px solid #FF8C0A; border-radius: 10px; background-color: #FFF5E6; box-shadow: 3px 3px 5px rgba(0,0,0,0.2);" id="formTitle">궁금해요</h3>
-<p style="color: #828282; font-weight: bold; font-size: 14px; text-align: center;">무엇이든 물어보세요!</p>
+<h3 style="color: #FF8C0A; width: 100px; font-size: 14px; text-align: center; display: block; margin: 0 auto; padding: 10px; border: 2px solid #FF8C0A; border-radius: 10px; background-color: #FFF5E6; box-shadow: 3px 3px 5px rgba(0,0,0,0.2);" id="formTitle">함께해요</h3>
+<p style="color: #828282; font-weight: bold; font-size: 14px; text-align: center;">스터디, 함께해요!</p>
   <form id="insertForm" action="/board/board-insert" method="post" enctype="multipart/form-data">
     <table id="formTable">
       <tr>
@@ -106,10 +106,10 @@
       </tr>
       
     </table>
-    <input type="hidden" id="boardCategory" name="boardMaincate" value="qnaPage">
+    <input type="hidden" id="boardCategory" name="boardMaincate" value="studyPage">
   </form>
   
-  <a id="postListLink" href="/board/qnaPage/qnaPage/1">글 목록</a>
+  <a id="postListLink" href="/board/qnaPage/studyPage/1">글 목록</a>
 </div>
 </section>
 </div>

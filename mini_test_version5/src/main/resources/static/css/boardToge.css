@@ -73,16 +73,44 @@
 }
 
 /*게시판 부분*/
+.board-write-container {
+    display: flex;              /* Flexbox layout을 활용합니다 */
+    flex-wrap: wrap;            /* 필요시 아이템들을 다음 줄로 넘김 */
+    justify-content: space-between; /* 아이템들 사이에 동일한 간격을 두어 줍니다 */
+    width: 100%;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
 .board-write {
-    padding: 10px;
-    background-color: white;
-    border-bottom: 1px solid #ccc;
+    position: relative;
+    padding: 20px;
+    background-color: #F9F9F3;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-basis: 46%;
+    margin: 2%;
+    box-sizing: border-box;
     display: flex;
-    align-items: center;
+    flex-direction: column;   
 }
 
 .board-write:first-child {
     border-top: 1px solid #ccc;
+}
+
+/* 각각의 카드를 구분하기 위해 마진 추가 */
+.board-write:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+/* 각 섹션(글번호, 작성자 등)의 너비를 제한해서 레이아웃 조절 */
+.post-number,
+.answer-count,
+.board-writer-title,
+.board-details {
+    flex: 1 1 20%;      /* flex-grow, flex-shrink, flex-basis 설정 */
+    min-width: 100px;   /* 최소 가로 길이 설정 */
 }
 
 .board-writer-title {
@@ -96,9 +124,12 @@
 .title {
     font-size: 16px;
     font-weight: 50px;
-    margin-bottom: 5px;
-    margin-left: 40px;
+    
     color: black;
+}
+
+li::marker {
+    content: "";  /* 이 부분이 실제로 marker의 내용을 없애주는 부분입니다. */
 }
 
 .author {
@@ -106,6 +137,7 @@
     color: #888;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .profile-img {
@@ -116,32 +148,6 @@
 }
 
 /*답변 수*/
-.answer-count {
-    width: 60px;
-    height: 60px;
-    background-color: #ffffff;
-    color: #f97800;
-    border: 2px solid #f97800;
-    border-radius: 5px;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
-    margin-left: 10px;
-    text-align: center;
-    flex-direction: column;
-}
-
-#anwer-count-title {
-    display: block;
-    text-align: center;
-    margin: 0;
-}
-
-.answer-count-count {
-    display: block;
-    text-align: center;
-}
 
 /*드롭다운*/
 .options-container {
@@ -267,8 +273,7 @@
 #likeButton {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100px
+    justify-content: right;
 }
 
 #likeButton i {
@@ -284,4 +289,10 @@
 .post-number {
     font-size: 12px;
     margin-right: 10px;
+}
+
+.board-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto; /* 이 부분이 상세 정보를 맨 아래로 밀어주는 속성입니다. */
 }

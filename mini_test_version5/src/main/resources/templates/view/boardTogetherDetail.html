@@ -77,10 +77,10 @@
           <div id="postActions">
             <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
           	<div th:if="${username != null and board.boardWriter == username}">
-            	<a th:href="@{/board/qnaPage/modify-board-view/{boardId}(boardId=${board.boardId})}" type="submit" id="btnUpdate">글 수정</a>
+            	<a th:href="@{/board/studyPage/modify-board-view/{boardId}(boardId=${board.boardId})}" type="submit" id="btnUpdate">글 수정</a>
           	</div>
           	
-            <a href="/board/qnaPage/qnaPage/1" type="button" id="btnList">글 목록</a>
+            <a href="/board/qnaPage/studyPage/1" type="button" id="btnList">글 목록</a>
             
             <!-- 로그인한 사용자만 보고, 게시글 작성자와 로그인 사용자가 같을 경우 보여주는 내용 -->
             <div th:if="${username != null and board.boardWriter == username}">
@@ -281,7 +281,7 @@
            success: (obj) => {
                console.log(obj);
                alert(obj.item.msg);
-               location.href = `/board/qnaPage/qnaPage/1`;
+               location.href = `/board/qnaPage/studyPage/1`;
            },
            error: (error) => {
                console.log(error);

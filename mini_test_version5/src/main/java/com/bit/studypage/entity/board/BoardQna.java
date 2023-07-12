@@ -60,6 +60,7 @@ public class BoardQna {
 		this.boardWriter = data.getBoardWriter();
 		this.boardRegdate = LocalDateTime.now();
 		this.likeCount = 0;
+		this.boardMaincate = data.getBoardMaincate();
 	}
 
 	public void updateContent(BoardQnaDTO dto) {
