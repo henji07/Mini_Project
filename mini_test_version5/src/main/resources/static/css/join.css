@@ -1,0 +1,151 @@
+.join-container {
+	width: 600px;
+	margin-right: auto;
+	margin-left: auto;
+
+}
+
+#join-join {
+	text-align: left;
+	font-size: 20px;
+	margin-left: 10px;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+<<<<<<< HEAD
+#join-type {
+=======
+.join-type {
+
+>>>>>>> origin/newyoojin
+	font-weight: lighter;
+}
+
+
+#join-table {
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+#join-table td {
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+#join-table > label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+#join-table td p {
+	margin: 10px;
+	margin-bottom: 0px;
+	font-size: 13px;
+}
+
+.join-line {
+	display: flex;
+	align-items: center;
+}
+
+.join-line-text {
+	flex: 1;
+	height: 1px;
+	background-color: #ccc;
+	margin: 0 10px;
+}
+
+.join-social-link {
+	text-align: center;
+}
+
+.join-social-link > a > img{
+	width: 50px;
+	height: 50px;
+	margin: 20px;
+}
+
+.form-control {
+	width: 90%;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+.form-control-id {
+	width: 72%;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+.form-control-select {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+	display: inline;
+	text-align: left;
+}
+
+#btn-regist {
+	padding: 10px 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	background-color: #fc7f5d;;
+	color: #fff;
+	border: none;
+	cursor: pointer;  
+	margin-top: 20px;
+	margin-bottom: 100px;
+	width: 120px;
+	heigt: 30px;
+}
+
+#btn-home {
+	padding: 10px 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	background-color: #bebebe;
+	color: #fff;
+	border: none;
+	cursor: pointer;  
+	margin-top: 5px;
+	width: 120px;
+	heigt: 30px;	
+}
+
+#btn-Id-duplication {
+	background-color: #fc7f5d;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	padding: 5px 10px;
+	margin-top: 2px;
+	margin-left: 5px;
+	width: 65px;
+	height: 30px;
+	font-size: 12px;
+	text-align: center;
+	
+}
+
+.fieldError {
+	border-color: #bd2130;
+}
+
+.error {
+	color: #bd2130;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+.checkbox-label {
+	margin-right: 10px;
+}

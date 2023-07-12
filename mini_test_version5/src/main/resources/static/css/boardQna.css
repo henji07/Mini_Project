@@ -1,0 +1,436 @@
+/*이미지 아래부터 게시물 감싸는 부분*/
+.board-qna-container {
+<<<<<<< HEAD
+	font-family: 'Montserrat';
+	margin: 100px auto;
+	max-width: 50%;
+	display: block;
+}
+   
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board-title {
+  text-align: center;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.board-title button {
+  font-size: 15px;
+  font-weight: bolder;
+  padding: 10px 20px;
+  background: none;
+  color: #aaaaaa;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.board-title button:hover {
+	color:#f97800;
+}
+
+.board-actions {
+  text-align: left;
+  width: 100%;
+  position: relative;
+}
+
+.board-actions button {
+  font-size: 15px;
+  font-weight: bolder;
+  padding: 10px 20px;
+  color: #aaaaaa;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  transform: translateY(-100%);
+}
+
+.board-actions button:hover {
+	color:#f97800;
+=======
+    font-family: 'Montserrat';
+    margin: 100px auto;
+    max-width: 50%;
+    display: block;
+}
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board-title {
+    text-align: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.board-title button {
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 10px 20px;
+    background: none;
+    color: #aaaaaa;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.board-title button:hover {
+    color:#f97800;
+}
+
+.board-actions {
+    text-align: left;
+    width: 100%;
+    position: relative;
+}
+
+.board-actions button {
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 10px 20px;
+    color: #aaaaaa;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+}
+
+.board-actions button:hover {
+    color:#f97800;
+>>>>>>> origin/newyoojin
+}
+
+/*중간 선*/
+.horizontal-line {
+<<<<<<< HEAD
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.horizontal-line-underdropdown {
+	border-top: 1px solid rgba(204, 204, 204, 0.1);
+	margin-top: 10px;
+	margin-bottom: 10px;
+=======
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.horizontal-line-underdropdown {
+    border-top: 1px solid rgba(204, 204, 204, 0.1);
+    margin-top: 10px;
+    margin-bottom: 10px;
+>>>>>>> origin/newyoojin
+}
+
+/*게시판 부분*/
+.board-write {
+<<<<<<< HEAD
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+}
+
+.board-write:first-child {
+  border-top: 1px solid #ccc;
+}
+
+.board-writer-title {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 50px;
+  margin-bottom: 5px;
+  margin-left: 40px;
+  color: black;
+}
+
+.author {
+  font-size: 14px;
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+.profile-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+=======
+    padding: 10px;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.board-write:first-child {
+    border-top: 1px solid #ccc;
+}
+
+.board-writer-title {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 50px;
+    margin-bottom: 5px;
+    margin-left: 40px;
+    color: black;
+}
+
+.author {
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+>>>>>>> origin/newyoojin
+}
+
+/*답변 수*/
+.answer-count {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/newyoojin
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  color: #f97800;
+  border: 2px solid #f97800;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  text-align: center;
+}
+
+/*드롭다운*/
+.options-container {
+    text-align: right;
+}
+
+#list-options {
+    font-size: 0.9rem;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+<<<<<<< HEAD
+	border-radius: 5px;
+=======
+    border-radius: 5px;
+>>>>>>> origin/newyoojin
+}
+
+/*검색*/
+.search-box-qna {
+<<<<<<< HEAD
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #949494;
+  border-radius: 20px;
+  padding: 5px;
+  width: 300px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.search-box-qna .search-icon-qna {
+  color: #888;
+  margin-right: 5px;
+}
+
+.search-box-qna input[type="text"] {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+}
+
+.search-box-qna button {
+  background-color: #f97800;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+=======
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #949494;
+    border-radius: 20px;
+    padding: 5px;
+    width: 300px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+.search-box-qna .search-icon-qna {
+    color: #888;
+    margin-right: 5px;
+}
+
+.search-box-qna input[type="text"] {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+}
+
+.search-box-qna button {
+    background-color: #f97800;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+>>>>>>> origin/newyoojin
+}
+
+/*상단 페이징*/
+.pagination-top {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-top: 20px;
+}
+
+.pagination-top-info {
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.pagination-top-buttons {
+    display: flex;
+}
+
+.pagination-top-button{
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+<<<<<<< HEAD
+.pagination-top-button:disabled {
+    cursor: not-allowed;
+=======
+.disabled-link {
+    pointer-events: none;
+    color: #b4b4b4 !important;
+>>>>>>> origin/newyoojin
+}
+
+/*하단 페이징*/
+.pagination-bottom {
+<<<<<<< HEAD
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-bottom .page-bottom-link {
+  font-size: 14px;
+  padding: 5px 10px;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 5px;
+=======
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-bottom .page-bottom-link {
+    font-size: 14px;
+    padding: 5px 10px;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+>>>>>>> origin/newyoojin
+}
+
+.pagination-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-bottom-button {
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    background-color: white;
+<<<<<<< HEAD
+    cursor: pointer;   
+}
+
+.pagination-bottom-button:disabled {
+    cursor: not-allowed;
+=======
+    cursor: pointer;
+>>>>>>> origin/newyoojin
+}
+
+.pagination-bottom-pages {
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+.pagination-bottom-button.pagination-button-previous {
+    margin-right: auto;
+}
+
+.pagination-bottom-button.pagination-button-next {
+    margin-left: auto;
+<<<<<<< HEAD
+}
+=======
+
+}
+>>>>>>> origin/newyoojin

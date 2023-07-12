@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!--head 영역 시작-->
+<!--layout으로 잡히는 모든 html의 head영역을 bodyHeader.html로 대체-->
+<<<<<<< HEAD
+<head th:replace="fragments/config :: config">
+
+</head>
+<body>
+    <header th:replace="/fragments/header :: header"></header>
+
+    <div layout:fragment="content"></div>
+
+    <footer th:replace="/fragments/footer :: footer"></footer>
+=======
+<head th:replace="~{fragments/config :: config}">
+
+</head>
+<body>
+    <header th:replace="~{/fragments/header :: header}"></header>
+
+    <div layout:fragment="content"></div>
+
+    <footer th:replace="~{/fragments/footer :: footer}"></footer>
+    
+    <th:block th:replace="~{fragments/config-end :: config}"></th:block>
+
+>>>>>>> origin/newyoojin
+</body>
+</html>
