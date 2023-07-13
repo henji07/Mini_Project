@@ -47,42 +47,10 @@ public class BoardQnaController {
     private final BoardQnaService boardService;
     private final LikeQnaService likeService;
     
-//    //대분류 카테고리별로 이동 
-//    @GetMapping("/qnaPage/{category}/{pageNum}")
-//    public ModelAndView getBoardListByCategory(@PathVariable("category") String category,
-//                                               @PathVariable("pageNum") int pageNum,
-//                                               @RequestParam(required = false) String sortOption) {
-//        ModelAndView mv = new ModelAndView();
-//
-//        // 게시글 목록을 가져옴
-//        List<BoardQnaDTO> boardList = boardService.getBoardListByCategory(category, pageNum, sortOption);
-//
-//        mv.addObject("qnaList", boardList);
-//        mv.addObject("currentPage", pageNum);
-//        mv.addObject("totalPages", boardService.getTotalPagesByCategory(category));
-//        mv.addObject("sortOption", sortOption);
-//        
-//       //카테고리에 따라 다른 페이지를 보여줌
-//		switch (category) {
-//		    case "freePage":
-//		    mv.setViewName("view/boardCom.html");
-//		    break;
-//		case "studyPage":
-//		    mv.setViewName("view/boardTogether.html");
-//		    break;
-//		case "qnaPage":
-//		    mv.setViewName("view/boardQna.html");
-//		    break;
-//		default:
-//		    mv.setViewName("view/boardQna.html"); // if category does not match any known categories
-//		}
-//		
-//		return mv;
-//    }
 
     //글 등록 화면으로 이동
-    @GetMapping("/insert-board-view")
-    public ModelAndView insertBoardView(Authentication authentication) {
+    @GetMapping("insert-board-view/{category}")
+    public ModelAndView insertBoardView(@PathVariable("category") String category, Authentication authentication) {
 		ModelAndView mv = new ModelAndView();
 		
 		String userName = null;
@@ -93,9 +61,23 @@ public class BoardQnaController {
 	        }
         }
         mv.addObject("userName", userName);
-        mv.setViewName("view/boardInsertQna.html"); 
+        mv.addObject("category", category);
 
-		return mv;
+        switch (category) {
+            case "freePage":
+                mv.setViewName("view/boardComInsert.html");
+                break;
+            case "studyPage":
+                mv.setViewName("view/boardTogetherInsert.html");
+                break;
+            case "qnaPage":
+                mv.setViewName("view/boardInsertQna.html");
+                break;
+//            default:
+//                mv.setViewName("view/boardInsertQna.html");
+        }
+
+        return mv;
     }
 	
 	//글 목록 화면으로 이동 //카테고리 별로 가져오는 거 됨 
@@ -126,8 +108,8 @@ public class BoardQnaController {
   		case "qnaPage":
   		    mv.setViewName("view/boardQna.html");
   		    break;
-  		default:
-  		    mv.setViewName("view/boardQna.html"); // if category does not match any known categories
+//  		default:
+//  		    mv.setViewName("view/boardQna.html"); 
   		}
   		
   		return mv;
@@ -167,8 +149,8 @@ public class BoardQnaController {
   		case "qnaPage":
   		    mv.setViewName("view/boardSearchQna.html");
   		    break;
-  		default:
-  		    mv.setViewName("view/boardSearchQna.html"); 
+//  		default:
+//  		    mv.setViewName("view/boardSearchQna.html"); 
   		}
   		
   		return mv;
@@ -176,10 +158,10 @@ public class BoardQnaController {
 	
    
     //글 등록 -> ajax
-    @PostMapping("/board-insert")
-    public ResponseEntity<?> insertBoard(@RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO,
+    @PostMapping("/board-insert/{category}")
+    public ResponseEntity<?> insertBoard(@PathVariable String category, @RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO,
     		Authentication authentication) {
-        
+        System.out.println("111111111");
     	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
     	
     	String userId = null;
@@ -194,8 +176,17 @@ public class BoardQnaController {
         try {
             //서비스 호출 
             boardService.insertBoard(boardDTO, files, userId);
-
+            System.out.println("222222222222");
             Map<String, String> returnMap = new HashMap<String, String>();
+            
+            // 카테고리에 따른 리다이렉트 URL 설정
+            if (boardDTO.getBoardMaincate().equals("freePage")) {
+                returnMap.put("redirectUrl", "/freePage");
+            } else if (boardDTO.getBoardMaincate().equals("studyPage")) {
+                returnMap.put("redirectUrl", "/studyPage");
+            } else if (boardDTO.getBoardMaincate().equals("qnaPage")) {
+                returnMap.put("redirectUrl", "/qnaPage");
+            }
 
             returnMap.put("msg", "정상적으로 저장되었습니다.");
 
@@ -235,8 +226,8 @@ public class BoardQnaController {
     
         
     //게시 글 및 댓글 상세 조회
-    @GetMapping("/board/{boardId}")
-    public ModelAndView getBoard(@PathVariable long boardId, Authentication authentication) {
+    @GetMapping("/board/{category}/{boardId}")
+    public ModelAndView getBoard(@PathVariable("category") String category, @PathVariable long boardId, Authentication authentication) {
         ModelAndView mv = new ModelAndView();
         
         long userId = 0;
@@ -253,6 +244,7 @@ public class BoardQnaController {
         
 
         mv.addObject("board", dto);
+        mv.addObject("category", category);
         
         // 로그인한 사용자 정보 전달
         if (authentication != null && authentication.isAuthenticated()) {
@@ -261,7 +253,20 @@ public class BoardQnaController {
             mv.addObject("userId", userId);
         }
         
-        mv.setViewName("/view/boardDetailQna");
+       //카테고리에 따라 다른 페이지를 보여줌
+  		switch (category) {
+  		    case "freePage":
+  		    mv.setViewName("view/boardComDetail.html");
+  		    break;
+  		case "studyPage":
+  		    mv.setViewName("view/boardTogetherDetail.html");
+  		    break;
+  		case "qnaPage":
+  		    mv.setViewName("view/boardDetailQna.html");
+  		    break;
+//  		default:
+//  		    mv.setViewName("view/boardDetailQna.html");
+  		}
   		
   		return mv;
     }
@@ -290,8 +295,8 @@ public class BoardQnaController {
   		case "qnaPage":
   		    mv.setViewName("view/boardModifyQna.html");
   		    break;
-  		default:
-  		    mv.setViewName("view/boardModifyQna.html");
+//  		default:
+//  		    mv.setViewName("view/boardModifyQna.html");
   		}
   		
   		return mv;

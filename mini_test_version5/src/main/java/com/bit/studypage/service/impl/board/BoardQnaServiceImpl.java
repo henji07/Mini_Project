@@ -102,8 +102,13 @@ public class BoardQnaServiceImpl implements BoardQnaService {
         	return result;
         }
 		
-		System.out.println(boardDTO.toString());
+		
 		boardDTO.setBoardWriter(userId);
+		System.out.println(boardDTO.toString()+"////"+userId);
+
+	    // boardDTO에서 category 값을 가져와서 board 엔티티에 설정
+	    String category = boardDTO.getBoardMaincate();
+		
 		
 		//BoardQna 엔티티로 변환하고 저장 - 데이터베이스에 저장될 수 있는 형태
 		BoardQna board = BoardQna.builder().data(boardDTO).build();
@@ -349,7 +354,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	/* 게시판 검색 기능 */
 	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword, int pageNum, String sortOption) {
 		
-		int pageSize = 5;  // 한 페이지에 보여질 게시글 수
+		int pageSize = 6;  // 한 페이지에 보여질 게시글 수
 		
 		Sort sort; //옵션 객체 생성 
 		

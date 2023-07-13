@@ -135,7 +135,7 @@
 	   $("#btnList").click(function() {
 	       if (window.confirm("변경사항을 취소하시겠습니까?")) {
 	    	   
-	           location.href = '/board/board/' + $("#boardId").val();
+	           location.href = '/board/board/qnaPage/' + $("#boardId").val();
 	       }
 	   });
 
@@ -159,7 +159,7 @@
            success: (obj) => {
                console.log(obj);
                alert(obj.item.msg);
-               location.href = `/board/qnaPage/1`;
+               location.href = `/board/qnaPage/qnaPage/1`;
            },
            error: (error) => {
                console.log(error);
@@ -193,7 +193,7 @@
            success: (obj) => {
                console.log(obj);
                alert(obj.item.msg);
-               location.href = '/board/board/' + $("#boardId").val();
+               location.href = '/board/board/qnaPage/' + $("#boardId").val();
            },
            error: (error) => {
                console.log(error);
