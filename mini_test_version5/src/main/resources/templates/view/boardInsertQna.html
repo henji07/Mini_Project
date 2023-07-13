@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layouts/default-layout}">
-  
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/default-layout}">
+
 <head>
-<th:block layout:fragment="css">
-	<link rel="stylesheet" href="/css/boardInsertQna.css">
-</th:block>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" href="/css/boardInsertQna.css">
+    </th:block>
 
-<th:block layout:fragment="script">
-   <script type="text/javascript" th:inline="javascript">
-   
-   	//파일 이름 불러오기 
-    function displayFiles(input) {
-        var fileList = input.files;
-        var fileNames = "";
+    <th:block layout:fragment="script">
+        <script type="text/javascript" th:inline="javascript">
 
-        for (var i = 0; i < fileList.length; i++) {
-            fileNames += "<li>" + fileList[i].name + "</li>";
+            //파일 이름 불러오기
+            function displayFiles(input) {
+                var fileList = input.files;
+                var fileNames = "";
+
+                for (var i = 0; i < fileList.length; i++) {
+                    fileNames += "<li>" + fileList[i].name + "</li>";
+                }
+
+                document.getElementById("fileList").innerHTML = fileNames;
+            }
+
+$(function () {
+    $("#btnInsert").on("click", () => {
+        //입력 유효성 검사
+        if ($("#boardTitle").val() === "") {
+            alert("제목을 입력하세요.");
+            $("#boardTitle").focus();
+            return;
         }
-
-        document.getElementById("fileList").innerHTML = fileNames;
-    }
-
- 	//글 등록
-   $(function() {
-       $("#btnInsert").on("click", () => {
-           //입력 유효성 검사
-           if($("#boardTitle").val() === "") {
-               alert("제목을 입력하세요.");
-               $("#boardTitle").focus();
-               return;
-           }
 
            if($("#boardContent").val() === "") {
                alert("내용을 입력하세요.");
@@ -66,9 +65,10 @@
    });
 
 
-   </script>
-</th:block>
-    
+
+        </script>
+    </th:block>
+
 </head>
 
 <body> 
