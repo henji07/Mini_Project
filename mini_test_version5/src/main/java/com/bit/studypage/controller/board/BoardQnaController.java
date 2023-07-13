@@ -94,7 +94,7 @@ public class BoardQnaController {
         
         mv.addObject("qnaList", boardList);
         mv.addObject("currentPage", pageNum);
-        mv.addObject("totalPages", boardService.getTotalPages());
+        mv.addObject("totalPages", boardService.getTotalPages(category));
         mv.addObject("sortOption", sortOption);
         
       //카테고리에 따라 다른 페이지를 보여줌

@@ -85,9 +85,10 @@
 .board-write {
     position: relative;
     padding: 20px;
-    background-color: #F9F9F3;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: #FDF5E6;
+    border: 4px solid #f97800;
+    border-radius: 10px;
+    border-style: double;
     flex-basis: 46%;
     margin: 2%;
     box-sizing: border-box;
@@ -95,9 +96,6 @@
     flex-direction: column;   
 }
 
-.board-write:first-child {
-    border-top: 1px solid #ccc;
-}
 
 /* 각각의 카드를 구분하기 위해 마진 추가 */
 .board-write:not(:last-child) {
