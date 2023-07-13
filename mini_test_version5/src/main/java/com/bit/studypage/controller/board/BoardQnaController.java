@@ -82,9 +82,9 @@ public class BoardQnaController {
 	//글 목록 화면으로 이동 //카테고리 별로 가져오는 거 됨 
 	@GetMapping("/qnaPage/{category}/{pageNum}")
     public ModelAndView getBoardList(@PathVariable("pageNum") int pageNum, 
-    		 						 @RequestParam(required = false) String sortOption,
+    		 						 @RequestParam(value = "sortOption", defaultValue = "recently") String sortOption,
     		 						 @PathVariable("category") String category,
-    		 						 @RequestParam(required = false) String subcategory) {
+    		 						 @RequestParam(value = "subcategory", required = false) String subcategory) {
 
 
         ModelAndView mv = new ModelAndView();
@@ -92,10 +92,13 @@ public class BoardQnaController {
         //게시글 목록을 가져옴
         List<BoardQnaDTO> boardList = boardService.getBoardList(pageNum, sortOption, category, subcategory);
         
+        System.out.println("컨트롤러에서 뭐가 나오나아아ㅏㅏ아아아아="+boardList);
+        
         mv.addObject("qnaList", boardList);
         mv.addObject("currentPage", pageNum);
         mv.addObject("totalPages", boardService.getTotalPages(category, subcategory));
         mv.addObject("sortOption", sortOption);
+        mv.addObject("subcategory",subcategory);
         
       //카테고리에 따라 다른 페이지를 보여줌
   		switch (category) {
