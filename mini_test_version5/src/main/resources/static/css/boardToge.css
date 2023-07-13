@@ -127,7 +127,7 @@
 }
 
 li::marker {
-    content: "";  /* 이 부분이 실제로 marker의 내용을 없애주는 부분입니다. */
+    content: "";  
 }
 
 .author {
