@@ -171,27 +171,13 @@
         <hr class="horizontal-line">
         <div class="board-certificate-container">
             <div class="board-certificate-title">
-                <button>자격증일정</button>
-                <button>자격증정보</button>
-                <button>시험장위치</button>
-            </div>
-            <!-- 글쓰기 버튼 -->
-            <div class="board-certificate-actions">
-                <button style="left: 0;">글쓰기</button>
+                <button>자격증일정 & 정보</button>
+                <button>주변 시험장 찾기</button>
             </div>
         </div>
 
         <hr class="horizontal-line">
 
-        <!-- 드롭다운 -->
-        <div class="options-container">
-            <select name="list-options" id="list-options">
-                <option value="">글 정렬</option>
-                <option value="recently">최신순</option>
-                <option value="older">등록순</option>
-                <option value="popular">인기순</option>
-            </select>
-        </div>
 
         <hr class="horizontal-line-underdropdown">
         <form action="/certificatePage" method="get">
@@ -207,20 +193,8 @@
                 <div id="suggestions"></div>
             </div>
         </form>
-        <!-- 상단 페이징 -->
-        <div class="pagination-top">
-            <span class="pagination-top-info">1 / 1 페이지</span>
-            <div class="pagination-top-buttons">
-                <button class="pagination-top-button" disabled>&larr;</button>
-                <button class="pagination-top-button">&rarr;</button>
-            </div>
-        </div>
-
         <!-- 게시물 -->
         <div class="certificate-write">
-            <div class="notice">
-                <a href="#" class="notice-title">공지사항</a>
-            </div>
             <div id="search_quaList" style="">
                 <div class="post" th:each="item : ${List.content}">
                     <a id="item-qua" th:href="@{/select/qua/{name} (name=${item.jmfldnm})}" class="title" th:text="${item.jmfldnm}"></a>

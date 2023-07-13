@@ -1,0 +1,7 @@
+2023-07-13 10:19:40.586 [http-nio-9090-exec-5] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper[logExceptions:150] - Field 'board_view_cnt' doesn't have a default value
+2023-07-13 10:20:39.621 [http-nio-9090-exec-1] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper[logExceptions:150] - Field 'board_view_cnt' doesn't have a default value
+2023-07-13 10:22:39.414 [http-nio-9090-exec-1] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper[logExceptions:150] - Field 'board_view_cnt' doesn't have a default value
+2023-07-13 10:22:46.152 [http-nio-9090-exec-6] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper[logExceptions:150] - Field 'board_view_cnt' doesn't have a default value
+2023-07-13 10:30:40.054 [http-nio-9090-exec-1] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper[logExceptions:150] - Field 'board_view_cnt' doesn't have a default value
+2023-07-13 10:34:21.435 [http-nio-9090-exec-4] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper[logExceptions:150] - Field 'board_view_cnt' doesn't have a default value
+2023-07-13 10:37:32.703 [http-nio-9090-exec-1] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper[logExceptions:150] - Field 'board_view_cnt' doesn't have a default value

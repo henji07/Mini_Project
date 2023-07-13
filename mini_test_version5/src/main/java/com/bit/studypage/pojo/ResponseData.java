@@ -1,7 +1,10 @@
 package com.bit.studypage.pojo;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class ResponseData {
     public Response response;
 

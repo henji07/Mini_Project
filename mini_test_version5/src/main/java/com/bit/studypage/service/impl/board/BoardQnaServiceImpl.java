@@ -102,9 +102,9 @@ public class BoardQnaServiceImpl implements BoardQnaService {
         	return result;
         }
 		
-		System.out.println(boardDTO.toString());
-		boardDTO.setBoardWriter(userId);
 		
+		boardDTO.setBoardWriter(userId);
+		System.out.println(boardDTO.toString()+"////"+userId);
 
 	    // boardDTO에서 category 값을 가져와서 board 엔티티에 설정
 	    String category = boardDTO.getBoardMaincate();

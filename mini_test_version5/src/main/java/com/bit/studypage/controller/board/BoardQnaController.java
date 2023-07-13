@@ -161,7 +161,7 @@ public class BoardQnaController {
     @PostMapping("/board-insert/{category}")
     public ResponseEntity<?> insertBoard(@PathVariable String category, @RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO,
     		Authentication authentication) {
-        
+        System.out.println("111111111");
     	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
     	
     	String userId = null;
@@ -176,7 +176,7 @@ public class BoardQnaController {
         try {
             //서비스 호출 
             boardService.insertBoard(boardDTO, files, userId);
-
+            System.out.println("222222222222");
             Map<String, String> returnMap = new HashMap<String, String>();
             
             // 카테고리에 따른 리다이렉트 URL 설정
