@@ -297,8 +297,6 @@ public class BoardQnaController {
   		case "qnaPage":
   		    mv.setViewName("view/boardModifyQna.html");
   		    break;
-//  		default:
-//  		    mv.setViewName("view/boardModifyQna.html");
   		}
   		
   		return mv;
