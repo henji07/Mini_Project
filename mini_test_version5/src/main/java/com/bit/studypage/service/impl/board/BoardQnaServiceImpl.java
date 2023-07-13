@@ -327,10 +327,18 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	}
 
 	/* 기존 게시물 전체 페이지 수 반환 */
+//	@Override
+//	public Object getTotalPages() {
+//		int pageSize = 8;
+//	    long totalBoards = boardRepository.count();
+//	    return (int) Math.ceil((double) totalBoards / pageSize);
+//	}
+	
+	/* 카테고리 별 게시물 전체 페이지 수 반환 */
 	@Override
-	public Object getTotalPages() {
-		int pageSize = 8;
-	    long totalBoards = boardRepository.count();
+	public Object getTotalPages(String category) {
+	    int pageSize = 8;
+	    long totalBoards = boardRepository.countByBoardMaincate(category);
 	    return (int) Math.ceil((double) totalBoards / pageSize);
 	}
 	
@@ -402,14 +410,14 @@ public class BoardQnaServiceImpl implements BoardQnaService {
         return dataList;
     }
 	
-	/*검색된 게시물 기반으로 총 페이지 수 계산*/
+	/* 검색된 게시물 기반으로 총 페이지 수 계산 */
 	public int getSearchTotalPages(String keyword) {
 	    int pageSize = 5;
 	    long totalBoards = boardRepository.countByTitleContaining(keyword);
 	    return (int) Math.ceil((double) totalBoards / pageSize);
 	}
 
-	//카테고리별로 이동 
+	/* 글 정렬 카테고리별로 이동 */
 	@Override
 	public List<BoardQnaDTO> getBoardListByCategory(String category, int pageNum, String sortOption) {
 		int pageSize = 8;  // 한 페이지에 보여질 게시글 수
