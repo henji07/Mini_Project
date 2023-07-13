@@ -292,7 +292,5 @@ li::marker {
 }
 
 .board-details {
-    display: flex;
-    justify-content: space-between;
-    margin-top: auto; /* 이 부분이 상세 정보를 맨 아래로 밀어주는 속성입니다. */
+    text-align: right;
 }
