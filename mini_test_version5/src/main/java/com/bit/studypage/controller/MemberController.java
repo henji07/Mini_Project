@@ -145,7 +145,6 @@ public class MemberController {
     @PostMapping("/login/find-pw")
     public ResponseEntity<?> findPassword(@RequestParam String userId, @RequestParam String email) {
         try {
-            System.out.println(memberService.findPassword(userId, email));
             if (memberService.findPassword(userId, email)) {
                 //임시 비밀번호 생성 후 이메일로 전송 완료 시 메시지 반환
                 return ResponseEntity.ok("임시 비밀번호가 이메일로 발송되었습니다. 메일을 확인해 주세요.");
