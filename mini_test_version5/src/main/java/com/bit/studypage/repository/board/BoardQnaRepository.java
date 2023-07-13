@@ -43,6 +43,12 @@ public interface BoardQnaRepository extends JpaRepository<BoardQna, Long> {
 	//카테고리 별 페이지 수 
 	long countByBoardMaincate(String category);
 
+	//서브 카테고리 별로 게시물 분류하기 
+	Page<BoardQna> findByBoardMaincateAndSubcategory(String category, String subcategory, Pageable pageable);
+
+	//메인 카테고리 밑에 서브 카테고리 추가한 총 페이지 수 
+	long countByBoardMaincateAndSubcategory(String category, String subcategory);
+
 	//boardMaincate에 해당하는 모든 BoardQnaDTO를 반환 - 서브 카테고리 때문에 만든 거 
 	//List<BoardQna> findAllByBoardMaincate(String boardMaincate);
 
