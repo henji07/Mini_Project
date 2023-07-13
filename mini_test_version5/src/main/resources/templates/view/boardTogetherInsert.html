@@ -6,7 +6,7 @@
   
 <head>
 <th:block layout:fragment="css">
-	<link rel="stylesheet" href="/css/boardInsertQna.css">
+	<link rel="stylesheet" href="/css/boardTogetherInsert.css">
 </th:block>
 
 <th:block layout:fragment="script">
@@ -80,6 +80,11 @@
 <p style="color: #828282; font-weight: bold; font-size: 14px; text-align: center;">스터디, 함께해요!</p>
   <form id="insertForm" action="/board/board-insert" method="post" enctype="multipart/form-data">
     <table id="formTable">
+    <select id="subcategory" name="subcategory">
+    	<option value="프로젝트">프로젝트</option>
+        <option value="스터디">스터디</option>
+        <option value="기타">기타</option>
+	</select>
       <tr>
         <td><input id="boardTitle" type="text" name="boardTitle" placeholder="제목을 입력해주세요."></td>
       </tr>

@@ -1,6 +1,8 @@
 package com.bit.studypage.repository.board;
 
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +12,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bit.studypage.dto.board.BoardQnaDTO;
 import com.bit.studypage.entity.board.BoardQna;
 
 //JpaRepository를 상속받도록 함으로써 기본적인 동작이 모두 가능
@@ -39,6 +42,9 @@ public interface BoardQnaRepository extends JpaRepository<BoardQna, Long> {
 
 	//카테고리 별 페이지 수 
 	long countByBoardMaincate(String category);
+
+	//boardMaincate에 해당하는 모든 BoardQnaDTO를 반환 - 서브 카테고리 때문에 만든 거 
+	//List<BoardQna> findAllByBoardMaincate(String boardMaincate);
 
 	
 }

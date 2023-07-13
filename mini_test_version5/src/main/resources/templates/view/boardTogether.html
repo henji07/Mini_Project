@@ -118,7 +118,11 @@
  <div class="board-write-container">
  
    <li class="board-write" th:each="board : ${qnaList}">
-	<div style="margin-bottom: 10px;" th:text="${#strings.substring(board.boardRegdate, 5, 10)}"></div>
+    <!-- 서브 카테고리 정보 -->
+	<div class="category">
+	  <div th:text="${board.subcategory}"></div>
+	</div>
+	<div style="margin-bottom: 10px; margin-left: 5px;" th:text="${#strings.substring(board.boardRegdate, 0, 10)}"></div>
      <div class="board-writer-title">
        <a th:href="@{/board/board/studyPage/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
        <div class="author">
