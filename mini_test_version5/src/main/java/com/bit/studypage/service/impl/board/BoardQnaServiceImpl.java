@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -63,10 +64,16 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		long boardId = 0;
 		
 		try {
-		// 파일이 있는 경우, 각 파일을 처리  
-		if(ObjectUtils.isNotEmpty(files)) {
 			
-            System.out.println("파일사이즈"+files.size());
+			// 소분류 카테고리는 studyPage에만 적용
+            if (!"studyPage".equals(boardDTO.getBoardMaincate())) {
+                boardDTO.setSubcategory(null);
+            }
+            
+            // 파일이 있는 경우, 각 파일을 처리  
+            if(ObjectUtils.isNotEmpty(files)) {
+			
+            	System.out.println("파일사이즈"+files.size());
             
             	//files 리스트의 각 MultipartFile에 대하여 반복문 실행
             	for(MultipartFile f : files) {
@@ -102,8 +109,13 @@ public class BoardQnaServiceImpl implements BoardQnaService {
         	return result;
         }
 		
-		System.out.println(boardDTO.toString());
+		
 		boardDTO.setBoardWriter(userId);
+		System.out.println(boardDTO.toString()+"////"+userId);
+
+	    // boardDTO에서 category 값을 가져와서 board 엔티티에 설정
+	    String category = boardDTO.getBoardMaincate();
+		
 		
 		//BoardQna 엔티티로 변환하고 저장 - 데이터베이스에 저장될 수 있는 형태
 		BoardQna board = BoardQna.builder().data(boardDTO).build();
@@ -273,7 +285,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 
 	/* 글 목록 */ 
 	@Override
-	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption, String category) {
+	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption, String category, String subcategory) {
 		
 		int pageSize = 8;  // 한 페이지에 보여질 게시글 수
 		
@@ -292,7 +304,18 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		
 		//Spring Data JPA의 Pageable 인터페이스와 Page 클래스를 사용해서 페이지네이션을 구현
 		Pageable pageable = PageRequest.of(pageNum - 1, pageSize, sort);
-		Page<BoardQna> pageInfo =  boardRepository.findByBoardMaincate(category, pageable);
+		//Page<BoardQna> pageInfo =  boardRepository.findByBoardMaincate(category, pageable);
+		
+		Page<BoardQna> pageInfo;
+
+		if (subcategory != null && !subcategory.isEmpty()) {
+		    // subcategory가 지정된 경우, 해당 subcategory에 따른 게시물을 찾음
+		    pageInfo = boardRepository.findByBoardMaincateAndSubcategory(category, subcategory, pageable);
+		} else {
+		    // subcategory가 지정되지 않은 경우, category에 따른 게시물을 찾음
+		    pageInfo = boardRepository.findByBoardMaincate(category, pageable);
+		}
+
 		
 		//이를 BoardDTO 객체 리스트로 변환한 후 반환
 		List<BoardQna> boardList = pageInfo.getContent();
@@ -322,11 +345,29 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	}
 
 	/* 기존 게시물 전체 페이지 수 반환 */
+//	@Override
+//	public Object getTotalPages() {
+//		int pageSize = 8;
+//	    long totalBoards = boardRepository.count();
+//	    return (int) Math.ceil((double) totalBoards / pageSize);
+//	}
+	
+	/* 카테고리 별 게시물 전체 페이지 수 반환 */
 	@Override
-	public Object getTotalPages() {
-		int pageSize = 8;
-	    long totalBoards = boardRepository.count();
-	    return (int) Math.ceil((double) totalBoards / pageSize);
+	public Object getTotalPages(String category , String subcategory) {
+	    int pageSize = 8;
+//	    long totalBoards = boardRepository.countByBoardMaincate(category);
+//	    return (int) Math.ceil((double) totalBoards / pageSize);
+	    
+		// 서브 카테고리가 선택되었다면 해당 서브 카테고리의 게시글 수를 구함
+	    if (subcategory != null && !subcategory.isEmpty()) {
+	        long count = boardRepository.countByBoardMaincateAndSubcategory(category, subcategory);
+	        return (int) Math.ceil((double) count / pageSize);
+	    }
+
+	    // 서브 카테고리가 선택되지 않았다면 전체 게시글 수를 구함
+	    long count = boardRepository.countByBoardMaincate(category);
+	    return (int) Math.ceil((double) count / pageSize);
 	}
 	
 	/* 데이터 베이스에서 파일 정보 가져오기 */
@@ -349,7 +390,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	/* 게시판 검색 기능 */
 	public List<BoardQnaDTO> searchBoardsByTitle(String searchKeyword, int pageNum, String sortOption) {
 		
-		int pageSize = 5;  // 한 페이지에 보여질 게시글 수
+		int pageSize = 6;  // 한 페이지에 보여질 게시글 수
 		
 		Sort sort; //옵션 객체 생성 
 		
@@ -397,14 +438,14 @@ public class BoardQnaServiceImpl implements BoardQnaService {
         return dataList;
     }
 	
-	/*검색된 게시물 기반으로 총 페이지 수 계산*/
+	/* 검색된 게시물 기반으로 총 페이지 수 계산 */
 	public int getSearchTotalPages(String keyword) {
 	    int pageSize = 5;
 	    long totalBoards = boardRepository.countByTitleContaining(keyword);
 	    return (int) Math.ceil((double) totalBoards / pageSize);
 	}
 
-	//카테고리별로 이동 
+	/* 글 정렬 카테고리별로 이동 */
 	@Override
 	public List<BoardQnaDTO> getBoardListByCategory(String category, int pageNum, String sortOption) {
 		int pageSize = 8;  // 한 페이지에 보여질 게시글 수
@@ -461,6 +502,9 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		int pageSize = 8;
 	    long totalBoards = boardRepository.countByBoardMaincate(category);
 	    return (int) Math.ceil((double) totalBoards / pageSize);
+		
+	    
 	}
+
 
 }

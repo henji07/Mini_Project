@@ -26,10 +26,10 @@ public interface BoardQnaService {
 	public BoardQnaDTO getBoardDetail(long boardId, long userId);
 	
 	//글 목록 조회 
-	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption, String category);
+	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption, String category, String subcategory);
 
 	//전체 페이지 수 반환 
-	public Object getTotalPages();
+	//public Object getTotalPages();
 	
 	//파일 정보 가져오기
 	public FileQnaDTO inqurityFileInfo(long id);
@@ -46,5 +46,10 @@ public interface BoardQnaService {
 	//대분류 카테고리 총 페이지 수 
 	public Object getTotalPagesByCategory(String category);
 
+	/* 카테고리 별 게시물 전체 페이지 수 반환 */
+	public Object getTotalPages(String category, String subcategory);
+
+	//서브카테고리 
+	//public String getSubcategories(String boardMaincate);
 
 }

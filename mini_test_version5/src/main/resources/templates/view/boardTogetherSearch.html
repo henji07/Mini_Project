@@ -6,7 +6,7 @@
   
 <head>
 <th:block layout:fragment="css">
-	<link rel="stylesheet" href="/css/boardQna.css">
+	<link rel="stylesheet" href="/css/boardToge.css">
 	<!-- 하트 이모티콘 생기게 해주는 스타일시트 -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </th:block>
@@ -19,7 +19,7 @@
     $("#search-form").submit(function(event) {
         event.preventDefault();  // 기본적인 폼 제출을 막는다.
         var keyword = document.getElementById("search-input-qna").value;
-        location.href = "/board/search/1?keyword=" + encodeURIComponent(keyword);
+        location.href = "/board/search/studyPage/1?keyword=" + encodeURIComponent(keyword);
      });
    });
    
@@ -67,16 +67,16 @@
 <body> 
 <th:block layout:fragment="content">  
 <!-- 이미지 -->
-<img src="/image/qna_main.png" alt="카테고리 이미지" style="display: block; margin: auto; margin-top: 70px; max-width: 50%; height: 50%;">
+<img src="/image/together_main.png" alt="카테고리 이미지" style="display: block; margin: auto; margin-top: 70px; max-width: 50%; height: 50%;">
 <!-- 카테고리 -->
 <div class="board-qna-container">
 <hr class="horizontal-line">
   <div class="board-container">
     <div class="board-title">
-      <button>궁금해요</button>
+      <button>함께해요</button>
     </div>
     <div class="board-actions">
-      <button style="left: 0;" onclick="location.href='/board/insert-board-view'">글쓰기</button>
+      <button style="left: 0;" onclick="location.href='/board/insert-board-view/studyPage'">글쓰기</button>
     </div>
   </div>
   
@@ -113,51 +113,63 @@
 <div class="pagination-top">
     <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
     <div class="pagination-top-buttons">
-      <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} - 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous"  th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr;</a>
-      <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} + 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">&rarr;</a>
+      <a style="color: black;" th:href="@{'/board/search/studyPage/' + (${currentPage} - 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous"  th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr;</a>
+      <a style="color: black;" th:href="@{'/board/search/studyPage/' + (${currentPage} + 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">&rarr;</a>
     </div>
 </div>
 
 <!-- 게시물 부분 -->
-  <div class="board-write-container">
-    <li class="board-write" th:each="board : ${searchList}">
-      <div class="post-number" th:text="${board.boardId}"></div>
-      <div class="answer-count">
-      	<p id="anwer-count-title">답변</p>
-      	<div class="answer-count-count" th:text="${board.commentCount}"></div>
-      </div>
-      <div class="board-writer-title">
-        <div class="author">
-          <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
-          <div th:text="${board.boardWriter}"></div>
-        </div>
-        <a th:href="@{/board/board/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
-      </div>
-      
+ <div class="board-write-container">
+ 
+   <li class="board-write" th:each="board : ${searchList}">
+   <!-- 서브 카테고리 정보 -->
+	<div class="category">
+	  <div th:text="${board.subcategory}"></div>
+	</div>
+	<div style="margin-bottom: 10px; margin-left: 5px;" th:text="${#strings.substring(board.boardRegdate, 0, 10)}"></div>
+     <div class="board-writer-title">
+       <a th:href="@{/board/board/studyPage/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
+       <div class="author">
+         <div th:text="${board.boardWriter}"></div>
+       </div>
+     </div>
+     
       <!-- 좋아요 -->
       <div id="likeButton">
-		 <i id="heart" class="far fa-heart"></i> 
+		 <i style="color: red;" id="heart" class="fas fa-heart"></i> 
 		 <span id="likeCount" th:text="${board.likeCount}"></span>
 	  </div>
-	  
-      <div class="board-details">
-	      <div class="view-count" th:text="'조회  ' + ${board.boardCnt}"></div>
-	      <div class="reg-date" th:text="${#strings.substring(board.boardRegdate, 0, 10) }"></div>
+	  <div class="board-details">
+	      <div class="view-count">
+	           <!-- Eye icon source: https://www.flaticon.com/kr/free-icon/eyes_7835667?term=%EB%88%88&page=1&position=1&origin=search&related_id=7835667 -->
+		      <img style="width:20px; height: 20px; vertical-align: middle;" th:src="@{/image/eye2.png}" alt="View Icon">
+		      <span style="vertical-align: middle;" th:text="${board.boardCnt}"></span>
+		  </div>
+		
+		  <div class="answer-count-count">
+		      <!-- Comment icon source: https://www.flaticon.com/kr/free-icon/comment_2414210?term=%EB%8C%93%EA%B8%80&page=1&position=17&origin=search&related_id=2414210 -->
+		      <img style="width:23px; height: 23px; vertical-align: middle;" th:src="@{/image/comment.png}" alt="Comment Icon">
+		      <span style="vertical-align: middle;" th:text="${board.commentCount}"></span>
+		  </div>
+	      
       </div>
-    </li>   
-  </div>
+ 
+     
+   </li>  
+    
+ </div>
 <!-- 하단 페이징 -->
 <!-- 상수로 페이지 그룹 사이즈를 설정. -->
 <th:block th:with="pageGroupSize=5">
     <div class="pagination-bottom">
 
-        <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} - 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous" th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr; Previous</a>
+        <a style="color: black;" th:href="@{'/board/search/studyPage/' + (${currentPage} - 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous" th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr; Previous</a>
         
         <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
-            <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{'/board/search/' + ${i} + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
+            <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{'/board/search/studyPage/' + ${i} + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
         </div>
 
-        <a style="color: black;" th:href="@{'/board/search/' + (${currentPage} + 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">Next &rarr;</a>
+        <a style="color: black;" th:href="@{'/board/search/studyPage/' + (${currentPage} + 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">Next &rarr;</a>
 
     </div>
 </th:block>

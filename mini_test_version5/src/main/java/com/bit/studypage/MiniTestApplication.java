@@ -1,5 +1,5 @@
 package com.bit.studypage;
-import com.bit.studypage.controller.ApiController;
+//import com.bit.studypage.controller.ApiController;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

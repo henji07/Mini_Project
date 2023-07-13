@@ -51,6 +51,9 @@ public class BoardQna {
 	
 	@Column(name = "board_main_cate")
 	private String boardMaincate; //대분류 카테고리 
+	
+	@Column(name = "subcategory")
+	private String subcategory;
 
 	@Builder
 	public BoardQna(BoardQnaDTO data) {
@@ -60,6 +63,8 @@ public class BoardQna {
 		this.boardWriter = data.getBoardWriter();
 		this.boardRegdate = LocalDateTime.now();
 		this.likeCount = 0;
+		this.boardMaincate = data.getBoardMaincate();
+		this.subcategory = data.getSubcategory();
 	}
 
 	public void updateContent(BoardQnaDTO dto) {

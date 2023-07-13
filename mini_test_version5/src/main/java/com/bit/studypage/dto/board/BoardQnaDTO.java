@@ -1,7 +1,5 @@
 package com.bit.studypage.dto.board;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import lombok.Getter;
@@ -22,6 +20,8 @@ public class BoardQnaDTO {
 	private String userName;
 	
 	private String boardMaincate;//대분류 카테고리 
+	
+	private String subcategory;
 
 	private List<FileQnaDTO> fileList;
 	private List<Long> attachDelete; // 삭제할 파일 ID 목록

@@ -34,6 +34,7 @@
 			  ,b.board_title
 			  ,b.board_writer
 			  ,b.like_count
+			  ,b.subcategory
 			  ,(SELECT U.user_name FROM users U WHERE U.user_id = b.board_writer) AS USER_NAME
 		  FROM board_qna b
 		 WHERE b.board_id = #{boardId}
