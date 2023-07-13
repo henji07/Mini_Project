@@ -24,7 +24,7 @@ a {
   align-items: center;
   position: sticky;
   top: 0px;
-  z-index: 3;
+  z-index: 3
   
 }
 
@@ -181,8 +181,6 @@ a {
 
 .dot.active {
   background-color: #f97800;
-=======
->>>>>>> f5bc7e45a9ed07a5c903826d9e39be6d8a349c0c
     --accent-color: #f9de30;
     --text-color: #f97800;
     --background-color: #ffffff;

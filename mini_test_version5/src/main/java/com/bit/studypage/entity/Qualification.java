@@ -39,6 +39,7 @@ public class Qualification {
 
     @Column(name = "seriesnm")
     private String seriesnm;
-
+    @Column(name = "date")
+    private String date;
 }
 
