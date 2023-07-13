@@ -62,6 +62,7 @@ public class BoardQnaController {
         }
         mv.addObject("userName", userName);
         mv.addObject("category", category);
+        
 
         switch (category) {
             case "freePage":
@@ -73,8 +74,6 @@ public class BoardQnaController {
             case "qnaPage":
                 mv.setViewName("view/boardInsertQna.html");
                 break;
-//            default:
-//                mv.setViewName("view/boardInsertQna.html");
         }
 
         return mv;
@@ -108,8 +107,6 @@ public class BoardQnaController {
   		case "qnaPage":
   		    mv.setViewName("view/boardQna.html");
   		    break;
-//  		default:
-//  		    mv.setViewName("view/boardQna.html"); 
   		}
   		
   		return mv;
@@ -159,9 +156,9 @@ public class BoardQnaController {
    
     //글 등록 -> ajax
     @PostMapping("/board-insert/{category}")
-    public ResponseEntity<?> insertBoard(@PathVariable String category, @RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO,
+    public ResponseEntity<?> insertBoard(@PathVariable String category, @RequestParam(required = false) String subcategory, @RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO,
     		Authentication authentication) {
-        System.out.println("111111111");
+
     	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
     	
     	String userId = null;
@@ -174,6 +171,13 @@ public class BoardQnaController {
         }
 
         try {
+        	
+        	// set서브카테고리 
+            if (!"studyPage".equals(boardDTO.getBoardMaincate())) {
+                subcategory = null;
+            }
+            boardDTO.setSubcategory(subcategory);
+            
             //서비스 호출 
             boardService.insertBoard(boardDTO, files, userId);
             System.out.println("222222222222");
@@ -264,8 +268,6 @@ public class BoardQnaController {
   		case "qnaPage":
   		    mv.setViewName("view/boardDetailQna.html");
   		    break;
-//  		default:
-//  		    mv.setViewName("view/boardDetailQna.html");
   		}
   		
   		return mv;

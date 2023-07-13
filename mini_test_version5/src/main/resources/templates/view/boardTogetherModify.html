@@ -16,8 +16,12 @@
 <form id="updateForm" action="/board/studyPage/board-modify" method="post" enctype="multipart/form-data">
    <div class="container py-5">
 	 <input type="hidden" id="boardId" name="boardId" th:value="${board.boardId}">
+	 	 <!-- 서브 카테고리 정보 -->
+		  <div class="category">
+		    <div th:text="${board.subcategory}"></div>
+		  </div>
       <section id="postSection">
-        <div id="postContainer">
+        <div id="postContainer">		  
           <input id="boardTitle" name="boardTitle" th:value="${board.boardTitle}">
           <div id="postInfo">
             <span id="postWriter" th:text="'작성자: ' + ${board.boardWriter}"></span>

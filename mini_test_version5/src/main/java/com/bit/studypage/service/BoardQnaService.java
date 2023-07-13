@@ -49,4 +49,7 @@ public interface BoardQnaService {
 	/* 카테고리 별 게시물 전체 페이지 수 반환 */
 	public Object getTotalPages(String category);
 
+	//서브카테고리 
+	//public String getSubcategories(String boardMaincate);
+
 }
