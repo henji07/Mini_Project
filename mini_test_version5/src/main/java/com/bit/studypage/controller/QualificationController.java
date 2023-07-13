@@ -97,11 +97,12 @@ public class QualificationController {
 
     @GetMapping("/select/qua/{name}")
     public ModelAndView select(@PathVariable String name) throws IOException {
+        System.out.println(name+"!!!!!!!!!!!!!!!!!!!!!!");
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/view/quaDetailes.html");
-        String qua = apiService.test(name);
+        String qua = qualificationService.findName(name);
         mv.addObject("quaInfo",qua);
-        mv.addObject("name",name);
+        mv.addObject("name = ",name);
 //        System.out.println(apiService.test(name)+"오브젝트 넘어가는 거");
 //        String jsonData = qua;
         System.out.println("에러가 왜뜸?"+qua);
@@ -111,7 +112,7 @@ public class QualificationController {
         System.out.println("안락사"+responseData);
         mv.addObject("quaInfo2", responseData);
         mv.addObject("info",qualificationInfoService.getInfo(name));
-        System.out.println("테스트"+qualificationInfoService.getInfo(name).toString());
+        System.out.println("테스트"+qualificationInfoService.getInfo(name));
         return mv;
     }
 }

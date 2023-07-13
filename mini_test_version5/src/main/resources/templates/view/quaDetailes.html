@@ -14,11 +14,10 @@
         <link rel="stylesheet" href="/css/boardcertificate.css">
         <style>
             .board-certificate-write-container {
-                border: 1px solid black;
             }
 
             .qua-box {
-                border: 1px solid black;
+                /*border: 1px solid black;*/
             }
 
             .qua-con {
@@ -32,7 +31,7 @@
                 display: flex;
                 width: 100%;
                 height: 100%;
-                min-height: 550px;
+                min-height: 470px;
                 max-height: 50vh;
             }
 
@@ -44,6 +43,9 @@
                 width: 50%;
                 overflow-y: auto;
                 max-height: 100%;
+                margin-left: 10px;
+                padding-left: 10px;
+                border-left: 1px solid black;
             }
 
             .fc-scroller {
@@ -52,10 +54,15 @@
 
             .cal-con qua-box {
                 height: 100%;
+                padding: 10px;
             }
 
             #calendar {
                 height: 100px !important;
+            }
+            .fc-toolbar{
+                z-index: 0 !important;
+                position: relative !important;
             }
 
             .qua-info {
@@ -66,6 +73,8 @@
             /*    height: 700px;*/
             /*    background-color: #7dc0ff;*/
             /*}*/
+
+
         </style>
     </th:block>
 
@@ -170,6 +179,12 @@
                     events: events
                 });
             });
+            $(document).ready(function() {
+                $('.fc-month-button').css({
+                    'position': 'relative',
+                    'z-index': 0
+                });
+            });
         </script>
     </th:block>
 
@@ -185,19 +200,16 @@
         <hr class="horizontal-line">
         <div class="board-certificate-container">
             <div class="board-certificate-title">
-                <button>자격증일정 & 정보</button>
-                <button>주변 시험장 찾기</button>
-            </div>
-            <!-- 글쓰기 버튼 -->
-            <div class="board-certificate-actions">
-                <button style="left: 0;">글쓰기</button>
+                <a th:href="@{certificatePage}"><button>자격증일정 & 정보</button></a>
+                <a th:href="@{testmap}"><button>주변 시험장 찾기</button></a>
             </div>
         </div>
 
         <hr class="horizontal-line">
-        <div class="qua-con qua-box">
-            <div class="qua-name qua-box" th:text="${name}"></div>
-            <div class="cal-con qua-box">
+        <div class="qua-con qua-box" style="padding: 50px; border: 10px dashed #f97800">
+            <h2 style="margin: auto; width: 70%; text-align: center;" class="qua-name qua-box" th:text="${name}"></h2>
+            <br>
+            <div class="cal-con qua-box" style="border: 3px solid black; border-radius: 5px">
 <!--                <div id="qua-box">-->
                     <div class="ui container">
                         <div class="ui grid">
@@ -208,7 +220,7 @@
                     </div>
 <!--                </div>-->
                 <div class="qua-cal-info qua-box">
-                    <div th:each="item : ${quaInfo2.response.body.items.item}">
+                    <div th:each="item : ${quaInfo2.response.body.items.item}" id="info2-box">
                         <h4 th:text="${item.implplannm}"></h4>
                         <p>필기 접수 <br><span
                                 th:text="${#strings.substring(item.docregstartdt, 0, 4) + '/' + #strings.substring(item.docregstartdt, 4, 6) + '/' + #strings.substring(item.docregstartdt, 6, 8)}"></span>
@@ -244,9 +256,9 @@
                     </div>
                 </div>
             </div>
-            <div class="qua-info qua-box">
+            <div class="qua-info qua-box" style="padding: 10px; margin-top: 30px; border: 10px double #FFCA9B; border-radius: 5px; padding: 5px">
                 <div th:if="${info.name != null and info.name != ''}">
-                    <strong>자격증명:</strong> <span th:text="${info.name}"><br></span>
+                    <strong>자격증:</strong> <span th:text="${info.name}"><br></span>
                 </div>
 
                 <div th:if="${info.info1 != null and info.info1 != ''}">
