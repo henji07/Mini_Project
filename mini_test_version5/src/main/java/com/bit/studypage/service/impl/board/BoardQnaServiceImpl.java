@@ -285,7 +285,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 
 	/* 글 목록 */ 
 	@Override
-	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption, String category) {
+	public List<BoardQnaDTO> getBoardList(int pageNum, String sortOption, String category, String subcategory) {
 		
 		int pageSize = 8;  // 한 페이지에 보여질 게시글 수
 		
@@ -304,7 +304,18 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		
 		//Spring Data JPA의 Pageable 인터페이스와 Page 클래스를 사용해서 페이지네이션을 구현
 		Pageable pageable = PageRequest.of(pageNum - 1, pageSize, sort);
-		Page<BoardQna> pageInfo =  boardRepository.findByBoardMaincate(category, pageable);
+		//Page<BoardQna> pageInfo =  boardRepository.findByBoardMaincate(category, pageable);
+		
+		Page<BoardQna> pageInfo;
+
+		if (subcategory != null && !subcategory.isEmpty()) {
+		    // subcategory가 지정된 경우, 해당 subcategory에 따른 게시물을 찾음
+		    pageInfo = boardRepository.findByBoardMaincateAndSubcategory(category, subcategory, pageable);
+		} else {
+		    // subcategory가 지정되지 않은 경우, category에 따른 게시물을 찾음
+		    pageInfo = boardRepository.findByBoardMaincate(category, pageable);
+		}
+
 		
 		//이를 BoardDTO 객체 리스트로 변환한 후 반환
 		List<BoardQna> boardList = pageInfo.getContent();
@@ -343,10 +354,20 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	
 	/* 카테고리 별 게시물 전체 페이지 수 반환 */
 	@Override
-	public Object getTotalPages(String category) {
+	public Object getTotalPages(String category , String subcategory) {
 	    int pageSize = 8;
-	    long totalBoards = boardRepository.countByBoardMaincate(category);
-	    return (int) Math.ceil((double) totalBoards / pageSize);
+//	    long totalBoards = boardRepository.countByBoardMaincate(category);
+//	    return (int) Math.ceil((double) totalBoards / pageSize);
+	    
+		// 서브 카테고리가 선택되었다면 해당 서브 카테고리의 게시글 수를 구함
+	    if (subcategory != null && !subcategory.isEmpty()) {
+	        long count = boardRepository.countByBoardMaincateAndSubcategory(category, subcategory);
+	        return (int) Math.ceil((double) count / pageSize);
+	    }
+
+	    // 서브 카테고리가 선택되지 않았다면 전체 게시글 수를 구함
+	    long count = boardRepository.countByBoardMaincate(category);
+	    return (int) Math.ceil((double) count / pageSize);
 	}
 	
 	/* 데이터 베이스에서 파일 정보 가져오기 */
@@ -481,23 +502,9 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 		int pageSize = 8;
 	    long totalBoards = boardRepository.countByBoardMaincate(category);
 	    return (int) Math.ceil((double) totalBoards / pageSize);
+		
+	    
 	}
 
-//	/* 서브 카테고리 처리 */
-//	@Override
-//	public String getSubcategories(String boardMaincate) {
-//		// 특정 대분류 카테고리(boardMaincate)에 해당하는 게시물을 모두 가져온다.
-//	    List<BoardQna> boardList = boardRepository.findAllByBoardMaincate(boardMaincate);
-//	    
-//	    if (boardList.isEmpty()) {
-//	        return null; // 게시물이 없으면 null 반환 또는 다른 처리 방식을 선택.
-//	    }
-//	    
-//	    // 가져온 게시물들 중 첫 번째 게시물의 서브 카테고리를 반환한다.
-//	    String subcategory = boardList.get(0).getSubcategory();
-//	    System.out.println("서비스 서브카테고리: " + subcategory);
-//	    
-//	    return subcategory;
-//	}
 
 }

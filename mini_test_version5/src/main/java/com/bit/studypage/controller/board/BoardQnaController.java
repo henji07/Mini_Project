@@ -83,17 +83,18 @@ public class BoardQnaController {
 	@GetMapping("/qnaPage/{category}/{pageNum}")
     public ModelAndView getBoardList(@PathVariable("pageNum") int pageNum, 
     		 						 @RequestParam(required = false) String sortOption,
-    		 						 @PathVariable("category") String category) {
+    		 						 @PathVariable("category") String category,
+    		 						 @RequestParam(required = false) String subcategory) {
 
 
         ModelAndView mv = new ModelAndView();
 
         //게시글 목록을 가져옴
-        List<BoardQnaDTO> boardList = boardService.getBoardList(pageNum, sortOption, category);
+        List<BoardQnaDTO> boardList = boardService.getBoardList(pageNum, sortOption, category, subcategory);
         
         mv.addObject("qnaList", boardList);
         mv.addObject("currentPage", pageNum);
-        mv.addObject("totalPages", boardService.getTotalPages(category));
+        mv.addObject("totalPages", boardService.getTotalPages(category, subcategory));
         mv.addObject("sortOption", sortOption);
         
       //카테고리에 따라 다른 페이지를 보여줌
@@ -146,8 +147,6 @@ public class BoardQnaController {
   		case "qnaPage":
   		    mv.setViewName("view/boardSearchQna.html");
   		    break;
-//  		default:
-//  		    mv.setViewName("view/boardSearchQna.html"); 
   		}
   		
   		return mv;
