@@ -334,7 +334,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	            
 	            // 날짜를 String으로 변환
 	            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	            String formattedDateTime = b.getBoardRegdate().format(formatter);
+	            String formattedDateTime = b.getBoardRegdate();
 	            dto.setBoardRegdate(formattedDateTime);
 				
 				dataList.add(dto);
@@ -428,7 +428,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
                 
                 // 날짜를 String으로 변환
 	            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	            String formattedDateTime = b.getBoardRegdate().format(formatter);
+	            String formattedDateTime = b.getBoardRegdate();
 	            dto.setBoardRegdate(formattedDateTime);
 
                 dataList.add(dto);
@@ -486,7 +486,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	            
 	            // 날짜를 String으로 변환
 	            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	            String formattedDateTime = b.getBoardRegdate().format(formatter);
+	            String formattedDateTime = b.getBoardRegdate();
 	            dto.setBoardRegdate(formattedDateTime);
 	            
 	            dataList.add(dto);
