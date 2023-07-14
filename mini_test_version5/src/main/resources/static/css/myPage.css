@@ -486,27 +486,27 @@ input[type=text], input[type=password] {
 }
 
 /*.profile-del-btn-con {*/
-/* display: flex;*/
-/* flex-direction: column;*/
-/* justify-content: flex-end; !* 아래에 위치하도록 변경 *!*/
-/* align-items: flex-end; !* 오른쪽에 위치하도록 변경 *!*/
-/* height: 100%;*/
-/* width: 15%;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: flex-end; !* 아래에 위치하도록 변경 *!*/
+/*  align-items: flex-end; !* 오른쪽에 위치하도록 변경 *!*/
+/*  height: 100%;*/
+/*  width: 15%;*/
 /*}*/
 
 /*.profile-del-btn {*/
-/* margin-top: auto; !* 위 여백을 auto로 설정하여 아래에 위치하도록 함 *!*/
-/* background-color: orange; !* 주황색 배경색으로 변경 *!*/
-/* color: white; !* 하얀색 글자색으로 변경 *!*/
-/* border: none;*/
-/* border-radius: 5px;*/
+/*  margin-top: auto; !* 위 여백을 auto로 설정하여 아래에 위치하도록 함 *!*/
+/*  background-color: orange; !* 주황색 배경색으로 변경 *!*/
+/*  color: white; !* 하얀색 글자색으로 변경 *!*/
+/*  border: none;*/
+/*  border-radius: 5px;*/
 
 /*}*/
 
 /*.profile-del-btn:hover,*/
 /*.profile-del-btn:focus {*/
-/* cursor: pointer;*/
-/* background-color: #ff6a00; !* 파랑색 배경색으로 변경 *!*/
+/*  cursor: pointer;*/
+/*  background-color: #ff6a00; !* 파랑색 배경색으로 변경 *!*/
 /*}*/
 .profile-del-btn-con {
   display: flex;

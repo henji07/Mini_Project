@@ -19,40 +19,45 @@
                 // function searchPostsByOptionModule() {
 
                 //게시글 목록 아래에 있는 selectbox 검색창
-                function searchPostsByOption(option, keyword) {
+                function searchPostsByOption(option, keyword,page) {
+                    if(page == null){page = 0};
                     console.log("!!!!!!!!!!!!!!!!!!!x")
                     // 서버로 선택된 검색 옵션과 검색어 전송 및 결과 받아오는 AJAX 요청
                     $.ajax({
                         url: '/api/searchByOption',
-                        method: 'POST',
+                        method: 'GET',
                         data: {
-                            option: option, keyword: keyword},
+                            option: option, keyword: keyword,page: page},
                         success: (response) => {
                             console.log('success', response);
                             let searchResults = response.results;
                             console.log(searchResults);
                             // 테이블 초기화
                             $('#ulTable > li:nth-child(2)').empty(); // 게시물이 출력될 영역 초기화
-                            console.log(response.results.length);
+                            // console.log(response.item.totalElements.length);
 
-                            if (response.results.length >= 1) {
-                                response.results.forEach(function (item) {
-                                    // 게시물을 동적으로 생성하여 추가
-                                    var listItem = $('<ul>');
-                                    var categoryItem = $('<li>').text(item.searchCate);
-                                    var titleItem = $('<li>').addClass('left').text(item.searchTitle);
-                                    var regDateItem = $('<li>').text(item.searchRegDate);
-                                    var writerItem = $('<li>').text(item.searchWriter);
-                                    var hitItem = $('<li>').text(item.searchCnt);
+                            response.item.results.content.forEach(function (item) {
+                                // 게시물을 동적으로 생성하여 추가
+                                var listItem = $('<ul>');
+                                var categoryItem = $('<li>').text(item.boardMaincate);
+                                var titleItem = $('<li>')
+                                    .addClass('left')
+                                    .text(item.boardTitle)
+                                    .css('cursor', 'pointer')
+                                    .css('color', '#f97800')
+                                    .on('click', function () {
+                                        window.location.href = "/board/board/freePage/" + item.boardId;
+                                    });
+                                var regDateItem = $('<li>').text(item.boardRegdate);
+                                var writerItem = $('<li>').text(item.boardWriter);
+                                var hitItem = $('<li>').text(item.boardCnt);
 
-                                    listItem.append(categoryItem, titleItem, regDateItem, writerItem, hitItem);
-                                    $('#ulTable > li:nth-child(2)').append(listItem);
-                                });
-                            } else {
-                                // 검색 결과가 없을 때 처리할 내용
-                                var noResultsMessage = $('<p>').text('검색 결과가 없습니다.');
-                                $('#ulTable > li:nth-child(2)').append(noResultsMessage);
-                            }
+                                listItem.append(categoryItem, titleItem, regDateItem, writerItem, hitItem);
+                                $('#ulTable > li:nth-child(2)').append(listItem);
+                            });
+
+                            var totalPages = response.item.results.totalPages;  // Get total pages from response
+                            createPagination3(totalPages, page, keyword, option);  // Create pagination
                         },
                         error: function (error) {
                             console.error('검색 요청 실패:', error);
@@ -82,7 +87,13 @@
 
                 // 카테고리 버튼 클릭 이벤트 처리
                 $('.post-button').click(function () {
-                    var category = $(this).text(); // 클릭된 카테고리 가져오기
+                    var category="";
+                    if ($(this).text()=="소통해요"){
+                        category = "freePage"
+                    }else if($(this).text()=="함께해요"){
+                        category = "studyPage"
+                    }else category = "qnaPage"
+                     // 클릭된 카테고리 가져오기
                     filterPostsByCategory(category); // 카테고리 필터링 함수 호출
                 });
 
@@ -92,75 +103,205 @@
                     filterPostsByCategory(category);
                 });
                 //게시글 목록 위에 있는 검색창
-                function searchPosts(keyword) {
+                function searchPosts(keyword,page) {
+                    if(page == null){page = 0};
                     // 서버로 검색어 전송 및 결과 받아오는 AJAX 요청
                     $.ajax({
                         url: '/api/search',
-                        method: 'POST',
-                        data: {keyword: keyword},
-                        success: (response) => {
-                            console.log('success', response)
-                            let searchResults = response.results;
-                            console.log(searchResults);
-                            // 테이블 초기화
-                            $('#ulTable > li:nth-child(2)').empty(); // 게시물이 출력될 영역 초기화
-                            console.log(response.item.searchBoardList.length);
-
-                            if (response.item.searchBoardList.length >= 1) {
-                                console.log("if문 들어왔음")
-                                response.item.searchBoardList.forEach(function (item) {
-                                    // 게시물을 동적으로 생성하여 추가
-                                    var listItem = $('<ul>');
-
-                                    var categoryItem = $('<li>').text(item.searchCate);
-                                    var titleItem = $('<li>').addClass('left').text(item.searchTitle);
-                                    var regDateItem = $('<li>').text(item.searchRegDate);
-                                    var writerItem = $('<li>').text(item.searchWriter);
-                                    var hitItem = $('<li>').text(item.searchCnt);
-                                    console.log(listItem, categoryItem, titleItem, regDateItem, writerItem, hitItem)
-                                    listItem.append(categoryItem, titleItem, regDateItem, writerItem, hitItem);
-                                    $('#ulTable > li:nth-child(2)').append(listItem);
-                                });
-                            }
+                        method: 'GET',
+                        data: {
+                            keyword: keyword,
+                            page: page
                         },
-                        error: function (error) {
-                            console.error('검색 요청 실패:', error);
-                        }
-                    });
-                }
-                //카테고리 버튼 검색
-                function filterPostsByCategory(category) {
-                    $.ajax({
-                        url: '/api/searchCT',
-                        method: 'POST',
-                        data: {category: category},
                         success: (response) => {
                             console.log('검색 결과:', response);
                             var searchResults = response.results;
                             $('#ulTable > li:nth-child(2)').empty(); // 게시물이 출력될 영역 초기화
-                            console.log(response.item.searchBoardList.length);
-                            if (response.item.searchBoardList.length >= 1) {
+                            console.log("1111"+response.item.boardList.totalPages);
 
-                                response.item.searchBoardList.forEach(function (item) {
-                                    // 게시물을 동적으로 생성하여 추가
-                                    var listItem = $('<ul>');
-                                    var categoryItem = $('<li>').text(item.searchCate);
-                                    var titleItem = $('<li>').addClass('left').text(item.searchTitle);
-                                    var regDateItem = $('<li>').text(item.searchRegDate);
-                                    var writerItem = $('<li>').text(item.searchWriter);
-                                    var hitItem = $('<li>').text(item.searchCnt);
 
-                                    listItem.append(categoryItem, titleItem, regDateItem, writerItem, hitItem);
-                                    $('#ulTable > li:nth-child(2)').append(listItem);
-                                });
-                            }
+                            response.item.boardList.content.forEach(function (item) {
+                                // 게시물을 동적으로 생성하여 추가
+                                var listItem = $('<ul>');
+                                var categoryItem = $('<li>').text(item.boardMaincate);
+                                var titleItem = $('<li>')
+                                    .addClass('left')
+                                    .text(item.boardTitle)
+                                    .css('cursor', 'pointer')
+                                    .css('color','#f97800')
+                                    .on('click', function() {
+                                        window.location.href = "/board/board/freePage/" + item.boardId;
+                                    });
+                                var regDateItem = $('<li>').text(item.boardRegdate);
+                                var writerItem = $('<li>').text(item.boardWriter);
+                                var hitItem = $('<li>').text(item.boardCnt);
+
+                                listItem.append(categoryItem, titleItem, regDateItem, writerItem, hitItem);
+                                $('#ulTable > li:nth-child(2)').append(listItem);
+                            });
+
+                            var totalPages = response.item.boardList.totalPages;  // Get total pages from response
+                            createPagination2(totalPages, page,keyword);  // Create pagination
+
                         },
                         error: function (error) {
                             console.error('카테고리 필터링 요청 실패:', error);
                         }
                     });
-
                 }
+                //카테고리 버튼 검색
+                function filterPostsByCategory(category, page) {
+                    // You can set this dynamically based on user input or other logic
+                    if(page == null){page = 0};
+                    $.ajax({
+                        url: '/api/searchCT',
+                        method: 'GET',
+                        data: {
+                            category: category,
+                            page: page  // Send the page number to the server
+                        },
+                        success: (response) => {
+                            console.log('검색 결과:', response);
+                            var searchResults = response.results;
+                            $('#ulTable > li:nth-child(2)').empty(); // 게시물이 출력될 영역 초기화
+                            console.log("1111"+response.item.searchBoardList.totalPages);
+
+
+                            response.item.searchBoardList.content.forEach(function (item) {
+                                // 게시물을 동적으로 생성하여 추가
+                                var listItem = $('<ul>');
+                                var categoryItem = $('<li>').text(item.boardMaincate);
+                                var titleItem = $('<li>')
+                                    .addClass('left')
+                                    .text(item.boardTitle)
+                                    .css('cursor', 'pointer')
+                                    .css('color','#f97800')
+                                    .on('click', function() {
+                                        window.location.href = "/board/board/freePage/" + item.boardId;
+                                    });
+                                var regDateItem = $('<li>').text(item.boardRegdate);
+                                var writerItem = $('<li>').text(item.boardWriter);
+                                var hitItem = $('<li>').text(item.boardCnt);
+
+                                listItem.append(categoryItem, titleItem, regDateItem, writerItem, hitItem);
+                                $('#ulTable > li:nth-child(2)').append(listItem);
+                            });
+
+                            var totalPages = response.item.searchBoardList.totalPages;  // Get total pages from response
+                            createPagination1(totalPages, page,category);  // Create pagination
+
+                        },
+                        error: function (error) {
+                            console.error('카테고리 필터링 요청 실패:', error);
+                        }
+                    });
+                }
+                function createPagination1(totalPages, currentPage,category) {
+                    var paginationContainer = $('.pagination');
+                    paginationContainer.empty(); // Clear old pagination links
+
+                    var firstPageLink = $('<a>').attr('href', '#').text('<').on('click', function(e) {
+                        e.preventDefault();
+                        filterPostsByCategory(category, Math.max(currentPage - 1, 0));  // Go to the previous page
+                    });
+                    paginationContainer.append(firstPageLink);
+
+                    var startPage = totalPages===1 ? 1 : totalPages<=5 ? 1 : (currentPage<=2 ? 1 : currentPage - 1);
+                    var endPage = (totalPages<=5 ? totalPages : currentPage<=2 ? 5: Math.min(totalPages,currentPage+3));
+
+                    for (var i = startPage; i <= endPage; i++) {
+                        var paginationItem = $('<a>').text(i).attr('href', '#');
+
+                        if (i === currentPage + 1) {  // Page numbers are 1-based
+                            paginationItem.css('color', 'white').css('background-color','#f97800');
+                        }
+
+                        paginationItem.on('click', function(e) {
+                            e.preventDefault();
+                            var pageNumber = parseInt($(this).text()) - 1; // Page numbers are 1-based
+                            filterPostsByCategory(category, pageNumber);
+                        });
+
+                        paginationContainer.append(paginationItem);
+                    }
+
+                    var lastPageLink = $('<a>').attr('href', '#').text('>').on('click', function(e) {
+                        e.preventDefault();
+                        filterPostsByCategory(category, Math.min(currentPage + 1, totalPages - 1));  // Go to the next page
+                    });
+                    paginationContainer.append(lastPageLink);
+                }
+                function createPagination2(totalPages, currentPage,category) {
+                    var paginationContainer = $('.pagination');
+                    paginationContainer.empty(); // Clear old pagination links
+
+                    var firstPageLink = $('<a>').attr('href', '#').text('<').on('click', function(e) {
+                        e.preventDefault();
+                        filterPostsByCategory(category, Math.max(currentPage - 1, 0));  // Go to the previous page
+                    });
+                    paginationContainer.append(firstPageLink);
+
+                    var startPage = totalPages===1 ? 1 : totalPages<=5 ? 1 : (currentPage<=2 ? 1 : currentPage - 1);
+                    var endPage = (totalPages<=5 ? totalPages : currentPage<=2 ? 5: Math.min(totalPages,currentPage+3));
+
+                    for (var i = startPage; i <= endPage; i++) {
+                        var paginationItem = $('<a>').text(i).attr('href', '#');
+
+                        if (i === currentPage + 1) {  // Page numbers are 1-based
+                            paginationItem.css('color', 'white').css('background-color','#f97800');
+                        }
+
+                        paginationItem.on('click', function(e) {
+                            e.preventDefault();
+                            var pageNumber = parseInt($(this).text()) - 1; // Page numbers are 1-based
+                            searchPosts(category, pageNumber,pageNumber);
+                        });
+
+                        paginationContainer.append(paginationItem);
+                    }
+
+                    var lastPageLink = $('<a>').attr('href', '#').text('>').on('click', function(e) {
+                        e.preventDefault();
+                        filterPostsByCategory(category, Math.min(currentPage + 1, totalPages - 1));  // Go to the next page
+                    });
+                    paginationContainer.append(lastPageLink);
+                }
+                function createPagination3(totalPages, currentPage,keyword,option) {
+                    var paginationContainer = $('.pagination');
+                    paginationContainer.empty(); // Clear old pagination links
+
+                    var firstPageLink = $('<a>').attr('href', '#').text('<').on('click', function(e) {
+                        e.preventDefault();
+                        filterPostsByCategory(category, Math.max(currentPage - 1, 0));  // Go to the previous page
+                    });
+                    paginationContainer.append(firstPageLink);
+
+                    var startPage = totalPages===1 ? 1 : totalPages<=5 ? 1 : (currentPage<=2 ? 1 : currentPage - 1);
+                    var endPage = (totalPages<=5 ? totalPages : currentPage<=2 ? 5: Math.min(totalPages,currentPage+3));
+
+                    for (var i = startPage; i <= endPage; i++) {
+                        var paginationItem = $('<a>').text(i).attr('href', '#');
+
+                        if (i === currentPage + 1) {  // Page numbers are 1-based
+                            paginationItem.css('color', 'white').css('background-color','#f97800');
+                        }
+
+                        paginationItem.on('click', function(e) {
+                            e.preventDefault();
+                            var pageNumber = parseInt($(this).text()) - 1; // Page numbers are 1-based
+                            searchPostsByOption(option, keyword,pageNumber);
+                        });
+
+                        paginationContainer.append(paginationItem);
+                    }
+
+                    var lastPageLink = $('<a>').attr('href', '#').text('>').on('click', function(e) {
+                        e.preventDefault();
+                        searchPostsByOption(option, keyword,Math.min(currentPage + 1, totalPages - 1));  // Go to the next page
+                    });
+                    paginationContainer.append(lastPageLink);
+                }
+
             });
         </script>
     </th:block>
@@ -211,11 +352,15 @@
                     <!-- 게시물이 출력될 영역 -->
                     <li>
                         <ul th:each="board:${boardList}">
-                            <li th:text="${board.searchCate}"></li>
-                            <li class="left" th:text="${board.searchTitle}"></li>
-                            <li th:text="${board.searchRegDate}"></li>
-                            <li th:text="${board.searchWriter}"></li>
-                            <li th:text="${board.searchCnt}"></li>
+                            <li th:text="${board.boardMaincate}"></li>
+                            <!-- 게시글의 제목을 클릭하면 해당 게시글의 상세 페이지로 이동 -->
+                            <li class="left">
+                                <a th:href="@{'/board/board/' +${board.boardMaincate} + '/'+${board.boardId}}" th:text="${board.boardTitle}"></a>
+                            </li>
+                            <!--                            <li class="left" th:text="${board.searchTitle}"></li>-->
+                            <li th:text="${board.boardRegdate}"></li>
+                            <li th:text="${board.boardWriter}"></li>
+                            <li th:text="${board.boardCnt}"></li>
                         </ul>
                     </li>
 
@@ -242,19 +387,19 @@
 
     <div class="pagination">
         <!-- Link to the first page -->
-        <a th:href="@{/fullSearch(page=0, searchKeyword=${param.searchKeyword})}"><</a>
+        <a th:href="@{/fullSearch(page=0, keyword=${param.searchKeyword})}"><</a>
 
         <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
             <th:block th:if="${page > 0}">
-                <a th:if="${page != nowPage}" th:href="@{/fullSearch(page = ${page - 1}, searchKeyword = ${param.searchKeyword})}" th:text ="${page}"></a>
+                <a th:if="${page != nowPage}" th:href="@{/fullSearch(page = ${page - 1}, keyword = ${param.searchKeyword})}" th:text ="${page}"></a>
                 <strong th:if="${page == nowPage}" th:text ="${page}" style="color:white"></strong>
             </th:block>
         </th:block>
 
         <!-- Link to the last page. Note: Replace 'totalPages' with the actual total number of pages -->
-        <a th:href="@{/fullSearch(page=${totalPages - 1}, searchKeyword=${param.searchKeyword})}">></a>
+        <a th:href="@{/fullSearch(page=${totalPages - 1}, keyword=${param.searchKeyword})}">></a>
     </div>
-<!--이거 깃 테스트임-->
+    <!--이거 깃 테스트임-->
 
 
 </th:block>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
         xmlns:th="http://www.thymeleaf.org"
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
         layout:decorate="~{layouts/default-layout}">
 
 <head>
@@ -207,7 +207,7 @@
                         cateUrl = "/del-like";
                         console.log(cateUrl);
                     } else console.log(cateUrl);
-                    console.log($("#del-history").serialize()+"여기에요");
+                    console.log($("#del-history").serialize() + "여기에요");
                     $.ajax({
                         url: cateUrl,
                         type: "DELETE",
@@ -218,8 +218,6 @@
                         }
                     })
                 })
-
-
             });
 
         </script>
@@ -249,16 +247,19 @@
                     <form class="profile-profile-details" id="name-info">
                         <div class="profile-info-field">
                             <div style="margin-bottom: 10px;"><strong>이름</strong></div>
-                            <input style="margin-bottom: 10px;" name="name"  th:value="${session.user.name}" th:placeholder="${session.user.name}"/>
+                            <input style="margin-bottom: 10px;" name="name" th:value="${session.user.name}"
+                                   th:placeholder="${session.user.name}"/>
                         </div>
                         <div class="profile-info-field">
                             <div style="margin-bottom: 10px;"><strong>닉네임</strong></div>
-                            <input style="margin-bottom: 10px;" name="userNickname" th:value="${session.user.userNickname}"
+                            <input style="margin-bottom: 10px;" name="userNickname"
+                                   th:value="${session.user.userNickname}"
                                    th:placeholder="${session.user.userNickname}"/>
                         </div>
                         <div class="profile-info-field">
                             <div style="margin-bottom: 10px;"><strong>관심사</strong></div>
-                            <select  id="profile-interests" multiple name="interest" style="margin-left: -90px; width:300px;">
+                            <select id="profile-interests" multiple name="interest"
+                                    style="margin-left: -90px; width:300px;">
                                 <option value="풀스택" th:selected="${interests.contains('풀스택')}">풀스택</option>
                                 <option value="백엔드" th:selected="${interests.contains('백엔드')}">백엔드</option>
                                 <option value="프론트엔드" th:selected="${interests.contains('프론트엔드')}">프론트엔드</option>
@@ -305,9 +306,12 @@
                 <div class="profile-box profile-box2" id="profile-user-info3">
                     <!--위에상단 채울공간-->
                     <div style="margin-right: 150px;">
-                        <h2 >비밀번호 변경</h2>
-                        <p style="margin-right: 150px;">회원님의 개인정보를 안전하게 보호하고, 개인정보 도움으로 인한 피해를 예방하기 위해<br> 1년 이상 비밀번호를 변경하지 않은 경우 비밀번호 변경을 권장하고 있습니다.</p>
-                        <button class="change-btn" id="password-change-btn" type="button" onclick="location.href='/password-change'">비밀번호 변경</button>
+                        <h2>비밀번호 변경</h2>
+                        <p style="margin-right: 150px;">회원님의 개인정보를 안전하게 보호하고, 개인정보 도움으로 인한 피해를 예방하기 위해<br> 1년 이상 비밀번호를
+                            변경하지 않은 경우 비밀번호 변경을 권장하고 있습니다.</p>
+                        <button class="change-btn" id="password-change-btn" type="button"
+                                onclick="location.href='/password-change'">비밀번호 변경
+                        </button>
                     </div>
                 </div>
                 <div class="profile-box profile-box3">
@@ -319,6 +323,21 @@
                                 <td>아이디</td>
                                 <td><input type="text" name="userId" th:value="${session.user.userId}"
                                            th:placeholder="${session.user.userId}"/></td>
+                            </tr>
+                            <tr>
+                                <td>현재 비밀번호</td>
+                                <td><input type="password" name="password" th:value="${session.user.password}"
+                                           th:placeholder="${session.user.password}"/></td>
+                            </tr>
+                            <tr>
+                                <td>새 비밀번호</td>
+                                <td><input type="password" name="newPassword" id="pass-confirm1"/></td>
+                            </tr>
+                            <tr>
+                                <td>새 비밀번호 확인</td>
+                                <td><input type="password" name="confirmPassword" id="pass-confirm2"/>
+                                    <div id="pass-confirm">비밀번호가 일치하지 않습니다.</div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>성별</td>
@@ -486,7 +505,9 @@
                             </div>
                         </div>
                     </div>
-
+                </div>
+            </div>
+        </div>
     </section>
     <div id="modal">
         <div class="modal-content">
