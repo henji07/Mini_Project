@@ -80,7 +80,7 @@
                                             alert("삭제되었습니다.");
                                             location.href = `/`;
                                         }, error: () => {
-                                            alert("예기치 못한 오류입니다. 관리자한테 문의하세요.")
+                                            alert("Sdasds")
                                         }
                                     })
                                 } else return;
@@ -218,6 +218,8 @@
                         }
                     })
                 })
+
+
             });
 
         </script>
@@ -246,17 +248,17 @@
                 <div class="profile-box profile-box2" id="profile-user-info1">
                     <form class="profile-profile-details" id="name-info">
                         <div class="profile-info-field">
-                            <div>이름</div>
-                            <input name="name" th:value="${session.user.name}" th:placeholder="${session.user.name}"/>
+                            <div style="margin-bottom: 10px;"><strong>이름</strong></div>
+                            <input style="margin-bottom: 10px;" name="name"  th:value="${session.user.name}" th:placeholder="${session.user.name}"/>
                         </div>
                         <div class="profile-info-field">
-                            <div>닉네임</div>
-                            <input name="userNickname" th:value="${session.user.userNickname}"
+                            <div style="margin-bottom: 10px;"><strong>닉네임</strong></div>
+                            <input style="margin-bottom: 10px;" name="userNickname" th:value="${session.user.userNickname}"
                                    th:placeholder="${session.user.userNickname}"/>
                         </div>
                         <div class="profile-info-field">
-                            <div>관심사</div>
-                            <select id="profile-interests" multiple name="interest">
+                            <div style="margin-bottom: 10px;"><strong>관심사</strong></div>
+                            <select  id="profile-interests" multiple name="interest" style="margin-left: -90px; width:300px;">
                                 <option value="풀스택" th:selected="${interests.contains('풀스택')}">풀스택</option>
                                 <option value="백엔드" th:selected="${interests.contains('백엔드')}">백엔드</option>
                                 <option value="프론트엔드" th:selected="${interests.contains('프론트엔드')}">프론트엔드</option>
@@ -276,7 +278,7 @@
                             >
                         </div>
                         <input type="file" id="profile-imageUpload" hidden/>
-                        <button class="profile-btn-css" id="profile-changeProfilePicBtn">
+                        <button class="profile-changeImage-btn" id="profile-changeProfilePicBtn">
                             사진 변경하기
                         </button>
                     </div>
@@ -287,7 +289,7 @@
                             <img
                                     id="profile-profilePic" class="profile-img"
                                     th:src="@{'/uploads/'+${profileImg.originName}}"
-                                    alt="Profile Picture"
+                                    alt=""
                             />
                         </div>
                         <div id="profile-info-field">
@@ -301,24 +303,17 @@
                     </div>
                 </div>
                 <div class="profile-box profile-box2" id="profile-user-info3">
-                    <div id="profile-email-con">
-                        <div class="profile-box" id="profile-email-info">
-                            <div class="profile-emailinfo-text"><h2>이메일 정보</h2></div>
-                            <input type="text" th:placeholder="${session.user.email}" th:value="${session.user.email}"/>
-                        </div>
-                        <div class="profile-box" id="profile-email-btn">
-                            <button>이메일 인증</button>
-                        </div>
-                    </div>
-                    <div class="profile-box" id="profile-text-con">
-                        이메일 변경은 변경한 이메일로 인증 요청메일이 발송되고 이메일을 통한
-                        인증을 정상적으로 완료한 후 최종적으로 반영됩니다.
+                    <!--위에상단 채울공간-->
+                    <div style="margin-right: 150px;">
+                        <h2 >비밀번호 변경</h2>
+                        <p style="margin-right: 150px;">회원님의 개인정보를 안전하게 보호하고, 개인정보 도움으로 인한 피해를 예방하기 위해<br> 1년 이상 비밀번호를 변경하지 않은 경우 비밀번호 변경을 권장하고 있습니다.</p>
+                        <button class="change-btn" id="password-change-btn" type="button" onclick="location.href='/password-change'">비밀번호 변경</button>
                     </div>
                 </div>
                 <div class="profile-box profile-box3">
                     <form id="profile-member-form">
-                        <h1>회원 정보 수정</h1>
-                        <hr/>
+                        <p style="font-size: large"><strong>회원 정보 수정</strong></p>
+                        <hr style="border-color: #ff9900"/>
                         <table>
                             <tr>
                                 <td>아이디</td>
@@ -373,7 +368,7 @@
                         <div class="profile-box" id="profile-select-container">
                             <div class="profile-select" id="profile-sel1">작성글</div>
                             <div class="profile-select" id="profile-sel2">작성댓글</div>
-                            <div class="profile-select" id="profile-sel3">쥬아요</div>
+                            <div class="profile-select" id="profile-sel3">좋아요</div>
                         </div>
 
                         <div class="profile-box" id="profile-historycontainer">
@@ -495,49 +490,18 @@
                         </div>
                     </div>
                     <div id="profile-con3-2">
-                        <div class="profile-social-text profile-box">
-                            <div class="profile-box">
-                                <div class="profile-social-text1">소셜 계정 연동</div>
-                            </div>
-                            <div class="profile-box">
-                                <div class="profile-social-text2">
-                                    사용하시는 소셜 및 인증 제공자들과 계정을 연동하고 손쉽게
-                                    로그인하세요.
-                                </div>
-                            </div>
-                        </div>
+                        <h2 style="margin-left: 75px;">계정 영구 삭제 확인</h2>
+                        <p style="margin-left: 75px;">회원님의 계정을 영구적으로 삭제합니다.
+                            계정을 삭제하려면 비밀번호를 입력하고 계정 삭제를 클릭하세요<br>
+                            계정 삭제를 요청한 후에는 계정을 다시 활성화하고 삭제를 취소할 수 있는 30일의 기간이 주어집니다.<br>
+                            30일의 유예 기간이 끝나면 삭제 과정이 시작되며 계정에 추가한 콘텐츠 또는 정보를 가져올 수 없습니다.</p>
                         <div class="profile-이름다떨어짐 profile-box">
                             <div class="profile-del-btn-con profile-box">
                                 <button class="profile-del-btn profile-box" id="del-user">계정 삭제</button>
                             </div>
-                            <div class="profile-social-btn profile-box">
-                                <div
-                                        class="profile-social profile-box btn-css"
-                                        id="profile-google"
-                                >
-                                    <img src="./image/구글.png" alt=""/>
-                                    <div>구글 연동</div>
-                                </div>
-                                <div
-                                        class="profile-social profile-box btn-css"
-                                        id="profile-never"
-                                >
-                                    <img src="./image/네이버.png" alt=""/>
-                                    <div>네이버 연동</div>
-                                </div>
-                                <div
-                                        class="profile-social profile-box btn-css"
-                                        id="profile-kakao"
-                                >
-                                    <img src="./image/카카오.png" alt=""/>
-                                    <div>카카오 연동</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+
     </section>
     <div id="modal">
         <div class="modal-content">
