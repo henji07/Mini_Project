@@ -186,11 +186,11 @@ public class BoardQnaController {
             Map<String, String> returnMap = new HashMap<String, String>();
             
             // 카테고리에 따른 리다이렉트 URL 설정
-            if (boardDTO.getBoardMaincate().equals("freePage")) {
+            if (boardDTO.getBoardMaincate().equals("소통해요")) {
                 returnMap.put("redirectUrl", "/freePage");
-            } else if (boardDTO.getBoardMaincate().equals("studyPage")) {
+            } else if (boardDTO.getBoardMaincate().equals("함께해요")) {
                 returnMap.put("redirectUrl", "/studyPage");
-            } else if (boardDTO.getBoardMaincate().equals("qnaPage")) {
+            } else if (boardDTO.getBoardMaincate().equals("궁금해요")) {
                 returnMap.put("redirectUrl", "/qnaPage");
             }
 

@@ -41,7 +41,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor //생성자 주입 
 public class BoardQnaServiceImpl implements BoardQnaService {
-	
+
 	private final BoardQnaRepository boardRepository;
 	private final FileQnaRepository fileRepository;
 	private final CommentQnaRepository commentRepository;
@@ -334,7 +334,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	            
 	            // 날짜를 String으로 변환
 	            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	            String formattedDateTime = b.getBoardRegdate().format(formatter);
+	            String formattedDateTime = b.getBoardRegdate();
 	            dto.setBoardRegdate(formattedDateTime);
 				
 				dataList.add(dto);
@@ -351,19 +351,19 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 //	    long totalBoards = boardRepository.count();
 //	    return (int) Math.ceil((double) totalBoards / pageSize);
 //	}
-	
+
 	/* 카테고리 별 게시물 전체 페이지 수 반환 */
 	@Override
 	public Object getTotalPages(String category , String subcategory) {
 	    int pageSize = 8;
 //	    long totalBoards = boardRepository.countByBoardMaincate(category);
 //	    return (int) Math.ceil((double) totalBoards / pageSize);
-	    
+
 		// 서브 카테고리가 선택되었다면 해당 서브 카테고리의 게시글 수를 구함
-	    if (subcategory != null && !subcategory.isEmpty()) {
-	        long count = boardRepository.countByBoardMaincateAndSubcategory(category, subcategory);
-	        return (int) Math.ceil((double) count / pageSize);
-	    }
+		if (subcategory != null && !subcategory.isEmpty()) {
+			long count = boardRepository.countByBoardMaincateAndSubcategory(category, subcategory);
+			return (int) Math.ceil((double) count / pageSize);
+		}
 
 	    // 서브 카테고리가 선택되지 않았다면 전체 게시글 수를 구함
 	    long count = boardRepository.countByBoardMaincate(category);
@@ -428,7 +428,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
                 
                 // 날짜를 String으로 변환
 	            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	            String formattedDateTime = b.getBoardRegdate().format(formatter);
+	            String formattedDateTime = b.getBoardRegdate();
 	            dto.setBoardRegdate(formattedDateTime);
 
                 dataList.add(dto);
@@ -486,7 +486,7 @@ public class BoardQnaServiceImpl implements BoardQnaService {
 	            
 	            // 날짜를 String으로 변환
 	            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	            String formattedDateTime = b.getBoardRegdate().format(formatter);
+	            String formattedDateTime = b.getBoardRegdate();
 	            dto.setBoardRegdate(formattedDateTime);
 	            
 	            dataList.add(dto);

@@ -13,17 +13,17 @@ public class testController {
 //		return "view/boardQna";
 //	}
 
-	@GetMapping("studyPage")
-	public String test2() {
+//	@GetMapping("studyPage")
+//	public String test2() {
+//
+//		return "view/boardTogether";
+//	}
 
-		return "view/boardTogether";
-	}
-
-	@GetMapping("freePage")
-	public String test3() {
-
-		return "view/boardCommunicate";
-	}
+//	@GetMapping("freePage")
+//	public String test3() {
+//
+//		return "view/boardCommunicate";
+//	}
 //	@GetMapping("certificatePage")
 //	public String test4() {
 //

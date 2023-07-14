@@ -51,6 +51,8 @@ public interface BoardQnaRepository extends JpaRepository<BoardQna, Long> {
 
 	//boardMaincate에 해당하는 모든 BoardQnaDTO를 반환 - 서브 카테고리 때문에 만든 거 
 	//List<BoardQna> findAllByBoardMaincate(String boardMaincate);
+	@Query(value = "SELECT s FROM BoardQna s WHERE s.boardMaincate = :category ORDER BY s.boardCnt DESC")
+	List<BoardQna> findBoardMaincateTop12ByOrderByBoardCntDesc(@Param("category")String category);
 
 	
 }

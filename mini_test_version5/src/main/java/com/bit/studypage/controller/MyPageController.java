@@ -1,6 +1,7 @@
 package com.bit.studypage.controller;
 
 import com.bit.studypage.entity.*;
+import com.bit.studypage.entity.board.BoardQna;
 import com.bit.studypage.service.impl.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -63,7 +64,7 @@ public class MyPageController {
         session.setAttribute("user", users);
 
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "boardId");
-        Page<Board> boardPage = boardServiceImpl.pageList(users.getUserNickname(), pageable);
+        Page<BoardQna> boardPage = boardServiceImpl.pageList(users.getUserNickname(), pageable);
         mv.addObject("boards", boardPage);
 
         Pageable pageable2 = PageRequest.of(page, 10, Sort.Direction.DESC, "commentId");
@@ -82,19 +83,16 @@ public class MyPageController {
 //            commList.add(cdto);
 //        }
 
-        List<Board> boardLike = boardServiceImpl.getBoardList(likesServiceImpl.getLike(users.getUsersId()));
-        List<String> interestsList = new ArrayList<>();
-        if (usersServiceImpl.loginUser(loginId).getInterest() != null) {
-            String[] interest = usersServiceImpl.loginUser(loginId).getInterest().split(",");
-            interestsList = Arrays.asList(interest);
-        }
+        List<BoardQna> boardLike = boardServiceImpl.getBoardQnaList(likesServiceImpl.getLike(users.getUsersId()));
+
+        String[] interest = usersServiceImpl.loginUser(loginId).getInterest().split(",");
+        List<String> interestsList = Arrays.asList(interest);
         mv.addObject("interests", interestsList);
-        mv.addObject("boardList", boardServiceImpl.getBoardList(users.getUserNickname()));
+        mv.addObject("boardList", boardServiceImpl.getBoardQnaList(users.getUserNickname()));
         mv.addObject("commList", commentsServiceImpl.getCommentsList(users.getUserNickname()));
         if (profileImgServiceImpl.getProfileImg(loginId) != null) {
             mv.addObject("profileImg", profileImgServiceImpl.getProfileImg(loginId));
-        } else {
-            ProfileImg profileImg = new ProfileImg();
+        } else {ProfileImg profileImg = new ProfileImg();
             profileImg.setOriginName("히히.jpg");
             profileImg.setUserId(loginId);
             profileImg.setPath("C:\\profile\\히히.jpg");
@@ -103,21 +101,21 @@ public class MyPageController {
             System.out.println("히히발싸");
         }
         mv.addObject("interest", usersServiceImpl.loginUser(loginId).getInterest().split(","));
-        mv.addObject("countBoard", boardServiceImpl.getCountBoard(users.getUserNickname()));
+        mv.addObject("countBoard", boardServiceImpl.getCountBoardQna(users.getUserNickname()));
         mv.addObject("countComments", commentsServiceImpl.getCountComm(users.getUserNickname()));
         mv.addObject("commentsList", commentsServiceImpl.getCommList(users.getUserNickname()));
         mv.addObject("likeBoard", boardLike);
 //        mv.addObject("likes",);
-        log.info(boardServiceImpl.getCountBoard(users.getUserNickname()));
+        log.info(boardServiceImpl.getCountBoardQna(users.getUserNickname()));
         log.info("시이발!2");
         return mv;
     }
 
     @GetMapping("/boards")
-    public Page<Board> getBoards(@RequestParam(name = "pageNum", defaultValue = "0") int page, HttpSession session) {
+    public Page<BoardQna> getBoards(@RequestParam(name = "pageNum", defaultValue = "0") int page, HttpSession session) {
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "boardId");
         Users user = (Users) session.getAttribute("user");
-        Page<Board> boardPage = boardServiceImpl.pageList(user.getUserNickname(), pageable);
+        Page<BoardQna> boardPage = boardServiceImpl.pageList(user.getUserNickname(), pageable);
 //        model.addAttribute("boards", boardPage);
         System.out.println(boardPage.getTotalElements());
         System.out.println(boardPage.getTotalPages());
@@ -228,7 +226,7 @@ public class MyPageController {
     public void delBoard(@RequestParam("board-check") List<Long> board) {
         System.out.println("보드 불러온거" + board);
         for (Long i : board) {
-            boardServiceImpl.delBoard(i);
+            boardServiceImpl.delBoardQna(i);
         }
         System.out.println("보드삭제" + board);
     }

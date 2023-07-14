@@ -1,6 +1,7 @@
 package com.bit.studypage.entity.board;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import com.bit.studypage.dto.board.BoardQnaDTO;
@@ -44,7 +45,7 @@ public class BoardQna {
 	@Column(name="board_writer")
 	private String boardWriter;
 	@Column(name="board_reg_date")
-	private LocalDateTime boardRegdate;
+	private String boardRegdate;
 
 	@Column(name = "like_count")
     private long likeCount;
@@ -61,7 +62,7 @@ public class BoardQna {
 		this.boardContent = data.getBoardContent();
 		this.boardCnt = 0;
 		this.boardWriter = data.getBoardWriter();
-		this.boardRegdate = LocalDateTime.now();
+		this.boardRegdate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 		this.likeCount = 0;
 		this.boardMaincate = data.getBoardMaincate();
 		this.subcategory = data.getSubcategory();
