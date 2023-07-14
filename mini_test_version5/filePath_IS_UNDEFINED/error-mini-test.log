@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+2023-07-14 09:44:09.837 [restartedMain] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter[report:40] - 
+=======
 2023-07-13 18:59:48.260 [restartedMain] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter[report:40] - 
+>>>>>>> 3aa8982c106b3b59bc50252ea952c707d73a0bfa
 
 ***************************
 APPLICATION FAILED TO START
@@ -12,6 +16,8 @@ Action:
 
 Identify and stop the process that's listening on port 9090 or configure this application to listen on another port.
 
+<<<<<<< HEAD
+=======
 2023-07-13 19:00:03.393 [http-nio-9090-exec-10] ERROR org.thymeleaf.TemplateEngine[process:1141] - [THYMELEAF][http-nio-9090-exec-10] Exception processing template "/view/quaDetailes.html": An error happened during template parsing (template: "class path resource [templates//view/quaDetailes.html]")
 org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates//view/quaDetailes.html]")
 	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241)
@@ -1211,3 +1217,4 @@ java.io.InvalidClassException: com.bit.studypage.entity.Users; local class incom
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+>>>>>>> 3aa8982c106b3b59bc50252ea952c707d73a0bfa
