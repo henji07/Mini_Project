@@ -67,6 +67,9 @@
             #page2 {
                 display: none;
             }
+            .certificate-search-box{
+                margin-bottom: 2%;
+            }
         </style>
     </th:block>
 
@@ -171,8 +174,8 @@
         <hr class="horizontal-line">
         <div class="board-certificate-container">
             <div class="board-certificate-title">
-                <button>자격증일정 & 정보</button>
-                <button>주변 시험장 찾기</button>
+                <a th:href="@{certificatePage}"><button>자격증일정 & 정보</button></a>
+                <a th:href="@{testmap}"><button>주변 시험장 찾기</button></a>
             </div>
         </div>
 
@@ -183,7 +186,7 @@
         <form action="/certificatePage" method="get">
             <!-- 검색창 -->
             <div class="qua-search-box">
-                <div class="certificate-search-box">
+                <div class="certificate-search-box" id="box-id">
                     <i class="fas fa-search certificate-search-icon"></i>
 
                     <input type="text" name="name" id="certificate-search-input" placeholder="검색"/>

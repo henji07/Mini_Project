@@ -122,12 +122,12 @@
 .title {
     font-size: 16px;
     font-weight: 50px;
-    
     color: black;
+    margin-left: 5px;
 }
 
 li::marker {
-    content: "";  /* 이 부분이 실제로 marker의 내용을 없애주는 부분입니다. */
+    content: "";  
 }
 
 .author {
@@ -136,6 +136,22 @@ li::marker {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    margin-left: 5px;
+}
+
+.category {
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    color: #FF8C0A; 
+	width: 60px; 
+	text-align: center; 
+	display: block; 
+	margin: 0 auto 0 0; 
+	padding: 5px; 
+	border: 2px solid #FF8C0A; 
+	border-radius: 10px; 
+	background-color: #FFF5E6; 
+	margin-bottom: 20px;
 }
 
 .profile-img {

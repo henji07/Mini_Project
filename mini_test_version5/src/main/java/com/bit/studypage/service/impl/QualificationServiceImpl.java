@@ -27,9 +27,9 @@ public class QualificationServiceImpl implements QualificationService {
     public List<String> findKey(String key) {
         List<Qualification> getKey = qualificationRepository.findAllByJmfldnmContaining(key);
         List<String> returnStr = new ArrayList<>();
-        if (key.equals("")||key.equals(null)) {
+        if (key.equals("") || key.equals(null)) {
             returnStr.add("");
-        }else {
+        } else {
             for (Qualification a : getKey) {
                 returnStr.add(a.getJmfldnm());
             }
@@ -44,7 +44,19 @@ public class QualificationServiceImpl implements QualificationService {
 
     @Override
     public Page<Qualification> getSearchQuaList(String jmf, Pageable pageable) {
-        return qualificationRepository.findAllByJmfldnmContaining(jmf,pageable);
+        return qualificationRepository.findAllByJmfldnmContaining(jmf, pageable);
+    }
+
+    @Override
+    public void saveDate(String name, String date) {
+        Qualification qualification =qualificationRepository.findByJmfldnm(name);
+        qualification.setDate(date);
+        qualificationRepository.save(qualification);
+    }
+
+    @Override
+    public String findName(String name) {
+        return qualificationRepository.findByJmfldnm(name).getDate();
     }
 
     @Override

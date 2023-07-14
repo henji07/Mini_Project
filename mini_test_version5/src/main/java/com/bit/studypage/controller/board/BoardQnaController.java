@@ -62,6 +62,7 @@ public class BoardQnaController {
         }
         mv.addObject("userName", userName);
         mv.addObject("category", category);
+        
 
         switch (category) {
             case "freePage":
@@ -73,8 +74,6 @@ public class BoardQnaController {
             case "qnaPage":
                 mv.setViewName("view/boardInsertQna.html");
                 break;
-//            default:
-//                mv.setViewName("view/boardInsertQna.html");
         }
 
         return mv;
@@ -83,19 +82,23 @@ public class BoardQnaController {
 	//글 목록 화면으로 이동 //카테고리 별로 가져오는 거 됨 
 	@GetMapping("/qnaPage/{category}/{pageNum}")
     public ModelAndView getBoardList(@PathVariable("pageNum") int pageNum, 
-    		 						 @RequestParam(required = false) String sortOption,
-    		 						 @PathVariable("category") String category) {
+    		 						 @RequestParam(value = "sortOption", defaultValue = "recently") String sortOption,
+    		 						 @PathVariable("category") String category,
+    		 						 @RequestParam(value = "subcategory", required = false) String subcategory) {
 
 
         ModelAndView mv = new ModelAndView();
 
         //게시글 목록을 가져옴
-        List<BoardQnaDTO> boardList = boardService.getBoardList(pageNum, sortOption, category);
+        List<BoardQnaDTO> boardList = boardService.getBoardList(pageNum, sortOption, category, subcategory);
+        
+        System.out.println("컨트롤러에서 뭐가 나오나아아ㅏㅏ아아아아="+boardList);
         
         mv.addObject("qnaList", boardList);
         mv.addObject("currentPage", pageNum);
-        mv.addObject("totalPages", boardService.getTotalPages(category));
+        mv.addObject("totalPages", boardService.getTotalPages(category, subcategory));
         mv.addObject("sortOption", sortOption);
+        mv.addObject("subcategory",subcategory);
         
       //카테고리에 따라 다른 페이지를 보여줌
   		switch (category) {
@@ -108,8 +111,6 @@ public class BoardQnaController {
   		case "qnaPage":
   		    mv.setViewName("view/boardQna.html");
   		    break;
-//  		default:
-//  		    mv.setViewName("view/boardQna.html"); 
   		}
   		
   		return mv;
@@ -149,8 +150,6 @@ public class BoardQnaController {
   		case "qnaPage":
   		    mv.setViewName("view/boardSearchQna.html");
   		    break;
-//  		default:
-//  		    mv.setViewName("view/boardSearchQna.html"); 
   		}
   		
   		return mv;
@@ -159,9 +158,9 @@ public class BoardQnaController {
    
     //글 등록 -> ajax
     @PostMapping("/board-insert/{category}")
-    public ResponseEntity<?> insertBoard(@PathVariable String category, @RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO,
+    public ResponseEntity<?> insertBoard(@PathVariable String category, @RequestParam(required = false) String subcategory, @RequestParam("uploadFiles") List<MultipartFile> files, BoardQnaDTO boardDTO,
     		Authentication authentication) {
-        System.out.println("111111111");
+
     	ResponseDTO<Map<String, String>> responseDTO = new ResponseDTO<Map<String, String>>();
     	
     	String userId = null;
@@ -174,6 +173,13 @@ public class BoardQnaController {
         }
 
         try {
+        	
+        	// set서브카테고리 
+            if (!"studyPage".equals(boardDTO.getBoardMaincate())) {
+                subcategory = null;
+            }
+            boardDTO.setSubcategory(subcategory);
+            
             //서비스 호출 
             boardService.insertBoard(boardDTO, files, userId);
             System.out.println("222222222222");
@@ -264,8 +270,6 @@ public class BoardQnaController {
   		case "qnaPage":
   		    mv.setViewName("view/boardDetailQna.html");
   		    break;
-//  		default:
-//  		    mv.setViewName("view/boardDetailQna.html");
   		}
   		
   		return mv;
@@ -295,8 +299,6 @@ public class BoardQnaController {
   		case "qnaPage":
   		    mv.setViewName("view/boardModifyQna.html");
   		    break;
-//  		default:
-//  		    mv.setViewName("view/boardModifyQna.html");
   		}
   		
   		return mv;

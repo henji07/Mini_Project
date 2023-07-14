@@ -12,4 +12,6 @@ public interface QualificationService {
     String findJmfldnm(String jmf);
     Page<Qualification> getQuaList(Pageable pageable);
     Page<Qualification> getSearchQuaList(String jmf,Pageable pageable);
+    void saveDate(String name, String date);
+    String findName(String name);
 }

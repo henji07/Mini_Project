@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2023-07-13 10:59:43.278 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
 2023-07-13 10:59:43.301 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.7 with PID 18920 (C:\Users\82103\git\Mini_Project\mini_test_version5\bin\main started by 82103 in C:\Users\82103\git\Mini_Project\mini_test_version5)
 2023-07-13 10:59:43.302 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
@@ -445,6 +446,69 @@ com.fasterxml.jackson.core.JsonParseException: Unexpected character ('<' (code 6
 	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3772)
 	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3740)
 	at com.bit.studypage.controller.QualificationController.select(QualificationController.java:110)
+=======
+2023-07-13 18:54:25.144 [background-preinit] INFO  o.h.validator.internal.util.Version:21 - HV000001: Hibernate Validator 8.0.0.Final
+2023-07-13 18:54:25.186 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:51 - Starting MiniTestApplication using Java 17.0.6 with PID 4408 (C:\Mini_Project\mini_test_version5\build\classes\java\main started by seog in C:\Mini_Project\mini_test_version5)
+2023-07-13 18:54:25.187 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:639 - The following 1 profile is active: "oauth"
+2023-07-13 18:54:25.461 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-13 18:54:25.467 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:250 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-13 18:54:26.258 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-13 18:54:26.259 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-13 18:54:26.288 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.BoardRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.289 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.board.BoardQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.290 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.board.CommentQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.291 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.board.FileQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.292 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.board.LikeQnaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.293 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.CommentsRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.294 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.DelUserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.294 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.HomeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.295 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.LikesRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.297 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.MemberRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.297 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.ProfileImgRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.298 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.QualificationInfoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.299 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.QualificationRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.300 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.QuaPlaceRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.301 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.SearchRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.302 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.303 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport:320 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.bit.studypage.repository.UsersRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-13 18:54:26.304 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 41 ms. Found 0 JDBC repository interfaces.
+2023-07-13 18:54:26.311 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:291 - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-13 18:54:26.312 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:138 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-13 18:54:26.353 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 39 ms. Found 17 JPA repository interfaces.
+2023-07-13 18:54:26.810 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:108 - Tomcat initialized with port(s): 9090 (http)
+2023-07-13 18:54:26.817 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2023-07-13 18:54:26.817 [restartedMain] INFO  o.a.catalina.core.StandardService:173 - Starting service [Tomcat]
+2023-07-13 18:54:26.817 [restartedMain] INFO  o.a.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-13 18:54:26.863 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+2023-07-13 18:54:26.864 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext:291 - Root WebApplicationContext: initialization completed in 1395 ms
+2023-07-13 18:54:26.946 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:80 - HikariPool-1 - Starting...
+2023-07-13 18:54:27.111 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c0d50ef
+2023-07-13 18:54:27.113 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource:82 - HikariPool-1 - Start completed.
+2023-07-13 18:54:27.149 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-13 18:54:27.179 [restartedMain] INFO  org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-07-13 18:54:27.181 [restartedMain] INFO  org.hibernate.cfg.Environment:191 - HHH000406: Using bytecode reflection optimizer
+2023-07-13 18:54:27.265 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-13 18:54:27.366 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-13 18:54:27.413 [restartedMain] INFO  org.hibernate.orm.dialect:93 - HHH035001: Using dialect: org.hibernate.dialect.MySQL57Dialect, version: 5.7
+2023-07-13 18:54:27.414 [restartedMain] WARN  org.hibernate.orm.deprecation:100 - HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-07-13 18:54:27.582 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator:53 - HHH000021: Bytecode provider name : bytebuddy
+2023-07-13 18:54:28.160 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator:51 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-13 18:54:28.244 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-13 18:54:28.513 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory:47 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-07-13 18:54:29.173 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:231 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-13 18:54:29.335 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain:54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@59a2c91f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ef1221e, org.springframework.security.web.context.SecurityContextHolderFilter@f9a4749, org.springframework.security.web.header.HeaderWriterFilter@2b543ea4, org.springframework.security.web.authentication.logout.LogoutFilter@31868d75, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@312f5b4c, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@36243c01, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@18d8a83, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@66bd595d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@67c87936, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1646e223, org.springframework.security.web.access.ExceptionTranslationFilter@432acdd, org.springframework.security.web.access.intercept.AuthorizationFilter@670dff98]
+2023-07-13 18:54:29.620 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer:59 - LiveReload server is running on port 35729
+2023-07-13 18:54:29.634 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2023-07-13 18:54:29.648 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer:220 - Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-13 18:54:29.655 [restartedMain] INFO  c.bit.studypage.MiniTestApplication:57 - Started MiniTestApplication in 5.024 seconds (process running for 5.682)
+2023-07-13 18:54:29.692 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-13 18:54:29.692 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2023-07-13 18:54:29.694 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 2 ms
+2023-07-13 18:54:30.481 [http-nio-9090-exec-4] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.bit.studypage.entity.Qualification.getDate()" because the return value of "com.bit.studypage.repository.QualificationRepository.findByJmfldnm(String)" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "com.bit.studypage.entity.Qualification.getDate()" because the return value of "com.bit.studypage.repository.QualificationRepository.findByJmfldnm(String)" is null
+	at com.bit.studypage.service.impl.QualificationServiceImpl.findName(QualificationServiceImpl.java:59)
+	at com.bit.studypage.controller.QualificationController.select(QualificationController.java:103)
+>>>>>>> 83d0a8f6e209c5318ec799b2449dfeb7473c2a07
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -539,6 +603,7 @@ com.fasterxml.jackson.core.JsonParseException: Unexpected character ('<' (code 6
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+<<<<<<< HEAD
 2023-07-13 13:17:54.959 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool:804 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m56s295ms301µs700ns).
 2023-07-13 14:17:10.815 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool:804 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m14s974ms561µs).
 2023-07-13 14:24:42.966 [http-nio-9090-exec-8] INFO  c.b.s.controller.MyPageController:108 - 0
@@ -827,6 +892,10 @@ java.lang.NullPointerException: Cannot invoke "String.split(String)" because the
 2023-07-13 16:50:24.231 [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
 2023-07-13 16:50:24.840 [http-nio-9090-exec-1] ERROR org.thymeleaf.TemplateEngine:1141 - [THYMELEAF][http-nio-9090-exec-1] Exception processing template "view/join.html": An error happened during template parsing (template: "class path resource [templates/view/join.html]")
 org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/view/join.html]")
+=======
+2023-07-13 18:54:30.612 [http-nio-9090-exec-3] ERROR org.thymeleaf.TemplateEngine:1141 - [THYMELEAF][http-nio-9090-exec-3] Exception processing template "/view/quaDetailes.html": An error happened during template parsing (template: "class path resource [templates//view/quaDetailes.html]")
+org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates//view/quaDetailes.html]")
+>>>>>>> 83d0a8f6e209c5318ec799b2449dfeb7473c2a07
 	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241)
 	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100)
 	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666)
@@ -920,11 +989,16 @@ org.thymeleaf.exceptions.TemplateInputException: An error happened during templa
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+<<<<<<< HEAD
 Caused by: org.attoparser.ParseException: Could not parse as expression: "#" (template: "view/join.html" - line 285, col 45)
+=======
+Caused by: org.attoparser.ParseException: Exception evaluating SpringEL expression: "info.name != null and info.name != ''" (template: "/view/quaDetailes.html" - line 260, col 22)
+>>>>>>> 83d0a8f6e209c5318ec799b2449dfeb7473c2a07
 	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:393)
 	at org.attoparser.MarkupParser.parse(MarkupParser.java:257)
 	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230)
 	... 92 common frames omitted
+<<<<<<< HEAD
 Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Could not parse as expression: "#" (template: "view/join.html" - line 285, col 45)
 	at org.thymeleaf.standard.expression.StandardExpressionParser.parseExpression(StandardExpressionParser.java:131)
 	at org.thymeleaf.standard.expression.StandardExpressionParser.parseExpression(StandardExpressionParser.java:62)
@@ -932,6 +1006,17 @@ Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Could not parse
 	at org.thymeleaf.engine.EngineEventUtils.parseAttributeExpression(EngineEventUtils.java:220)
 	at org.thymeleaf.engine.EngineEventUtils.computeAttributeExpression(EngineEventUtils.java:207)
 	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:125)
+=======
+Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "info.name != null and info.name != ''" (template: "/view/quaDetailes.html" - line 260, col 22)
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:292)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:125)
+	at org.thymeleaf.standard.processor.StandardIfTagProcessor.isVisible(StandardIfTagProcessor.java:59)
+	at org.thymeleaf.standard.processor.AbstractStandardConditionalVisibilityTagProcessor.doProcess(AbstractStandardConditionalVisibilityTagProcessor.java:61)
+>>>>>>> 83d0a8f6e209c5318ec799b2449dfeb7473c2a07
 	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
 	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
 	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
@@ -958,6 +1043,7 @@ Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Could not parse
 	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:725)
 	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301)
 	... 94 common frames omitted
+<<<<<<< HEAD
 2023-07-13 16:50:24.848 [http-nio-9090-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/view/join.html]")] with root cause
 org.thymeleaf.exceptions.TemplateProcessingException: Could not parse as expression: "#" (template: "view/join.html" - line 285, col 45)
 	at org.thymeleaf.standard.expression.StandardExpressionParser.parseExpression(StandardExpressionParser.java:131)
@@ -966,6 +1052,43 @@ org.thymeleaf.exceptions.TemplateProcessingException: Could not parse as express
 	at org.thymeleaf.engine.EngineEventUtils.parseAttributeExpression(EngineEventUtils.java:220)
 	at org.thymeleaf.engine.EngineEventUtils.computeAttributeExpression(EngineEventUtils.java:207)
 	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:125)
+=======
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'name' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:218)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:105)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:410)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:93)
+	at org.springframework.expression.spel.ast.OpNE.getValueInternal(OpNE.java:43)
+	at org.springframework.expression.spel.ast.OpNE.getValueInternal(OpNE.java:33)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:212)
+	at org.springframework.expression.spel.ast.OpAnd.getBooleanValue(OpAnd.java:57)
+	at org.springframework.expression.spel.ast.OpAnd.getValueInternal(OpAnd.java:48)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:114)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338)
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265)
+	... 126 common frames omitted
+2023-07-13 18:54:30.614 [http-nio-9090-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates//view/quaDetailes.html]")] with root cause
+org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'name' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:218)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:105)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:410)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:93)
+	at org.springframework.expression.spel.ast.OpNE.getValueInternal(OpNE.java:43)
+	at org.springframework.expression.spel.ast.OpNE.getValueInternal(OpNE.java:33)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:212)
+	at org.springframework.expression.spel.ast.OpAnd.getBooleanValue(OpAnd.java:57)
+	at org.springframework.expression.spel.ast.OpAnd.getValueInternal(OpAnd.java:48)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:114)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338)
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:125)
+	at org.thymeleaf.standard.processor.StandardIfTagProcessor.isVisible(StandardIfTagProcessor.java:59)
+	at org.thymeleaf.standard.processor.AbstractStandardConditionalVisibilityTagProcessor.doProcess(AbstractStandardConditionalVisibilityTagProcessor.java:61)
+>>>>>>> 83d0a8f6e209c5318ec799b2449dfeb7473c2a07
 	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
 	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
 	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
@@ -1085,6 +1208,7 @@ org.thymeleaf.exceptions.TemplateProcessingException: Could not parse as express
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+<<<<<<< HEAD
 2023-07-13 16:50:24.867 [http-nio-9090-exec-1] ERROR o.s.b.a.w.s.e.ErrorMvcAutoConfiguration$StaticView:202 - Cannot render error page for request [/members/new] and exception [An error happened during template parsing (template: "class path resource [templates/view/join.html]")] as the response has already been committed. As a result, the response may have the wrong status code.
 2023-07-13 16:50:26.412 [http-nio-9090-exec-6] ERROR org.thymeleaf.TemplateEngine:1141 - [THYMELEAF][http-nio-9090-exec-6] Exception processing template "view/join.html": An error happened during template parsing (template: "class path resource [templates/view/join.html]")
 org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/view/join.html]")
@@ -6106,3 +6230,9 @@ org.thymeleaf.exceptions.TemplateProcessingException: Could not parse as express
 2023-07-13 20:44:04.327 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-07-13 20:44:04.332 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-17 - Shutdown initiated...
 2023-07-13 20:44:04.335 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-17 - Shutdown completed.
+=======
+2023-07-13 18:54:30.625 [http-nio-9090-exec-3] ERROR o.s.b.a.w.s.e.ErrorMvcAutoConfiguration$StaticView:202 - Cannot render error page for request [/select/qua/%ED%98%B8%ED%85%94%EA%B4%80%EB%A6%AC%EC%82%AC] and exception [An error happened during template parsing (template: "class path resource [templates//view/quaDetailes.html]")] as the response has already been committed. As a result, the response may have the wrong status code.
+2023-07-13 18:55:37.874 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-13 18:55:37.878 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2023-07-13 18:55:37.886 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+>>>>>>> 83d0a8f6e209c5318ec799b2449dfeb7473c2a07

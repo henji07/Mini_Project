@@ -76,7 +76,9 @@
 <hr class="horizontal-line">
   <div class="board-container">
     <div class="board-title">
-      <button>함께해요</button>
+      <button onclick="location.href='/board/qnaPage/studyPage/1?subcategory=프로젝트'">프로젝트</button>
+      <button onclick="location.href='/board/qnaPage/studyPage/1?subcategory=스터디'">스터디</button>
+      <button onclick="location.href='/board/qnaPage/studyPage/1?subcategory=기타'">기타</button>
     </div>
     <div class="board-actions">
       <button style="left: 0;" onclick="location.href='/board/insert-board-view/studyPage'">글쓰기</button>
@@ -109,8 +111,8 @@
 <div class="pagination-top">
     <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
     <div class="pagination-top-buttons">
-      <a style="color: black;" th:href="@{'/board/qnaPage/studyPage/' + (${currentPage} - 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous"  th:classappend="${currentPage == null || currentPage == 1 ? 'disabled-link' : ''}">&larr;</a>
-      <a style="color: black;" th:href="@{'/board/qnaPage/studyPage/' + (${currentPage} + 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == null || currentPage == totalPages ? 'disabled-link' : ''}">&rarr;</a>
+      <a style="color: black;" th:href="@{'/board/qnaPage/studyPage/' + (${currentPage} - 1) + '?sortOption=' + ${sortOption} + '&subcategory=' + ${subcategory}}" class="pagination-bottom-button pagination-button-previous"  th:classappend="${currentPage == null || currentPage == 1 ? 'disabled-link' : ''}">&larr;</a>
+      <a style="color: black;" th:href="@{'/board/qnaPage/studyPage/' + (${currentPage} + 1) + '?sortOption=' + ${sortOption} + '&subcategory=' + ${subcategory}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == null || currentPage == totalPages ? 'disabled-link' : ''}">&rarr;</a>
     </div>
 </div>
 
@@ -118,7 +120,11 @@
  <div class="board-write-container">
  
    <li class="board-write" th:each="board : ${qnaList}">
-	<div style="margin-bottom: 10px;" th:text="${#strings.substring(board.boardRegdate, 5, 10)}"></div>
+    <!-- 서브 카테고리 정보 -->
+	<div class="category">
+	  <div th:text="${board.subcategory}"></div>
+	</div>
+	<div style="margin-bottom: 10px; margin-left: 5px;" th:text="${#strings.substring(board.boardRegdate, 0, 10)}"></div>
      <div class="board-writer-title">
        <a th:href="@{/board/board/studyPage/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
        <div class="author">
@@ -155,12 +161,12 @@
 <th:block th:with="pageGroupSize=5">
     <div class="pagination-bottom">
 
-        <a style="color: black;" th:href="@{'/board/qnaPage/studyPage/' + (${currentPage} - 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous" th:classappend="${currentPage == null || currentPage == 1 ? 'disabled-link' : ''}">&larr; Previous</a>
+        <a style="color: black;" th:href="@{'/board/qnaPage/studyPage/' + (${currentPage} - 1) + '?sortOption=' + ${sortOption} + '&subcategory=' + ${subcategory}}" class="pagination-bottom-button pagination-button-previous" th:classappend="${currentPage == null || currentPage == 1 ? 'disabled-link' : ''}">&larr; Previous</a>
         <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
-            <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/studyPage/{pageNum}(pageNum=${i}, sortOption=${sortOption})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
+            <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{/board/qnaPage/studyPage/{pageNum}(pageNum=${i}, sortOption=${sortOption}, subcategory=${subcategory})}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
         </div>
 
-        <a style="color: black;" th:href="@{'/board/qnaPage/studyPage/' + (${currentPage} + 1) + '?sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == null || currentPage == totalPages ? 'disabled-link' : ''}">Next &rarr;</a>
+        <a style="color: black;" th:href="@{'/board/qnaPage/studyPage/' + (${currentPage} + 1) + '?sortOption=' + ${sortOption} + '&subcategory=' + ${subcategory}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == null || currentPage == totalPages ? 'disabled-link' : ''}">Next &rarr;</a>
 
     </div>
 </th:block>

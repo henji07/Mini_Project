@@ -86,15 +86,18 @@ public class MyPageController {
 //        }
 
         List<Board> boardLike = boardServiceImpl.getBoardList(likesServiceImpl.getLike(users.getUsersId()));
-
-        String[] interest = usersServiceImpl.loginUser(loginId).getInterest().split(",");
-        List<String> interestsList = Arrays.asList(interest);
+        List<String> interestsList = new ArrayList<>();
+        if (usersServiceImpl.loginUser(loginId).getInterest() != null) {
+            String[] interest = usersServiceImpl.loginUser(loginId).getInterest().split(",");
+            interestsList = Arrays.asList(interest);
+        }
         mv.addObject("interests", interestsList);
         mv.addObject("boardList", boardServiceImpl.getBoardList(users.getUserNickname()));
         mv.addObject("commList", commentsServiceImpl.getCommentsList(users.getUserNickname()));
         if (profileImgServiceImpl.getProfileImg(loginId) != null) {
             mv.addObject("profileImg", profileImgServiceImpl.getProfileImg(loginId));
-        } else {ProfileImg profileImg = new ProfileImg();
+        } else {
+            ProfileImg profileImg = new ProfileImg();
             profileImg.setOriginName("히히.jpg");
             profileImg.setUserId(loginId);
             profileImg.setPath("C:\\profile\\히히.jpg");

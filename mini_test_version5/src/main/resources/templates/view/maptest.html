@@ -7,9 +7,6 @@
     <th:block layout:fragment="css">
         <link rel="stylesheet" href="/css/boardcertificate.css">
         <style>
-            .map-info {
-                border: 1px solid black;
-            }
 
             #suggestions {
                 max-height: 100px; /* Adjust this value according to the size of each item */
@@ -70,11 +67,20 @@
                 display: flex;
                 flex-direction: column;
                 overflow-y: auto;
+                overflow-x: hidden;
                 height: 100%;
+                width: 25%;
             }
 
             .all-add > li {
+            	color: #828282;
+            	white-space: nowrap; /* 글자가 한 줄로 유지되도록 설정 */
+    			text-overflow: ellipsis; /* 말 줄임표(...) 표시 */
             }
+            
+            li::marker {
+			    content: "";  
+			}
 
             #map {
                 height: 100%;
@@ -82,10 +88,38 @@
                 width: 75%;
                 min-width: 500px;
             }
-            .map-info-text{
-                border: 1px solid black;
-                min-height: 20vh;
+            
+            .map-info {
+            	padding: 10px;
+            	text-overflow: ellipsis;
+    			white-space: nowrap;
+    			border: 0.5px dotted #828282;
+    			cursor: pointer;
             }
+            
+            .map-info-text{
+                border: 1px solid #828282;
+                height: 20vh;
+                overflow-y: auto;
+                box-sizing: border-box;
+                padding: 20px;
+                color: #828282;
+                margin-top: 20px;
+            }
+            
+            .detail-add {
+            	color: #FF8C0A; 
+            	width: 100px; 
+            	font-size: 14px; 
+            	text-align: center; 
+            	display: block; 
+            	margin: 20px auto 0 0; 
+            	padding: 10px; 
+            	border: 2px solid #FF8C0A; 
+            	border-radius: 10px; 
+            	background-color: #FFF5E6; 
+            }
+            
         </style>
     </th:block>
     <th:block layout:fragment="script">
@@ -203,21 +237,21 @@
                     var infowindow = new kakao.maps.InfoWindow({
                         content: places[i].content // 인포윈도우에 표시할 내용
                     });
-                    (function (i) {
-                        kakao.maps.event.addListener(marker, 'click', function () {
-                            var info = '<div class="add-info">' +
-                                '<p>장소명: <br>' + places[i].examAreaNm + '</p>' +
-                                '<p>주소: <br>' + places[i].address + '</p>';
-
-                            if (places[i].telNo !== " ") {  // telNo 값이 있을 때만 추가
-                                info += '<p>전화번호:<br> ' + places[i].telNo + '</p>';
-                            }
-
-                            info += '</div>';
-
-                            document.querySelector('.map-info').innerHTML = info;
-                        });
-                    })(i);
+                    // (function (i) {
+                    //     kakao.maps.event.addListener(marker, 'click', function () {
+                    //         var info = '<div class="add-info">' +
+                    //             '<p>장소명: <br>' + places[i].examAreaNm + '</p>' +
+                    //             '<p>주소: <br>' + places[i].address + '</p>';
+                    //
+                    //         if (places[i].telNo !== " ") {  // telNo 값이 있을 때만 추가
+                    //             info += '<p>전화번호:<br> ' + places[i].telNo + '</p>';
+                    //         }
+                    //
+                    //         info += '</div>';
+                    //
+                    //         document.querySelector('.map-info').innerHTML = info;
+                    //     });
+                    // })(i);
 
                     // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
                     // 이벤트 리스너로는 클로저를 만들어 등록합니다
@@ -299,6 +333,8 @@
                     if (clickedPlace.telNo !== " ") {  // telNo 값이 있을 때만 추가
                        var info2 = '<p>전화번호:<br> ' + clickedPlace.telNo + '</p>';
                     }else var info2 = "";
+
+
                     $(".map-info-text").html('<p>장소명: <br>' + clickedPlace.examAreaNm + '</p>' +
                         '<p>주소: <br>' + clickedPlace.address + '</p>'+info2);
 
@@ -368,27 +404,12 @@
         <hr class="horizontal-line">
         <div class="board-certificate-container">
             <div class="board-certificate-title">
-                <button>자격증일정</button>
-                <button>자격증정보</button>
-                <button>시험장위치</button>
-            </div>
-            <!-- 글쓰기 버튼 -->
-            <div class="board-certificate-actions">
-                <button style="left: 0;">글쓰기</button>
+                <a th:href="@{certificatePage}"><button>자격증일정 & 정보</button></a>
+                <a th:href="@{testmap}"><button>주변 시험장 찾기</button></a>
             </div>
         </div>
 
         <hr class="horizontal-line">
-
-        <!-- 드롭다운 -->
-        <div class="options-container">
-            <select name="list-options" id="list-options">
-                <option value="">글 정렬</option>
-                <option value="recently">최신순</option>
-                <option value="older">등록순</option>
-                <option value="popular">인기순</option>
-            </select>
-        </div>
 
         <hr class="horizontal-line-underdropdown">
         <form action="/testmap" method="get">
@@ -397,7 +418,7 @@
                 <div class="certificate-search-box">
                     <i class="fas fa-search certificate-search-icon"></i>
                     <input onclick="sample6_execDaumPostcode()" type="text" name="add"
-                           id="add-search" placeholder="검색"/>
+                           id="add-search" placeholder="반경 3km 시험장 찾기"/>
                     <button id="certificate-search-button" type="submit">검색</button>
 
                 </div>
@@ -411,12 +432,18 @@
                 <div id="map"></div>
                 <div class="all-add">
                     <table>
-                        <th:block th:each="place:${uniqueAreaNames}">
+                        <th:block th:if="${#lists.isEmpty(uniqueAreaNames)}">
+                            <li>주변 시험장이 없습니다.</li>
+                        </th:block>
+                        <th:block th:unless="${#lists.isEmpty(uniqueAreaNames)}" th:each="place:${uniqueAreaNames}">
                             <li class="map-info" th:text="${place}"></li>
                         </th:block>
                     </table>
                 </div>
             </div>
+            
+            <h3 class="detail-add">상세 정보</h3>
+            
             <div class="map-info-text">
                 목록에서 선택해주세요.
             </div>
