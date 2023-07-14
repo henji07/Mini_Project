@@ -5,6 +5,8 @@ import com.bit.studypage.entity.Users;
 import com.bit.studypage.dto.MemberDTO;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,9 @@ public interface MemberService {
 
 
 	public boolean isUserIdDuplicate(String userId);
+
+	//회원가입 이메일 인증
+	public String sendAuthCodeEmail(String email);
 
 	//회원 가입
 	public String join(MemberDTO form);

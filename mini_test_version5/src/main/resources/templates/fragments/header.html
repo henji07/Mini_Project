@@ -4,6 +4,15 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
+  <style>
+    #search_button {
+      border: none;
+      background: none;
+      color: orange;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
   <th:block layout:fragment="script">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" th:inline="javascript">
@@ -117,13 +126,14 @@
     <li><a th:href="@{/board/qnaPage/qnaPage/1}">궁금해요</a></li>
     <li><a th:href="@{/certificatePage}">자격증</a></li>
   </ul>
+
   <div class="search_box">
-    <i class="fas fa-search search_icon"></i>
-    <input type="text" id="search_input" name="keyword" placeholder="검색" />
     <a href="/fullSearch">
-      <button type="button" id="search_button">검색</button>
+
+      <button type="button" id="search_button">모든게시판</button>
     </a>
   </div>
+
   <div class="user_buttons">
     <div th:block sec:authorize="!isAuthenticated()">
       <button id="login_button"><a th:href="@{/login}">로그인</a></button>

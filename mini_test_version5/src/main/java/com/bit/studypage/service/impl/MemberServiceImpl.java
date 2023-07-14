@@ -49,6 +49,29 @@ public class MemberServiceImpl implements MemberService {
 		return usersRepository.existsByUserId(userId);
 	}
 
+	@Override
+	public String sendAuthCodeEmail(String email) {
+
+		//인증코드 생성
+		String authCode = UUID.randomUUID().toString().substring(0, 10);
+
+		try {
+			MimeMessage message = javaMailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true);
+			helper.setFrom(from);
+			helper.setTo(email);
+			helper.setSubject("[옹기종기] 회원가입 인증 코드 발급 안내");
+			helper.setText("안녕하세요. 옹기종기 회원가입 인증 코드 안내 관련 이메일 입니다. " +
+					"생성된 인증 코드: " + authCode);
+			javaMailSender.send(message);
+
+		} catch (MessagingException e) {
+			throw new IllegalArgumentException("메일 전송에 실패했습니다.", e);
+		}
+
+		return authCode;
+	}
+
 	//회원 가입
 	public String join(MemberDTO member) {
 		//성공할 때만 success로 나머지는 fail
@@ -163,7 +186,6 @@ public class MemberServiceImpl implements MemberService {
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
 			helper.setFrom(from);
 			helper.setTo(email);
-
 			helper.setSubject(user.getName() + "님의 [옹기종기] 임시 비밀번호 발급 안내");
 			helper.setText("안녕하세요. " + user.getName() + "님 옹기종기 임시 비밀번호 안내 관련 이메일 입니다. " +
 					"생성된 임시 비밀번호: " + tempPassword);

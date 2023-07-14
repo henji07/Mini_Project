@@ -32,11 +32,11 @@ public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     private String getExceptionMessage(AuthenticationException exception) {
         if(exception instanceof BadCredentialsException) {
-            return "로그인 정보가 틀렸습니다.";
+            return "아이디 혹은 비밀번호가 일치하지 않습니다.";
         } else if(exception instanceof UsernameNotFoundException) {
-            return "로그인 정보가 틀렸습니다.";
+            return "아이디 혹은 비밀번호가 일치하지 않습니다.";
         } else if(exception.getMessage().contains("UserDetailsService returned null")) {
-            return "로그인 정보가 틀렸습니다.";
+            return "아이디 혹은 비밀번호가 일치하지 않습니다.";
         } else {
             return "확인되지 않은 에러";
         }

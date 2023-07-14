@@ -32,6 +32,7 @@ public class MemberController {
     private final UsersRepository usersRepository;
     private final PasswordEncoder passwordEncoder;
 
+
     //회원 가입 화면으로 이동
     @GetMapping("/members/new")
     public ModelAndView joinView() {
@@ -76,11 +77,28 @@ public class MemberController {
         return memberService.isUserIdDuplicate(userId);
     }
 
+    //회원가입 이메일 인증
+    @GetMapping("/members/regist/mail-author")
+    public ResponseEntity<?> mailAuthor(@RequestParam("email") String email) {
+        String authCode = memberService.sendAuthCodeEmail(email);
+
+        ResponseDTO<String> responseDTO = new ResponseDTO<>();
+
+
+        if(authCode != null && !authCode.equals("")) {
+            responseDTO.setItem(authCode);
+            responseDTO.setStatusCode(HttpStatus.OK.value());
+            return ResponseEntity.ok().body(responseDTO);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("인증 코드 생성 및 이메일 전송 실패");
+        }
+    }
+
     //회원 정보 등록하기
     @PostMapping("/members/regist")
     @ResponseBody //json으로 바꿈
     public Map<String, Object> create(@RequestBody @Valid MemberDTO form, BindingResult bindingResult) {
-        //@RequestBody json을 객체로
+        //@RequestBody json을 java객체로
         //@Valid 유효성 검사
         //BindingResult 오류가 담겨서 실행됨
         Map<String, Object> data = new HashMap<>();

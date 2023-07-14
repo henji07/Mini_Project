@@ -40,7 +40,7 @@ public class BoardQna {
 	private String boardContent;
 
 	@Column(name="board_cnt", nullable = false)
-    private int boardCnt;//조회수
+	private int boardCnt;//조회수
 
 	@Column(name="board_writer")
 	private String boardWriter;
@@ -48,11 +48,11 @@ public class BoardQna {
 	private String boardRegdate;
 
 	@Column(name = "like_count")
-    private long likeCount;
-	
+	private long likeCount;
+
 	@Column(name = "board_main_cate")
-	private String boardMaincate; //대분류 카테고리 
-	
+	private String boardMaincate; //대분류 카테고리
+
 	@Column(name = "subcategory")
 	private String subcategory;
 
