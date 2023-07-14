@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,16 +34,18 @@ public class MyPageController {
     LikesServiceImpl likesServiceImpl;
     DelUsersServiceImpl delUsersService;
 
+    PasswordEncoder passwordEncoder;
     Long loginId;
 
     @Autowired
-    public MyPageController(UsersServiceImpl usersServiceImpl, BoardServiceImpl boardServiceImpl, CommentsServiceImpl commentsServiceImpl, ProfileImgServiceImpl profileImgServiceImpl, LikesServiceImpl likesServiceImpl, DelUsersServiceImpl delUsersService) {
+    public MyPageController(UsersServiceImpl usersServiceImpl, BoardServiceImpl boardServiceImpl, CommentsServiceImpl commentsServiceImpl, ProfileImgServiceImpl profileImgServiceImpl, LikesServiceImpl likesServiceImpl, DelUsersServiceImpl delUsersService, PasswordEncoder passwordEncoder) {
         this.usersServiceImpl = usersServiceImpl;
         this.boardServiceImpl = boardServiceImpl;
         this.commentsServiceImpl = commentsServiceImpl;
         this.profileImgServiceImpl = profileImgServiceImpl;
         this.likesServiceImpl = likesServiceImpl;
         this.delUsersService = delUsersService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/1234")
@@ -205,7 +208,7 @@ public class MyPageController {
         Users user = (Users) session.getAttribute("user");
         log.info("비번체크" + pass);
         log.info("tldlqkf" + user.getPassword());
-        if (user.getPassword().equals(pass)) {
+        if (passwordEncoder.matches(pass, user.getPassword())) {
             log.info("ok리턴");
             return "ok";
         } else return "";
