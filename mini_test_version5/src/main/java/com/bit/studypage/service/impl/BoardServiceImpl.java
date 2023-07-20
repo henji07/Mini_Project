@@ -55,7 +55,7 @@ public class BoardServiceImpl implements BoardService {
     @Transactional
     public void delBoardQna(Long boardId) {
         boardRepository.deleteById(boardId);
-        commentsRepository.deleteAllByPostId(boardId);
+        commentsRepository.deleteAllByBoardId(boardId);
         likesRepository.deleteAllByPostId(boardId);
     }
 

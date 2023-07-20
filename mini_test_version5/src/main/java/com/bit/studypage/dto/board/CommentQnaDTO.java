@@ -15,14 +15,12 @@ public class CommentQnaDTO {
 	private int id;
     private String content;
     private String writer;
-    private LocalDateTime createdAt;
 
     public static CommentQnaDTO toDto(CommentQna comment, String userId) {
         return new CommentQnaDTO(
         		comment.getId(),
                 comment.getContent(),
-                userId,
-                comment.getCreatedAt()
+                userId
         );
     }
 }

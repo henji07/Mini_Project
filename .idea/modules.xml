@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mini_test_version5.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mini_test_version5.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/minitest.mini_test_version5.main.iml" filepath="$PROJECT_DIR$/.idea/modules/minitest.mini_test_version5.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/yj.iml" filepath="$PROJECT_DIR$/.idea/yj.iml" />
     </modules>
   </component>
