@@ -2,7 +2,9 @@ package com.bit.studypage.controller;
 
 import com.bit.studypage.entity.*;
 import com.bit.studypage.entity.board.BoardQna;
+import com.bit.studypage.entity.board.CommentQna;
 import com.bit.studypage.service.impl.*;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,32 +69,32 @@ public class MyPageController {
         session.setAttribute("user", users);
 
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "boardId");
-        Page<BoardQna> boardPage = boardServiceImpl.pageList(users.getUserNickname(), pageable);
+        Page<BoardQna> boardPage = boardServiceImpl.pageList(principal.getName(), pageable);
+//        System.out.println("닉네임"+users.getUserNickname());
+//        System.out.println("므ㅔㅔ!"+boardPage.getContent().get(0).getBoardContent());
         mv.addObject("boards", boardPage);
 
-        Pageable pageable2 = PageRequest.of(page, 10, Sort.Direction.DESC, "commentId");
-        Page<Comments> commPage = commentsServiceImpl.getCommentsPage(pageable2, users.getUserNickname());
+        Pageable pageable2 = PageRequest.of(page, 10, Sort.Direction.DESC, "Id");
+        Page<CommentQna> commPage = commentsServiceImpl.getCommentsPage(pageable2, users.getUsersId());
         mv.addObject("comments", commPage);
 
         Pageable pageable3 = PageRequest.of(page, 10, Sort.Direction.DESC, "likeId");
         Page<Likes> likePage = likesServiceImpl.likesPage(users.getUsersId(), pageable3);
         mv.addObject("likes", likePage);
-        System.out.println(likePage + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
-//        List<CommDTO> commList = new ArrayList<>();
-//        for (Comments c : commentsServiceImpl.getCommentsList(users.getUserNickname())) {
-//            CommDTO cdto = c.entityToDto();
-//            cdto.setPostTitle(boardServiceImpl.getBoard(c.getPostId()).getBoardTitle());
-//            commList.add(cdto);
-//        }
 
         List<BoardQna> boardLike = boardServiceImpl.getBoardQnaList(likesServiceImpl.getLike(users.getUsersId()));
-
-        String[] interest = usersServiceImpl.loginUser(loginId).getInterest().split(",");
+        String[] interest;
+        if (usersServiceImpl.loginUser(loginId).getInterest() != null) {
+            interest = usersServiceImpl.loginUser(loginId).getInterest().split(",");
+        } else {
+            interest = new String[0];  // 예: `interest`를 빈 배열로 설정
+            System.out.println("No interests found for user: " + loginId);  // 예: 로그를 남김
+        }
         List<String> interestsList = Arrays.asList(interest);
         mv.addObject("interests", interestsList);
         mv.addObject("boardList", boardServiceImpl.getBoardQnaList(users.getUserNickname()));
-        mv.addObject("commList", commentsServiceImpl.getCommentsList(users.getUserNickname()));
+        mv.addObject("commList", commentsServiceImpl.getCommentsList(users.getUsersId()));
         if (profileImgServiceImpl.getProfileImg(loginId) != null) {
             mv.addObject("profileImg", profileImgServiceImpl.getProfileImg(loginId));
         } else {ProfileImg profileImg = new ProfileImg();
@@ -101,16 +103,14 @@ public class MyPageController {
             profileImg.setPath("C:\\profile\\히히.jpg");
             profileImgServiceImpl.updateProfileImg(profileImg);
             mv.addObject("profileImg", profileImgServiceImpl.getProfileImg(loginId));
-            System.out.println("히히발싸");
         }
-        mv.addObject("interest", usersServiceImpl.loginUser(loginId).getInterest().split(","));
+//        mv.addObject("interest", usersServiceImpl.loginUser(loginId).getInterest().split(","));
         mv.addObject("countBoard", boardServiceImpl.getCountBoardQna(users.getUserNickname()));
-        mv.addObject("countComments", commentsServiceImpl.getCountComm(users.getUserNickname()));
-        mv.addObject("commentsList", commentsServiceImpl.getCommList(users.getUserNickname()));
+        mv.addObject("countComments", commentsServiceImpl.getCountComm(users.getUsersId()));
+        mv.addObject("commentsList", commentsServiceImpl.getCommList(users.getUsersId()));
         mv.addObject("likeBoard", boardLike);
 //        mv.addObject("likes",);
         log.info(boardServiceImpl.getCountBoardQna(users.getUserNickname()));
-        log.info("시이발!2");
         return mv;
     }
 
@@ -128,12 +128,14 @@ public class MyPageController {
     }
 
     @GetMapping("/comm")
-    public Page<Comments> getComms(@RequestParam(name = "pageNum", defaultValue = "0") int page, HttpSession session) {
-        Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "commentId");
+    public Page<CommentQna> getComms(@RequestParam(name = "pageNum", defaultValue = "0") int page, HttpSession session) {
+        System.out.println("하하하1");
+        Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "Id");
+        System.out.println("하하하2");
         Users user = (Users) session.getAttribute("user");
-        Page<Comments> commPage = commentsServiceImpl.getCommentsPage(pageable, user.getUserNickname());
+        Page<CommentQna> commPage = commentsServiceImpl.getCommentsPage(pageable, user.getUsersId());
 //        model.addAttribute("boards", boardPage);
-        System.out.println(commPage.getTotalElements());
+        System.out.println("하하하나나"+commPage.getTotalElements());
         System.out.println(commPage.getTotalPages());
         System.out.println(commPage);
 //        return "myPage :: #profile-historycontainer";
@@ -165,7 +167,7 @@ public class MyPageController {
         if (!image.isEmpty()) {
             ProfileImg profileImg = profileImgServiceImpl.getProfileImg(loginId);
             String origin = image.getOriginalFilename();
-            Path path = Paths.get("C:\\profile").resolve(origin);
+            Path path = Paths.get("C:\\profile/").resolve(origin);
             profileImg.setOriginName(origin);
             System.out.println("이미지 변경 이름 : " + origin);
             profileImg.setPath(path.toString());
@@ -197,7 +199,6 @@ public class MyPageController {
         log.info(users.toString() + "wwwwwwwwwww");
         user.setUserId(users.getUserId());
         user.setEmail(users.getEmail());
-        user.setPassword(users.getPassword());
         user.setGender(users.getGender());
         user.setPhone(users.getPhone());
         user.setIsTerms(users.getIsTerms());
@@ -216,13 +217,14 @@ public class MyPageController {
     }
 
     @DeleteMapping("/myPage/del-user")
-    public void delUser(HttpSession session) {
+    public void delUser(HttpSession session, HttpServletRequest request) {
         Users user = (Users) session.getAttribute("user");
         DelUsers delUsers = new DelUsers(user);
         log.info("삭제유저 추가" + delUsers.toString());
         delUsersService.setDelUser(delUsers);
         log.info("유저 삭제한당" + user);
         usersServiceImpl.delUser(user);
+        request.getSession().invalidate();
     }
 
     @DeleteMapping("/del-board")

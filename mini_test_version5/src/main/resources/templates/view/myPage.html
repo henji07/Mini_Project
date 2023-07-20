@@ -119,8 +119,8 @@
                                     })),
                                     // $("<td>").text(board.boardId),
                                     $("<td>").text(board.boardTitle),
-                                    $("<td>").text(board.boardRegDate),
-                                    $("<td>").text(board.boardViewCnt)
+                                    $("<td>").text(board.boardRegdate),
+                                    $("<td>").text(board.boardCnt)
                                 );
                                 $("#profile-write-board1").append(row);
                             });
@@ -220,6 +220,8 @@
                 })
             });
 
+
+
         </script>
     </th:block>
 
@@ -237,7 +239,7 @@
                 <div class="profile-box profile-left2">
                     <div class="profile-menu">
                         <div class="profile-menu1 profile-btn-css">회원정보</div>
-                        <div class="profile-menu2 profile-btn-css" id="user-history">글 관리</div>
+<!--                        <div class="profile-menu2 profile-btn-css" id="user-history">글 관리</div>-->
                         <div class="profile-menu3 profile-btn-css">계정</div>
                     </div>
                 </div>
@@ -250,12 +252,12 @@
                             <input style="margin-bottom: 10px;" name="name" th:value="${session.user.name}"
                                    th:placeholder="${session.user.name}"/>
                         </div>
-                        <div class="profile-info-field">
-                            <div style="margin-bottom: 10px;"><strong>닉네임</strong></div>
-                            <input style="margin-bottom: 10px;" name="userNickname"
-                                   th:value="${session.user.userNickname}"
-                                   th:placeholder="${session.user.userNickname}"/>
-                        </div>
+<!--                        <div class="profile-info-field">-->
+<!--&lt;!&ndash;                            <div style="margin-bottom: 10px;"><strong>닉네임</strong></div>&ndash;&gt;-->
+<!--                            <input style="margin-bottom: 10px;" name="userNickname"-->
+<!--                                   th:value="${session.user.userNickname}"-->
+<!--                                   th:placeholder="${session.user.userNickname}"/>-->
+<!--                        </div>-->
                         <div class="profile-info-field">
                             <div style="margin-bottom: 10px;"><strong>관심사</strong></div>
                             <select id="profile-interests" multiple name="interest"
@@ -307,7 +309,7 @@
                     <!--위에상단 채울공간-->
                     <div style="margin-right: 150px;">
                         <h2>비밀번호 변경</h2>
-                        <p style="margin-right: 150px;">회원님의 개인정보를 안전하게 보호하고, 개인정보 도움으로 인한 피해를 예방하기 위해<br> 1년 이상 비밀번호를
+                        <p style="margin-right: 150px;">회원님의 개인정보를 안전하게 보호하고, 개인정보 도용으로 인한 피해를 예방하기 위해<br> 1년 이상 비밀번호를
                             변경하지 않은 경우 비밀번호 변경을 권장하고 있습니다.</p>
                         <button class="change-btn" id="password-change-btn" type="button"
                                 onclick="location.href='/password-change'">비밀번호 변경
@@ -324,21 +326,21 @@
                                 <td><input type="text" name="userId" th:value="${session.user.userId}"
                                            th:placeholder="${session.user.userId}"/></td>
                             </tr>
-                            <tr>
-                                <td>현재 비밀번호</td>
-                                <td><input type="password" name="password" th:value="${session.user.password}"
-                                           th:placeholder="${session.user.password}"/></td>
-                            </tr>
-                            <tr>
-                                <td>새 비밀번호</td>
-                                <td><input type="password" name="newPassword" id="pass-confirm1"/></td>
-                            </tr>
-                            <tr>
-                                <td>새 비밀번호 확인</td>
-                                <td><input type="password" name="confirmPassword" id="pass-confirm2"/>
-                                    <div id="pass-confirm">비밀번호가 일치하지 않습니다.</div>
-                                </td>
-                            </tr>
+<!--                            <tr>-->
+<!--                                <td>현재 비밀번호</td>-->
+<!--                                <td><input type="password" name="password" th:value="${session.user.password}"-->
+<!--                                           th:placeholder="${session.user.password}"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>새 비밀번호</td>-->
+<!--                                <td><input type="password" name="newPassword" id="pass-confirm1"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>새 비밀번호 확인</td>-->
+<!--                                <td><input type="password" name="confirmPassword" id="pass-confirm2"/>-->
+<!--                                    <div id="pass-confirm">비밀번호가 일치하지 않습니다.</div>-->
+<!--                                </td>-->
+<!--                            </tr>-->
                             <tr>
                                 <td>성별</td>
                                 <td>
@@ -366,133 +368,133 @@
                                                th:checked="${session.user.isTerms} != 0 ? 'true' : 'false'"></td>
                             </tr>
                         </table>
-                        <button id="profile-info-btn" class="profile-btn" type="submit">수정</button>
+                        <button id="profile-info-btn" class="profile-btn" type="button">수정</button>
                     </form>
-                    <div id="profile-con2-2">
-                        <div class="profile-box" id="profile-select-container">
-                            <div class="profile-select" id="profile-sel1">작성글</div>
-                            <div class="profile-select" id="profile-sel2">작성댓글</div>
-                            <div class="profile-select" id="profile-sel3">좋아요</div>
-                        </div>
+<!--                    <div id="profile-con2-2">-->
+<!--                        <div class="profile-box" id="profile-select-container">-->
+<!--                            <div class="profile-select" id="profile-sel1">작성글</div>-->
+<!--                            <div class="profile-select" id="profile-sel2">작성댓글</div>-->
+<!--                            <div class="profile-select" id="profile-sel3">좋아요</div>-->
+<!--                        </div>-->
 
-                        <div class="profile-box" id="profile-historycontainer">
-                            <form action="" id="del-history" style="width: 100%">
-                                <table id="profile-write-board1">
-                                    <tr id="profile-th">
-                                        <th>선택</th>
-                                        <th class="profile-title-bar">제목</th>
-                                        <th>작성일</th>
-                                        <th>조회수</th>
-                                    </tr>
-                                    <tr th:each="board : ${boards.content}">
-                                        <td><input type="checkbox" name="board-check" th:value="${board.boardId}"/></td>
-                                        <!-- <input th:value="${board.boardId}" type="hidden" name="del-check" /> -->
-                                        <!-- <td th:text="${board.boardId}"></td> -->
-                                        <td th:if="${board != null}" th:text="${board.boardTitle}"></td>
-                                        <td th:unless="${board != null}">Board is null</td>
-                                        <td th:if="${board != null}" th:text="${board.boardRegDate}"></td>
-                                        <td th:unless="${board != null}">-</td>
-                                        <td th:if="${board != null}" th:text="${board.boardViewCnt}"></td>
-                                        <td th:unless="${board != null}">-</td>
-                                    </tr>
-                                </table>
-                                <table id="profile-write-board2">
-                                    <tr id="profile-th">
-                                        <th>선택</th>
-                                        <th class="profile-title-bar">댓글</th>
-                                        <th>게시글</th>
-                                        <th>날짜</th>
-                                    </tr>
-                                    <tr th:each="comm : ${comments.content}">
-                                        <td><input type="checkbox" name="board-check"/></td>
-                                        <td th:if="${comm != null}" th:text="${comm.commentContent}"></td>
-                                        <td th:unless="${comm != null}">No comment</td>
-                                        <td th:if="${comm != null}" th:text="${comm.boardTitle}"></td>
-                                        <td th:unless="${comm != null}">-</td>
-                                        <td th:if="${comm != null}" th:text="${comm.createdAt}"></td>
-                                        <td th:unless="${comm != null}">-</td>
-                                    </tr>
-                                </table>
-                                <table id="profile-write-board3">
-                                    <tr id="profile-th">
-                                        <th>선택</th>
-                                        <th class="profile-title-bar">제목</th>
-                                        <th>작성일</th>
-                                        <th>조회수</th>
-                                    </tr>
-                                    <tr th:each="like : ${likeBoard}">
-                                        <td><input type="checkbox" name="board-check"/></td>
-                                        <td th:if="${like != null}" th:text="${like.boardTitle}"></td>
-                                        <td th:unless="${like != null}">No board</td>
-                                        <td th:if="${like != null}" th:text="${like.boardRegDate}"></td>
-                                        <td th:unless="${like != null}">-</td>
-                                        <td th:if="${like != null}" th:text="${like.boardViewCnt}"></td>
-                                        <td th:unless="${like != null}">-</td>
-                                    </tr>
-                                </table>
-                            </form>
-                            <div class="profile-box" id="profile-ect-container">
-                                <div>
-                                    전체선택<input
-                                        type="checkbox"
-                                        id="profile-select-all-board"
-                                />
-                                </div>
-                                <span class="pagination-bottom-pages1" th:if="${boards != null}">
-                                    <ul style="list-style:none;">
-                                        <li th:if="${boards.hasPrevious()}" style="float: left;">
-                                            <a href="#" class="page-link1"
-                                               th:data-page="${boards.number - 1}">Previous</a>
-                                        </li>
-                                        <li th:each="pageNumber : ${#numbers.sequence(0, boards.totalPages - 1)}"
-                                            style="float: left;">
-                                            <a href="#" class="page-link1" th:data-page="${pageNumber}"
-                                               th:text="${pageNumber + 1}"></a>
-                                        </li>
-                                        <li th:if="${boards.hasNext()}" style="float: left;">
-                                            <a href="#" class="page-link1" th:data-page="${boards.number + 1}">Next</a>
-                                        </li>
-                                    </ul>
-                                </span>
-                                <span class="pagination-bottom-pages2" th:if="${comments != null}">
-                                    <ul style="list-style:none;">
-                                        <li th:if="${comments.hasPrevious()}" style="float: left;">
-                                            <a href="#" class="page-link1"
-                                               th:data-page="${comments.number - 1}">Previous</a>
-                                        </li>
-                                        <li th:each="pageNumber : ${#numbers.sequence(0, comments.totalPages - 1)}"
-                                            style="float: left;">
-                                            <a href="#" class="page-link1" th:data-page="${pageNumber}"
-                                               th:text="${pageNumber + 1}"></a>
-                                        </li>
-                                        <li th:if="${comments.hasNext()}" style="float: left;">
-                                            <a href="#" class="page-link1"
-                                               th:data-page="${comments.number + 1}">Next</a>
-                                        </li>
-                                    </ul>
-                                </span>
-                                <span class="pagination-bottom-pages3">
-                                    <ul style="list-style:none;">
-                                        <li th:if="${comments.hasPrevious()}" style="float: left;">
-                                            <a href="#" class="page-link1"
-                                               th:data-page="${comments.number - 1}">Previous</a>
-                                        </li>
-                                        <li th:each="pageNumber : ${#numbers.sequence(0, comments.totalPages - 1)}"
-                                            style="float: left;">
-                                            <a href="#" class="page-link1" th:data-page="${pageNumber}"
-                                               th:text="${pageNumber + 1}"></a>
-                                        </li>
-                                        <li th:if="${comments.hasNext()}" style="float: left;">
-                                            <a href="#" class="page-link1"
-                                               th:data-page="${comments.number + 1}">Next</a>
-                                        </li>
-                                    </ul>
-                                </span>
-                                <input type="hidden" value="board" id="history-cate">
-                                <button id="btn-del-history" type="button" value="삭제/취소">삭제/취소</button>
-                            </div>
-                        </div>
-                    </div>
+<!--                        <div class="profile-box" id="profile-historycontainer">-->
+<!--                            <form action="" id="del-history" style="width: 100%">-->
+<!--                                <table id="profile-write-board1">-->
+<!--                                    <tr id="profile-th">-->
+<!--                                        <th>선택</th>-->
+<!--                                        <th class="profile-title-bar">제목</th>-->
+<!--                                        <th>작성일</th>-->
+<!--                                        <th>조회수</th>-->
+<!--                                    </tr>-->
+<!--                                    <tr th:if="${boards.content != null}" th:each="board : ${boards.content}">-->
+<!--                                        <td><input type="checkbox" name="board-check" th:value="${board.boardId}"/></td>-->
+<!--                                        &lt;!&ndash; <input th:value="${board.boardId}" type="hidden" name="del-check" /> &ndash;&gt;-->
+<!--                                        &lt;!&ndash; <td th:text="${board.boardId}"></td> &ndash;&gt;-->
+<!--                                        <td th:if="${board != null}" th:text="${board.boardTitle}"></td>-->
+<!--                                        <td th:unless="${board != null}">Board is null</td>-->
+<!--                                        <td th:if="${board != null && board.boardRegdate != null}" th:text="${board.boardRegdate}"></td>-->
+<!--                                        <td th:unless="${board != null}">-</td>-->
+<!--                                        <td th:if="${board != null}" th:text="${board.boardCnt}"></td>-->
+<!--                                        <td th:unless="${board != null}">-</td>-->
+<!--                                    </tr>-->
+<!--                                </table>-->
+<!--                                <table id="profile-write-board2">-->
+<!--                                    <tr id="profile-th">-->
+<!--                                        <th>선택</th>-->
+<!--                                        <th class="profile-title-bar">댓글</th>-->
+<!--                                        <th>게시글</th>-->
+<!--                                        <th>날짜</th>-->
+<!--                                    </tr>-->
+<!--                                    <tr th:each="comm : ${comments.content}">-->
+<!--                                        <td><input type="checkbox" name="board-check"/></td>-->
+<!--                                        <td th:if="${comm != null}" th:text="${comm.content}"></td>-->
+<!--                                        <td th:unless="${comm != null}">No comment</td>-->
+<!--                                        <td th:if="${comm != null}" th:text="${comm.boardTitle}"></td>-->
+<!--                                        <td th:unless="${comm != null}">-</td>-->
+<!--                                        <td th:if="${comm != null}" th:text="${comm.createdAt}"></td>-->
+<!--                                        <td th:unless="${comm != null}">-</td>-->
+<!--                                    </tr>-->
+<!--                                </table>-->
+<!--                                <table id="profile-write-board3">-->
+<!--                                    <tr id="profile-th">-->
+<!--                                        <th>선택</th>-->
+<!--                                        <th class="profile-title-bar">제목</th>-->
+<!--                                        <th>작성일</th>-->
+<!--                                        <th>조회수</th>-->
+<!--                                    </tr>-->
+<!--                                    <tr th:each="like : ${likeBoard}">-->
+<!--                                        <td><input type="checkbox" name="board-check"/></td>-->
+<!--                                        <td th:if="${like != null}" th:text="${like.boardTitle}"></td>-->
+<!--                                        <td th:unless="${like != null}">No board</td>-->
+<!--                                        <td th:if="${like != null}" th:text="${like.boardRegDate}"></td>-->
+<!--                                        <td th:unless="${like != null}">-</td>-->
+<!--                                        <td th:if="${like != null}" th:text="${like.boardViewCnt}"></td>-->
+<!--                                        <td th:unless="${like != null}">-</td>-->
+<!--                                    </tr>-->
+<!--                                </table>-->
+<!--                            </form>-->
+<!--                            <div class="profile-box" id="profile-ect-container">-->
+<!--                                <div>-->
+<!--                                    전체선택<input-->
+<!--                                        type="checkbox"-->
+<!--                                        id="profile-select-all-board"-->
+<!--                                />-->
+<!--                                </div>-->
+<!--                                <span class="pagination-bottom-pages1" th:if="${boards != null}">-->
+<!--                                    <ul style="list-style:none;">-->
+<!--                                        <li th:if="${boards.hasPrevious()}" style="float: left;">-->
+<!--                                            <a href="#" class="page-link1"-->
+<!--                                               th:data-page="${boards.number - 1}">Previous</a>-->
+<!--                                        </li>-->
+<!--                                        <li th:each="pageNumber : ${#numbers.sequence(0, boards.totalPages - 1)}"-->
+<!--                                            style="float: left;">-->
+<!--                                            <a href="#" class="page-link1" th:data-page="${pageNumber}"-->
+<!--                                               th:text="${pageNumber + 1}"></a>-->
+<!--                                        </li>-->
+<!--                                        <li th:if="${boards.hasNext()}" style="float: left;">-->
+<!--                                            <a href="#" class="page-link1" th:data-page="${boards.number + 1}">Next</a>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </span>-->
+<!--                                <span class="pagination-bottom-pages2" th:if="${comments != null}">-->
+<!--                                    <ul style="list-style:none;">-->
+<!--                                        <li th:if="${comments.hasPrevious()}" style="float: left;">-->
+<!--                                            <a href="#" class="page-link2"-->
+<!--                                               th:data-page="${comments.number - 1}">Previous</a>-->
+<!--                                        </li>-->
+<!--                                        <li th:each="pageNumber : ${#numbers.sequence(0, comments.totalPages - 1)}"-->
+<!--                                            style="float: left;">-->
+<!--                                            <a href="#" class="page-link2" th:data-page="${pageNumber}"-->
+<!--                                               th:text="${pageNumber + 1}"></a>-->
+<!--                                        </li>-->
+<!--                                        <li th:if="${comments.hasNext()}" style="float: left;">-->
+<!--                                            <a href="#" class="page-link2"-->
+<!--                                               th:data-page="${comments.number + 1}">Next</a>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </span>-->
+<!--                                <span class="pagination-bottom-pages3">-->
+<!--                                    <ul style="list-style:none;">-->
+<!--                                        <li th:if="${comments.hasPrevious()}" style="float: left;">-->
+<!--                                            <a href="#" class="page-link3"-->
+<!--                                               th:data-page="${comments.number - 1}">Previous</a>-->
+<!--                                        </li>-->
+<!--                                        <li th:each="pageNumber : ${#numbers.sequence(0, comments.totalPages - 1)}"-->
+<!--                                            style="float: left;">-->
+<!--                                            <a href="#" class="page-link3" th:data-page="${pageNumber}"-->
+<!--                                               th:text="${pageNumber + 1}"></a>-->
+<!--                                        </li>-->
+<!--                                        <li th:if="${comments.hasNext()}" style="float: left;">-->
+<!--                                            <a href="#" class="page-link3"-->
+<!--                                               th:data-page="${comments.number + 1}">Next</a>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </span>-->
+<!--                                <input type="hidden" value="board" id="history-cate">-->
+<!--                                <button id="btn-del-history" type="button" value="삭제/취소">삭제/취소</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div id="profile-con3-2">
                         <h2 style="margin-left: 75px;">계정 영구 삭제 확인</h2>
                         <p style="margin-left: 75px;">회원님의 계정을 영구적으로 삭제합니다.

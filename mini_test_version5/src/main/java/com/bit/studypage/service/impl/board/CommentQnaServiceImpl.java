@@ -76,7 +76,6 @@ public class CommentQnaServiceImpl implements CommentQnaService {
                 .userStringId(user.getUserId())//현재 인증된 사용자의 문자열 형식의 ID를 가져옴
                 .boardId(board.getBoardId())//댓글이 달릴 게시글의 ID를 가져옴
                 .boardTitle(board.getBoardTitle())//댓글이 달릴 게시글의 제목을 가져옴
-                .createdAt(LocalDateTime.now())//댓글이 작성된 현재 시각을 가져옴
                 .build();
 
         // 생성된 CommentQna 객체를 저장
