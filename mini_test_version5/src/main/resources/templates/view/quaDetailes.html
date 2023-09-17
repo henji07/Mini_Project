@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/default-layout}">
+
+<head>
+    <th:block layout:fragment="css">
+        <!-- Full Calendar -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.print.min.css"
+              rel="stylesheet" media="print">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css">
+
+        <link rel="stylesheet" href="/css/boardcertificate.css">
+        <style>
+            .board-certificate-write-container {
+            }
+
+            .qua-box {
+                /*border: 1px solid black;*/
+            }
+
+            .qua-con {
+                min-height: 800px;
+                max-height: 100%;
+                display: flex;
+                flex-flow: column;
+            }
+
+            .cal-con {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                min-height: 470px;
+                max-height: 50vh;
+            }
+
+            .cal-con > * {
+                width: 100%;
+            }
+
+            .qua-cal-info {
+                width: 50%;
+                overflow-y: auto;
+                max-height: 100%;
+                margin-left: 10px;
+                padding-left: 10px;
+                border-left: 1px solid black;
+            }
+
+            .fc-scroller {
+                overflow: hidden !important;
+            }
+
+            .cal-con qua-box {
+                height: 100%;
+                padding: 10px;
+            }
+
+            #calendar {
+                height: 100px !important;
+            }
+            .fc-toolbar{
+                z-index: 0 !important;
+                position: relative !important;
+            }
+
+            .qua-info {
+                overflow-y: auto;
+                height: 300px;
+            }
+            /*#qua-box{*/
+            /*    height: 700px;*/
+            /*    background-color: #7dc0ff;*/
+            /*}*/
+
+
+        </style>
+    </th:block>
+
+    <th:block layout:fragment="script">
+        <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>
+        <script type="text/javascript" th:inline="javascript">
+            function formatDate(dateNumber) {
+                let dateString = String(dateNumber);
+                let y = dateString.substring(0, 4);
+                let m = dateString.substring(4, 6);
+                let d = dateString.substring(6, 8);
+                let formattedDate = `${y}-${m}-${d}`;
+                return formattedDate;
+            }
+
+            function todayDate() {
+                let today = new Date();
+                let dd = String(today.getDate()).padStart(2, '0');
+                let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                let yyyy = today.getFullYear();
+                today = yyyy + '-' + mm + '-' + dd;
+                return today;
+            }
+
+            /*<![CDATA[*/
+            let quaInfo = /*[[${quaInfo}]]*/ 'default';
+            /*]]>*/
+            let data = JSON.parse(quaInfo);
+            let quaData = data.response.body.items.item;
+            console.log(data.response.body.items.item);
+            if (!Array.isArray(quaData)) {
+                quaData = [quaData];
+            }
+            // events 배열을 빈 배열로 초기화
+            let events = [];
+
+            // quaData 배열을 순회하며 필요한 정보를 추출
+            quaData.forEach(function (item) {
+                console.log("포이치")
+                let examName = item.implplannm; // 회차 이름 정보를 추출
+
+                // 필기시험 정보를 추출하여 events에 추가
+                events.push({
+                    title: examName + ' 필기 시험',
+                    start: formatDate(item.docexamstartdt),
+                    end: formatDate(item.docexamenddt + 1)
+                });
+
+                // 필기 원서접수 정보를 추출하여 events에 추가
+                events.push({
+                    title: examName + ' 필기 원서접수',
+                    start: formatDate(item.docregstartdt),
+                    end: formatDate(item.docregenddt + 1)
+                });
+
+                // 실기시험 정보를 추출하여 events에 추가
+                events.push({
+                    title: examName + ' 실기 시험',
+                    start: formatDate(item.pracexamstartdt),
+                    end: formatDate(item.pracexamenddt + 1)
+                });
+
+                // 실기 원서접수 정보를 추출하여 events에 추가
+                events.push({
+                    title: examName + ' 실기 원서접수',
+                    start: formatDate(item.pracregstartdt),
+                    end: formatDate(item.pracregenddt + 1)
+                });
+
+                // 필기시험 발표날짜 정보를 추출하여 events에 추가
+                events.push({
+                    title: examName + ' 필기시험 발표',
+                    start: formatDate(item.docpassdt),
+                    end: formatDate(item.docpassdt + 1)
+                });
+
+                // 실기시험 발표날짜 정보를 추출하여 events에 추가
+                events.push({
+                    title: examName + ' 실기시험 발표',
+                    start: formatDate(item.pracpassstartdt),
+                    end: formatDate(item.pracpassstartdt + 1)
+                });
+            });
+            $(document).ready(function () {
+                console.log("레디 이후")
+
+                console.log("풀캘린더로 가는 값 = " + JSON.stringify(events))
+
+                // fullCalendar 설정에 events 배열을 사용
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,basicWeek,basicDay'
+                    },
+                    defaultDate: todayDate(),
+                    navLinks: true,
+                    editable: true,
+                    eventLimit: true,
+                    events: events
+                });
+            });
+            $(document).ready(function() {
+                $('.fc-month-button').css({
+                    'position': 'relative',
+                    'z-index': 0
+                });
+            });
+        </script>
+    </th:block>
+
+</head>
+
+<body>
+<th:block layout:fragment="content">
+
+    <img th:src="@{/image/certificate_main.png}" alt="카테고리 이미지"
+         style="display: block; margin: auto; margin-top: 70px; max-width: 50%; height: 50%;">
+    <!-- 카테고리 -->
+    <div class="board-certificate-write-container">
+        <hr class="horizontal-line">
+        <div class="board-certificate-container">
+            <div class="board-certificate-title">
+                <a th:href="@{/certificatePage}"><button>자격증일정 & 정보</button></a>
+                <a th:href="@{/testmap}"><button>주변 시험장 찾기</button></a>
+            </div>
+        </div>
+
+        <hr class="horizontal-line">
+        <div class="qua-con qua-box" style="padding: 50px; border: 10px dashed #f97800">
+            <h2 style="margin: auto; width: 70%; text-align: center;" class="qua-name qua-box" th:text="${name}"></h2>
+            <br>
+            <div class="cal-con qua-box" style="border: 3px solid black; border-radius: 5px">
+<!--                <div id="qua-box">-->
+                    <div class="ui container">
+                        <div class="ui grid">
+                            <div class="ui sixteen column">
+                                <div id="calendar"></div>
+                            </div>
+                        </div>
+                    </div>
+<!--                </div>-->
+                <div class="qua-cal-info qua-box">
+                    <div th:each="item : ${quaInfo2.response.body.items.item}" id="info2-box">
+                        <h4 th:text="${item.implplannm}"></h4>
+                        <p>필기 접수 <br><span
+                                th:text="${#strings.substring(item.docregstartdt, 0, 4) + '/' + #strings.substring(item.docregstartdt, 4, 6) + '/' + #strings.substring(item.docregstartdt, 6, 8)}"></span>
+                            ~
+                            <span th:text="${#strings.substring(item.docregenddt, 0, 4) + '/' + #strings.substring(item.docregenddt, 4, 6) + '/' + #strings.substring(item.docregenddt, 6, 8)}"></span>
+                        </p>
+
+                        <p>필기 시험 <br><span
+                                th:text="${#strings.substring(item.docexamstartdt, 0, 4) + '/' + #strings.substring(item.docexamstartdt, 4, 6) + '/' + #strings.substring(item.docexamstartdt, 6, 8)}"></span>
+                            ~
+                            <span th:text="${#strings.substring(item.docexamenddt, 0, 4) + '/' + #strings.substring(item.docexamenddt, 4, 6) + '/' + #strings.substring(item.docexamenddt, 6, 8)}"></span>
+                        </p>
+
+                        <p>필기 결과 발표 <br><span
+                                th:text="${#strings.substring(item.docpassdt, 0, 4) + '/' + #strings.substring(item.docpassdt, 4, 6) + '/' + #strings.substring(item.docpassdt, 6, 8)}"></span>
+                        </p>
+
+                        <p>실기 접수 <br><span
+                                th:text="${#strings.substring(item.pracregstartdt, 0, 4) + '/' + #strings.substring(item.pracregstartdt, 4, 6) + '/' + #strings.substring(item.pracregstartdt, 6, 8)}"></span>
+                            ~
+                            <span th:text="${#strings.substring(item.pracregenddt, 0, 4) + '/' + #strings.substring(item.pracregenddt, 4, 6) + '/' + #strings.substring(item.pracregenddt, 6, 8)}"></span>
+                        </p>
+
+                        <p>실기 시험 <br><span
+                                th:text="${#strings.substring(item.pracexamstartdt, 0, 4) + '/' + #strings.substring(item.pracexamstartdt, 4, 6) + '/' + #strings.substring(item.pracexamstartdt, 6, 8)}"></span>
+                            ~
+                            <span th:text="${#strings.substring(item.pracexamenddt, 0, 4) + '/' + #strings.substring(item.pracexamenddt, 4, 6) + '/' + #strings.substring(item.pracexamenddt, 6, 8)}"></span>
+                        </p>
+
+                        <p>실기 결과 발표 <br><span
+                                th:text="${#strings.substring(item.pracpassstartdt, 0, 4) + '/' + #strings.substring(item.pracpassstartdt, 4, 6) + '/' + #strings.substring(item.pracpassstartdt, 6, 8)}"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="qua-info qua-box" style="padding: 10px; margin-top: 30px; border: 10px double #FFCA9B; border-radius: 5px; padding: 5px">
+                <div th:if="${info.name != null and info.name != ''}">
+                    <strong>자격증:</strong> <span th:text="${info.name}"><br></span>
+                </div>
+
+                <div th:if="${info.info1 != null and info.info1 != ''}">
+                    <strong><br>개요:</strong> <span th:text="${info.info1}"><br></span>
+                </div>
+
+                <div th:if="${info.info2 != null and info.info2 != ''}">
+                    <strong><br>수행직무:</strong> <span th:text="${info.info2}"><br></span>
+                </div>
+
+                <div th:if="${info.info3 != null and info.info3 != ''}">
+                    <strong><br>실시기관명:</strong> <span th:text="${info.info3}"><br></span>
+                </div>
+
+                <div th:if="${info.info4 != null and info.info4 != ''}">
+                    <strong><br>실시기관 홈페이지:</strong> <span th:text="${info.info4}"><br></span>
+                </div>
+
+                <div th:if="${info.info5 != null and info.info5 != ''}">
+                    <strong><br>진로 및 전망:</strong> <span th:text="${info.info5}"><br></span>
+                </div>
+
+                <div th:if="${info.info6 != null and info.info6 != ''}">
+                    <strong><br>출제 경향:</strong> <span th:text="${info.info6}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

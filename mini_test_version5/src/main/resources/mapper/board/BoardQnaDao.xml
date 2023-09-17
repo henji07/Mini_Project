@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/dtd/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.bit.studypage.service.dao.BoardQnaDao">
+
+	<!-- 댓글 목록 -->
+	<select id="selectCommentList" resultType="BoardCmmntQnaDTO">
+		SELECT 
+			   C.comment_id
+			  ,C.comment_content
+			  ,C.users_id
+			  ,(SELECT U.user_Id FROM users U WHERE U.users_id = C.users_id) AS USER_NAME
+			  ,DATE_FORMAT(C.created_at,'%Y-%m-%d %H:%i') AS CREATED_AT
+		  FROM comment_qna C
+		WHERE C.board_id = #{boardId}
+		ORDER BY comment_id 
+	</select>
+	
+	<!-- 댓글 수정 -->
+	<update id="updateComment" parameterType="map">
+	    UPDATE comment_qna
+	    SET comment_content = #{newContent}
+	    WHERE comment_id = #{commentId}
+	</update>
+	
+	<!-- 글 조회 -->
+	<select id="selectBoardQnaInfo" resultType="BoardQnaDTO">
+		SELECT b.board_id
+			  ,b.board_cnt
+			  ,b.board_content
+			  ,DATE_FORMAT(b.board_reg_date,'%Y-%m-%d %H:%i') AS BOARD_REG_DATE
+			  ,b.board_title
+			  ,b.board_writer
+			  ,b.like_count
+			  ,b.subcategory
+			  ,(SELECT U.user_name FROM users U WHERE U.user_id = b.board_writer) AS USER_NAME
+		  FROM board_qna b
+		 WHERE b.board_id = #{boardId}
+	</select>
+	
+
+</mapper>

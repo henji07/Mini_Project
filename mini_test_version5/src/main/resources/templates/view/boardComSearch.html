@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/default-layout}">
+  
+<head>
+<th:block layout:fragment="css">
+	<link rel="stylesheet" href="/css/boardCom.css">
+	<!-- 하트 이모티콘 생기게 해주는 스타일시트 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</th:block>
+
+<th:block layout:fragment="script">
+   <script type="text/javascript" th:inline="javascript">
+	
+   //검색 기능 
+   $(function() {
+    $("#search-form").submit(function(event) {
+        event.preventDefault();  // 기본적인 폼 제출을 막는다.
+        var keyword = document.getElementById("search-input-qna").value;
+        location.href = "/board/search/freePage/1?keyword=" + encodeURIComponent(keyword);
+     });
+   });
+   
+  //새로고침 되어도 글 정렬에서 선택한 값 그대로 있게 
+   window.onload = function() {
+	    // 페이지 로드 시 sortOption의 값을 확인하여 해당하는 옵션을 선택
+	    var sortOption = new URLSearchParams(window.location.search).get('sortOption');
+	    if (sortOption) {
+	        document.getElementById('list-options').value = sortOption;
+	    }
+	} 
+   
+   //글 정렬
+   function changeSortOption() {
+	    var sortOption = document.getElementById("list-options").value;
+	    var currentUrl = window.location.href;
+	    var baseUrl = currentUrl.includes("?") ? currentUrl.substring(0, currentUrl.indexOf("?")) : currentUrl;
+	    var queryParam = currentUrl.includes("?") ? currentUrl.substring(currentUrl.indexOf("?")) : "";
+	    var newUrl;
+
+	    if (sortOption !== "") {
+	        if (queryParam.includes("sortOption=")) {
+	            // 이미 sortOption 쿼리 파라미터가 있으면, 그 값을 변경
+	            newUrl = currentUrl.replace(/(sortOption=)[^\&]+/, "$1" + sortOption);
+	        } else if (queryParam !== "") {
+	            // 다른 쿼리 파라미터가 있으면, sortOption을 추가
+	            newUrl = baseUrl + queryParam + "&sortOption=" + sortOption;
+	        } else {
+	            // 아무런 쿼리 파라미터도 없으면, sortOption만 추가
+	            newUrl = baseUrl + "?sortOption=" + sortOption;
+	        }
+	    } else {
+	        // sortOption 쿼리 파라미터를 제거
+	        newUrl = baseUrl + queryParam.replace(/&?sortOption=[^\&]+/, "");
+	    }
+
+	    window.location.href = newUrl;
+	}
+
+   </script>
+</th:block>
+    
+</head>
+
+<body> 
+<th:block layout:fragment="content">  
+<!-- 이미지 -->
+<img src="/image/free_main.png" alt="카테고리 이미지" style="display: block; margin: auto; margin-top: 70px; max-width: 50%; height: 50%;">
+<!-- 카테고리 -->
+<div class="board-qna-container">
+<hr class="horizontal-line">
+  <div class="board-container">
+    <div class="board-title">
+      <button>소통해요</button>
+    </div>
+    <div class="board-actions">
+      <button style="left: 0;" onclick="location.href='/board/insert-board-view/freePage'">글쓰기</button>
+    </div>
+  </div>
+  
+  <hr class="horizontal-line">
+
+<!-- 드롭다운 -->
+<div class="options-container">
+    <select name="list-options" id="list-options" onchange="changeSortOption()">
+        <option value="">글 정렬</option>
+        <option value="recently">최신순</option>
+        <option value="view">조회순</option>
+        <option value="popular">좋아요순</option>
+    </select>
+</div>
+
+  <hr class="horizontal-line-underdropdown">
+<!-- 검색창 -->
+<!-- <form> 태그를 사용하면 브라우저는 기본적으로 엔터 키를 누르는 것을 "폼 제출"으로 인식하고 폼의 action 속성에 지정된 URL로 페이지를 리다이렉트 -->
+<form id="search-form" action="/board/search/freePage/1" method="get" class="search-box-qna">
+    <i class="fas fa-search search-icon-qna"></i>
+    <input type="text" name="keyword" id="search-input-qna" placeholder="검색" />
+    <button type="submit" id="search-button">검색</button>
+</form>
+<!-- 검색창 아래에 위치할 검색 키워드 표시 -->
+<div class="search-keyword-display">
+    <p style="text-align: center;" th:text="'\' ' + ${keyword} + ' \'에 대한 검색 결과'"></p>
+</div>
+<!-- 검색 결과가 없을 때 메시지 표시 -->
+<div th:if="${noResultMessage}" class="no-result-message">
+    <p style="text-align: center;" th:text="${noResultMessage}"></p>
+</div>
+
+<!-- 상단 페이징 -->
+<div class="pagination-top">
+    <span class="pagination-top-info" th:text="${currentPage} + ' / ' + ${totalPages} + ' 페이지'"></span>
+    <div class="pagination-top-buttons">
+      <a style="color: black;" th:href="@{'/board/search/freePage/' + (${currentPage} - 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous"  th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr;</a>
+      <a style="color: black;" th:href="@{'/board/search/freePage/' + (${currentPage} + 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">&rarr;</a>
+    </div>
+</div>
+
+<!-- 게시물 부분 -->
+ <div class="board-write-container">
+ 
+   <li class="board-write" th:each="board : ${searchList}">
+   
+     <div class="post-number" th:text="${board.boardId}"></div>
+     
+     <div class="board-writer-title">
+       <div class="author">
+         <img class="profile-img" src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
+         <div th:text="${board.boardWriter}"></div>
+       </div>
+       <a th:href="@{/board/board/freePage/{boardId} (boardId=${board.boardId})}" class="title" th:text="${board.boardTitle}"></a>
+     </div>
+     <div class="board_info">
+	     <div class="answer-count">
+	     	<div class="answer-count-count" th:text="'댓글 ' + ${board.commentCount} + ' | '"></div>
+	     </div>
+	     
+	     <!-- 좋아요 -->
+	      <div id="likeButton">
+			 <i id="heart" class="far fa-heart"></i> 
+			 <span id="likeCount" th:text="${board.likeCount} + ' | '"></span>
+		  </div>
+	     
+	      <div class="view-count" th:text="'조회  ' + ${board.boardCnt} + ' | '"></div>
+	      <div class="reg-date" th:text="${#strings.substring(board.boardRegdate, 0, 10) }"></div>
+     </div>    
+   </li>  
+    
+ </div>
+<!-- 하단 페이징 -->
+<!-- 상수로 페이지 그룹 사이즈를 설정. -->
+<th:block th:with="pageGroupSize=5">
+    <div class="pagination-bottom">
+
+        <a style="color: black;" th:href="@{'/board/search/freePage/' + (${currentPage} - 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-previous" th:classappend="${currentPage == 1 ? 'disabled-link' : ''}">&larr; Previous</a>
+        
+        <div th:each="i : ${#numbers.sequence(((currentPage-1) div pageGroupSize) * pageGroupSize + 1, (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize > totalPages ? totalPages : (((currentPage-1) div pageGroupSize) + 1) * pageGroupSize)}">
+            <a class="pagination-bottom-pages" th:class="${i == currentPage ? 'active' : ''}" th:href="@{'/board/search/freePage/' + ${i} + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" th:text="${i}" style="margin: 0 5px;  color: black;"></a>
+        </div>
+
+        <a style="color: black;" th:href="@{'/board/search/freePage/' + (${currentPage} + 1) + '?keyword=' + ${keyword} + '&sortOption=' + ${sortOption}}" class="pagination-bottom-button pagination-button-next" th:classappend="${currentPage == totalPages ? 'disabled-link' : ''}">Next &rarr;</a>
+
+    </div>
+</th:block>
+</div>
+</th:block>
+</body> 
+</html>

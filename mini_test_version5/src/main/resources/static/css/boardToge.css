@@ -1,0 +1,310 @@
+/*이미지 아래부터 게시물 감싸는 부분*/
+.board-qna-container {
+    font-family: 'Montserrat';
+    margin: 100px auto;
+    max-width: 50%;
+    display: block;
+}
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+}
+
+.board-title {
+    text-align: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.board-title button {
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 10px 20px;
+    background: none;
+    color: #aaaaaa;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.board-title button:hover {
+    color:#f97800;
+}
+
+.board-actions {
+    text-align: left;
+    width: 100%;
+    position: relative;
+}
+
+.board-actions button {
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 10px 20px;
+    color: #aaaaaa;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+}
+
+.board-actions button:hover {
+    color:#f97800;
+}
+
+/*중간 선*/
+.horizontal-line {
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.horizontal-line-underdropdown {
+    border-top: 1px solid rgba(204, 204, 204, 0.1);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*게시판 부분*/
+.board-write-container {
+    display: flex;              /* Flexbox layout을 활용합니다 */
+    flex-wrap: wrap;            /* 필요시 아이템들을 다음 줄로 넘김 */
+    justify-content: space-between; /* 아이템들 사이에 동일한 간격을 두어 줍니다 */
+    width: 100%;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.board-write {
+    position: relative;
+    padding: 20px;
+    background-color: #FDF5E6;
+    border: 4px solid #f97800;
+    border-radius: 10px;
+    border-style: double;
+    flex-basis: 46%;
+    margin: 2%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;   
+}
+
+
+/* 각각의 카드를 구분하기 위해 마진 추가 */
+.board-write:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+/* 각 섹션(글번호, 작성자 등)의 너비를 제한해서 레이아웃 조절 */
+.post-number,
+.answer-count,
+.board-writer-title,
+.board-details {
+    flex: 1 1 20%;      /* flex-grow, flex-shrink, flex-basis 설정 */
+    min-width: 100px;   /* 최소 가로 길이 설정 */
+}
+
+.board-writer-title {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 50px;
+    color: black;
+    margin-left: 5px;
+}
+
+li::marker {
+    content: "";  
+}
+
+.author {
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 5px;
+}
+
+.category {
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    color: #FF8C0A; 
+	width: 60px; 
+	text-align: center; 
+	display: block; 
+	margin: 0 auto 0 0; 
+	padding: 5px; 
+	border: 2px solid #FF8C0A; 
+	border-radius: 10px; 
+	background-color: #FFF5E6; 
+	margin-bottom: 20px;
+}
+
+.profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/*답변 수*/
+
+/*드롭다운*/
+.options-container {
+    text-align: right;
+}
+
+#list-options {
+    font-size: 0.9rem;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/*검색*/
+.search-box-qna {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #949494;
+    border-radius: 20px;
+    padding: 5px;
+    width: 300px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+.search-box-qna .search-icon-qna {
+    color: #888;
+    margin-right: 5px;
+}
+
+.search-box-qna input[type="text"] {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+}
+
+.search-box-qna button {
+    background-color: #f97800;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+/*상단 페이징*/
+.pagination-top {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-top: 20px;
+}
+
+.pagination-top-info {
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.pagination-top-buttons {
+    display: flex;
+}
+
+.pagination-top-button{
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+.disabled-link {
+    pointer-events: none;
+    color: #b4b4b4 !important;
+}
+
+/*하단 페이징*/
+.pagination-bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-bottom .page-bottom-link {
+    font-size: 14px;
+    padding: 5px 10px;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.pagination-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-bottom-button {
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+
+.pagination-bottom-button.pagination-button-previous {
+    margin-right: auto;
+}
+
+.pagination-bottom-button.pagination-button-next {
+    margin-left: auto;
+}
+
+.active {
+    font-weight: bold;
+    color: #f97800 !important;
+}
+
+#likeButton {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+#likeButton i {
+    margin-right: 10px;
+}
+
+.far.fa-heart {
+    color: red;
+}
+
+
+/*글번호*/
+.post-number {
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.board-details {
+    text-align: right;
+}

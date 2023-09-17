@@ -1,93 +1,269 @@
 <!DOCTYPE html>
 <html
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layouts/default-layout}">
-  
-<head>
-<th:block layout:fragment="css">
-	<link rel="stylesheet" href="/css/boardcertificate.css">
-</th:block>
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/default-layout}">
 
-<th:block layout:fragment="script">
-   <script type="text/javascript" th:inline="javascript">
-  
-   </script>
-</th:block>
-    
+<head>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" href="/css/boardcertificate.css">
+        <style>
+            #suggestions {
+                max-height: 100px; /* Adjust this value according to the size of each item */
+                overflow-y: auto;
+                /*padding: 5px;*/
+                width: 70%;
+                position: absolute;
+                z-index: 10;
+                font-size: 15px;
+                top: 100%;
+                background-color: #ededed;
+            }
+
+            #suggestions :hover {
+                cursor: pointer;
+                background-color: #ddd;
+            }
+
+            .qua-search-box {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                align-items: center;
+                width: 100%;
+            }
+
+            .selected {
+                display: inline-block;
+                border-bottom: 1px solid black;
+            }
+
+            .pagination {
+                width: 500px;
+                margin: auto;
+                text-align: center;
+            }
+
+            #search_quaList {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                justify-content: left;
+                min-width: 600px;
+            }
+
+            #search_quaList > * {
+                width: 30%;
+                /*margin: 5px;*/
+                border-radius: 10px;
+                text-align: center;
+            }
+
+            #search_quaList > :hover {
+                background-color: peachpuff;
+                border: 1px solid orange;
+            }
+
+            #page2 {
+                display: none;
+            }
+            .certificate-search-box{
+                margin-bottom: 2%;
+            }
+        </style>
+    </th:block>
+
+    <th:block layout:fragment="script">
+        <script type="text/javascript" th:inline="javascript">
+            $(document).ready(() => {
+                $("#certificate-search-input").on("keyup", function () {
+                    console.log($(this).val());
+                    $.ajax({
+                        url: "/select/qua",
+                        type: "post",
+                        data: {search: $(this).val()},
+                        success: function (data) {
+                            console.log(data)
+                            // Clear the suggestions box
+                            if (data == "" || data == null) {
+                                $("#suggestions").empty();
+                                return;
+                            }
+                            $("#suggestions").empty();
+                            // Assume that the server returns a list of suggestions
+                            data.forEach(function (item) {
+                                // Create a new div for each suggestion
+                                var div = $("<div>").text(item);
+                                div.on("click", function () {
+                                    // When a suggestion is clicked, replace the search input's value with the suggestion
+                                    $("#certificate-search-input").val(item);
+                                    // And clear the suggestions box
+                                    $("#suggestions").empty();
+                                });
+
+                                // Append the suggestion to the suggestions box
+                                $("#suggestions").append(div);
+                            });
+                        }
+                    });
+                });
+
+                $("#certificate-search-button").on("click", () => {
+                    // if ($("#certificate-search-input").val() == "") {
+                    //     $("#page1").css("display", "");
+                    //     $("#page2").css("display", "none");
+                    //     $.ajax({
+                    //         url: "/certificatePage",
+                    //         type: "get",
+                    //         success: (data) => {
+                    //             console.log(data + "들어옴1");
+                    //         }
+                    //     })
+                    //     return;
+                    // }
+                    // $("#page1").css("display", "none");
+                    // $("#page2").css("display", "");
+                    // alert({select: $("#certificate-search-input").val()})
+                    // console.log($("#certificate-search-input").val())
+                    $.ajax({
+                        url: "/certificatePage1",
+                        type: "get",
+                        data: {name: $("#certificate-search-input").val()},
+                        success: (data) => {
+                            console.log(data + "들어옴");
+                            // location.href='certificatePage2?'+{name: $("#certificate-search-input").val()};
+                            // location.href
+                            // var searchResults = $("#search_quaList");  // 검색 결과를 표시할 영역
+                            // searchResults.empty();
+                            // console.log(data.content);
+                            // data.content.forEach(function(item) {
+                            //     var resultItem = $('<div>');  // 새로운 div 요소 생성
+                            //     resultItem.text(item.jmfldnm);  // div의 텍스트를 검색 결과의 이름으로 설정
+                            //     searchResults.append(resultItem);  // 검색 결과 영역에 추가
+                            // });
+                            // var pagingControl = $('#paging-control');
+                            // pagingControl.empty();
+                            // for (var i = 0; i < data.totalPages; i++) {
+                            //     var pageButton = $('<button>');
+                            //     pageButton.text(i + 1);
+                            //     pageButton.on('click', function() {
+                            //         // 클릭 시 해당 페이지로 이동하는 코드
+                            //     });
+                            //     pagingControl.append(pageButton);
+                            // }
+                        },
+                        error: () => {
+                            console.log("안됨")
+                        }
+                    })
+                })
+            });
+
+        </script>
+    </th:block>
+
 </head>
 
-<body> 
-<th:block layout:fragment="content">  
+<body>
+<th:block layout:fragment="content">
 
-<img src="./image/certificate_main.png" alt="카테고리 이미지" style="display: block; margin: auto; margin-top: 70px; max-width: 50%; height: 50%;">
-<!-- 카테고리 -->
-<div class="board-certificate-write-container">
-<hr class="horizontal-line">
-	<div class="board-certificate-container">
-    <div class="board-certificate-title">
-      <button>자격증일정</button>
-      <button>자격증정보</button>
-      <button>시험장위치</button>
-    </div>
-    <!-- 글쓰기 버튼 -->
-    <div class="board-certificate-actions">
-      <button style="left: 0;">글쓰기</button>
-    </div>
-  </div>
-  
-  <hr class="horizontal-line">
-  
-<!-- 드롭다운 -->
-<div class="options-container">
-    <select name="list-options" id="list-options">
-        <option value="">글 정렬</option>
-        <option value="recently">최신순</option>
-        <option value="older">등록순</option>
-        <option value="popular">인기순</option>
-    </select>
-</div>
+    <img src="./image/certificate_main.png" alt="카테고리 이미지"
+         style="display: block; margin: auto; margin-top: 70px; max-width: 50%; height: 50%;">
+    <!-- 카테고리 -->
+    <div class="board-certificate-write-container">
+        <hr class="horizontal-line">
+        <div class="board-certificate-container">
+            <div class="board-certificate-title">
+                <a th:href="@{certificatePage}"><button>자격증일정 & 정보</button></a>
+                <a th:href="@{testmap}"><button>주변 시험장 찾기</button></a>
+            </div>
+        </div>
 
-  <hr class="horizontal-line-underdropdown">
-<!-- 검색창 -->
-  <div class="certificate-search-box">
-    <i class="fas fa-search certificate-search-icon"></i>
-    <input type="text" id="certificate-search-input" placeholder="검색" />
-    <button id="certificate-search-button">검색</button>
-  </div>
-  
-<!-- 상단 페이징 -->
-  <div class="pagination-top">
-    <span class="pagination-top-info">1 / 1 페이지</span>
-    <div class="pagination-top-buttons">
-      <button class="pagination-top-button" disabled>&larr;</button>
-      <button class="pagination-top-button">&rarr;</button>
-    </div>
-  </div>
+        <hr class="horizontal-line">
 
-<!-- 게시물 -->
- <div class="certificate-write">
- 	<div class="notice">
-      <a href="#" class="notice-title">공지사항</a>
-    </div>
-    <div class="post">
-      <a href="#" class="title">게시물 제목1</a>
-      <div class="meta">작성자: 현진이 | 작성일: 2023-06-21 | 조회수: 10</div>
-    </div>
-    <div class="post">
-      <a href="#" class="title">게시물 제목2</a>
-      <div class="meta">작성자: 유진이 | 작성일: 2023-06-20 | 조회수: 20</div>
-    </div>
-    <!-- 추가적인 게시물들을 여기에 추가할 수 있습니다 -->
-  </div>
 
-<!-- 하단 페이징 -->
-  <div class="pagination-bottom">
-    <button class="pagination-bottom-button pagination-button-previous" disabled>&larr; Previous</button>
-    <span class="pagination-bottom-pages">1</span>
-    <button class="pagination-bottom-button pagination-button-next">Next &rarr;</button>
-  </div>    
-</div>
+        <hr class="horizontal-line-underdropdown">
+        <form action="/certificatePage" method="get">
+            <!-- 검색창 -->
+            <div class="qua-search-box">
+                <div class="certificate-search-box" id="box-id">
+                    <i class="fas fa-search certificate-search-icon"></i>
+
+                    <input type="text" name="name" id="certificate-search-input" placeholder="검색"/>
+                    <button id="certificate-search-button" type="submit">검색</button>
+
+                </div>
+                <div id="suggestions"></div>
+            </div>
+        </form>
+        <!-- 게시물 -->
+        <div class="certificate-write">
+            <div id="search_quaList" style="">
+                <div class="post" th:each="item : ${List.content}">
+                    <a id="item-qua" th:href="@{/select/qua/{name} (name=${item.jmfldnm})}" class="title" th:text="${item.jmfldnm}"></a>
+                </div>
+                <!--                <div class="post">-->
+                <!--                    <a href="#" class="title">게시물 제목2</a>-->
+                <!--                    <div class="meta">작성자: 유진이 | 작성일: 2023-06-20 | 조회수: 20</div>-->
+                <!--                </div>-->
+            </div>
+            <!-- 추가적인 게시물들을 여기에 추가할 수 있습니다 -->
+        </div>
+
+
+        <!-- 하단 페이징 -->
+        <!--        <div class="pagination-bottom">-->
+        <!--            <button class="pagination-bottom-button pagination-button-previous" th:if="${List.hasPrevious()}"-->
+        <!--                    th:href="@{/certificatePage(page=${List.number-1})}">Previous-->
+        <!--            </button>-->
+        <!--            <span th:each="i : ${#numbers.sequence(0, List.totalPages-1)}" id="paging-control"-->
+        <!--                  class="pagination-bottom-pages">-->
+        <!--        <a th:href="@{/certificatePage(page=${i})}" th:text="${i + 1}"></a>-->
+        <!--    </span>-->
+        <!--            <button class="pagination-bottom-button pagination-button-next" th:if="${List.hasNext()}"-->
+        <!--                    th:href="@{/certificatePage(page=${List.number+1})}">Next-->
+        <!--            </button>-->
+        <!--        </div>-->
+        <!--    </div>-->
+
+        <div class="pagination" id="page1">
+            <th:block th:if="${List.totalPages > 0}">
+
+                <a th:href="@{/certificatePage(name=${name},page=0)}"><< </a>
+
+                <a th:href="@{/certificatePage(name=${name},page=${List.number - 10})}"> < </a>
+
+                <th:block th:each="i : ${#numbers.sequence(startPage,endPage - 1)}">
+                    <a th:href="@{/certificatePage(name=${name},page = ${i})}" th:text="${i + 1}"
+                       th:class="${List.number == i ? 'selected' : ''}"></a>
+                </th:block>
+
+                <a th:href="@{/certificatePage(name=${name}, page=${(List.number + 10) > List.totalPages ? List.totalPages - 1 : List.number + 10 })}">
+                    > </a>
+
+                <a th:href="@{/certificatePage(name=${name},page=${List.totalPages - 1})}"> >></a>
+            </th:block>
+        </div>
+        <!--        <div class="pagination" id="page2">-->
+        <!--            <th:block th:if="${List.totalPages > 0}">-->
+
+        <!--                <a th:href="@{/certificatePage2(page=0)}"><< </a>-->
+
+        <!--                <a th:href="@{/certificatePage2(page=${List.number - 10})}"> < </a>-->
+
+        <!--                <th:block th:each="i : ${#numbers.sequence(startPage,endPage - 1)}">-->
+        <!--                    <a th:href="@{/certificatePage2(page = ${i})}" th:text="${i + 1}"-->
+        <!--                       th:class="${List.number == i ? 'selected' : ''}"></a>-->
+        <!--                </th:block>-->
+
+        <!--                <a th:href="@{/certificatePage2(page=${(List.number + 10) > List.totalPages ? List.totalPages - 1 : List.number + 10 })}">-->
+        <!--                    > </a>-->
+
+        <!--                <a th:href="@{/certificatePage2(page=${List.totalPages - 1})}"> >></a>-->
+        <!--            </th:block>-->
+        <!--        </div>-->
+
+    </div>
 </th:block>
-</body> 
+</body>
 </html>
